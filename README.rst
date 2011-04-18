@@ -1,10 +1,10 @@
 ==========
-Hypernotes
+HyperNotes
 ==========
 
-Note-taking on steroids.
+Note-taking meets the web.
 
-A cross of a notebook and an encyclopaedia.
+A cross of a notebook, encyclopaedia and timemap.
 
 Create notes about places, people, events and string them together into
 'threads' at the click of a button.
