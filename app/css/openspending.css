@@ -1,0 +1,704 @@
+body { font:13px/1.231 sans-serif; *font-size:small; } /* hack retained to preserve specificity */
+
+select, input, textarea, button { font:99% sans-serif; }
+pre, code, kbd, samp { font-family: monospace, sans-serif; }
+
+body, select, input, textarea { 
+  color: #444; 
+  /* set your base font here, to apply evenly */
+  /* font-family: Georgia, serif;  */   
+}
+
+/* Headers (h1,h2,etc) have no default font-size or margin,
+   you'll want to define those yourself. */ 
+h1,h2,h3,h4,h5,h6 { font-weight: bold; }
+
+html { overflow-y: scroll; }
+
+ 
+/* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
+a:hover, a:active { outline: none; }
+
+a, a:active, a:visited { 
+  color: #607890; 
+  text-decoration: none; 
+}
+a:hover { 
+  color: #036; 
+  text-decoration: underline;
+}
+
+
+ul, ol { margin-left: 1.8em; }
+ol { list-style-type: decimal; }
+
+/* Remove margins for navigation lists */
+nav ul, nav li { margin: 0; } 
+
+small { font-size: 85%; }
+strong, th { font-weight: bold; }
+
+td, td img { vertical-align: top; } 
+
+sub { vertical-align: sub; font-size: smaller; }
+sup { vertical-align: super; font-size: smaller; }
+
+pre { 
+  padding: 15px; 
+  
+  /* www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/ */
+  white-space: pre; /* CSS2 */
+  white-space: pre-wrap; /* CSS 2.1 */
+  white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+  word-wrap: break-word; /* IE */
+}
+ 
+textarea { overflow: auto; } /* thnx ivannikolic! www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
+
+.ie6 legend, .ie7 legend { margin-left: -7px; } /* thnx ivannikolic! */
+
+/* align checkboxes, radios, text inputs with their label
+   by: Thierry Koblentz tjkdesign.com/ez-css/css/base.css  */
+input[type="radio"] { vertical-align: text-bottom; }
+input[type="checkbox"] { vertical-align: bottom; }
+.ie7 input[type="checkbox"] { vertical-align: baseline; }
+.ie6 input { vertical-align: text-bottom; }
+
+/* hand cursor on clickable input elements */
+label, input[type=button], input[type=submit], button { cursor: pointer; }
+ 
+/* webkit browsers add a 2px margin outside the chrome of form elements */  
+button, input, select, textarea { margin: 0; }
+
+/* colors for form validity */
+input:valid, textarea:valid   {  }
+input:invalid, textarea:invalid { 
+      border-radius: 1px;
+    -moz-box-shadow: 0px 0px 5px red; 
+ -webkit-box-shadow: 0px 0px 5px red; 
+         box-shadow: 0px 0px 5px red;
+}
+.no-boxshadow input:invalid, 
+.no-boxshadow textarea:invalid { background-color: #f0dddd; }
+
+
+/* These selection declarations have to be separate.
+   No text-shadow: twitter.com/miketaylr/status/12228805301 
+   Also: hot pink. */
+::-moz-selection{ background: #FF5E99; color:#fff; text-shadow: none; }
+::selection { background:#FF5E99; color:#fff; text-shadow: none; } 
+
+/*  j.mp/webkit-tap-highlight-color */
+a:link { -webkit-tap-highlight-color: #FF5E99; } 
+
+/* make buttons play nice in IE:    
+   www.viget.com/inspire/styling-the-button-element-in-internet-explorer/ */
+button {  width: auto; overflow: visible; }
+ 
+/* bicubic resizing for non-native sized IMG: 
+   code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
+.ie7 img { -ms-interpolation-mode: bicubic; }
+
+
+
+/* 
+ * Non-semantic helper classes 
+ */
+.ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.hidden { display: none; visibility: hidden; } 
+.visuallyhidden { position: absolute !important;    
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px); }
+.invisible { visibility: hidden; }
+.clearfix:before, .clearfix:after {
+  content: "\0020"; display: block; height: 0; visibility: hidden;	
+} 
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+
+
+
+@font-face {
+	font-family: Graublau;
+	src: url('../fonts/graublau/GraublauWeb.otf') format("opentype");
+}
+
+body {
+	background-color: #ddd;
+}
+
+h1, h2, h3 {
+        font-family: Graublau, sans-serif;
+        color: #555152;
+}
+
+h2 {
+        font-size: 1.5em;
+}
+
+h3 {
+        font-size: 1.2em;
+}
+
+
+.heading {
+	margin: 10px 10px 5px 10px;
+}
+
+.texthead {
+	margin-top: 1em;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.flash-banner {
+  border: 0px;
+  text-align: center;
+  font-size: 1.2em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  font-weight: bold;
+}
+
+#main {
+  margin: -10px;
+}
+
+#dataset {
+	text-shadow: #fff 1px 1px 3px;
+	background-color: #f1f1f1;
+	border-bottom: 1px solid #eee;
+	/*font-size: 1em;*/
+	color: #999;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f1f1f1), to(#e0e0e0));
+	background: -moz-linear-gradient(top,  #f1f1f1,  #e0e0e0);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f1f1f1', endColorstr='#e0e0e0');
+    min-height: 2.9em;
+}
+
+#dataset #search {
+    float: right;
+}
+
+#dataset ul#dataset-menu {
+  margin: 0em 0em 0em 0em;
+  padding-left: 1em;
+  list-style: none; 
+}
+
+#dataset ul#dataset-menu li {
+  padding-top: 0.9em;
+  padding-bottom: 0.7em;
+  display: inline-block;
+}
+
+#dataset ul#dataset-menu li a {
+  font-weight: bold;
+  padding: 0.5em 2em 0em 0em;
+}
+
+#dataset #dataset-select ul {
+  -webkit-box-shadow: -1px 5px 10px #bbb;
+  position: absolute;
+  visibility: hidden; 
+  background-color: #e0e0e0;
+  margin-left: -1em;
+  margin-top: 0.7em;
+  min-width: 20em;
+  z-index: 1000;
+}
+
+#dataset #dataset-select:hover ul {
+  visibility: visible; 
+}
+
+#dataset #dataset-select ul li {
+  display: block;
+  width: inherit;
+  padding: 0.5em 0em 0.5em 0em;
+}
+
+#dataset #dataset-select ul li a {
+  display: block;
+  width: inherit;
+  margin-left: -0.5em;
+}
+
+
+#search {
+    margin: 0 10px;
+}
+
+#search input {
+	border: 1px solid #aaa;
+    padding: 4px 0 4px 0;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-webkit-box-shadow: 0 1px 2px #ddd;
+	-moz-box-shadow: 0 1px 2px #ddd;
+	box-shadow: 0 1px 2px #ddd;
+	background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#fff));
+	background: -moz-linear-gradient(top,  #eee,  #fff);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#eee', endColorstr='#fff');
+}
+#search input[type=text] {
+}
+
+
+#search input[type=submit] {
+    margin: 4px 0;
+    padding-left: 7px;
+    padding-right:7px;
+	background-color: #aaa;
+	text-shadow: #555 1px 1px 3px;
+	color:  #fff;
+	background: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#999));
+	background: -moz-linear-gradient(top,  #aaa,  #999);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#aaa', endColorstr='#999');
+}
+
+#search input[type=submit]:hover {
+	background-color: #999;
+	text-shadow: #555 1px 1px 3px;
+	color:  #fff;
+	background: -webkit-gradient(linear, left top, left bottom, from(#999), to(#777));
+	background: -moz-linear-gradient(top,  #999,  #777);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#999', endColorstr='#777');
+}
+
+
+#main #dataset .inner {
+	padding: 9px 10px;
+}
+
+#content, .inner {
+	margin: 10px 10px 0px 10px;
+}
+
+.inner.notice {
+	width: 905px !important;
+	display: block;
+}
+
+.inner.result_count {
+	float: right;
+	padding: 10px;
+	padding-right: 0px;
+	font-style: italic;
+}
+
+#main #dataset a {
+	font-weight: normal;
+}
+
+#main #dataset a:hover {
+	text-decoration: underline;
+}
+
+table {
+	clear: both;
+	margin-top: 20px;
+}
+
+table thead th {
+	background: -webkit-gradient(linear, left top, left bottom, from(#f1f1f1), to(#e0e0e0));
+	background: -moz-linear-gradient(top,  #f1f1f1,  #e0e0e0);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f1f1f1', endColorstr='#e0e0e0');
+}
+
+table tfoot td {
+	border-bottom: none;
+	color: #555;
+	font-style: normal;
+	padding-top: 1em;
+	text-align: right;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table th, 
+table td {
+	border-bottom: 1px solid #eee;
+	font-size: 1em;
+	vertical-align: top;
+}
+
+table th {
+	/*border-bottom: 1px solid #999;*/
+}
+
+table th,
+table td.title {
+	font-weight: bold;
+	text-align: left;
+}
+
+.num {
+    text-align: right;
+}
+
+.growth {
+  color: green; 
+}
+
+.shrink {
+  color: red;
+}
+
+.no-desc {
+    font-style: italic;
+}
+
+tr.values:hover {
+	background-color: #DDE7F0;
+}
+
+header {
+	height: 75px;
+}
+
+
+header nav {
+  font-family: Graublau;
+  float: right;
+  display: block;
+  text-align: right;
+  margin-top: 10px;
+}
+
+header nav a {
+  margin: -1em 0em 6px 2em;
+  display: inline-block;
+  font-size: 1.2em;
+  text-shadow: 1px 1px 3px #eee;
+}
+
+header #site-title {
+  margin: 0.5em 0 0.2em -0.7em;
+  font-weight: bold; 
+  font-size: 3em;
+}
+
+header #site-title a {
+  color: #444;
+}
+
+header #site-title a {
+  text-decoration: none;
+}
+
+header #slogan {
+  font-family: Graublau;
+  color: #666;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-shadow: 1px 1px 2px #eee;
+}
+
+#main {
+    margin-top: 0.5em;
+  	clear: both;
+	background-color: #fff;
+	padding-bottom: 2em;
+	-webkit-box-shadow: 5px 5px 20px #bbb;
+	-webkit-border-radius: 3px;
+}
+
+footer {
+  padding-top: 2em;
+  text-shadow: 1px 1px 3px #eee;
+  padding-bottom: 2em;
+}
+
+footer ul {
+  margin: 0em;
+  padding: 0em;
+}
+
+footer ul.credits {
+	float: right;
+    margin-right: -2em;
+}
+
+footer ul li {
+	font-weight: bold;
+	display: inline-block;
+	margin-top: 0.5em;
+	margin-right: 2em;
+}
+
+footer ul li a {
+	color: #444;
+	text-decoration: none;
+}
+
+footer ul li a:hover {
+        text-decoration: underline;
+}
+
+footer ul li img {
+    margin-bottom: -0.2em;
+}
+
+.empty {
+	display: none;
+}
+
+/* Search page */
+
+.search-form input {
+    font-size: 1.2em;
+    padding: 0.3em;
+}
+
+.search-form input.search {
+    width: 80%;
+    margin-right: 2em;
+}
+
+.search-form .form-help, .form-options {
+    color: #999;
+    font-variant: italic; 
+    text-align: right;
+    width: 80%;
+    padding: 0.5em;
+}
+
+.form-options {
+    float: left;
+    text-align: left; 
+    width: auto;
+}
+
+div#timegraph {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+
+/* View state selector */
+div.view-panel {
+    border-top: 1px solid #e0e0e0;
+  	background: -webkit-gradient(linear, left top, left bottom, from(#f1f1f1), to(#e0e0e0));
+	background: -moz-linear-gradient(top,  #f1f1f1,  #e0e0e0);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f1f1f1', endColorstr='#e0e0e0');
+    padding-left: 10px; 
+    padding-right: 10px;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: 10px;
+}
+
+div.view-panel select {
+    float: right; 
+    margin: 0.5em;
+    margin-right: 0em; 
+}
+
+div.view-panel ul {
+    padding: 0.5em;
+    padding-left: -1.2em;
+    list-style: none;
+    margin: 0;
+}
+
+div.view-panel ul li {
+    display: inline-block; 
+    margin-right: 2em;
+}
+
+div.view-panel ul li a {
+    font-weight: bold; 
+}
+
+div.view-panel ul strong {
+    color: #444;
+}
+
+
+/* Forms */
+form.basic label,
+form.basic .labelpad {
+  width: 30%;
+  float: left;
+  display: block;
+}
+
+form.basic label:after { 
+  content: ": ";
+}
+
+form.basic .error-message {
+  color: red; 
+  display: block;
+  margin-top: -0.5em;
+  margin-bottom: 1em;
+}
+
+form.basic input {
+  margin-bottom: 1em;
+  display: block;
+  border: 1px solid #ccc;
+  padding: 0.4em;
+}
+
+form.basic span.form-description {
+    margin-left: 30%;
+    margin-bottom:1em;
+    display:block;
+    position:relative;
+    top: -0.5em;
+}
+
+form.basic input[type=submit] {
+  background: #eee;
+  background: -moz-linear-gradient(top, #eee 0%, #ccc 100%);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#eee), to(#ccc));
+  border: 1px solid #ccc;
+  border-bottom: 1px solid #bbb;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  color: #333;
+  font-weight: bold;
+  line-height: 1;
+  padding: 8px 0;
+  text-align: center;
+  text-shadow: 0 1px 0 #eee;
+  width: 150px;  
+}
+
+form.basic input[type=submit]:hover {
+  background: #ddd;
+  background: -moz-linear-gradient(top, #ddd 0%, #bbb 100%);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ddd), to(#bbb));
+  border: 1px solid #bbb;
+  border-bottom: 1px solid #999;
+  cursor: pointer;
+  text-shadow: 0 1px 0 #ddd;
+}
+
+form.basic input[type=submit]:active {
+  border: 1px solid #aaa;
+  border-bottom: 1px solid #888;
+  -moz-box-shadow: inset 0 0 5px 2px #aaa, 0 1px 0 0 #eee;
+  -webkit-box-shadow: inset 0 0 5px 2px #aaa, 0 1px 0 0 #eee;
+  box-shadow: inset 0 0 5px 2px #aaa, 0 1px 0 0 #eee;
+}
+
+
+
+#above-fold {
+    height:400px;
+    margin-bottom:10px;
+}
+
+.calltoaction-box > div {
+    padding:5px;
+    border: 1px solid #ccc;
+    margin: 0 0 1em 0;
+    background-color: #fff;
+    background-color: rgba(255,255,255,0.8);
+}
+
+
+.dataset-listing {
+    
+}
+
+.dataset-listing h4 {
+    font-family: Graublau, sans-serif;
+    margin-bottom:0;
+}
+
+.dataset-listing > ul {
+    list-style-type: none;
+    margin:0;
+    padding:0;
+}
+
+.dataset-listing > ul > li {
+    float:left;
+    width:225px;
+    height:6em;
+    margin-right:10px;
+}
+
+.dataset-listing p {
+    margin-bottom:0.5em;
+}
+
+.flag-box {
+    float:right;
+    margin-right:1px;
+}
+.flag-box label.good:hover {
+    background-color:#EFFDCC;
+}
+
+.flag-box label.bad:hover {
+    color:#9F1939;
+}
+
+.flag-box p.result.good {
+    background-color:#EFFDCC;
+}
+
+.flag-box p.result.bad {
+    color:#9F1939;
+}
+
+.flag-box input {
+    margin-right:0.3em;
+}
+
+/* end OpenSpending styles */
+
+/*
+ * Media queries for responsive design
+ * These follow after primary styles so they will successfully override. 
+ */
+
+@media all and (orientation:portrait) { 
+  /* Style adjustments for portrait mode goes here */
+  
+}
+
+@media all and (orientation:landscape) { 
+  /* Style adjustments for landscape mode goes here */
+  
+}
+
+/* Grade-A Mobile Browsers (Opera Mobile, iPhone Safari, Android Chrome)  
+   Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
+@media screen and (max-device-width: 480px) {
+  
+  
+  /* Uncomment if you don't want iOS and WinMobile to mobile-optimize the text for you
+     j.mp/textsizeadjust 
+  html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; } */
+}
+
+/* 
+ * print styles
+ * inlined to avoid required HTTP connection www.phpied.com/delay-loading-your-print-css/ 
+ */
+@media print {
+  * { background: transparent !important; color: #444 !important; text-shadow: none !important; }
+  a, a:visited { color: #444 !important; text-decoration: underline; }
+  a:after { content: " (" attr(href) ")"; } 
+  abbr:after { content: " (" attr(title) ")"; }
+  .ir a:after { content: ""; }  /* Don't show links for images */
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */ 
+  tr, img { page-break-inside: avoid; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3{ page-break-after: avoid; }
+}
+
