@@ -6,93 +6,57 @@
 
   <title>HyperNotes - Notes meet the Web</title>
 
-  <!--[if lt IE 9]>
-  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-
-  <link href='http://fonts.googleapis.com/css?family=Arvo:regular,bold&amp;subset=latin' rel='stylesheet' />
-  <link href='http://fonts.googleapis.com/css?family=Inconsolata&amp;subset=latin' rel='stylesheet' />
+  <script src=""></script>
+  <link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print" />	
+  <!--[if lt IE 8]><link rel="stylesheet" href="/css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
   <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/libs/jquery-1.5.1.min.js"></script>
+  <script src="js/libs/underscore-min.js"></script> 
+  <script src="js/libs/backbone-min.js"></script> 
 </head>
 <body>
-  <div id="airlock">
-    <header>
-      <h1>
-        <a href="#" title="HyperNotes">
-          HyperNotes
-        </a>
-      </h1>
-      <nav>
-        <ul>
-          <li><a href="">Sign Up</a></li>
-          <li><a href="">Log In</a></li>
-          <li><a href="#dashboard">Dashboard</a></li>
-          <li><a href="#about">About</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <ul class="notification" style="display: none;">
-      <li class=""></li>
-    </ul>
-
-    <article>
-    </article>
-
-    <footer>
-      <p>Developed by the
-        <img src="http://assets.okfn.org/images/logo/okf_logo_white_and_green_tiny.png" id="footer-okf-logo" />
-        <a href="http://okfn.org">Open
-        Knowledge Foundation</a>.</p>
-      <div class="widget-area">
-        <ul class="xoxo">
-          <li class="widget-container widget_text">
-          <h3 class="widget-title"></h3>
-          <div class="text-widget">
-            <ul>
-              <li>
-                &copy; <a href="http://www.okfn.org/">Open Knowledge Foundation</a>
-              </li>
-              <li>
-                <a href="http://opendefinition.org/okd/" class="img">
-                <img alt="This Content and Data is Open" src="http://assets.okfn.org/images/ok_buttons/oc_80x15_blue.png" class="button" />
-                </a>
-              </li>
-              <li>
-                <a href="http://opendefinition.org/ossd/" class="img">
-                <img alt="This Content and Data is Open"
-                  src="http://assets.okfn.org/images/ok_buttons/os_80x15_orange_grey.png" class="button" />
-                </a>
-              </li>
-            </ul>
-          </div>
-          </li>
-        </ul>
-        <ul class="xoxo">
-          <li class="widget-container widget_text">
-          <h3 class="widget-title"></h3>
-          <div class="textwidget">
-            <ul>
-              <li>
-                <a href="http://okfn.org/projects/annotator/">Project Home Page</a>
-              </li>
-              <li>
-              <a href="{{url_for('store.home')}}">API</a>
-              </li>
-              <li>
-                <a href="http://github.com/okfn/annotator-store/">API Docs</a>
-              </li>
-              <li>
-                <a href="http://okfn.org/contact/">Contact Us</a>
-              </li>
-              <li>
-                <a href="http://okfn.org/privacy-policy/">Privacy Policy</a>
-              </li>
-            </ul>
-          </div>
-          </li>
-        </ul>
+  <div id="wrap">
+    <div class="flash-banner-box" style="display: none;">
+      <div class="flash-banner">
       </div>
+    </div>
+    <div id="page" class="container">
+	    <header>	
+        <nav>
+          <a href="#about">About</a>
+          <a href="#login">Login or register</a>
+          <a href="#settings" style="display: none;">My Profile</a>
+          <a href="#logout" style="display: none;">Logout</a>
+        </nav>
+        <h1 id="site-title">
+          <a href="#">HyperNotes</a>
+        </h1>
+        <div id="slogan">
+          Note-taking meets the web
+        </div>
+      </header>
+  
+      <div id="main">
+        <div id="content">
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+
+    <footer class="container">
+      <ul class="credits">
+        <li>&copy; 2011: <a href="http://okfn.org">The Open Knowledge Foundation</a></li>
+        <li><a href="http://opendefinition.org/okd/">
+          <img src="http://assets.okfn.org/images/ok_buttons/od_80x15_blue.png" alt="Open Data" />
+        </a></li>
+      </ul>
+      <ul>
+        <li><a href="http://lists.okfn.org/mailman/listinfo/okfn-dev">Mailing List</a></li>
+        <li><a href="http://okfn.org/privacy-policy/">Privacy</a></li>
+        <li><a href="http://okfn.org/contact/">Contact</a></li>
+      </ul>
     </footer>
   </div>
 </body>
