@@ -13,8 +13,14 @@
   <link rel="stylesheet" href="css/style.css">
 
   <script src="../vendor/jquery/1.5.2/jquery.min.js"></script>
+  <script src="../vendor/jquery.tmpl/beta1/jquery.tmpl.js"></script>
   <script src="../vendor/underscore/1.1.4/underscore.min.js"></script> 
   <script src="../vendor/backbone/0.3.3/backbone.min.js"></script> 
+  <script src="../vendor/backbone/0.3.3/backbone-localstorage.js"></script> 
+
+  <script src="../lib/model.js"></script> 
+  <script src="../lib/view.js"></script> 
+  <script src="../lib/app.js"></script> 
 </head>
 <body>
   <div id="wrap">
@@ -40,10 +46,21 @@
   
       <div id="main">
         <div id="content">
+
+          <div id="noteapp">
+            <h2>Quick Add and Edit</h2>
+            <div id="create-note">
+              <input id="new-note" placeholder="Add your note and hit enter to save" type="text" />
+            </div>
+
+            <div id="notes">
+              <ul id="note-list"></ul>
+            </div>
+          </div>
+          <div class="clearfix"></div>
         </div>
-        <div class="clearfix"></div>
       </div>
-    </div>
+    </div><!-- /page -->
 
     <footer class="container">
       <ul class="credits">
@@ -59,5 +76,19 @@
       </ul>
     </footer>
   </div>
+
+  <!-- Templates -->
+
+  <script type="text/x-jquery-tmpl" id="item-template">
+    <div class="note">
+      <div class="display">
+        <div class="note-content">${label}</div>
+        <span class="note-destroy"></span>
+      </div>
+      <div class="edit">
+        <input class="note-input" type="text" value="${label}" name="label" />
+      </div>
+    </div>
+  </script>
 </body>
 </html>

@@ -1,0 +1,115 @@
+/**********************************************************
+  * Fixes to OpenSpending
+  *********************************************************/
+
+header #site-title {
+  margin-left: -0.3em;
+}
+
+/**********************************************************
+  * Quick Add App
+  *********************************************************/
+
+/* main container is 950px. So half = 475px */
+#noteapp {
+  width: 475px;
+  margin: 0;
+  padding: 20px 10px;
+}
+  #noteapp h2 {
+    font-weight: bold;
+    padding: 0;
+    margin: 10px 0;
+    line-height: 1;
+  }
+
+#create-note {
+  position: relative;
+}
+  #create-note input {
+    width: 463px;
+    font-family: inherit;
+    line-height: 1.4em;
+    border: 0;
+    outline: none;
+    padding: 6px;
+    border: 1px solid #999999;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+    -o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+  }
+    #create-note input::-webkit-input-placeholder {
+      font-style: italic;
+    }
+  #create-note span {
+    position: absolute;
+    z-index: 999;
+    width: 170px;
+    left: 50%;
+    margin-left: -85px;
+  }
+
+#note-list {
+  margin: 0;
+  padding: 0;
+  margin-top: 10px;
+  list-style: none;
+  border: none;
+}
+  #note-list li {
+    padding: 12px 20px 8px 0;
+    position: relative;
+    line-height: 1.1em;
+    border-bottom: 1px solid #cccccc;
+  }
+    #note-list li:after {
+      content: "\0020";
+      display: block;
+      height: 0;
+      clear: both;
+      overflow: hidden;
+      visibility: hidden;
+    }
+    #note-list li.editing {
+      padding: 0;
+      border-bottom: 0;
+    }
+  #note-list .editing .display,
+  #note-list .edit {
+    display: none;
+  }
+    #note-list .editing .edit {
+      display: block;
+    }
+    #note-list .editing input {
+      width: 468px;
+      font-family: inherit;
+      margin: 0;
+      line-height: 1.6em;
+      border: 0;
+      outline: none;
+      padding: 10px 7px 0px 0px;
+      border: 1px solid #999999;
+      -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+      -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+      -o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+      box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+    }
+  #note-list .note-destroy {
+    position: absolute;
+    right: 5px;
+    top: 9px;
+    display: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background: url(destroy.png) no-repeat 0 0;
+  }
+    #note-list li:hover .note-destroy {
+      display: block;
+    }
+    #note-list .note-destroy:hover {
+      background-position: 0 -20px;
+    }
+
