@@ -56,14 +56,14 @@ header #site-title {
   margin-top: 10px;
   list-style: none;
   border: none;
+  line-height: 1.1em;
 }
-  #note-list li {
+  #note-list > li {
     padding: 12px 20px 8px 0;
     position: relative;
-    line-height: 1.1em;
     border-bottom: 1px solid #cccccc;
   }
-    #note-list li:after {
+    #note-list > li:after {
       content: "\0020";
       display: block;
       height: 0;
@@ -71,7 +71,7 @@ header #site-title {
       overflow: hidden;
       visibility: hidden;
     }
-    #note-list li.editing {
+    #note-list > li.editing {
       padding: 0;
       border-bottom: 0;
     }
@@ -113,3 +113,25 @@ header #site-title {
       background-position: 0 -20px;
     }
 
+.note-summary .title {
+  margin: 0 0 5px 0;
+}
+
+.note-summary ul.tags {
+  padding-left: 0; 
+}
+
+  .note-summary ul.tags li {
+      display:inline;
+      margin:0;
+      padding:0 5px 2px 5px;
+      border:none;
+      font-weight:normal;
+      font-size:0.8em;
+      color: black;
+      background:#afc6e9;
+  }
+
+.note-summary .temporal {
+  font-style: italic;
+}
