@@ -7,6 +7,7 @@
   <title>HyperNotes - Notes meet the Web</title>
 
   <script src=""></script>
+  <link rel="stylesheet" href="css/reset.css" type="text/css" media="screen, projection" />
   <link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection" />
   <link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print" />	
   <!--[if lt IE 8]><link rel="stylesheet" href="/css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
@@ -40,8 +41,11 @@
   <script src="../lib/app.js"></script> 
 </head>
 <body>
+  <div class="banner-notice">
+    Please note that HyperNotes is <strong>Pre-Alpha</strong>. Persistence is currently only via LocalStorage.
+  </div>
   <div id="wrap">
-    <div class="flash-banner-box" style="display: none;">
+    <div class="flash-banner-box">
       <div class="flash-banner">
       </div>
     </div>

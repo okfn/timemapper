@@ -10,6 +10,16 @@ header #site-title {
   margin: 10px 0px;
 }
 
+.banner-notice {
+  background-color: #CFE6D5;
+  border-bottom: solid 2px #A7BAAB;
+  margin-bottom: -1em;
+  padding: 0.4em;
+  font-size: 105%;
+  text-align: center;
+}
+
+
 /**********************************************************
   * Quick Add App
   *********************************************************/
