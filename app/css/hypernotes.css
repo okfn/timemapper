@@ -6,13 +6,16 @@ header #site-title {
   margin-left: -0.3em;
 }
 
+#content {
+  margin: 10px 0px;
+}
+
 /**********************************************************
   * Quick Add App
   *********************************************************/
 
 /* main container is 950px. So half = 475px */
 #noteapp {
-  width: 475px;
   margin: 0;
   padding: 20px 10px;
 }
@@ -27,7 +30,7 @@ header #site-title {
   position: relative;
 }
   #create-note input {
-    width: 463px;
+    width: 100%;
     font-family: inherit;
     line-height: 1.4em;
     border: 0;
@@ -135,3 +138,35 @@ header #site-title {
 .note-summary .temporal {
   font-style: italic;
 }
+
+/**********************************************************
+  * Time Map
+  *********************************************************/
+
+#timemap {
+  padding: 30px 0px 0px 50px;
+}
+
+div#timelinecontainer{
+  width: 100%;
+  height: 250px;
+}
+
+div#timeline{
+ width: 100%;
+ height: 100%;
+ font-size: 12px;
+ background: #CCCCCC;
+}
+
+div#mapcontainer {
+ width: 100%;
+ height: 350px;
+}
+
+div#map {
+ width: 100%;
+ height: 100%;
+ background: #EEEEEE;
+}
+

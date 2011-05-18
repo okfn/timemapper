@@ -18,6 +18,21 @@
   <script src="../vendor/backbone/0.3.3/backbone.min.js"></script> 
   <script src="../vendor/backbone/0.3.3/backbone-localstorage.js"></script> 
 
+  <!-- timemap -->
+  <!--
+  <script src="text/javascript">
+    var Timeline_urlPrefix = "../vendor/timeline/2.3.0/"; 
+  </script>
+  -->
+  <script src="http://openlayers.org/api/OpenLayers.js"></script>
+  <script type="text/javascript" src="../vendor/mxn/mxn.js?(openlayers)"></script>
+  <script type="text/javascript" src="../vendor/timeline/2.3.0/timeline-2.3.0.js"></script>
+  <script src="../vendor/timemap/2.0/timemap_full.pack.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    SimileAjax.History.enabled = false;
+  </script>
+  <!-- /timemap -->
+
   <script src="../lib/util.js"></script> 
   <script src="../lib/model.js"></script> 
   <script src="../lib/template.js"></script> 
@@ -49,18 +64,26 @@
       <div id="main">
         <div id="content">
 
+        <div class="span-12 left-pane">
           <div id="noteapp">
             <h2>Quick Add and Edit</h2>
             <div id="create-note">
-              <input id="new-note" placeholder="Add your note and hit enter to save" type="text" />
+              <input id="new-note" placeholder="Add note then enter to save, use #... for tag, ^...^ for dates, @...@ for location" type="text" />
             </div>
 
             <div id="notes">
               <ul id="note-list"></ul>
             </div>
           </div>
-          <div class="clearfix"></div>
         </div>
+
+        <div class="span-12 right-pane">
+          <div id="timemap">
+          </div>
+        </div>
+
+          <div class="clearfix"></div>
+        </div> <!-- /content -->
       </div>
     </div><!-- /page -->
 
