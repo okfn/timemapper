@@ -26,3 +26,11 @@ test("Create note and note list", function () {
   equals(notelist.length, 2);
 });
 
+test("createNoteFromSummary", function () {
+  var note = null;
+  HyperNotes.Model.createNoteFromSummary('^1st August 1914^', function(out) {
+    note = out;
+  });
+  console.log(note);
+  equals(note.get('start').parsed.toISOString(), '1914-07-31T23:00:00.000Z');
+});
