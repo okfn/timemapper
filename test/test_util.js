@@ -8,30 +8,21 @@ test("Parse note summary", function () {
       input: "A test note",
       output: {
         title: "A test note",
-        tags: [],
-        location: {},
-        start: {},
-        end: {}
+        tags: []
       }
     }
     , {
       input: "A test note #abc",
       output: {
         title: "A test note",
-        tags: ['abc'],
-        location: {},
-        start: {},
-        end: {}
+        tags: ['abc']
       }
     }
     , {
       input: "A test note #abc #xyz",
       output: {
         title: "A test note",
-        tags: ['abc', 'xyz'],
-        location: {},
-        start: {},
-        end: {}
+        tags: ['abc', 'xyz']
       }
     }
     , {
@@ -41,9 +32,17 @@ test("Parse note summary", function () {
         tags: ['abc'],
         location: {
           unparsed: 'London'
-        },
-        start: {},
-        end: {}
+        }
+      }
+    }
+    , {
+      input: "@London@ #abc A test note",
+      output: {
+        title: "A test note",
+        tags: ['abc'],
+        location: {
+          unparsed: 'London'
+        }
       }
     }
     , {
@@ -51,7 +50,6 @@ test("Parse note summary", function () {
       output: {
         title: "A test note",
         tags: ['abc'],
-        location: {},
         start: {
           unparsed: '1st January 1900'
         },
@@ -68,3 +66,19 @@ test("Parse note summary", function () {
   }
 });
 
+test('lookupLocation', function() {
+  // Pause the test  
+  stop();  
+
+  utils.lookupLocation('London, UK', function(data) {
+    equals(data.geonameId, 2643743);
+  })  
+
+  utils.lookupLocation('London, Canada', function(data) {  
+    equals(data.geonameId, 6058560);
+  })  
+
+  setTimeout(function() {  
+      start();  
+  }, 1000);  
+});
