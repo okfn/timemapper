@@ -19,17 +19,38 @@ header #site-title {
   text-align: center;
 }
 
+.left-pane {
+  margin: 0;
+  padding: 20px 10px;
+}
+
+/**********************************************************
+  * Thread
+  *********************************************************/
+
+.thread .title {
+  font-weight: bold;
+  padding: 0;
+  margin: 10px 0;
+  line-height: 1;
+  font-size: 2.5em;
+}
+
+.thread .description {
+  font-style: italic;
+}
+
 
 /**********************************************************
   * Quick Add App
   *********************************************************/
 
 /* main container is 950px. So half = 475px */
-#noteapp {
+.noteapp {
   margin: 0;
-  padding: 20px 10px;
+  padding: 0;
 }
-  #noteapp h2 {
+  .noteapp h2 {
     font-weight: bold;
     padding: 0;
     margin: 10px 0;
