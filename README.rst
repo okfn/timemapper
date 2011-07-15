@@ -12,6 +12,33 @@ Create notes about places, people, events and string them together into
 Automatically visualize temporally and spatially, search by any attribute,
 automatically import Wikipedia articles and much more ...
 
+
+Install
+======= 
+
+Frontend
+--------
+
+Just open app/index.html in a browser.
+
+Backend
+-------
+
+This is a Flask-based python web-app. For storage it uses elasticsearch which
+should be running in http mode on port 9200.
+
+Create a virtualenv (optional) then install the app and its requirements::
+
+  pip install -e .
+
+Run Tests
+---------
+
+Requires nose to be installed and for elasticsearch to be running::
+
+  nose -v test/
+
+
 Background
 ==========
 
