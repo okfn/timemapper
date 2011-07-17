@@ -22,9 +22,7 @@ def api_note_index():
         # TODO: query
         pass
     else:
-        print 'XXXX',  request.data
         data = json.loads(request.data)
-        print 'XXXXX', data
         logic.note_upsert(data['id'], data)
         out = {
             'status': 'ok'
