@@ -21,19 +21,44 @@ class TestApi(object):
 
     @classmethod
     def make_fixtures(self):
-        id_ = 1
+        self.id = 1
+        self.username = u'tester'
+        inuser = {
+            'id': self.username,
+            'fullname': 'The Tester'
+            }
         indata = {
-            'id': 1,
+            'id': self.id,
             'title': 'My New Note',
             'body': '## Xyz',
-            'tags': ['abc', 'efg']
+            'tags': ['abc', 'efg'],
+            'owner': self.username
         }
+        self.thread_id = 'my-test-thread'
+        inthread = {
+            'id': self.thread_id,
+            'title': 'My Test Thread',
+            'description': 'None at the moment',
+            'notes': [ self.id ],
+            'owner': self.username
+            }
         indatajs = json.dumps(indata)
+        self.app.post('/api/v1/user', data=json.dumps(inuser))
         self.app.post('/api/v1/note', data=indatajs)
+        self.app.post('/api/v1/thread', data=json.dumps(inthread))
+
+    def test_user(self):
+        res = self.app.get('/api/v1/user/%s' % self.username)
+        data = json.loads(res.data)
+        assert data['_source']['fullname'] == 'The Tester', data
 
     def test_note(self):
-        res = self.app.get('/api/v1/note/1')
+        res = self.app.get('/api/v1/note/%s' % self.id)
         data = json.loads(res.data)
-        print data
         assert data['_source']['body'] == '## Xyz', data
+
+    def test_thread(self):
+        res = self.app.get('/api/v1/thread/%s' % self.thread_id)
+        data = json.loads(res.data)
+        assert data['_source']['title'] == 'My Test Thread', data
 

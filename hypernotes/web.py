@@ -8,22 +8,24 @@ import logic
 def home():
     return 'Nothing to see here - go to api'
 
-@app.route('/api/v1/note/<id>', methods=['GET', 'POST'])
-def api_note(id):
+@app.route('/api/v1/<objecttype>/<id>', methods=['GET', 'POST'])
+def api_note(objecttype, id):
     if request.method == 'GET':
-        out = logic.note_get(id)
+        klass = getattr(logic, objecttype.capitalize())
+        out = klass.get(id)
         return jsonify(out)
     else:
         pass
 
-@app.route('/api/v1/note', methods=['GET', 'POST', 'PUT'])
-def api_note_index():
+@app.route('/api/v1/<objecttype>', methods=['GET', 'POST', 'PUT'])
+def api_note_index(objecttype):
+    klass = getattr(logic, objecttype.capitalize())
     if request.method == 'GET':
         # TODO: query
         pass
     else:
         data = json.loads(request.data)
-        logic.note_upsert(data['id'], data)
+        klass.upsert(data['id'], data)
         out = {
             'status': 'ok'
         }

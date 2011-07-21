@@ -15,17 +15,28 @@ def get_conn():
     conn = pyes.ES([host])
     return conn, db_name
 
-def note_get(id_, current_user=None):
-    conn, db = get_conn()
-    out = conn.get(db, 'note', id_)
-    return out
 
-def note_upsert(id_, data, current_user=None):
-    conn, db = get_conn()
-    conn.index(data, db, 'note', id_)
+class DomainObject(object):
+    __type__ = None
 
-class Note(object):
-    def __init__(self):
-        self._data = {}
+    @classmethod
+    def get(cls, id_, state=None):
+        conn, db = get_conn()
+        out = conn.get(db, cls.__type__, id_)
+        return out
 
+    @classmethod
+    def upsert(cls, id_, data, state=None):
+        conn, db = get_conn()
+        conn.index(data, db, cls.__type__, id_)
+
+
+class User(DomainObject):
+    __type__ = 'user'
+
+class Note(DomainObject):
+    __type__ = 'note'
+
+class Thread(DomainObject):
+    __type__ = 'thread'
 
