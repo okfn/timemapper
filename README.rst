@@ -56,3 +56,9 @@ The Plan
 
   3. Sync to remote storage
 
+
+TODO
+====
+
+2011-07-21 handle not found in backend nicely (ie. 404 rather than 500)
+
