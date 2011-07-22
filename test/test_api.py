@@ -21,30 +21,28 @@ class TestApi(object):
 
     @classmethod
     def make_fixtures(self):
-        self.id = 1
         self.username = u'tester'
         inuser = {
             'id': self.username,
             'fullname': 'The Tester'
             }
         indata = {
-            'id': self.id,
             'title': 'My New Note',
             'body': '## Xyz',
             'tags': ['abc', 'efg'],
             'owner': self.username
         }
+        self.app.post('/api/v1/user', data=json.dumps(inuser))
+        out = self.app.post('/api/v1/note', data=json.dumps(indata))
+        self.note_id = json.loads(out.data)['id']
         self.thread_id = 'my-test-thread'
         inthread = {
             'id': self.thread_id,
             'title': 'My Test Thread',
             'description': 'None at the moment',
-            'notes': [ self.id ],
+            'notes': [ self.note_id ],
             'owner': self.username
             }
-        indatajs = json.dumps(indata)
-        self.app.post('/api/v1/user', data=json.dumps(inuser))
-        self.app.post('/api/v1/note', data=indatajs)
         self.app.post('/api/v1/thread', data=json.dumps(inthread))
 
     def test_user(self):
@@ -53,7 +51,8 @@ class TestApi(object):
         assert data['_source']['fullname'] == 'The Tester', data
 
     def test_note(self):
-        res = self.app.get('/api/v1/note/%s' % self.id)
+        res = self.app.get('/api/v1/note/%s' % self.note_id)
+        assert res.status_code == 200, res.status
         data = json.loads(res.data)
         assert data['_source']['body'] == '## Xyz', data
 

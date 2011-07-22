@@ -25,9 +25,10 @@ def api_note_index(objecttype):
         pass
     else:
         data = json.loads(request.data)
-        klass.upsert(data['id'], data)
+        id_ = klass.upsert(data)
         out = {
-            'status': 'ok'
+            'status': 'ok',
+            'id': id_
         }
         return jsonify(out)
 
