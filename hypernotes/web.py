@@ -1,5 +1,5 @@
 import os
-from flask import Flask, jsonify, render_template, json, request, redirect
+from flask import Flask, jsonify, render_template, json, request, redirect, abort
 
 from core import app
 import logic
@@ -26,6 +26,14 @@ def api_note(objecttype, id):
         return jsonify(out)
     else:
         pass
+
+@app.route('/api/v1/<userid>/thread/<threadname>', methods=['GET', 'POST'])
+def api_user_thread(userid, threadname):
+    out = logic.Thread.by_user(userid, threadname)
+    if out:
+        return redirect('/api/v1/thread/' + out['id'])
+    else:
+        abort(404)
 
 @app.route('/api/v1/<objecttype>', methods=['GET', 'POST', 'PUT'])
 def api_note_index(objecttype):

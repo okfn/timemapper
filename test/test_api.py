@@ -34,15 +34,16 @@ class TestApi(object):
         self.app.post('/api/v1/user', data=json.dumps(inuser))
         out = self.app.post('/api/v1/note', data=json.dumps(indata))
         self.note_id = json.loads(out.data)['id']
-        self.thread_id = 'my-test-thread'
+        self.thread_name = 'default'
         inthread = {
-            'id': self.thread_id,
+            'name': self.thread_name,
             'title': 'My Test Thread',
             'description': 'None at the moment',
             'notes': [ self.note_id ],
             'owner': self.username
             }
-        self.app.post('/api/v1/thread', data=json.dumps(inthread))
+        out = self.app.post('/api/v1/thread', data=json.dumps(inthread))
+        self.thread_id = json.loads(out.data)['id']
 
     def test_user(self):
         res = self.app.get('/api/v1/user/%s' % self.username)
@@ -78,6 +79,13 @@ class TestApi(object):
 
     def test_thread(self):
         res = self.app.get('/api/v1/thread/%s' % self.thread_id)
+        assert res.status_code == 200, res.status
+        data = json.loads(res.data)
+        assert data['_source']['title'] == 'My Test Thread', data
+
+        res = self.app.get('/api/v1/%s/thread/%s' % (self.username,
+            self.thread_name), follow_redirects=True)
+        assert res.status_code == 200, res.status
         data = json.loads(res.data)
         assert data['_source']['title'] == 'My Test Thread', data
 

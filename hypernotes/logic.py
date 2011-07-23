@@ -60,3 +60,15 @@ class Note(DomainObject):
 class Thread(DomainObject):
     __type__ = 'thread'
 
+    @classmethod
+    def by_user(cls, userid, threadname):
+        conn, db = get_conn()
+        q1 = pyes.query.TermQuery('owner', userid)
+        q2 = pyes.query.TermQuery('name', threadname)
+        q = pyes.query.BoolQuery(must=[q1,q2])
+        out = conn.search(q, db, cls.__type__)
+        if out['hits']['total'] > 0:
+            return out['hits']['hits'][0]['_source']
+        else:
+            return None
+
