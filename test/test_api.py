@@ -48,13 +48,13 @@ class TestApi(object):
     def test_user(self):
         res = self.app.get('/api/v1/user/%s' % self.username)
         data = json.loads(res.data)
-        assert data['_source']['fullname'] == 'The Tester', data
+        assert data['fullname'] == 'The Tester', data
 
     def test_note(self):
         res = self.app.get('/api/v1/note/%s' % self.note_id)
         assert res.status_code == 200, res.status
         data = json.loads(res.data)
-        assert data['_source']['body'] == '## Xyz', data
+        assert data['body'] == '## Xyz', data
 
     def test_note_search_no_query(self):
         res = self.app.get('/api/v1/note?q=')
@@ -81,11 +81,11 @@ class TestApi(object):
         res = self.app.get('/api/v1/thread/%s' % self.thread_id)
         assert res.status_code == 200, res.status
         data = json.loads(res.data)
-        assert data['_source']['title'] == 'My Test Thread', data
+        assert data['title'] == 'My Test Thread', data
 
         res = self.app.get('/api/v1/%s/thread/%s' % (self.username,
             self.thread_name), follow_redirects=True)
         assert res.status_code == 200, res.status
         data = json.loads(res.data)
-        assert data['_source']['title'] == 'My Test Thread', data
+        assert data['title'] == 'My Test Thread', data
 

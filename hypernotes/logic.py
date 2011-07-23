@@ -26,7 +26,7 @@ class DomainObject(object):
         conn, db = get_conn()
         try:
             out = conn.get(db, cls.__type__, id_)
-            return out
+            return out['_source']
         except pyes.exceptions.ElasticSearchException, inst:
             if inst.status == 404:
                 return None
