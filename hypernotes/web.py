@@ -19,7 +19,7 @@ def home():
     return 'Nothing to see here - go to api'
 
 @app.route('/api/v1/<objecttype>/<id>', methods=['GET', 'POST'])
-def api_note(objecttype, id):
+def api_v1_id(objecttype, id):
     if request.method == 'GET':
         klass = getattr(logic, objecttype.capitalize())
         out = klass.get(id)
@@ -39,7 +39,7 @@ def api_user_thread(userid, threadname):
         abort(404)
 
 @app.route('/api/v1/<objecttype>', methods=['GET', 'POST', 'PUT'])
-def api_note_index(objecttype):
+def api_v1_index(objecttype):
     klass = getattr(logic, objecttype.capitalize())
     if request.method == 'GET':
         q = request.args.get('q', None)
