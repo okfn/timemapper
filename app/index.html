@@ -17,7 +17,6 @@
   <script src="../vendor/jquery.tmpl/beta1/jquery.tmpl.js"></script>
   <script src="../vendor/underscore/1.1.7/underscore.js"></script> 
   <script src="../vendor/backbone/0.5.1/backbone.js"></script> 
-  <script src="../vendor/backbone/0.5.1/backbone-localstorage.js"></script> 
   <script src="../vendor/datejs/alpha1/date.min.js"></script> 
 
   <!-- timemap -->
@@ -42,6 +41,17 @@
   <script src="../lib/template.js"></script> 
   <script src="../lib/view.js"></script> 
   <script src="../lib/app.js"></script> 
+  <script type="text/javascript">
+jQuery(function($) {
+  var config = {
+    account: {
+      id: 'tester'
+    }
+  }
+  HyperNotes.Controller.initialize(config);
+});
+  </script>
+
 </head>
 <body>
   <div class="banner-notice">
