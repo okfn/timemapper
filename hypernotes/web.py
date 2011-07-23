@@ -18,19 +18,25 @@ def after_request(response):
 def home():
     return 'Nothing to see here - go to api'
 
-@app.route('/api/v1/<objecttype>/<id>', methods=['GET', 'POST'])
+@app.route('/api/v1/<objecttype>/<id>', methods=['GET', 'POST', 'PUT'])
 def api_v1_id(objecttype, id):
+    klass = getattr(logic, objecttype.capitalize())
     if request.method == 'GET':
-        klass = getattr(logic, objecttype.capitalize())
         out = klass.get(id)
         if out is None:
             abort(404)
         else:
             return jsonify(out)
     else:
-        pass
+        data = json.loads(request.data)
+        id_ = klass.upsert(data)
+        out = {
+            'status': 'ok',
+            'id': id_
+        }
+        return jsonify(out)
 
-@app.route('/api/v1/<userid>/thread/<threadname>', methods=['GET', 'POST'])
+@app.route('/api/v1/<userid>/thread/<threadname>', methods=['GET', 'POST', 'PUT'])
 def api_user_thread(userid, threadname):
     out = logic.Thread.by_user(userid, threadname)
     if out:
@@ -38,7 +44,7 @@ def api_user_thread(userid, threadname):
     else:
         abort(404)
 
-@app.route('/api/v1/<objecttype>', methods=['GET', 'POST', 'PUT'])
+@app.route('/api/v1/<objecttype>', methods=['GET', 'POST'])
 def api_v1_index(objecttype):
     klass = getattr(logic, objecttype.capitalize())
     if request.method == 'GET':

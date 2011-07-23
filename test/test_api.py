@@ -89,3 +89,18 @@ class TestApi(object):
         data = json.loads(res.data)
         assert data['title'] == 'My Test Thread', data
 
+    def test_thread_update(self):
+        id_ = 'testupdate'
+        indata = {
+            'id': id_,
+            'title': 'Abc'
+            }
+        res = self.app.post('/api/v1/thread', data=json.dumps(indata))
+        indata2 = {
+            'id': id_,
+            'title': 'Xyz'
+            }
+        res = self.app.put('/api/v1/thread/%s' % id_, data=json.dumps(indata2))
+        out = logic.Thread.get(id_)
+        assert out['title'] == 'Xyz', out
+
