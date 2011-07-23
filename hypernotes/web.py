@@ -4,6 +4,16 @@ from flask import Flask, jsonify, render_template, json, request, redirect
 from core import app
 import logic
 
+
+@app.after_request
+def after_request(response):
+    response.headers['Access-Control-Allow-Origin']   = '*'
+    response.headers['Access-Control-Expose-Headers'] = 'Location'
+    response.headers['Access-Control-Allow-Methods']  = 'GET, POST, PUT, DELETE'
+    response.headers['Access-Control-Max-Age']        = '86400'
+    return response
+
+
 @app.route("/")
 def home():
     return 'Nothing to see here - go to api'
@@ -21,8 +31,14 @@ def api_note(objecttype, id):
 def api_note_index(objecttype):
     klass = getattr(logic, objecttype.capitalize())
     if request.method == 'GET':
-        # TODO: query
-        pass
+        q = request.args.get('q', None)
+        results = klass.query(q)
+        out = {
+            'status': 'ok',
+            'q': q,
+            'result': results
+            }
+        return jsonify(out)
     else:
         data = json.loads(request.data)
         id_ = klass.upsert(data)

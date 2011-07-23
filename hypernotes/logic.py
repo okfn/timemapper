@@ -24,7 +24,6 @@ class DomainObject(object):
     @classmethod
     def get(cls, id_, state=None):
         conn, db = get_conn()
-        print '"%s"' % id_
         out = conn.get(db, cls.__type__, id_)
         return out
 
@@ -39,6 +38,17 @@ class DomainObject(object):
         conn.index(data, db, cls.__type__, id_)
         conn.refresh()
         return id_
+    
+    @classmethod
+    def query(cls, q, state=None):
+        import pyes.query
+        conn, db = get_conn()
+        if not q:
+            ourq = pyes.query.MatchAllQuery()
+        else:
+            ourq = pyes.query.StringQuery(q, default_operator='AND')
+        out = conn.search(ourq, db, cls.__type__)
+        return out
 
 
 class User(DomainObject):

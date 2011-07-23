@@ -16,8 +16,7 @@ class TestApi(object):
     @classmethod
     def teardown_class(cls):
         conn, db = logic.get_conn()
-        # TODO: breaks test at the moment ...
-        # conn.delete_index(TESTDB)
+        conn.delete_index(TESTDB)
 
     @classmethod
     def make_fixtures(self):
@@ -55,6 +54,27 @@ class TestApi(object):
         assert res.status_code == 200, res.status
         data = json.loads(res.data)
         assert data['_source']['body'] == '## Xyz', data
+
+    def test_note_search_no_query(self):
+        res = self.app.get('/api/v1/note?q=')
+        assert res.status_code == 200, res.status
+        data = json.loads(res.data)
+        count = data['result']['hits']['total']
+        assert count == 1, count
+
+    def test_note_search_2_basic_text(self):
+        res = self.app.get('/api/v1/note?q=new')
+        assert res.status_code == 200, res.status
+        data = json.loads(res.data)
+        count = data['result']['hits']['total']
+        assert count == 1, count
+
+    def test_note_search_3_should_not_match(self):
+        res = self.app.get('/api/v1/note?q=nothing-that-should-match')
+        assert res.status_code == 200, res.status
+        data = json.loads(res.data)
+        count = data['result']['hits']['total']
+        assert count == 0, count
 
     def test_thread(self):
         res = self.app.get('/api/v1/thread/%s' % self.thread_id)
