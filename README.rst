@@ -70,11 +70,11 @@ Further ahead:
 TODO
 ====
 
-2011-07-21 #p.low handle not found in backend nicely (ie. 404 rather than 500)
-
 2011-07-21 #p.low generate api key for user on create
 
 2011-07-21 #p.low generate created field and timestamp for all domain object on create
 
 2011-07-21 #p.low update modified field with current timestamp on update for all domain objects
+
+x 2011-07-23 || 2011-07-21 #p.low handle not found in backend nicely (ie. 404 rather than 500)
 

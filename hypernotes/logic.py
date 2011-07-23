@@ -24,8 +24,14 @@ class DomainObject(object):
     @classmethod
     def get(cls, id_, state=None):
         conn, db = get_conn()
-        out = conn.get(db, cls.__type__, id_)
-        return out
+        try:
+            out = conn.get(db, cls.__type__, id_)
+            return out
+        except pyes.exceptions.ElasticSearchException, inst:
+            if inst.status == 404:
+                return None
+            else:
+                raise
 
     @classmethod
     def upsert(cls, data, state=None):

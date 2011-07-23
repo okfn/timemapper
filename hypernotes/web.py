@@ -23,7 +23,10 @@ def api_note(objecttype, id):
     if request.method == 'GET':
         klass = getattr(logic, objecttype.capitalize())
         out = klass.get(id)
-        return jsonify(out)
+        if out is None:
+            abort(404)
+        else:
+            return jsonify(out)
     else:
         pass
 
