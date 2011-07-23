@@ -30,7 +30,10 @@ def fixtures():
             ))
         noteids.append(noteid)
     logic.Thread.upsert(dict(
+        id='testerdefault',
         name='default',
+        title='Default Thread',
+        description='Default thread - where notes go by default.',
         owner=account_id,
         notes=noteids
         ))
