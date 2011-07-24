@@ -5,7 +5,7 @@ setup(
     version = '0.1',
     packages = find_packages(),
     install_requires = [
-        "Flask==0.6.1",
+        "Flask==0.7.2",
         "pyes==0.16.0"
         ],
     # metadata for upload to PyPI
