@@ -27,8 +27,13 @@
     <div id="page" class="container">
 	    <header>	
         <nav>
+        {% if current_user.is_anonymous() %}
           <a href="{{url_for('account.register')}}">Register</a>
           <a href="{{url_for('account.login')}}">Login</a>
+        {% else %}
+          <a href="{{ url_for('home') }}">Dashboard</a>
+          <a href="{{ url_for('account.logout') }}">Logout</a>
+        {% endif %}
         </nav>
         <h1 id="site-title">
           <a href="#">HyperNotes</a>

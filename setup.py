@@ -7,6 +7,7 @@ setup(
     install_requires = [
         "Flask==0.7.2",
         "Flask-Login==0.1",
+        "Flask-WTF==0.5.2",
         "pyes==0.16.0"
         ],
     # metadata for upload to PyPI

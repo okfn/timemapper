@@ -1,6 +1,6 @@
 import os
 from flask import Flask, jsonify, render_template, json, request, redirect, abort
-from flaskext.login import login_user, logout_user
+from flaskext.login import login_user, current_user
 
 from hypernotes.core import app
 import hypernotes.logic as logic
@@ -10,10 +10,14 @@ app.register_blueprint(account, url_prefix='/account')
 
 @app.before_request
 def basic_authentication():
-    """ Attempt HTTP basic authentication on a per-request basis. """
+    """ Attempt some basic authentication on a per-request basis. """
     if request.remote_user:
         login_user(request.remote_user)
 
+@app.context_processor
+def set_current_user():
+    """ Set some template context globals. """
+    return dict(current_user=current_user)
 
 @app.after_request
 def cors_headers(response):
