@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Prevent the conditional comments from stalling page load -->
+  <!--[if IE]><![endif]-->
+
+  <title>HyperNotes - Notes meet the Web</title>
+
+  <link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="screen, projection" />
+  <script src="/static/vendor/modernizr/1.6/modernizr.min.js"></script>
+  <link rel="stylesheet" href="/static/css/blueprint/screen.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/static/css/blueprint/print.css" type="text/css" media="print" />	
+  <!--[if lt IE 8]><link rel="stylesheet" href="/static/css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div id="wrap">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="notification">
+        {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <div id="page" class="container">
+	    <header>	
+        <nav>
+          <a href="{{url_for('account.register')}}">Register</a>
+          <a href="{{url_for('account.login')}}">Login</a>
+        </nav>
+        <h1 id="site-title">
+          <a href="#">HyperNotes</a>
+        </h1>
+        <div id="slogan">
+          Note-taking meets the web
+        </div>
+      </header>
+  
+      <div id="main">
+        <div id="content">
+
+          {% block content %}{% endblock %}
+
+          <div class="clearfix"></div>
+        </div> <!-- /content -->
+      </div>
+    </div><!-- /page -->
+
+    <footer class="container">
+      <ul class="credits">
+        <li>&copy; 2011: <a href="http://okfn.org">The Open Knowledge Foundation</a></li>
+        <li><a href="http://opendefinition.org/okd/">
+          <img src="http://assets.okfn.org/images/ok_buttons/od_80x15_blue.png" alt="Open Data" />
+        </a></li>
+      </ul>
+      <ul>
+        <li><a href="http://lists.okfn.org/mailman/listinfo/okfn-dev">Mailing List</a></li>
+        <li><a href="http://okfn.org/privacy-policy/">Privacy</a></li>
+        <li><a href="http://okfn.org/contact/">Contact</a></li>
+      </ul>
+    </footer>
+  </div>
+</body>
+</html>

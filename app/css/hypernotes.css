@@ -19,9 +19,25 @@ header #site-title {
   text-align: center;
 }
 
-.left-pane {
+.left-pane, .right-pane {
   margin: 0;
-  padding: 20px 10px;
+  padding: 20px 25px;
+}
+
+.left-pane {
+  padding-right: 
+}
+
+/**********************************************************
+  * Frontpage
+  *********************************************************/
+
+.frontpage p {
+  font-size: 110%;
+}
+
+.frontpage img {
+  width: 100%;
 }
 
 /**********************************************************

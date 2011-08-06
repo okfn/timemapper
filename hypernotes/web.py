@@ -26,7 +26,7 @@ def cors_headers(response):
 
 @app.route("/")
 def home():
-    return 'Nothing to see here - go to api'
+    return render_template('index.html')
 
 @app.route('/api/v1/<objecttype>/<id>', methods=['GET', 'POST', 'PUT'])
 def api_v1_id(objecttype, id):
