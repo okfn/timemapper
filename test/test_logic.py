@@ -1,5 +1,6 @@
 import util
 import hypernotes.logic as logic
+from nose.tools import assert_equal
 
 class TestUser:
     username = u'tester'
@@ -13,7 +14,14 @@ class TestUser:
             'id': self.username,
             'fullname': 'The Tester'
             }
-        logic.User.upsert(inuser)
+        password = 'abc'
+        user = logic.User(**inuser)
+        user.set_password('abc')
+        user.save()
         out = logic.get_user(self.username)
         assert out._data['fullname'] == 'The Tester'
+        # because salt changes each time cannot guarantee repeatability so just
+        # do startswith
+        assert out._data['password'].startswith('sha1$')
+        assert out.check_password(password)
 

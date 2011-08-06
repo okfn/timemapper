@@ -3,6 +3,7 @@ import pyes
 import pyes.query
 import pyes.exceptions
 from flaskext.login import UserMixin
+from werkzeug import generate_password_hash, check_password_hash
 
 from hypernotes.core import app, login_manager
 
@@ -23,12 +24,16 @@ def get_conn():
 class DomainObject(object):
     __type__ = None
 
-    def __init__(self, dict_):
-        self._data = dict(dict_)
+    def __init__(self, **kwargs):
+        self._data = dict(kwargs)
 
     @property
     def id(self):
         return self._data.get('id', None)
+
+    def save(self):
+        # TODO: refresh object with result of save
+        return self.upsert(self._data)
 
     @classmethod
     def get(cls, id_, state=None):
@@ -66,12 +71,18 @@ class DomainObject(object):
 
 
 class User(DomainObject, UserMixin):
-    __type__ = 'account'
+    __type__ = 'user'
+
+    def set_password(self, password):
+        self._data['password'] = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self._data['password'], password)
 
 def get_user(userid):
     data = User.get(userid)
     if data:
-        return User(data)
+        return User(**data)
 
 # the decorator appears to kill the function for normal usage ...
 @login_manager.user_loader
