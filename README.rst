@@ -24,8 +24,10 @@ Just open app/index.html in a browser.
 Backend
 -------
 
-This is a Flask-based python web-app. For storage it uses elasticsearch which
-should be running in http mode on port 9200.
+This is a Flask-based python web-app. For storage it uses `ElasticSearch`_
+which should be running in http mode on port 9200.
+
+.. _ElasticSearch: http://www.elasticsearch.org/
 
 Create a virtualenv (optional) then install the app and its requirements::
 
@@ -34,9 +36,12 @@ Create a virtualenv (optional) then install the app and its requirements::
 Run Tests
 ---------
 
-Requires nose to be installed and for elasticsearch to be running::
+Python tests require nose to be installed and for ElasticSearch to be running.
+Then do::
 
   nose -v test/
+
+Javascript tests just open test/index.html in a browser.
 
 
 Background
@@ -47,17 +52,17 @@ First version was Microfacts / Weaving History <http://weavinghistory.org>
 The Plan
 ========
 
-  1. Basic Thread UI (DONE)
-  2. Model + API - Note, Thread, User (DONE)
-  3. Wire UI up to API
+  1. Basic Thread UI (DONE) - see #8
+  2. Model + API - Note, Thread, User (DONE) - see #2
+  3. Wire UI up to API - see #3
   4. Fuller thread UI
 
     * Note full view
     * Note editing (inline and full)
     * Thread editing
 
-  5. User Signup and Login 
-  6. Create Thread
+  5. User Signup and Login - see #4 and #5
+  6. Create Thread - see #6
   7. Authorization and Permissions (basic)
 
 Further ahead:

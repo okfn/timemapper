@@ -9,12 +9,11 @@ setup(
         "pyes==0.16.0"
         ],
     # metadata for upload to PyPI
+    url = 'http://github.com/okfn/hypernotes',
     author = 'Open Knowledge Foundation',
     author_email = 'info@okfn.org',
-    description = 'PublicDomainWorks.net web app and API.',
-    license = 'MIT',
-    url = 'http://publicdomain.okfn.org/',
-    download_url = 'http://bitbucket.org/okfn/pdw2',
+    description = 'Note-taking meets the web.',
+    license = 'AGPL',
     classifiers = [
         'Development Status :: 3 - Alpha',
         'Environment :: Console',
