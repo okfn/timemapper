@@ -1,8 +1,10 @@
 import uuid
 import pyes
+import pyes.query
 import pyes.exceptions
+from flaskext.login import UserMixin
 
-from core import app
+from hypernotes.core import app, login_manager
 
 def init_db():
     conn, db = get_conn()
@@ -20,6 +22,13 @@ def get_conn():
 
 class DomainObject(object):
     __type__ = None
+
+    def __init__(self, dict_):
+        self._data = dict(dict_)
+
+    @property
+    def id(self):
+        return self._data.get('id', None)
 
     @classmethod
     def get(cls, id_, state=None):
@@ -47,7 +56,6 @@ class DomainObject(object):
     
     @classmethod
     def query(cls, q, state=None):
-        import pyes.query
         conn, db = get_conn()
         if not q:
             ourq = pyes.query.MatchAllQuery()
@@ -57,8 +65,18 @@ class DomainObject(object):
         return out
 
 
-class User(DomainObject):
-    __type__ = 'user'
+class User(DomainObject, UserMixin):
+    __type__ = 'account'
+
+def get_user(userid):
+    data = User.get(userid)
+    if data:
+        return User(data)
+
+# the decorator appears to kill the function for normal usage ...
+@login_manager.user_loader
+def load_user_for_login_manager(userid):
+    return get_user(userid)
 
 class Note(DomainObject):
     __type__ = 'note'

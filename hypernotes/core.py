@@ -1,9 +1,12 @@
 import os
 from flask import Flask
-import default_settings
+from flaskext.login import LoginManager, current_user
+
+from hypernotes import default_settings
 
 app = Flask(__name__)
 
+## Configure the app
 app.config.from_object(default_settings)
 # parent directory
 here = os.path.dirname(os.path.abspath( __file__ ))
@@ -19,4 +22,7 @@ if not app.debug and ADMINS:
                                ADMINS, 'error')
     mail_handler.setLevel(logging.ERROR)
     app.logger.addHandler(mail_handler)
+
+login_manager = LoginManager()
+login_manager.setup_app(app)
 

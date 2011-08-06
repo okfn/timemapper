@@ -1,12 +1,22 @@
 import os
 from flask import Flask, jsonify, render_template, json, request, redirect, abort
+from flaskext.login import login_user, logout_user
 
-from core import app
-import logic
+from hypernotes.core import app
+import hypernotes.logic as logic
+from hypernotes.view.account import blueprint as account
+
+app.register_blueprint(account, url_prefix='/account')
+
+@app.before_request
+def basic_authentication():
+    """ Attempt HTTP basic authentication on a per-request basis. """
+    if request.remote_user:
+        login_user(request.remote_user)
 
 
 @app.after_request
-def after_request(response):
+def cors_headers(response):
     response.headers['Access-Control-Allow-Origin']   = '*'
     response.headers['Access-Control-Expose-Headers'] = 'Location'
     response.headers['Access-Control-Allow-Methods']  = 'GET, POST, PUT, DELETE'
