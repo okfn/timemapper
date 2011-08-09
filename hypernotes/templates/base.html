@@ -15,15 +15,6 @@
 </head>
 <body>
   <div id="wrap">
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        <ul class="notification">
-        {% for category, message in messages %}
-          <li class="{{ category }}">{{ message }}</li>
-        {% endfor %}
-        </ul>
-      {% endif %}
-    {% endwith %}
     <div id="page" class="container">
 	    <header>	
         <nav>
@@ -45,6 +36,15 @@
   
       <div id="main">
         <div id="content">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              <ul class="notification">
+              {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+          {% endwith %}
 
           {% block content %}{% endblock %}
 

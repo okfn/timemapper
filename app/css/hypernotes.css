@@ -6,10 +6,6 @@ header #site-title {
   margin-left: -0.3em;
 }
 
-#content {
-  margin: 10px 0px;
-}
-
 .banner-notice {
   background-color: #CFE6D5;
   border-bottom: solid 2px #A7BAAB;
@@ -19,13 +15,23 @@ header #site-title {
   text-align: center;
 }
 
+#content {
+  padding-top: 10px;
+}
+
 .left-pane, .right-pane {
   margin: 0;
-  padding: 20px 25px;
+  padding: 20px 20px;
 }
 
 .left-pane {
   padding-right: 
+}
+
+ul.notification {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 /**********************************************************
