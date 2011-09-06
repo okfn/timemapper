@@ -2,3 +2,4 @@
 *.egg-info/*
 .*.swp
 sandbox/*
+app.cfg
