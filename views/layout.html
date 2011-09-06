@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Hypernotes - Open Knowledge Foundation</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/css/bootstrap-1.2.0.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <h3><a href="/">Weaving History</a></h3>
+          <ul class="nav">
+            <li><a href="/about">About</a></li>
+          </ul>
+          <ul class="nav secondary-nav">
+            <li>
+              <form action="/search" method="GET">
+                <input type="text" name="q" placeholder="search" />
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      {{html body}}
+
+      <footer>
+        <div class="row">
+          <div class="span6">
+            <h4>About</h4>
+            <ul>
+              <li><a href="http://lists.okfn.org/mailman/listinfo/okfn-dev">Mailing List</a></li>
+              <li><a href="http://okfn.org/privacy-policy/">Privacy</a></li>
+              <li><a href="http://okfn.org/contact/">Contact</a></li>
+            </ul>
+          </div>
+          <div class="span5">
+            &nbsp;
+         </div>
+          <div class="span5">
+            <h4>Meta</h4>
+            <p>&copy; Open Knowlege Foundation 2011</p>
+            <p>Powered by <a href="http://github.com/okfn/hypernotes">HyperNotes</a></p>
+          </div>
+        </div>
+      </footer>
+    </div> <!-- /container -->
+  </body>
+</html>
