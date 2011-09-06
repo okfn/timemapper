@@ -3,3 +3,4 @@
 .*.swp
 sandbox/*
 app.cfg
+node_modules
