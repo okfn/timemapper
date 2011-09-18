@@ -4,3 +4,5 @@
 sandbox/*
 app.cfg
 node_modules
+// nodemon
+.monitor
