@@ -7,8 +7,8 @@ var serverOptions = {
 
 var esclient = new nodees(serverOptions);
 
-function search(indexName, table, qryObj) {
-  return esclient.search(indexName, table, qryObj)
+function search(indexName, objectType, qryObj) {
+  return esclient.search(indexName, objectType, qryObj)
 }
 
 function get(indexName, objectType, id) {

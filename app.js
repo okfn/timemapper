@@ -69,5 +69,22 @@ app.post('/api/v1/:objecttype/:id?', function(req, res) {
     });
 });
 
+app.get('/api/v1/:objecttype', function(req,res) {
+  q = req.params.q;
+  qryObj = {
+  }
+  dao.search(indexName, req.params.objecttype, qryObj)
+    .on('data', function(data) {
+      var parsed = JSON.parse(data);
+      var out = {
+        'status': 'ok'
+        , 'q': q
+        , 'result': parsed.hits
+      };
+      res.send(out);
+    })
+    .exec()
+});
+
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
