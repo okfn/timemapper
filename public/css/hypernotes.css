@@ -1,52 +1,4 @@
 /**********************************************************
-  * Fixes to OpenSpending
-  *********************************************************/
-
-header #site-title {
-  margin-left: -0.3em;
-}
-
-.banner-notice {
-  background-color: #CFE6D5;
-  border-bottom: solid 2px #A7BAAB;
-  margin-bottom: -1em;
-  padding: 0.4em;
-  font-size: 105%;
-  text-align: center;
-}
-
-#content {
-  padding-top: 10px;
-}
-
-.left-pane, .right-pane {
-  margin: 0;
-  padding: 20px 20px;
-}
-
-.left-pane {
-  padding-right: 
-}
-
-ul.notification {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-/**********************************************************
-  * Frontpage
-  *********************************************************/
-
-.frontpage p {
-  font-size: 110%;
-}
-
-.frontpage img {
-  width: 100%;
-}
-
-/**********************************************************
   * Thread
   *********************************************************/
 
@@ -160,7 +112,7 @@ ul.notification {
     cursor: pointer;
     width: 20px;
     height: 20px;
-    background: url(destroy.png) no-repeat 0 0;
+    background: url(../img/destroy.png) no-repeat 0 0;
   }
     #note-list li:hover .note-destroy {
       display: block;

@@ -14,8 +14,7 @@ HyperNotes.Controller = function($) {
       this.environ = environ;
       this.environ.account = new HyperNotes.Model.Account(this.environ.config.account);
       var self = this;
-      var $content = $('#content');
-      var $leftpane = $content.find('.left-pane');
+      var $leftpane = $('.left-pane');
       this.$thread = $('<div />').attr('class', '.page-view').attr('id', 'thread-page');
       $leftpane.append(this.$thread);
       this.threadView('testerdefault');

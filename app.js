@@ -38,6 +38,16 @@ app.get('/', function(req, res){
   });
 });
 
+app.get('/dashboard', function(req, res){
+  res.render('dashboard.html', {
+  });
+});
+
+
+// ======================================
+// API
+// ======================================
+
 app.get('/api/v1/:objecttype/:id', function(req, res, next) {
   // klass = getattr(logic, objecttype.capitalize())
   // out = klass.get(req.params.id)
@@ -49,26 +59,25 @@ app.get('/api/v1/:objecttype/:id', function(req, res, next) {
         var msg = 'Cannot find ' + req.params.objecttype + ' with id ' + req.params.id;
         res.send(msg, 404);
       } else {
-        res.send(out);
+        res.send(out._source);
       }
     })
     .exec();
 });
 
-app.post('/api/v1/:objecttype/:id?', function(req, res) {
+var apiUpsert = function(req, res) {
     var data = req.body;
     if (req.params.id) {
       data.id = req.params.id;
     }
     dao.upsert(indexName, req.params.objecttype, data, function(outData) {
-      var out = {
-          'status': 'ok'
-          , 'result': data
-      };
-      res.send(out)
+      res.send(outData)
     });
-});
+};
 
+app.post('/api/v1/:objecttype', apiUpsert);
+app.put('/api/v1/:objecttype/:id?', apiUpsert);
+    
 app.get('/api/v1/:objecttype', function(req,res) {
   q = req.params.q;
   qryObj = {
