@@ -15,10 +15,10 @@ var inuser = {
   'fullname': 'The Tester'
 };
 var innote = {
-  'title': 'My New Note',
-  'body': '## Xyz',
-  'tags': ['abc', 'efg'],
-  'owner': username
+  'title': 'My New Note'
+  , 'body': '## Xyz'
+  , 'tags': ['abc', 'efg']
+  , 'owner': username
 };
 var inthread = {
   'name': threadName
@@ -35,7 +35,6 @@ makeFixtures();
 testIndex = function() {
   dao.esclient.index(indexName, 'user', inuser)
     .on('data', function(data) {
-        console.log(data)
         assert.ok(JSON.parse(data), 'textIndex failed. ');
     })
     .exec()
@@ -45,7 +44,6 @@ testGet = function() {
   var id = username;
   dao.esclient.get(indexName, 'user', id)
     .on('data', function(data) {
-      console.log(data)
       var outdata = JSON.parse(data);
       assert.equal(outdata._id, username, 'username incorrect');
     })
@@ -64,7 +62,6 @@ testSearch = function() {
     .on('data', function(data) {
         assert.ok(JSON.parse(data));
         var x = JSON.parse(data);
-        console.log(x);
         // incorrect but needed for passing test!
         assert.equal(x.hits.total, 0);
     })
@@ -76,7 +73,14 @@ testSearch = function() {
     .exec()
 }
 
+testUpsert = function() {
+  dao.upsert(indexName, 'note', innote, function(data) {
+    assert.ok(data.id, 'Failed to get an id');
+  })
+}
+
+
 testIndex();
 testGet();
 testSearch();
-
+testUpsert();
