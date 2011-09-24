@@ -5,6 +5,6 @@
   , "dependencies": {
       "express": "2.4.6"
     , "jqtpl": ">= 0.0.1"
-    , "elasticsearchclient"
+    , "elasticsearchclient": ">=0.0.1"
   }
 }

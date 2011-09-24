@@ -16,30 +16,29 @@ automatically import Wikipedia articles and much more ...
 Install
 ======= 
 
-Frontend
---------
+This is a nodejs web-app built using express.
 
-Just open app/index.html in a browser.
-
-Backend
--------
-
-This is a Flask-based python web-app. For storage it uses `ElasticSearch`_
-which should be running in http mode on port 9200.
+For storage it uses `ElasticSearch`_ which should be running in http mode on
+port 9200.
 
 .. _ElasticSearch: http://www.elasticsearch.org/
 
-Create a virtualenv (optional) then install the app and its requirements::
+Checkout the code::
 
-  pip install -e .
+  git clone https://github.com/okfn/hypernotes
+
+Then install the dependencies:: 
+
+  cd hypernotes
+  npm install . 
+
 
 Run Tests
 ---------
 
-Python tests require nose to be installed and for ElasticSearch to be running.
-Then do::
+For node tests::
 
-  nose -v test/
+  node {test-file}
 
 Javascript tests just open test/index.html in a browser.
 
