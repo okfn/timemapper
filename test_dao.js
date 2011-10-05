@@ -32,25 +32,27 @@ makeFixtures = function() {
 
 makeFixtures();
 
-testIndex = function() {
+exports.testIndex = function(test) {
   dao.esclient.index(indexName, 'user', inuser)
     .on('data', function(data) {
-        assert.ok(JSON.parse(data), 'textIndex failed. ');
+        test.ok(JSON.parse(data), 'textIndex failed. ');
+        test.done();
     })
     .exec()
 }
 
-testGet = function() {
+exports.testGet = function(test) {
   var id = username;
   dao.esclient.get(indexName, 'user', id)
     .on('data', function(data) {
       var outdata = JSON.parse(data);
-      assert.equal(outdata._id, username, 'username incorrect');
+      test.equal(outdata._id, username, 'username incorrect');
+      test.done();
     })
     .exec()
 }
 
-testSearch = function() {
+exports.testSearch = function(test) {
   var qryObj = {
     query: {
       term: {
@@ -60,10 +62,11 @@ testSearch = function() {
   }
   dao.search(indexName, 'user', qryObj)
     .on('data', function(data) {
-        assert.ok(JSON.parse(data));
+        test.ok(JSON.parse(data));
         var x = JSON.parse(data);
         // incorrect but needed for passing test!
-        assert.equal(x.hits.total, 0);
+        test.equal(x.hits.total, 0);
+        test.done();
     })
     .on('done', function(){
     })
@@ -73,14 +76,10 @@ testSearch = function() {
     .exec()
 }
 
-testUpsert = function() {
+exports.testUpsert = function(test) {
   dao.upsert(indexName, 'note', innote, function(data) {
-    assert.ok(data.id, 'Failed to get an id');
+    test.ok(data.id, 'Failed to get an id');
+    test.done();
   })
 }
 
-
-testIndex();
-testGet();
-testSearch();
-testUpsert();

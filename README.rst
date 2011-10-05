@@ -36,9 +36,9 @@ Then install the dependencies::
 Run Tests
 ---------
 
-For node tests::
+For node tests we use nodeunit (please install this first)::
 
-  node {test-file}
+  nodeunit {test-file}
 
 Javascript tests just open test/index.html in a browser.
 
