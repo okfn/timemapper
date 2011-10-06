@@ -1,5 +1,5 @@
 assert = require('assert');
-dao = require('./dao.js');
+dao = require('../dao.js');
 
 es = require('elasticsearchclient');
 var serverOptions = {
