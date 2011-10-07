@@ -1,9 +1,23 @@
 var express = require('express');
+
 var dao = require('./dao.js');
 
 var app = module.exports = express.createServer();
 
 var indexName = 'hypernotes';
+
+function identificationMiddleware() {
+  return function(req, res, next) {
+    if (req.session && req.session.hypernotesIdentity) {
+      var userid = req.session.hypernotesIdentity;
+      req.currentUser = userid;
+    } else {
+      req.currentUser = null;
+    }
+    return next();
+  }
+};
+
 
 // Configuration
 app.configure(function(){
@@ -15,6 +29,7 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(express.cookieParser());
   app.use(express.session({ secret: 'your secret here' }));
+  app.use(identificationMiddleware());
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
 });
@@ -27,12 +42,11 @@ app.configure('development', function(){
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
 });
 
-app.configure('production', function(){
-  app.use(express.errorHandler()); 
-  app.user(express.bodyParser());
-});
 
-// Routes
+// ======================================
+// Main pages
+// ======================================
+
 app.get('/', function(req, res){
   res.render('index.html', {
   });
@@ -43,6 +57,38 @@ app.get('/dashboard', function(req, res){
   });
 });
 
+// ======================================
+// User Accounts
+// ======================================
+
+app.get('/account/register', function(req, res){
+  res.render('account/register.html', {});
+});
+
+app.post('/account/register', function(req, res){
+  res.send('not yet operational');
+});
+
+app.get('/account/login', function(req, res){
+  res.render('account/login.html', {
+  });
+});
+
+app.post('/account/login', function(req, res){
+  var userid = req.params.username;
+  var password = req.params.password;
+  var success = true;
+  if (success) {
+    req.flash('info', 'Welcome, you are now logged in.');
+    res.redirect('/');
+  } else {
+    res.render('account/login.html', {});
+  }
+});
+
+app.get('/account/logout', function(req, res){
+  res.redirect('/');
+});
 
 // ======================================
 // API
