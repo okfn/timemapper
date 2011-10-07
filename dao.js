@@ -87,10 +87,15 @@ var Note = DomainObject.extend({
     __type__: 'note'
 });
 
+var Thread = DomainObject.extend({
+    __type__: 'thread'
+});
+
 module.exports = {
   esclient: esclient
   , config: config 
   , Account: Account
   , Note: Note
+  , Thread: Thread
 };
 

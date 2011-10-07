@@ -95,28 +95,28 @@ app.get('/account/logout', function(req, res){
 // ======================================
 
 app.get('/api/v1/:objecttype/:id', function(req, res, next) {
-  // klass = getattr(logic, objecttype.capitalize())
-  // out = klass.get(req.params.id)
-  dao.get(indexName, req.params.objecttype, req.params.id)
-    .on('data', function(data) {
-      var out = JSON.parse(data);
-      if (!out.exists) {
-        // next(new Error('Cannot find ' + req.params.objecttype + ' with id ' + req.params.id));
-        var msg = 'Cannot find ' + req.params.objecttype + ' with id ' + req.params.id;
-        res.send(msg, 404);
-      } else {
-        res.send(out._source);
-      }
-    })
-    .exec();
+  var objName = req.params.objecttype[0].toUpperCase() + req.params.objecttype.slice(1); 
+  var klass = dao[objName];
+  klass.get(req.params.id, function(data) {
+    var out = data;
+    if (out===undefined) {
+      // next(new Error('Cannot find ' + req.params.objecttype + ' with id ' + req.params.id));
+      var msg = 'Cannot find ' + req.params.objecttype + ' with id ' + req.params.id;
+      res.send(msg, 404);
+    } else {
+      res.send(out);
+    }
+  })
 });
 
 var apiUpsert = function(req, res) {
+    var objName = req.params.objecttype[0].toUpperCase() + req.params.objecttype.slice(1); 
+    var klass = dao[objName];
     var data = req.body;
     if (req.params.id) {
       data.id = req.params.id;
     }
-    dao.upsert(indexName, req.params.objecttype, data, function(outData) {
+    klass.upsert(data, function(outData) {
       res.send(outData)
     });
 };
@@ -125,10 +125,12 @@ app.post('/api/v1/:objecttype', apiUpsert);
 app.put('/api/v1/:objecttype/:id?', apiUpsert);
     
 app.get('/api/v1/:objecttype', function(req,res) {
+  var objName = req.params.objecttype[0].toUpperCase() + req.params.objecttype.slice(1); 
+  var klass = dao[objName];
   q = req.params.q;
   qryObj = {
   }
-  dao.search(indexName, req.params.objecttype, qryObj)
+  klass.search(qryObj)
     .on('data', function(data) {
       var parsed = JSON.parse(data);
       var out = {
