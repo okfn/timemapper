@@ -1,12 +1,6 @@
 assert = require('assert');
 dao = require('../dao.js');
 
-es = require('elasticsearchclient');
-var serverOptions = {
-    host: 'localhost',
-    port: 9200,
-};
-
 var indexName = 'hypernotes-test-njs';
 var username = 'tester';
 var threadName = 'default';
@@ -27,29 +21,35 @@ var inthread = {
   ,'notes': [ ]
   , 'owner': username
 };
-makeFixtures = function() {
-}
 
-makeFixtures();
+dao.config.databaseName = indexName;
 
-exports.testIndex = function(test) {
-  dao.esclient.index(indexName, 'user', inuser)
+exports.testESIndex = function(test) {
+  dao.esclient.index(indexName, 'account', inuser)
     .on('data', function(data) {
-        test.ok(JSON.parse(data), 'textIndex failed. ');
+        test.ok(JSON.parse(data), 'index failed. ');
         test.done();
     })
     .exec()
 }
 
-exports.testGet = function(test) {
+exports.testESGet = function(test) {
   var id = username;
-  dao.esclient.get(indexName, 'user', id)
+  dao.esclient.get(indexName, 'account', id)
     .on('data', function(data) {
       var outdata = JSON.parse(data);
       test.equal(outdata._id, username, 'username incorrect');
       test.done();
     })
     .exec()
+}
+
+exports.testGet = function(test) {
+  var id = username;
+  dao.Account.get(id, function(data) {
+    test.equal(data.id, username, 'username incorrect');
+    test.done();
+  });
 }
 
 exports.testSearch = function(test) {
@@ -60,7 +60,7 @@ exports.testSearch = function(test) {
       }  
     }
   }
-  dao.search(indexName, 'user', qryObj)
+  dao.Account.search(qryObj)
     .on('data', function(data) {
         test.ok(JSON.parse(data));
         var x = JSON.parse(data);
@@ -77,8 +77,9 @@ exports.testSearch = function(test) {
 }
 
 exports.testUpsert = function(test) {
-  dao.upsert(indexName, 'note', innote, function(data) {
+  dao.Note.upsert(innote, function(data) {
     test.ok(data.id, 'Failed to get an id');
+    test.equal(data.title, innote.title);
     test.done();
   })
 }
