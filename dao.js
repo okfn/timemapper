@@ -49,16 +49,26 @@ var DomainObject = {
     __type__: null
   , construct: function(data) {
     this._data = data;
+    if(data.id) {
+      this.id = data.id;
+    }
   }
   , get: function(id, callback) {
+    var self = this;
     esclient.get(config.databaseName, this.__type__, id)
       .on('data', function(data) {
         var out = JSON.parse(data);
-        // add id just in case (should be there anyway)
+        // not found
+        if(!out.exists) {
+          callback(null);
+          return;
+        } 
+        // add id just in case (should be there anyway?)
         if (out._source.id===undefined) {
           out._source.id = id;
         }
-        callback(out._source);
+        var obj = self.create(out._source);
+        callback(obj);
       })
       .exec()
   }
@@ -74,8 +84,24 @@ var DomainObject = {
       })
       .exec()
   }
+  , save: function(callback) {
+    this.upsert(this._data, function(data) {
+      // TODO: ? set this._data (any way data would have changed?)
+      this.id = data.id;
+      callback(data);
+    });
+  }
   , search: function(qryObj) {
     return esclient.search(config.databaseName, this.__type__, qryObj);
+  }
+  , toJSON: function() {
+    return this._data;
+  }
+  , getattr: function(attrName) {
+    return this._data[attrName];
+  }
+  , setattr: function(attrName, value) {
+    this._data[attrName] = value;
   }
 };
 

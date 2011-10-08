@@ -97,14 +97,13 @@ app.get('/account/logout', function(req, res){
 app.get('/api/v1/:objecttype/:id', function(req, res, next) {
   var objName = req.params.objecttype[0].toUpperCase() + req.params.objecttype.slice(1); 
   var klass = dao[objName];
-  klass.get(req.params.id, function(data) {
-    var out = data;
-    if (out===undefined) {
+  klass.get(req.params.id, function(domainObj) {
+    if (domainObj===null) {
       // next(new Error('Cannot find ' + req.params.objecttype + ' with id ' + req.params.id));
       var msg = 'Cannot find ' + req.params.objecttype + ' with id ' + req.params.id;
       res.send(msg, 404);
     } else {
-      res.send(out);
+      res.send(domainObj.toJSON());
     }
   })
 });

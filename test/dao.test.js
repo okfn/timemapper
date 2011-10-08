@@ -44,10 +44,20 @@ exports.testESGet = function(test) {
     .exec()
 }
 
+exports.testDomainObject = function(test) {
+  var account = dao.Account.create({fullname: 'myname'});
+  test.equal(account.getattr('fullname'), 'myname');
+  var raw = account.toJSON();
+  test.equal(raw.fullname, 'myname');
+  test.done();
+}
+
 exports.testGet = function(test) {
   var id = username;
-  dao.Account.get(id, function(data) {
-    test.equal(data.id, username, 'username incorrect');
+  dao.Account.get(id, function(account) {
+    test.equal(account.id, username, 'username incorrect');
+    var res = account.toJSON();
+    test.equal(res.fullname, inuser.fullname);
     test.done();
   });
 }
