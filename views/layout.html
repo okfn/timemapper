@@ -70,12 +70,22 @@ jQuery(function($) {
                 <input type="text" name="q" placeholder="search" />
               </form>
             </li>
+            {{if !currentUser}}
             <li>
               <a href="/account/register">Register</a>
             </li>
             <li>
               <a href="/account/login">Login</a>
             </li>
+            {{else}}
+            <li>
+              <a href="#"><strong>${currentUser.id}</strong></a>
+            </li>
+            <li>
+              <a href="/account/logout">Logout</a>
+            </li>
+
+            {{/if}}
           </ul>
         </div>
       </div>

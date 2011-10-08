@@ -6,19 +6,6 @@ var app = module.exports = express.createServer();
 
 var indexName = 'hypernotes';
 
-function identificationMiddleware() {
-  return function(req, res, next) {
-    if (req.session && req.session.hypernotesIdentity) {
-      var userid = req.session.hypernotesIdentity;
-      req.currentUser = userid;
-    } else {
-      req.currentUser = null;
-    }
-    return next();
-  }
-};
-
-
 // Configuration
 app.configure(function(){
   app.set('views', __dirname + '/views');
@@ -29,7 +16,6 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(express.cookieParser());
   app.use(express.session({ secret: 'your secret here' }));
-  app.use(identificationMiddleware());
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
 });
@@ -42,6 +28,27 @@ app.configure('development', function(){
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
 });
 
+// ======================================
+// Pre-preparation for views
+// ======================================
+
+app.all('*', function(req, res, next) {
+  var currentUser = null;
+  setCurrentUser(req, function(currentUser) {
+    res.local('currentUser', currentUser);
+    next();
+  });
+});
+
+function setCurrentUser(req, callback) {
+  if (req.session && req.session.hypernotesIdentity) {
+    var userid = req.session.hypernotesIdentity;
+    dao.Account.get(userid, callback);
+  } else {
+    var currentUser = null;
+    callback(currentUser);  
+  }
+}
 
 // ======================================
 // Main pages
@@ -74,7 +81,8 @@ app.post('/account/register', function(req, res){
   account.setPassword(req.body.password);
   account.save(function() {
     req.flash('success', 'Thanks for signing-up');
-    // TODO: log them in ...
+    // log them in
+    req.session.hypernotesIdentity = account.id;
     res.redirect('/');
   });
 });
@@ -89,6 +97,7 @@ app.post('/account/login', function(req, res){
   dao.Account.get(userid, function(account) {
     if (account && account.checkPassword(password)) {
       req.flash('info', 'Welcome, you are now logged in.');
+      req.session.hypernotesIdentity = account.id;
       res.redirect('/');
     } else {
       req.flash('error', 'Bad username or password');
@@ -98,6 +107,7 @@ app.post('/account/login', function(req, res){
 });
 
 app.get('/account/logout', function(req, res){
+  delete req.session.hypernotesIdentity;
   res.redirect('/');
 });
 
