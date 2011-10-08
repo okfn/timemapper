@@ -85,9 +85,10 @@ var DomainObject = {
       .exec()
   }
   , save: function(callback) {
+    var self = this;
     this.upsert(this._data, function(data) {
-      // TODO: ? set this._data (any way data would have changed?)
-      this.id = data.id;
+      // TODO: ? set this._data (would data have changed?)
+      self.id = data.id;
       callback(data);
     });
   }
@@ -107,6 +108,12 @@ var DomainObject = {
 
 var Account = DomainObject.extend({
     __type__: 'account'
+  , setPassword: function(password) {
+    this._data['password'] = password;
+  }
+  , checkPassword: function(password) {
+    return (password === this._data['password']);
+  }
 });
 
 var Note = DomainObject.extend({

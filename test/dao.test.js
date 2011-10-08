@@ -49,7 +49,23 @@ exports.testDomainObject = function(test) {
   test.equal(account.getattr('fullname'), 'myname');
   var raw = account.toJSON();
   test.equal(raw.fullname, 'myname');
-  test.done();
+  account.setPassword('xyz');
+  test.ok(account.checkPassword('xyz'));
+  test.ok(!account.checkPassword('abc'));
+  // now save
+  test.ok(!account.id);
+  account.save(function() {
+    test.ok(account.id);
+  });
+
+  var account = dao.Account.create({
+      id: 'mytestusername'
+    , fullname: 'myname'
+  });
+  account.save(function() {
+    test.equal(account.id, 'mytestusername');
+    test.done();
+  });
 }
 
 exports.testGet = function(test) {
