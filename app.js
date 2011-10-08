@@ -36,6 +36,7 @@ app.all('*', function(req, res, next) {
   var currentUser = null;
   setCurrentUser(req, function(currentUser) {
     res.local('currentUser', currentUser);
+    req.currentUser = currentUser;
     next();
   });
 });
@@ -55,14 +56,13 @@ function setCurrentUser(req, callback) {
 // ======================================
 
 app.get('/', function(req, res){
-  res.render('index.html', {
-  });
+  if (req.currentUser) {
+    res.render('dashboard.html', {});
+  } else {
+    res.render('index.html', {});
+  }
 });
 
-app.get('/dashboard', function(req, res){
-  res.render('dashboard.html', {
-  });
-});
 
 // ======================================
 // User Accounts
