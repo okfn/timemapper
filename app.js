@@ -66,24 +66,35 @@ app.get('/account/register', function(req, res){
 });
 
 app.post('/account/register', function(req, res){
-  res.send('not yet operational');
-});
-
-app.get('/account/login', function(req, res){
-  res.render('account/login.html', {
+  // TODO: check form validates (e.g. password valid etc)
+  account = dao.Account.create({
+      id: req.body.username
+    , email: req.body.email
+  });
+  account.setPassword(req.body.password);
+  account.save(function() {
+    req.flash('success', 'Thanks for signing-up');
+    // TODO: log them in ...
+    res.redirect('/');
   });
 });
 
+app.get('/account/login', function(req, res){
+  res.render('account/login.html', {});
+});
+
 app.post('/account/login', function(req, res){
-  var userid = req.params.username;
-  var password = req.params.password;
-  var success = true;
-  if (success) {
-    req.flash('info', 'Welcome, you are now logged in.');
-    res.redirect('/');
-  } else {
-    res.render('account/login.html', {});
-  }
+  var userid = req.body.username;
+  var password = req.body.password;
+  dao.Account.get(userid, function(account) {
+    if (account && account.checkPassword(password)) {
+      req.flash('info', 'Welcome, you are now logged in.');
+      res.redirect('/');
+    } else {
+      req.flash('error', 'Bad username or password');
+      res.render('account/login.html', {});
+    }
+  });
 });
 
 app.get('/account/logout', function(req, res){
