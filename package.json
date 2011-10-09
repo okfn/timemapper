@@ -1,6 +1,6 @@
 {
-    "name": "application-name"
-  , "version": "0.0.1"
+    "name": "hypernotes"
+  , "version": "0.1.0"
   , "private": true
   , "dependencies": {
       "express": "2.4.6"
