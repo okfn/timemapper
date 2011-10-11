@@ -16,6 +16,7 @@
     <link href="/css/style.css" rel="stylesheet">
 
     <script src="/vendor/jquery/1.5.2/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/1.3.0/bootstrap-alerts.js"></script>
     <script src="/vendor/jquery.tmpl/beta1/jquery.tmpl.js"></script>
     <script src="/vendor/underscore/1.1.7/underscore.js"></script>
     <script src="/vendor/backbone/0.5.1/backbone.js"></script>
@@ -92,6 +93,15 @@ jQuery(function($) {
     </div>
 
     <div class="container">
+      <div class="alert-messages">
+        {{each(idx, msg) messages}}
+          <div class="alert-message ${msg.category} fade in" data-alert="alert">
+            <a class="close" href="#">&times;</a>
+            ${ msg.text }
+          </div>
+        {{/each}}
+      </div>
+
       {{html body}}
 
       <footer>

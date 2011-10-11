@@ -32,6 +32,32 @@ app.configure('development', function(){
 // Pre-preparation for views
 // ======================================
 
+function getFlashMessages(req) {
+  var messages = req.flash()
+    , types = Object.keys(messages)
+    , len = types.length
+    , result = [];
+  
+  for (var i = 0; i < len; ++i) {
+    var type = types[i]
+      , msgs = messages[type];
+    for (var j = 0, l = msgs.length; j < l; ++j) {
+      var msg = msgs[j];
+      result.push({
+          category: type
+        , text: msg
+      });
+    }
+  }
+  return result;
+}
+
+app.dynamicHelpers({
+  messages: function(req,res) {
+    return getFlashMessages(req);
+  }
+});
+
 app.all('*', function(req, res, next) {
   var currentUser = null;
   setCurrentUser(req, function(currentUser) {
@@ -96,7 +122,7 @@ app.post('/account/login', function(req, res){
   var password = req.body.password;
   dao.Account.get(userid, function(account) {
     if (account && account.checkPassword(password)) {
-      req.flash('info', 'Welcome, you are now logged in.');
+      req.flash('success', 'Welcome, you are now logged in.');
       req.session.hypernotesIdentity = account.id;
       res.redirect('/');
     } else {
