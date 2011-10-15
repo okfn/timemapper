@@ -175,6 +175,29 @@ var Note = DomainObject.extend({
 
 var Thread = DomainObject.extend({
     __type__: 'thread'
+  , getByOwnerAndName: function(ownerId, threadName, callback) {
+    var qryObj = {
+      query: {
+        bool: {
+          must: [
+            {
+              term: {
+                owner: ownerId
+              }
+            }
+            , {
+              term: {
+                name: threadName
+              }
+            }
+          ]
+        }
+      }
+    };
+    this.search(qryObj, function(queryResult) {
+      callback(queryResult.first());
+    })
+  }
 });
 
 module.exports = {

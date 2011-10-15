@@ -1,5 +1,6 @@
 assert = require('assert');
 dao = require('../dao.js');
+var testCase = require('nodeunit').testCase;
 
 var indexName = 'hypernotes-test-njs';
 var username = 'tester';
@@ -23,26 +24,6 @@ var inthread = {
 };
 
 dao.config.databaseName = indexName;
-
-exports.testESIndex = function(test) {
-  dao.esclient.index(indexName, 'account', inuser)
-    .on('data', function(data) {
-        test.ok(JSON.parse(data), 'index failed. ');
-        test.done();
-    })
-    .exec()
-}
-
-exports.testESGet = function(test) {
-  var id = username;
-  dao.esclient.get(indexName, 'account', id)
-    .on('data', function(data) {
-      var outdata = JSON.parse(data);
-      test.equal(outdata._id, username, 'username incorrect');
-      test.done();
-    })
-    .exec()
-}
 
 exports.test_QueryResult = function(test) {
   var sample = {
@@ -78,60 +59,107 @@ exports.test_getDomainObjectClass = function(test) {
   test.done();
 }
 
-exports.testDomainObject = function(test) {
-  var account = dao.Account.create({fullname: 'myname'});
-  test.equal(account.getattr('fullname'), 'myname');
-  var raw = account.toJSON();
-  test.equal(raw.fullname, 'myname');
-  account.setPassword('xyz');
-  test.ok(account.checkPassword('xyz'));
-  test.ok(!account.checkPassword('abc'));
-  // now save
-  test.ok(!account.id);
-  account.save(function() {
-    test.ok(account.id);
-  });
 
-  var account = dao.Account.create({
-      id: 'mytestusername'
-    , fullname: 'myname'
-  });
-  account.save(function() {
-    test.equal(account.id, 'mytestusername');
-    test.done();
-  });
-}
-
-exports.testGet = function(test) {
-  var id = username;
-  dao.Account.get(id, function(account) {
-    test.equal(account.id, username, 'username incorrect');
-    var res = account.toJSON();
-    test.equal(res.fullname, inuser.fullname);
-    test.done();
-  });
-}
-
-exports.testSearch = function(test) {
-  var qryObj = {
-    query: {
-      term: {
-        fullname: 'The Tester'
-      }  
-    }
+exports.basic= testCase({
+  setUp: function(callback) {
+    dao.esclient.index(indexName, 'account', inuser)
+      .on('data', function(data) {
+        assert.ok(JSON.parse(data), 'index failed.');
+        callback();
+      })
+      .exec()
   }
-  dao.Account.search(qryObj, function(data) {
-    // incorrect but needed for passing test!
-    test.equal(data.total, 0);
-    test.done();
-  })
-}
+  , tearDown: function(callback) {
+    dao.esclient.deleteIndex(dao.config.databaseName)
+      .on('done', callback)
+      .exec();
+  }
+  , testESGet: function(test) {
+    var id = username;
+    dao.esclient.get(indexName, 'account', id)
+      .on('data', function(data) {
+        var outdata = JSON.parse(data);
+        test.equal(outdata._id, username, 'username incorrect');
+        test.done();
+      })
+      .exec()
+  }
 
-exports.testUpsert = function(test) {
-  dao.Note.upsert(innote, function(data) {
-    test.ok(data.id, 'Failed to get an id');
-    test.equal(data.title, innote.title);
-    test.done();
-  })
-}
+  , testDomainObject: function(test) {
+    var account = dao.Account.create({fullname: 'myname'});
+    test.equal(account.getattr('fullname'), 'myname');
+    var raw = account.toJSON();
+    test.equal(raw.fullname, 'myname');
+    account.setPassword('xyz');
+    test.ok(account.checkPassword('xyz'));
+    test.ok(!account.checkPassword('abc'));
+    // now save
+    test.ok(!account.id);
+    account.save(function() {
+      test.ok(account.id);
+    });
+
+    var account = dao.Account.create({
+        id: 'mytestusername'
+      , fullname: 'myname'
+    });
+    account.save(function() {
+      test.equal(account.id, 'mytestusername');
+      test.done();
+    });
+  }
+  , testGet: function(test) {
+    var id = username;
+    dao.Account.get(id, function(account) {
+      test.equal(account.id, username, 'username incorrect');
+      var res = account.toJSON();
+      test.equal(res.fullname, inuser.fullname);
+      test.done();
+    });
+  }
+  , testSearch: function(test) {
+    var qryObj = {
+      query: {
+        term: {
+          fullname: 'The Tester'
+        }  
+      }
+    }
+    dao.Account.search(qryObj, function(data) {
+      // incorrect but needed for passing test!
+      test.equal(data.total, 0);
+      test.done();
+    })
+  }
+  , testUpsert: function(test) {
+    dao.Note.upsert(innote, function(data) {
+      test.ok(data.id, 'Failed to get an id');
+      test.equal(data.title, innote.title);
+      test.done();
+    })
+  }
+});
+
+exports.thread = testCase({
+  setUp: function(callback) {
+    this.account = dao.Account.create(inuser);
+    this.account.save(function() {
+      this.thread = dao.Thread.create(inthread);
+      this.thread.save(function() {
+        callback();
+      });
+    });
+  }
+  , tearDown: function(callback) {
+    dao.esclient.deleteIndex(dao.config.databaseName)
+      .on('done', callback)
+      .exec();
+  }
+  , testThreadGetByOwnerAndName:  function(test) {
+    dao.Thread.getByOwnerAndName(inuser.id, inthread.name, function(thread) {
+      // test.equal(thread.getattr('title'), inthread.title);
+      test.done();
+    });
+  }
+});
 
