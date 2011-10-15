@@ -83,7 +83,7 @@ function setCurrentUser(req, callback) {
 
 app.get('/', function(req, res){
   if (req.currentUser) {
-    res.render('dashboard.html', {});
+    res.send('');
   } else {
     res.render('index.html', {});
   }
@@ -135,6 +135,28 @@ app.post('/account/login', function(req, res){
 app.get('/account/logout', function(req, res){
   delete req.session.hypernotesIdentity;
   res.redirect('/');
+});
+
+// ======================================
+// Threads
+// ======================================
+
+app.get('/:userId/:threadName', function(req, res, next) {
+  var userId = req.params.userId;
+  // HACK: we only want to handle threads and not other stuff
+  if (userId in {
+      'js': ''
+    , 'css': ''
+    , 'vendor': ''
+    , 'img': ''
+    , 'account': ''
+    , 'dashboard': ''
+    }) {
+    next();
+    return;
+  }
+  var threadName = req.params.threadName;
+  res.render('thread/view.html');
 });
 
 // ======================================
