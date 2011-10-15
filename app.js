@@ -198,17 +198,9 @@ app.get('/api/v1/:objecttype', function(req,res) {
   q = req.params.q;
   qryObj = {
   }
-  klass.search(qryObj)
-    .on('data', function(data) {
-      var parsed = JSON.parse(data);
-      var out = {
-        'status': 'ok'
-        , 'q': q
-        , 'result': parsed.hits
-      };
-      res.send(out);
-    })
-    .exec()
+  klass.search(qryObj, function(queryResult) {
+    res.send(queryResult.toJSON());
+  });
 });
 
 app.listen(3000);

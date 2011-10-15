@@ -44,6 +44,40 @@ exports.testESGet = function(test) {
     .exec()
 }
 
+exports.test_QueryResult = function(test) {
+  var sample = {
+    "took":4,"timed_out":false,
+    "_shards":{"total":5,"successful":5,"failed":0},
+    "hits":{
+      "total":2,
+      "max_score":1.0,
+      "hits":[
+        {
+          "_index":"hypernotes-test-njs","_type":"thread","_id":"kcJgRvPbT4OlGVwIeknuOA","_score":1.0,
+          "_source" : {"name":"default","title":"My Test Thread","description":"None at the moment","notes":[],"owner":"tester"}}
+      , {
+          "_index":"hypernotes-test-njs","_type":"thread","_id":"L6MrVss7SuaPX7KUzMwttA","_score":1.0,
+          "_source" : {"name":"default","title":"My Test Thread","description":"None at the moment","notes":[],"owner":"tester"}}
+      ]
+    }
+  };
+  var out = new dao.QueryResult('thread', sample);
+  test.equal(out.total, 2);
+  test.equal(out.results[0].__type__, 'thread');
+  test.equal(out.results[0].id, 'kcJgRvPbT4OlGVwIeknuOA');
+  test.equal(out.results[0].toJSON().name, 'default');
+  test.equal(out.first().toJSON().name, 'default');
+  var jsonified = out.toJSON();
+  test.equal(jsonified.results[0].name, 'default');
+  test.done();
+};
+
+exports.test_getDomainObjectClass = function(test) {
+  var out = dao.getDomainObjectClass('account');
+  test.equal(out, dao.Account);
+  test.done();
+}
+
 exports.testDomainObject = function(test) {
   var account = dao.Account.create({fullname: 'myname'});
   test.equal(account.getattr('fullname'), 'myname');
@@ -86,20 +120,11 @@ exports.testSearch = function(test) {
       }  
     }
   }
-  dao.Account.search(qryObj)
-    .on('data', function(data) {
-        test.ok(JSON.parse(data));
-        var x = JSON.parse(data);
-        // incorrect but needed for passing test!
-        test.equal(x.hits.total, 0);
-        test.done();
-    })
-    .on('done', function(){
-    })
-    .on('error', function(error){
-        console.log(error)
-    })
-    .exec()
+  dao.Account.search(qryObj, function(data) {
+    // incorrect but needed for passing test!
+    test.equal(data.total, 0);
+    test.done();
+  })
 }
 
 exports.testUpsert = function(test) {

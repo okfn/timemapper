@@ -42,6 +42,49 @@ Object.prototype.extend = function(properties) {
   return result;
 };
 
+
+// =================================
+// DAO Helpers
+
+var QueryResult = function(type, data) {
+  this.type = getDomainObjectClass(type);
+  this.data = data;
+  this.total = this.data.hits.total;
+  this.results = [];
+  for (i=0;i<data.hits.hits.length;i++) {
+    var objdata = data.hits.hits[i]._source;
+    objdata.id = data.hits.hits[i]._id;
+    var obj = this.type.create(objdata);
+    this.results.push(obj);
+  }
+};
+
+QueryResult.prototype.first = function() {
+  if (this.total > 0) {
+    return this.results[0];
+  } else {
+    return null;
+  }
+}
+
+QueryResult.prototype.toJSON = function() {
+  var out = {
+    total: this.total
+    , results: []
+  };
+  for (i=0;i<this.results.length;i++) {
+    out.results.push(this.results[i].toJSON());
+  }
+  return out;
+}
+
+function getDomainObjectClass(name) {
+  var objName = name[0].toUpperCase() + name.slice(1);
+  var klass = module.exports[objName];
+  return klass;
+}
+
+
 // =================================
 // Domain Objects / Data Access Objects
 
@@ -62,7 +105,7 @@ var DomainObject = {
         if(!out.exists) {
           callback(null);
           return;
-        } 
+        }
         // add id just in case (should be there anyway?)
         if (out._source.id===undefined) {
           out._source.id = id;
@@ -92,10 +135,20 @@ var DomainObject = {
       callback(data);
     });
   }
-  , search: function(qryObj) {
-    return esclient.search(config.databaseName, this.__type__, qryObj);
+  , search: function(qryObj, callback) {
+    var self = this;
+    esclient.search(config.databaseName, this.__type__, qryObj)
+      .on('data', function(data) {
+        var parsed = JSON.parse(data);
+        var out = new QueryResult(self.__type__, parsed);
+        callback(out);
+      })
+      .exec();
   }
   , toJSON: function() {
+    return this._data;
+  }
+  , toTemplateJSON: function() {
     return this._data;
   }
   , getattr: function(attrName) {
@@ -126,7 +179,9 @@ var Thread = DomainObject.extend({
 
 module.exports = {
   esclient: esclient
-  , config: config 
+  , config: config
+  , getDomainObjectClass: getDomainObjectClass
+  , QueryResult: QueryResult
   , Account: Account
   , Note: Note
   , Thread: Thread
