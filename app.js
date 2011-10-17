@@ -156,7 +156,17 @@ app.get('/:userId/:threadName', function(req, res, next) {
     return;
   }
   var threadName = req.params.threadName;
-  res.render('thread/view.html');
+  dao.Thread.getByOwnerAndName(userId, threadName, function(thread) {
+    if (!thread) {
+      res.send('Not found', 404);
+      return;
+    }
+    var threadData = thread.toTemplateJSON();
+    res.render('thread/view.html', {
+      thread: threadData
+      , threadJSON: JSON.stringify(threadData)
+    });
+  });
 });
 
 // ======================================

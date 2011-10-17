@@ -17,7 +17,7 @@ HyperNotes.Controller = function($) {
       var $leftpane = $('.left-pane');
       this.$thread = $('<div />').attr('class', '.page-view').attr('id', 'thread-page');
       $leftpane.append(this.$thread);
-      this.threadView('testerdefault');
+      this.threadView(preload_thread.id);
     },
 
     switchView: function(view) {

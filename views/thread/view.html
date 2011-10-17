@@ -7,3 +7,14 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+var preload_thread = {{html threadJSON}};
+jQuery(function($) {
+  var config = {
+    account: {
+      id: 'tester'
+    }
+  }
+  HyperNotes.Controller.initialize(config);
+});
+</script>
