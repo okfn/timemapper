@@ -1,0 +1,11 @@
+<ul class="thread-summary-list">
+  {{each(idx, thread) threads}}
+  <li>
+    <h3>
+      <a href="/${thread.owner}/${thread.name}">${thread.title}</a>
+    </h3>
+    ${thread.description}
+  </li>
+  {{/each}}
+</ul>
+

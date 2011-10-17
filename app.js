@@ -81,6 +81,15 @@ function setCurrentUser(req, callback) {
 // Main pages
 // ======================================
 
+var routePrefixes = {
+    'js': ''
+  , 'css': ''
+  , 'vendor': ''
+  , 'img': ''
+  , 'account': ''
+  , 'dashboard': ''
+};
+
 app.get('/', function(req, res){
   res.render('index.html', {});
 });
@@ -134,6 +143,37 @@ app.get('/account/logout', function(req, res){
   res.redirect('/');
 });
 
+app.get('/:userId', function(req, res, next) {
+  var userId = req.params.userId;
+  // HACK: we only want to handle threads and not other stuff
+  if (userId in routePrefixes) {
+    next();
+    return;
+  }
+  var account = null;
+  dao.Account.get(userId, function(acc) {
+    account = acc;
+    if (!account) {
+      res.send('Not found', 404);
+      return;
+    }
+    dao.Thread.getByOwner(userId, function(queryResult) {
+      var threads = [];
+      queryResult.results.forEach(function(item, idx) {
+        console.log(item);
+        threads.push(item.toTemplateJSON());
+      });
+      var isOwner = (req.currentUser && req.currentUser.id == userId);
+      res.render('account/view.html', {
+        account: account.toTemplateJSON()
+        , threads: threads
+        , threadCount: queryResult.total
+        , isOwner: isOwner
+      });
+    });
+  });
+});
+
 // ======================================
 // Threads
 // ======================================
@@ -141,14 +181,7 @@ app.get('/account/logout', function(req, res){
 app.get('/:userId/:threadName', function(req, res, next) {
   var userId = req.params.userId;
   // HACK: we only want to handle threads and not other stuff
-  if (userId in {
-      'js': ''
-    , 'css': ''
-    , 'vendor': ''
-    , 'img': ''
-    , 'account': ''
-    , 'dashboard': ''
-    }) {
+  if (userId in routePrefixes) {
     next();
     return;
   }
