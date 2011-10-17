@@ -82,11 +82,7 @@ function setCurrentUser(req, callback) {
 // ======================================
 
 app.get('/', function(req, res){
-  if (req.currentUser) {
-    res.send('');
-  } else {
-    res.render('index.html', {});
-  }
+  res.render('index.html', {});
 });
 
 
@@ -102,6 +98,7 @@ app.post('/account/register', function(req, res){
   // TODO: check form validates (e.g. password valid etc)
   account = dao.Account.create({
       id: req.body.username
+    , fullname: req.body.fullname
     , email: req.body.email
   });
   account.setPassword(req.body.password);
@@ -109,7 +106,7 @@ app.post('/account/register', function(req, res){
     req.flash('success', 'Thanks for signing-up');
     // log them in
     req.session.hypernotesIdentity = account.id;
-    res.redirect('/');
+    res.redirect('/' + account.id);
   });
 });
 
@@ -124,7 +121,7 @@ app.post('/account/login', function(req, res){
     if (account && account.checkPassword(password)) {
       req.flash('success', 'Welcome, you are now logged in.');
       req.session.hypernotesIdentity = account.id;
-      res.redirect('/');
+      res.redirect('/' + account.id);
     } else {
       req.flash('error', 'Bad username or password');
       res.render('account/login.html', {});
