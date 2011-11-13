@@ -51,8 +51,8 @@ First version was Microfacts / Weaving History <http://weavinghistory.org>
 The Plan
 ========
 
-  1. Basic Thread UI (DONE) - see #8
-  2. Model + API - Note, Thread, User (DONE) - see #2
+  1. [DONE] Basic Thread UI - see #8
+  2. [DONE] Model + API - Note, Thread, User - see #2
   3. Wire UI up to API - see #3
   4. Fuller thread UI
 
@@ -60,7 +60,7 @@ The Plan
     * Note editing (inline and full)
     * Thread editing
 
-  5. User Signup and Login - see #4 and #5
+  5. [DONE] User Signup and Login - see #4 and #5
   6. Create Thread - see #6
   7. Authorization and Permissions (basic)
 
