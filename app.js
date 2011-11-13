@@ -1,6 +1,7 @@
 var express = require('express');
 
 var dao = require('./dao.js');
+var util = require('./util.js');
 
 var app = module.exports = express.createServer();
 
@@ -56,6 +57,10 @@ app.dynamicHelpers({
   messages: function(req,res) {
     return getFlashMessages(req);
   }
+});
+
+app.helpers({
+  distanceOfTimeInWords: util.distanceOfTimeInWords
 });
 
 app.all('*', function(req, res, next) {
@@ -163,7 +168,6 @@ app.get('/:userId', function(req, res, next) {
     dao.Thread.getByOwner(userId, function(queryResult) {
       var threads = [];
       queryResult.results.forEach(function(item, idx) {
-        console.log(item);
         threads.push(item.toTemplateJSON());
       });
       var isOwner = (req.currentUser && req.currentUser.id == userId);
