@@ -97,6 +97,8 @@ exports.basic= testCase({
     test.ok(!account.id);
     account.save(function() {
       test.ok(account.id);
+      var _now = new Date().toISOString();
+      test.equal(account.getattr('_created').slice(0,4), _now.slice(0,4));
     });
 
     var account = dao.Account.create({

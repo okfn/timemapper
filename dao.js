@@ -116,6 +116,12 @@ var DomainObject = {
       .exec()
   }
   , upsert: function(data, callback) {
+    // creation (insert)
+    var _now = new Date();
+    data._last_modified = _now.toISOString();
+    if (!data._created) {
+      data._created = _now.toISOString();
+    }
     esclient.index(config.databaseName, this.__type__, data)
       .on('data', function(outData) {
           // TODO: deep copy?
@@ -130,8 +136,9 @@ var DomainObject = {
   , save: function(callback) {
     var self = this;
     this.upsert(this._data, function(data) {
-      // TODO: ? set this._data (would data have changed?)
       self.id = data.id;
+      // set self._data e.g. for _created and _last_modified
+      self._data = data;
       callback(data);
     });
   }
