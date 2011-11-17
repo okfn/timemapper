@@ -44,6 +44,13 @@
     <script src="/js/template.js"></script> 
     <script src="/js/view.js"></script> 
     <script src="/js/app.js"></script> 
+    <script type="text/javascript">
+      var global = {};
+      global.currentUserId = null;
+      {{if currentUser}}
+      global.currentUserId = '${currentUser.id}';
+      {{/if}}
+    </script>
   </head>
 
   <body>

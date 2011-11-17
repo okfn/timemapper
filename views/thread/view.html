@@ -12,9 +12,10 @@ var preload_thread = {{html threadJSON}};
 jQuery(function($) {
   var config = {
     account: {
-      id: 'tester'
+      id: global.currentUserId
     }
-  }
+  };
+  console.log(config);
   HyperNotes.Controller.initialize(config);
 });
 </script>
