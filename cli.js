@@ -10,12 +10,12 @@ if (args && args[0] == 'fixtures') {
   var noteIds = [];
   step(
     function makeAccount() {
-      dao.Account.upsert({
+      var acc = dao.Account.create({
         id: 'tester'
         , email: 'tester@okfn.org'
-        }
-        , this
-      );
+      });
+      acc.setPassword('tester');
+      acc.save(this);
     }
     , function makeNotes(account) {
       var group = this.group();
