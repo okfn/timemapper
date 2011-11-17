@@ -13,11 +13,6 @@ HyperNotes.Controller = function($) {
     initialize: function(environ) {
       this.environ = environ;
       this.environ.account = new HyperNotes.Model.Account(this.environ.config.account);
-      var self = this;
-      var $leftpane = $('.left-pane');
-      this.$thread = $('<div />').attr('class', '.page-view').attr('id', 'thread-page');
-      $leftpane.append(this.$thread);
-      this.threadView(preload_thread.id);
     },
 
     switchView: function(view) {
@@ -28,9 +23,12 @@ HyperNotes.Controller = function($) {
     index: function(query, page) {
     },
 
-    threadView: function(id) {
+    threadView: function(thread) {
+      var $leftpane = $('.left-pane');
+      this.$thread = $('<div />').attr('class', '.page-view').attr('id', 'thread-page');
+      $leftpane.append(this.$thread);
       var thread = new HyperNotes.Model.Thread({
-        id: id,
+        id: thread.id,
       });
       // hacky but best way to boot it i think
       thread.fetch({
@@ -55,6 +53,7 @@ HyperNotes.Controller = function($) {
     HyperNotes.environ = environ;
     my.workspace = new Workspace(environ);
     Backbone.history.start()
+    return my.workspace;
   };
 
   return my;

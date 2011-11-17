@@ -15,7 +15,7 @@ jQuery(function($) {
       id: global.currentUserId
     }
   };
-  console.log(config);
-  HyperNotes.Controller.initialize(config);
+  var workspace = HyperNotes.Controller.initialize(config);
+  workspace.threadView(preload_thread);
 });
 </script>
