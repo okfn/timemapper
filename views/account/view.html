@@ -1,11 +1,13 @@
 <div class="account view">
-  <h1>${account.id} (${account.fullname})</h1>
+  <h1>${account.id}</h1>
 
   <div class="row">
     <div class="span12">
       <dl class="vcard">
         <dt>Member since</dt>
         <dd>${distanceOfTimeInWords(account._created)}</dd>
+        <dt>Name</dt>
+        <dd>${account.fullname}</dd>
       </dl>
     </div>
     <div class="span4">

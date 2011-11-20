@@ -13,6 +13,7 @@ if (args && args[0] == 'fixtures') {
       var acc = dao.Account.create({
         id: 'tester'
         , email: 'tester@okfn.org'
+        , fullname: 'The Tester'
       });
       acc.setPassword('tester');
       acc.save(this);
