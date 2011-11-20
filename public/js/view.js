@@ -196,6 +196,45 @@ HyperNotes.View = function($) {
     }
   });
 
+  my.ThreadCreate = Backbone.View.extend({
+    initialize: function() {
+    },
+
+    events: {
+      'submit form': 'onFormSubmit'
+      , 'change input[name="title"]': 'onTitleChange'
+    },
+
+    onFormSubmit: function(e) {
+      e.preventDefault();
+      var self = this;
+      var _data = $(e.target).serializeArray();
+      var modelData = {};
+      _.each(_data, function(item) {
+        modelData[item.name] = item.value;
+      });
+      this.model.set(modelData);
+      var $createBtn = this.el.find('form .action input');
+      $createBtn.val('Saving ...');
+      this.model.save()
+        .then(function() {
+          window.location = window.location + '/' + self.model.get('name');
+        })
+        .fail(function() {
+          alert('Failed ' + arguments);
+        });
+        ;
+    },
+
+    onTitleChange: function(e) {
+      var title = $(e.target).val();
+      title = title.toLowerCase().replace(/ /g, '-');
+      title = title.replace(/[^a-z0-9._-]/g, '');
+      var $name = this.el.find('input[name="name"]');
+      $name.val(title);
+    }
+  });
+
   return my;
 }(jQuery);
 

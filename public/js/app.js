@@ -45,6 +45,16 @@ HyperNotes.Controller = function($) {
         collection: thread.notes
       });
       my.timemap.render();
+    },
+
+    accountView: function() {
+      var thread = new HyperNotes.Model.Thread({
+        owner: this.environ.account.id
+      });
+      my.threadCreateView = new HyperNotes.View.ThreadCreate({
+        el: $('.thread-create-form') 
+        , model: thread
+      });
     }
   });
   

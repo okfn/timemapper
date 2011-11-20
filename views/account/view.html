@@ -27,14 +27,17 @@
     <div class="span4">
       {{if isOwner}}
       <div class="thread-create-form">
-        <h3>Create new thread</h3>
-        <p><span class="label warning">Not yet operational</span></p>
+        <h3>Create a new thread</h3>
         <form method="post" action="" class="form-stacked">
           <fieldset>
             <div class="clearfix">
               <label for="title">Title</label>
               <div class="input">
-                <input type="text" name="title">
+                <input type="text" name="title" />
+              </div>
+              <label for="name">Name (used in url)</label>
+              <div class="input">
+                <input type="text" name="name" />
               </div>
             </div>
             <div class="action">
@@ -47,3 +50,14 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+jQuery(function($) {
+  var config = {
+    account: {
+      id: global.currentUserId
+    }
+  };
+  var workspace = HyperNotes.Controller.initialize(config);
+  workspace.accountView();
+});
+</script>
