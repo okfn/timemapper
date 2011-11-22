@@ -36,11 +36,30 @@ Then install the dependencies::
 Run Tests
 ---------
 
-For node tests we use nodeunit (please install this first)::
+Ensure nodeunit is installed globally. Run::
 
-  nodeunit {test-file}
+  sudo npm install -g nodeunit
 
-Javascript tests just open test/index.html in a browser.
+To run nodeunit, use::
+
+  nodeunit {test-file-or-folder}
+
+So to execute all hypernotes tests::
+
+  cd hypernotes
+  nodeunit test
+
+To run javascript tests just open test/index.html in a browser.
+
+
+Run Application
+---------------
+
+Start the application server::
+
+  node app.js
+
+To view the site, open localhost:3000 in a browser.
 
 
 Background
