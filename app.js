@@ -107,6 +107,13 @@ app.get('/about', function(req, res){
 // User Accounts
 // ======================================
 
+app.get('/account', function(req, res){
+  var qryObj = {};
+  dao.Account.search(qryObj, function(queryResult) {
+    res.render('account/list.html', {accounts: queryResult.toJSON()});
+  });
+});
+
 app.get('/account/register', function(req, res){
   res.render('account/register.html', {});
 });
@@ -242,9 +249,8 @@ app.put('/api/v1/:objecttype/:id?', apiUpsert);
 app.get('/api/v1/:objecttype', function(req,res) {
   var objName = req.params.objecttype[0].toUpperCase() + req.params.objecttype.slice(1); 
   var klass = dao[objName];
-  q = req.params.q;
-  qryObj = {
-  }
+  var q = req.params.q;
+  var qryObj = {};
   klass.search(qryObj, function(queryResult) {
     res.send(queryResult.toJSON());
   });

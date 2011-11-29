@@ -46,6 +46,10 @@ Object.prototype.extend = function(properties) {
 // =================================
 // DAO Helpers
 
+// QueryResult object
+//
+// Encapsulate result from ElasticSearch queries and providing helper methods
+// (like toJSON)
 var QueryResult = function(type, data) {
   this.type = getDomainObjectClass(type);
   this.data = data;
