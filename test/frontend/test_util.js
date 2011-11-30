@@ -50,12 +50,8 @@ test("Parse note summary", function () {
       output: {
         title: "A test note",
         tags: ['abc'],
-        start: {
-          unparsed: '1st January 1900'
-        },
-        end: {
-          unparsed: '1st January 2010'
-        }
+        start: '1st January 1900',
+        end: '1st January 2010'
       }
     }
   ];

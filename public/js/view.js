@@ -127,6 +127,7 @@ HyperNotes.View = function($) {
           theme: "orange",
           type: "basic",
           options: {
+            eventIcon: '/vendor/timemap/2.0/images/orange-circle.png',
             items: []
           }
         }
@@ -135,14 +136,17 @@ HyperNotes.View = function($) {
         model = model.toJSON();
         var timemapObj = {
           title : model.title,
-          start : model.start.parsed,
-          end : model.end.parsed,
+          start : model.start_parsed || model.start,
           point: {
               lon : model.location.centroid[0],
               lat : model.location.centroid[1]
            },
           options : {}
         };
+        // timemap behaves oddly if you give it a null end date
+        if (model.end) {
+          timemapObj.end = model.end_parsed || model.end;
+        }
         datasets[0].options.items.push(timemapObj);
       });
       return datasets;

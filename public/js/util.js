@@ -30,10 +30,10 @@ HyperNotes.Util = function() {
       ourtext = ourtext.replace(regex, '');
     }
     if (tmp.length>=1) {
-      result['start'] = { unparsed: tmp[0] };
+      result['start'] = tmp[0];
     }
     if (tmp.length>=2) {
-      result['end'] = { unparsed: tmp[1] };
+      result['end'] = tmp[1];
     }
 
     result.title = $.trim(ourtext);

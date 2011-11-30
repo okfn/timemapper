@@ -32,5 +32,5 @@ test("createNoteFromSummary", function () {
     note = out;
   });
   console.log(note);
-  equals(note.get('start').parsed.toISOString(), '1914-07-31T23:00:00.000Z');
+  equals(note.get('start_parsed').toISOString(), '1914-07-31T23:00:00.000Z');
 });

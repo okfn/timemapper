@@ -19,12 +19,8 @@ HyperNotes.Model = function($) {
         unparsed: '',
         centroid: [null, null]
       },
-      start: {
-        unparsed: ''
-      },
-      end: {
-        unparsed: ''
-      }
+      start: null,
+      end: null,
     },
     urlRoot: '/api/v1/note'
   });
@@ -34,10 +30,10 @@ HyperNotes.Model = function($) {
   my.createNoteFromSummary = function(summary, callback) {
     var parsed = HyperNotes.Util.parseNoteSummary(summary);
     if (parsed.start) {
-      parsed.start.parsed = Date.parse(parsed.start.unparsed);
+      parsed.start_parsed = Date.parse(parsed.start);
     }
     if (parsed.end) {
-      parsed.end.parsed = Date.parse(parsed.end.unparsed);
+      parsed.end_parsed = Date.parse(parsed.end);
     }
     if (parsed.location && parsed.location.unparsed != '') {
       HyperNotes.Util.lookupLocation(parsed.location.unparsed, function(data) {
