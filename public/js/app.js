@@ -47,6 +47,16 @@ HyperNotes.Controller = function($) {
       my.timemap.render();
     },
 
+    threadTimeMap: function(thread) {
+      var thread = new HyperNotes.Model.Thread(thread);
+      thread.updateNoteList();
+      my.timemap = new HyperNotes.View.TimeMapView({
+        el: $('.timemap'),
+        collection: thread.notes
+      });
+      my.timemap.render();
+    },
+
     accountView: function() {
       var thread = new HyperNotes.Model.Thread({
         owner: this.environ.account.id
