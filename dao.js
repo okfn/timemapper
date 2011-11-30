@@ -131,9 +131,16 @@ var DomainObject = {
           // TODO: deep copy?
           var out = data;
           var esOut = JSON.parse(outData);
-          // TODO: copy over _version as well?
-          out.id = esOut._id;
-          callback(out);
+          if (esOut.status != undefined) {
+            var msg = '*********** ERROR\nError on upsert: ' + esOut.error;
+            console.log(msg);
+            console.log(data);
+            throw msg;
+          } else {
+            // TODO: copy over _version as well?
+            out.id = esOut._id;
+            callback(out);
+          }
       })
       .exec()
   }
