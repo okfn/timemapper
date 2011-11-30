@@ -1,5 +1,7 @@
-var dao = require('./dao.js');
 var step = require('step');
+
+var dao = require('./dao.js');
+var loader = require('./loader.js');
 
 // removes 'node' and this script
 args = process.ARGV.splice(2);
@@ -61,7 +63,18 @@ if (args && args[0] == 'fixtures') {
         console.log('DB rebuilt');
       })
     .exec();
+} else if (args && args[0] == 'load') {
+  if (args.length < 3) {
+    console.log('Usage: load {filepath} {owner-user-id}');
+    return;
+  }
+  var filepath = args[1];
+  var owner = args[2];
+  loader.load(filepath, owner, function(thread) {
+    console.log('Successfully loaded thread: ' + thread.id + ' (' + thread.title + ')');
+  });
+
 } else {
-  console.log('Commands are: fixtures | rebuild_db');
+  console.log('Commands are: fixtures | rebuild_db | load ');
 }
 
