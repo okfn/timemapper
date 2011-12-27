@@ -60,3 +60,17 @@ ul.thread-summary-list {
 .thread-summary-list h3 {
 
 }
+
+/******* Thread View **********/
+
+.thread .description {
+  font-style: italic;
+}
+
+.snippet {
+  max-height: 50px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+

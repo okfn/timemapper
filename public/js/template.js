@@ -10,6 +10,9 @@ HyperNotes.Template = {
         <h3 class="title"> \
           ${note.title} \
         </h3> \
+        <div class="description snippet"> \
+          ${note.description} \
+        </div> \
         <div class="location"> \
           {{if note.location.unparsed}} \
           @${note.location.unparsed} \
