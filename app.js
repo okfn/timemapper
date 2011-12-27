@@ -103,6 +103,27 @@ app.get('/about', function(req, res){
   res.render('about.html', {});
 });
 
+app.get('/search', function(req, res){
+  var qryObj = {};
+  var q = '';
+  if (req.query.q) {
+    q = req.query.q;
+    var qryObj = {
+      query: {
+        query_string: {
+          query: req.query.q
+        }
+      }
+    };
+  }
+  dao.Thread.search(qryObj, function(queryResult) {
+    res.render('search.html', {
+      threads: queryResult.toJSON()
+      , q: q
+    });
+  });
+});
+
 // ======================================
 // User Accounts
 // ======================================

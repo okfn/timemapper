@@ -1,0 +1,25 @@
+<h1>Search Results</h1>
+<div class="row">
+  <div class="span8">
+    <form action="" class="form-stacked">
+      <fieldset>
+        <div class="clearfix">
+          <div class="input">
+            <input type="text"
+              name="q"
+              value="${q}"
+              placeholder="search"
+              class="xlarge" />
+            <button type="submit" class="btn primary">Search &raquo;</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+
+    <h3>Threads (${threads.total})</h3>
+    {{partial({'threads': threads.results}) "thread-summary.html"}}
+  </div>
+
+  <div class="span8">
+  </div>
+</div>
