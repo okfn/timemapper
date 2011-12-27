@@ -3,9 +3,6 @@ var HyperNotes = HyperNotes || {};
 HyperNotes.View = function($) {
   var my = {};
 
-  my.NoteAddView = Backbone.View.extend({
-  });
-
   my.NoteView = Backbone.View.extend({
     tagName:  "li",
 
@@ -61,14 +58,8 @@ HyperNotes.View = function($) {
 
   my.NoteListView = Backbone.View.extend({
     // Delegated events for creating new items, and clearing completed ones.
-    events: {
-      "keypress #new-note":  "createOnEnter",
-    },
-
     initialize: function() {
       _.bindAll(this, 'addOne', 'addAll', 'render', 'removeOne');
-
-      this.input    = this.$("#new-note");
 
       this.collection.bind('add',     this.addOne);
       this.collection.bind('reset', this.addAll);
@@ -87,26 +78,6 @@ HyperNotes.View = function($) {
 
     removeOne: function(note) {
       this.collection.remove(note);
-    },
-
-    createOnEnter: function(e) {
-      var self = this;
-      // enter key
-      if (e.keyCode != 13) return;
-      var summary = this.input.val();
-      HyperNotes.Model.createNoteFromSummary(summary, function(newNote) {
-        newNote.set({'owner': HyperNotes.environ.account.id});
-        // only add once we have saved and have id ...
-        newNote.save(null, {
-          success: function(data) {
-            self.collection.add(newNote);
-          },
-          error: function(data) {
-            // TODO
-          }
-        });
-      });
-      this.input.val('');
     }
   });
 
@@ -178,6 +149,10 @@ HyperNotes.View = function($) {
   });
 
   my.ThreadView = Backbone.View.extend({
+    events: {
+      "keypress #new-note":  "createOnEnter",
+    },
+
     initialize: function() {
       _.bindAll(this, 'render');
       this.model.bind('change', this.render);
@@ -191,12 +166,37 @@ HyperNotes.View = function($) {
         el: this.$notelist,
         collection: this.model.notes
         });
+      this.timemap = new HyperNotes.View.TimeMapView({
+        el: this.el.find('#timemap'),
+        collection: this.model.notes
+      });
+      this.timemap.render();
     },
 
     render: function() {
-      this.el.find('.thread > .title').html(this.model.get('title'));
-      this.el.find('.thread .description').html(this.model.get('description'));
+      this.el.find('h1.title').html(this.model.get('title'));
+      this.el.find('.thread-info .description').html(this.model.get('description'));
       return this;
+    },
+
+    createOnEnter: function(e) {
+      var self = this;
+      // enter key
+      if (e.keyCode != 13) return;
+      var summary = this.el.find('#new-note').val();
+      HyperNotes.Model.createNoteFromSummary(summary, function(newNote) {
+        newNote.set({'owner': HyperNotes.environ.account.id});
+        // only add once we have saved and have id ...
+        newNote.save(null, {
+          success: function(data) {
+            self.model.notes.add(newNote);
+          },
+          error: function(data) {
+            // TODO
+          }
+        });
+      });
+      this.input.val('');
     }
   });
 

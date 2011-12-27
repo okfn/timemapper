@@ -50,18 +50,26 @@ HyperNotes.Template = {
   ',
 
   thread: ' \
-    <div class="thread"> \
-      <h2 class="title">${thread.title}</h2> \
-      <p class="description">${thread.description}</p> \
-      <div class="noteapp"> \
-        <h2>Quick Add and Edit</h2> \
-        <div id="create-note"> \
-          <input id="new-note" placeholder="Add note then enter to save, use #... for tag, ^...^ for dates, @...@ for location" type="text" /> \
+    <h1 class="title">${thread.title}</h1> \
+    <div class="thread-info"> \
+      <p class="description snippet">${thread.description}</p> \
+    </div> \
+    <div class="row"> \
+      <div class="span8 left-pane"> \
+        <div class="noteapp"> \
+          <div id="notes"> \
+            <ul id="note-list"></ul> \
+          </div> \
         </div> \
- \
-        <div id="notes"> \
-          <ul id="note-list"></ul> \
+      </div> \
+      <div class="span8 right-pane"> \
+        <div class="note quick-add"> \
+          <h3>Quick Add</h3> \
+          <div class="create-note"> \
+            <input id="new-note" placeholder="Add note then enter to save, use #... for tag, ^...^ for dates, @...@ for location" type="text" /> \
+          </div> \
         </div> \
+        <div id="timemap"></div> \
       </div> \
     </div> \
   ',

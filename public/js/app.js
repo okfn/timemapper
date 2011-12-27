@@ -24,9 +24,7 @@ HyperNotes.Controller = function($) {
     },
 
     threadView: function(thread) {
-      var $leftpane = $('.left-pane');
-      this.$thread = $('<div />').attr('class', '.page-view').attr('id', 'thread-page');
-      $leftpane.append(this.$thread);
+      this.$thread = $('.thread.view');
       var thread = new HyperNotes.Model.Thread({
         id: thread.id,
       });
@@ -40,11 +38,6 @@ HyperNotes.Controller = function($) {
         el: this.$thread,
         model: thread
         });
-      my.timemap = new HyperNotes.View.TimeMapView({
-        el: $('#timemap'),
-        collection: thread.notes
-      });
-      my.timemap.render();
     },
 
     threadTimeMap: function(thread) {

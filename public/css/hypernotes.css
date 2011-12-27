@@ -7,17 +7,8 @@
   margin: 0;
   padding: 0;
 }
-  .noteapp h2 {
-    font-weight: bold;
-    padding: 0;
-    margin: 10px 0;
-    line-height: 1;
-  }
 
-#create-note {
-  position: relative;
-}
-  #create-note input {
+  .create-note input {
     width: 100%;
     font-family: inherit;
     line-height: 1.4em;
@@ -33,13 +24,6 @@
     #create-note input::-webkit-input-placeholder {
       font-style: italic;
     }
-  #create-note span {
-    position: absolute;
-    z-index: 999;
-    width: 170px;
-    left: 50%;
-    margin-left: -85px;
-  }
 
 #note-list {
   margin: 0;
