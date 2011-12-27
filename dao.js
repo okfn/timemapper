@@ -158,8 +158,15 @@ var DomainObject = {
     esclient.search(config.databaseName, this.__type__, qryObj)
       .on('data', function(data) {
         var parsed = JSON.parse(data);
-        var out = new QueryResult(self.__type__, parsed);
-        callback(out);
+        if (parsed.status != undefined) {
+          var msg = '*********** ERROR\nError on search: ' + parsed.error;
+          console.log(msg);
+          console.log(parsed);
+          throw msg;
+        } else {
+          var out = new QueryResult(self.__type__, parsed);
+          callback(out);
+        }
       })
       .exec();
   }
