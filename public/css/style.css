@@ -81,6 +81,37 @@ ul.thread-summary-list {
 }
 
 /**********************************************************
+  * Note List
+  *********************************************************/
+
+.note-list ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: none;
+}
+  .note-list ul > li {
+    padding: 0px 0px 8px 0;
+    border-bottom: 1px solid #cccccc;
+  }
+  .note-list ul .note-destroy {
+    position: absolute;
+    right: 5px;
+    top: 9px;
+    display: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background: url(../img/destroy.png) no-repeat 0 0;
+  }
+    .note-list ul li:hover .note-destroy {
+      display: block;
+    }
+    .note-list ul .note-destroy:hover {
+      background-position: 0 -20px;
+    }
+
+/**********************************************************
   * Note Summary
   *********************************************************/
 
