@@ -16,9 +16,9 @@ HyperNotes.Template = {
           {{/if}} \
         </div> \
         <div class="temporal"> \
-          ${note.start.unparsed} \
-          {{if note.end.unparsed }} \
-           - ${note.end.unparsed} \
+          ${note.start} \
+          {{if note.end}} \
+           - ${note.end} \
           {{/if}} \
         </div> \
         <div class="tags"> \
