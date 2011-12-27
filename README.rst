@@ -16,14 +16,16 @@ automatically import Wikipedia articles and much more ...
 Install
 ======= 
 
-This is a nodejs web-app built using express.
+This is a nodejs_ web-app built using express.
+
+.. _nodejs: http://nodejs.org/
 
 For storage it uses `ElasticSearch`_ which should be running in http mode on
 port 9200.
 
 .. _ElasticSearch: http://www.elasticsearch.org/
 
-Checkout the code::
+Install nodejs_ (>=0.4,<0.5) and npm_ then checkout the code::
 
   git clone https://github.com/okfn/hypernotes
 
@@ -31,6 +33,8 @@ Then install the dependencies::
 
   cd hypernotes
   npm install . 
+
+.. _npm: http://npmjs.org/
 
 
 Run Tests
