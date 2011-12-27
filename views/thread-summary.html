@@ -2,7 +2,7 @@
   {{each(idx, thread) threads}}
   <li>
     <h3>
-      <a href="/${thread.owner}/${thread.name}">${thread.title}</a>
+      <a href="/${thread.owner}/${thread.name}">${thread.owner} / ${thread.title}</a>
     </h3>
     ${thread.description}
   </li>
