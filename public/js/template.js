@@ -34,9 +34,6 @@ HyperNotes.Template = {
           {{/if}} \
         </div> \
       </div> \
-      <div class="edit"> \
-        <input class="note-input" type="text" value="${label}" name="label" /> \
-      </div> \
     </div> \
   ',
 
@@ -56,18 +53,25 @@ HyperNotes.Template = {
     </div> \
     <div class="row"> \
       <div class="span8 left-pane"> \
-        <div class="noteapp"> \
-          <div id="notes"> \
-            <ul id="note-list"></ul> \
-          </div> \
+        <div class="note-list"> \
+          <ul></ul> \
         </div> \
       </div> \
       <div class="span8 right-pane"> \
         <div class="note quick-add"> \
-          <h3>Quick Add</h3> \
-          <div class="create-note"> \
-            <input id="new-note" placeholder="Add note then enter to save, use #... for tag, ^...^ for dates, @...@ for location" type="text" /> \
-          </div> \
+          <form class="create-note"> \
+            <label for="new-note">Quick Add</label> \
+            <div class="input"> \
+              <input \
+                id="new-note" \
+                name="new-note" \
+                placeholder="My note title #my-tag ^1st September 1939^ @New York@" \
+                type="text" /> \
+            </div> \
+            <span class="help-block"> \
+              Add note then enter to save. Use #... for tags, ^...^ for dates, @...@ for location \
+            </span> \
+          </form> \
         </div> \
         <div id="timemap"></div> \
       </div> \

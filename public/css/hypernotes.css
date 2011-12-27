@@ -1,77 +1,14 @@
-/**********************************************************
-  * Quick Add App
-  *********************************************************/
-
-/* main container is 950px. So half = 475px */
-.noteapp {
+.note-list ul {
   margin: 0;
   padding: 0;
-}
-
-  .create-note input {
-    width: 100%;
-    font-family: inherit;
-    line-height: 1.4em;
-    border: 0;
-    outline: none;
-    padding: 6px;
-    border: 1px solid #999999;
-    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
-    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
-    -o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
-    box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
-  }
-    #create-note input::-webkit-input-placeholder {
-      font-style: italic;
-    }
-
-#note-list {
-  margin: 0;
-  padding: 0;
-  margin-top: 10px;
   list-style: none;
   border: none;
-  line-height: 1.1em;
 }
-  #note-list > li {
-    padding: 12px 20px 8px 0;
-    position: relative;
+  .note-list ul > li {
+    padding: 0px 0px 8px 0;
     border-bottom: 1px solid #cccccc;
   }
-    #note-list > li:after {
-      content: "\0020";
-      display: block;
-      height: 0;
-      clear: both;
-      overflow: hidden;
-      visibility: hidden;
-    }
-    #note-list > li.editing {
-      padding: 0;
-      border-bottom: 0;
-    }
-  #note-list .editing .display,
-  #note-list .edit {
-    display: none;
-  }
-    #note-list .editing .edit {
-      display: block;
-    }
-    #note-list .editing input {
-      width: 468px;
-      font-family: inherit;
-      margin: 0;
-      line-height: 1.6em;
-      border: 0;
-      outline: none;
-      padding: 10px 7px 0px 0px;
-      border: 1px solid #999999;
-      -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
-      -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
-      -o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
-      box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
-    }
-  #note-list .note-destroy {
+  .note-list ul .note-destroy {
     position: absolute;
     right: 5px;
     top: 9px;
@@ -81,64 +18,42 @@
     height: 20px;
     background: url(../img/destroy.png) no-repeat 0 0;
   }
-    #note-list li:hover .note-destroy {
+    .note-list ul li:hover .note-destroy {
       display: block;
     }
-    #note-list .note-destroy:hover {
+    .note-list ul .note-destroy:hover {
       background-position: 0 -20px;
     }
 
-.note-summary .title {
-  margin: 0 0 5px 0;
-}
-
-.note-summary ul.tags {
-  padding-left: 0; 
-}
-
-  .note-summary ul.tags li {
-      display:inline;
-      margin:0;
-      padding:0 5px 2px 5px;
-      border:none;
-      font-weight:normal;
-      font-size:0.8em;
-      color: black;
-      background:#afc6e9;
-  }
-
-.note-summary .temporal {
-  font-style: italic;
-}
 
 /**********************************************************
   * Time Map
   *********************************************************/
 
 #timemap {
-  padding: 30px 0px 0px 50px;
+  padding: 5px 0px 0px 0px;
 }
 
 div#timelinecontainer{
   width: 100%;
-  height: 250px;
+  height: 225px;
 }
 
 div#timeline{
- width: 100%;
- height: 100%;
- font-size: 12px;
- background: #CCCCCC;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  background: #CCCCCC;
 }
 
 div#mapcontainer {
- width: 100%;
- height: 350px;
+  width: 100%;
+  height: 300px;
 }
 
 div#map {
- width: 100%;
- height: 100%;
- background: #EEEEEE;
+  width: 100%;
+  height: 100%;
+  background: #EEEEEE;
 }
 

@@ -69,7 +69,7 @@ HyperNotes.View = function($) {
 
     addOne: function(note) {
       var view = new my.NoteView({model: note});
-      $("#note-list").append(view.render().el);
+      this.el.find('> ul').append(view.render().el);
     },
 
     addAll: function() {
@@ -161,7 +161,7 @@ HyperNotes.View = function($) {
       }
       var templated = $.tmpl(HyperNotes.Template.thread, tmplData);
       $(this.el).html(templated);
-      this.$notelist = this.el.find('.noteapp');
+      this.$notelist = this.el.find('.note-list');
       this.noteListView = new HyperNotes.View.NoteListView({
         el: this.$notelist,
         collection: this.model.notes
