@@ -138,6 +138,19 @@ ul.thread-summary-list {
   font-style: italic;
 }
 
+.note-summary .image {
+  float: right;
+  width: 90px;
+}
+
+.note-summary .image img {
+  width: 90px;
+}
+
+.note-summary .action {
+  display: none;
+}
+
 /**********************************************************
   * Note Quick Add App
   *********************************************************/
