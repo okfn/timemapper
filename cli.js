@@ -58,9 +58,23 @@ if (args && args[0] == 'fixtures') {
     }
   );
 } else if (args && args[0] == 'rebuild_db') {
+  var mappings = {
+    mappings: {
+      note: {
+        properties: {
+            start: { type: 'string' }
+          , end: { type: 'string' }
+        }
+      }
+    }
+  };
   dao.esclient.deleteIndex(dao.config.databaseName)
     .on('done', function() {
-        console.log('DB rebuilt');
+        dao.esclient.createIndex(dao.config.databaseName, mappings)
+          .on('done', function() {
+            console.log('DB rebuilt');
+          })
+          .exec()
       })
     .exec();
 } else if (args && args[0] == 'load') {
