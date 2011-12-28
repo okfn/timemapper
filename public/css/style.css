@@ -115,15 +115,11 @@ ul.thread-summary-list {
   * Note Summary
   *********************************************************/
 
-.note-summary .title {
-  margin: 0 0 5px 0;
-}
-
-.note-summary ul.tags {
+.note.view ul.tags {
   padding-left: 0; 
 }
 
-  .note-summary ul.tags li {
+  .note.view ul.tags li {
       display:inline;
       margin:0;
       padding:0 5px 2px 5px;
@@ -134,20 +130,20 @@ ul.thread-summary-list {
       background:#afc6e9;
   }
 
-.note-summary .temporal {
+.note.view .temporal {
   font-style: italic;
 }
 
-.note-summary .image {
+.note.view .image {
   float: right;
   width: 90px;
 }
 
-.note-summary .image img {
+.note.view .image img {
   width: 90px;
 }
 
-.note-summary .action {
+.note.view .action {
   display: none;
 }
 
@@ -155,18 +151,18 @@ ul.thread-summary-list {
   * Note Quick Add App
   *********************************************************/
 
-form.create-note label {
+.note.quick-add form label {
   font-weight: bold;
   font-size: 18px;
   width: 100px;
   text-align: left;
 }
 
-form.create-note .input {
+.note.quick-add form .input {
   margin-left: 110px;
 }
 
-form.create-note input {
+.note.quick-add form input {
   width: 100%;
 }
 

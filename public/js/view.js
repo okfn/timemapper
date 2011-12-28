@@ -13,7 +13,7 @@ HyperNotes.View = function($) {
 
   my.NoteView = Backbone.View.extend({
     template: ' \
-      <div class="note-summary"> \
+      <div class="note view"> \
         <div class="display"> \
           {{if permissions.edit}} \
           <div class="action"> \
@@ -195,7 +195,7 @@ HyperNotes.View = function($) {
 
   my.ThreadView = Backbone.View.extend({
     events: {
-      "keypress #new-note":  "createOnEnter",
+      "submit .note.quick-add form":  "createOnEnter",
     },
 
     initialize: function() {
@@ -227,11 +227,11 @@ HyperNotes.View = function($) {
     },
 
     createOnEnter: function(e) {
-      e.preventDefault();
       var self = this;
-      // enter key
-      if (e.keyCode != 13) return;
-      var summary = this.el.find('#new-note').val();
+      e.preventDefault();
+      var $form = $(e.target);
+      var $input = $form.find('input[name="new-note"]');
+      var summary = $input.val();
       HyperNotes.Model.createNoteFromSummary(summary, function(newNote) {
         newNote.set({'owner': HyperNotes.environ.account.id});
         // only add once we have saved and have id ...
@@ -244,7 +244,7 @@ HyperNotes.View = function($) {
           }
         });
       });
-      this.input.val('');
+      $input.val('');
     }
   });
 

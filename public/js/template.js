@@ -24,11 +24,10 @@ HyperNotes.Template = {
       <div class="span8 right-pane"> \
         {{if permissions.edit}} \
         <div class="note quick-add"> \
-          <form class="create-note"> \
+          <form> \
             <label for="new-note">Quick Add</label> \
             <div class="input"> \
               <input \
-                id="new-note" \
                 name="new-note" \
                 placeholder="My note title #my-tag ^1st September 1939^ @New York@" \
                 type="text" /> \
