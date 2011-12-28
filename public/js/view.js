@@ -3,6 +3,14 @@ var HyperNotes = HyperNotes || {};
 HyperNotes.View = function($) {
   var my = {};
 
+  my.getPermissions = function(model) {
+    var isOwner = (Boolean(model.get('owner')) && model.get('owner') == HyperNotes.environ.account.id);
+    return permissions = {
+      edit: isOwner
+      , delete: isOwner
+    };
+  },
+
   my.NoteView = Backbone.View.extend({
     tagName:  "li",
 
@@ -16,11 +24,13 @@ HyperNotes.View = function($) {
       _.bindAll(this, 'render', 'close');
       this.model.bind('change', this.render);
       this.model.view = this;
+      this.permissions = my.getPermissions(this.model);
     },
 
     render: function() {
       var tmplData = {
-        note: this.model.toJSON()
+        note: this.model.toJSON(),
+        permissions: this.permissions
       }
       var templated = $.tmpl(HyperNotes.Template.noteSummary, tmplData);
       $(this.el).html(templated);
@@ -156,9 +166,11 @@ HyperNotes.View = function($) {
     initialize: function() {
       _.bindAll(this, 'render');
       this.model.bind('change', this.render);
+      var permissions = my.getPermissions(this.model);
       var tmplData = {
         thread: this.model.toJSON()
-      }
+        , permissions: permissions
+      };
       var templated = $.tmpl(HyperNotes.Template.thread, tmplData);
       $(this.el).html(templated);
       this.$notelist = this.el.find('.note-list');

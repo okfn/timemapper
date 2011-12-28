@@ -4,10 +4,12 @@ HyperNotes.Template = {
   noteSummary: ' \
     <div class="note-summary"> \
       <div class="display"> \
+        {{if permissions.edit}} \
         <div class="action"> \
           <a href="#edit" class="action-edit">Edit</a> \
           <span class="note-destroy"></span> \
         </div> \
+        {{/if}} \
         <h3 class="title"> \
           ${note.title} \
         </h3> \
@@ -67,6 +69,7 @@ HyperNotes.Template = {
         </div> \
       </div> \
       <div class="span8 right-pane"> \
+        {{if permissions.edit}} \
         <div class="note quick-add"> \
           <form class="create-note"> \
             <label for="new-note">Quick Add</label> \
@@ -82,6 +85,7 @@ HyperNotes.Template = {
             </span> \
           </form> \
         </div> \
+        {{/if}} \
         <div id="timemap"></div> \
       </div> \
     </div> \

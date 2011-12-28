@@ -25,9 +25,7 @@ HyperNotes.Controller = function($) {
 
     threadView: function(thread) {
       this.$thread = $('.thread.view');
-      var thread = new HyperNotes.Model.Thread({
-        id: thread.id,
-      });
+      var thread = new HyperNotes.Model.Thread(thread);
       // hacky but best way to boot it i think
       thread.fetch({
         success: function() {
