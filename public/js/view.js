@@ -192,6 +192,7 @@ HyperNotes.View = function($) {
     },
 
     createOnEnter: function(e) {
+      e.preventDefault();
       var self = this;
       // enter key
       if (e.keyCode != 13) return;
