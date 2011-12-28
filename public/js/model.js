@@ -30,10 +30,10 @@ HyperNotes.Model = function($) {
   my.createNoteFromSummary = function(summary, callback) {
     var parsed = HyperNotes.Util.parseNoteSummary(summary);
     if (parsed.start) {
-      parsed.start_parsed = Date.parse(parsed.start);
+      parsed.start_parsed = HyperNotes.Util.parseDate(parsed.start);
     }
     if (parsed.end) {
-      parsed.end_parsed = Date.parse(parsed.end);
+      parsed.end_parsed = HyperNotes.Util.parseDate(parsed.end);
     }
     if (parsed.location && parsed.location.unparsed != '') {
       HyperNotes.Util.lookupLocation(parsed.location.unparsed, function(data) {

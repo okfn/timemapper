@@ -40,6 +40,20 @@ HyperNotes.Util = function() {
     return result;
   };
 
+  // Parse a date into ISO 8601 format (yyyy-mm-dd) using datejs library
+  // 
+  // @return: parsed date in yyyy-mm-dd format or null if could not parse.
+  //
+  // TODO: at the moment will always provide mm and dd even if not in input
+  my.parseDate = function(date) {
+    if (date) {
+      var parsedDate = Date.parse(date);
+      if (parsedDate) {
+        return parsedDate.toString('yyyy-MM-dd');
+      }
+    }
+  }
+
   my.lookupLocation = function(name, callback) {
     var geonamesApi = 'http://api.geonames.org/searchJSON?maxRows=1&username=okfn&q=';
     var queryUrl = geonamesApi + name;

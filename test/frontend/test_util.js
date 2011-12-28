@@ -62,6 +62,20 @@ test("Parse note summary", function () {
   }
 });
 
+test("parseDate ", function () {
+  var _data = [
+    {
+      input: '1st September 1914',
+      output: '1914-09-01'
+    }
+  ];
+  for(idx in _data) {
+    var _exp = _data[idx].output;
+    var _out = utils.parseDate(_data[idx].input);
+    equals(_out, _exp);
+  }
+});
+
 test('lookupLocation', function() {
   // Pause the test  
   stop();  
