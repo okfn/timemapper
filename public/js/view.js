@@ -12,7 +12,6 @@ HyperNotes.View = function($) {
   },
 
   my.NoteView = Backbone.View.extend({
-    tagName:  "li",
     template: ' \
       <div class="note-summary"> \
         <div class="display"> \
@@ -114,7 +113,8 @@ HyperNotes.View = function($) {
 
     addOne: function(note) {
       var view = new my.NoteView({model: note});
-      this.el.find('> ul').append(view.render().el);
+      var $li = $('<li />').append(view.render().el);
+      this.el.find('> ul').append($li);
     },
 
     addAll: function() {
