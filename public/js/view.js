@@ -12,9 +12,8 @@ HyperNotes.View = function($) {
   },
 
   my.NoteView = Backbone.View.extend({
+    className: 'note view summary',
     template: ' \
-      <div class="note view"> \
-        <div class="display"> \
           {{if permissions.edit}} \
           <div class="action"> \
             <a href="#edit" class="action-edit">Edit</a> \
@@ -29,7 +28,7 @@ HyperNotes.View = function($) {
             <img src="${note.image}" alt="image" class="thumbnail" /> \
           </div> \
           {{/if}} \
-          <div class="description snippet"> \
+          <div class="description"> \
             ${note.description} \
           </div> \
           <div class="location"> \
@@ -54,13 +53,13 @@ HyperNotes.View = function($) {
           </div> \
           <div> \
             <a href="#more" class="show-more">More &raquo;</a> \
+            <a href="#less" class="show-less">Less &laquo;</a> \
           </div> \
-        </div> \
-      </div> \
     ',
 
     events: {
-      'click .show-more' : 'onShowMore'
+      'click .show-more' : 'onShowMore',
+      'click .show-less' : 'onShowLess'
     },
 
     initialize: function() {
@@ -76,9 +75,8 @@ HyperNotes.View = function($) {
         permissions: this.permissions
       }
       var templated = $.tmpl(this.template, tmplData);
-      $(this.el).html(templated);
-      this.input = this.$('.note-input');
-      this.input.bind('blur', this.close);
+      this.el.html(templated);
+      this.el.addClass('summary');
       return this;
     },
 
@@ -89,6 +87,11 @@ HyperNotes.View = function($) {
     onShowMore: function(e) {
       e.preventDefault();
       this.el.removeClass('summary');
+    },
+
+    onShowLess: function(e) {
+      e.preventDefault();
+      this.el.addClass('summary');
     },
 
     clear: function() {

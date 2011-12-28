@@ -69,7 +69,7 @@ ul.thread-summary-list {
   * Threads - View
   *********************************************************/
 
-.thread .description {
+.thread-info .description {
   font-style: italic;
 }
 
@@ -112,8 +112,12 @@ ul.thread-summary-list {
     }
 
 /**********************************************************
-  * Note Summary
+  * Note - Full and Summary
   *********************************************************/
+
+.note.view .description {
+
+}
 
 .note.view ul.tags {
   padding-left: 0; 
@@ -145,6 +149,26 @@ ul.thread-summary-list {
 
 .note.view .action {
   display: none;
+}
+
+.note.view .show-more {
+  display: none;
+}
+
+/************** Summary *******************/
+
+.note.view.summary .description {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.note.view.summary .show-less {
+  display: none;
+}
+
+.note.view.summary .show-more {
+  display: inline;
 }
 
 /**********************************************************
