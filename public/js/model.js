@@ -40,7 +40,6 @@ HyperNotes.Model = function($) {
         if (!data) {
           alert('Failed to geolocate location: ' + parsed.location.unparsed);
         } else {
-          parsed.location.geonames = data;
           parsed.location.centroid = [
             data.lng,
             data.lat
