@@ -13,17 +13,61 @@ HyperNotes.View = function($) {
 
   my.NoteView = Backbone.View.extend({
     tagName:  "li",
+    template: ' \
+      <div class="note-summary"> \
+        <div class="display"> \
+          {{if permissions.edit}} \
+          <div class="action"> \
+            <a href="#edit" class="action-edit">Edit</a> \
+            <span class="note-destroy"></span> \
+          </div> \
+          {{/if}} \
+          <h3 class="title"> \
+            ${note.title} \
+          </h3> \
+          {{if note.image}} \
+          <div class="image"> \
+            <img src="${note.image}" alt="image" class="thumbnail" /> \
+          </div> \
+          {{/if}} \
+          <div class="description snippet"> \
+            ${note.description} \
+          </div> \
+          <div class="location"> \
+            {{if note.location.unparsed}} \
+            @${note.location.unparsed} \
+            {{/if}} \
+          </div> \
+          <div class="temporal"> \
+            ${note.start} \
+            {{if note.end}} \
+             - ${note.end} \
+            {{/if}} \
+          </div> \
+          <div class="tags"> \
+            {{if note.tags.length}} \
+            <ul class="tags"> \
+              {{each note.tags}} \
+                <li>${$value}</li> \
+              {{/each}} \
+            </ul> \
+            {{/if}} \
+          </div> \
+          <div> \
+            <a href="#more" class="show-more">More &raquo;</a> \
+          </div> \
+        </div> \
+      </div> \
+    ',
 
     events: {
-      "dblclick div.note-content" : "edit",
-      "click span.note-destroy"   : "clear",
-      "keypress .note-input"      : "updateOnEnter"
+      'click .show-more' : 'onShowMore'
     },
 
     initialize: function() {
-      _.bindAll(this, 'render', 'close');
+      this.el = $(this.el);
+      _.bindAll(this, 'render');
       this.model.bind('change', this.render);
-      this.model.view = this;
       this.permissions = my.getPermissions(this.model);
     },
 
@@ -32,29 +76,20 @@ HyperNotes.View = function($) {
         note: this.model.toJSON(),
         permissions: this.permissions
       }
-      var templated = $.tmpl(HyperNotes.Template.noteSummary, tmplData);
+      var templated = $.tmpl(this.template, tmplData);
       $(this.el).html(templated);
       this.input = this.$('.note-input');
       this.input.bind('blur', this.close);
       return this;
     },
 
-    edit: function() {
-      $(this.el).addClass("editing");
-      this.input.focus();
-    },
-
-    close: function() {
-      this.model.save({label: this.input.val()});
-      $(this.el).removeClass("editing");
-    },
-
-    updateOnEnter: function(e) {
-      if (e.keyCode == 13) this.close();
-    },
-
     remove: function() {
       $(this.el).remove();
+    },
+
+    onShowMore: function(e) {
+      e.preventDefault();
+      this.el.removeClass('summary');
     },
 
     clear: function() {

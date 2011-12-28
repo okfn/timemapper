@@ -1,53 +1,6 @@
 var HyperNotes = HyperNotes || {};
 
 HyperNotes.Template = {
-  noteSummary: ' \
-    <div class="note-summary"> \
-      <div class="display"> \
-        {{if permissions.edit}} \
-        <div class="action"> \
-          <a href="#edit" class="action-edit">Edit</a> \
-          <span class="note-destroy"></span> \
-        </div> \
-        {{/if}} \
-        <h3 class="title"> \
-          ${note.title} \
-        </h3> \
-        {{if note.image}} \
-        <div class="image"> \
-          <img src="${note.image}" alt="image" class="thumbnail" /> \
-        </div> \
-        {{/if}} \
-        <div class="description snippet"> \
-          ${note.description} \
-        </div> \
-        <div class="location"> \
-          {{if note.location.unparsed}} \
-          @${note.location.unparsed} \
-          {{/if}} \
-        </div> \
-        <div class="temporal"> \
-          ${note.start} \
-          {{if note.end}} \
-           - ${note.end} \
-          {{/if}} \
-        </div> \
-        <div class="tags"> \
-          {{if note.tags.length}} \
-          <ul class="tags"> \
-            {{each note.tags}} \
-              <li>${$value}</li> \
-            {{/each}} \
-          </ul> \
-          {{/if}} \
-        </div> \
-        <div> \
-          <a href="#more" class="show-more">More &raquo;</a> \
-        </div> \
-      </div> \
-    </div> \
-  ',
-
   timeMap: ' \
       <div id="timelinecontainer"> \
         <div id="timeline"></div> \
