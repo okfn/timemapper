@@ -16,7 +16,7 @@ HyperNotes.View = function($) {
     template: ' \
           {{if permissions.edit}} \
           <div class="action"> \
-            <a href="#edit" class="action-edit">Edit</a> \
+            <a href="#edit" class="action-edit btn">Edit</a> \
             <span class="note-destroy"></span> \
           </div> \
           {{/if}} \
@@ -61,24 +61,26 @@ HyperNotes.View = function($) {
 
     events: {
       'click .show-more' : 'onShowMore',
-      'click .show-less' : 'onShowLess'
+      'click .show-less' : 'onShowLess',
+      'click .action-edit': 'onEdit'
     },
 
     initialize: function() {
       this.el = $(this.el);
-      _.bindAll(this, 'render');
+      _.bindAll(this, 'render', 'onEditComplete');
       this.model.bind('change', this.render);
-      this.permissions = my.getPermissions(this.model);
     },
 
     render: function() {
+      var permissions = my.getPermissions(this.model);
       var tmplData = {
         note: this.model.toTemplateJSON(),
-        permissions: this.permissions
+        permissions: permissions
       }
       var templated = $.tmpl(this.template, tmplData);
       this.el.html(templated);
       this.el.addClass('summary');
+      this.el.show();
       return this;
     },
 
@@ -96,12 +98,81 @@ HyperNotes.View = function($) {
       this.el.addClass('summary');
     },
 
+    onEdit: function(e) {
+      e.preventDefault();
+      var editView = new my.NoteEdit({
+        model: this.model
+      });
+      editView.bind('edit:complete', this.onEditComplete)
+      editView.render();
+      this.el.hide();
+      this.el.after(editView.el);
+    },
+
+    onEditComplete: function() {
+      this.el.show();
+    },
+
     clear: function() {
       // TODO: decide whether we destory or put in deleted state or just
       // remove from collection
       // this.model.destroy();
       this.remove();
       this.model.trigger('destroy', this.model);
+    }
+  });
+
+  my.NoteEdit = Backbone.View.extend({
+    className: 'note edit',
+    template: ' \
+      <h3><em>Editing</em> &ndash; ${note.title}</h3> \
+      <form> \
+        <fieldset> \
+          <label for="title">Title</label> \
+          <div class="input"> \
+            <input \
+              name="title" \
+              type="text" \
+              value="${note.title}" \
+              /> \
+          </div> \
+          <span class="help-block"> \
+          </span> \
+        </fieldset> \
+        <div class="actions"> \
+          <button type="submit" class="btn primary">Save</button> \
+          <button type="reset" class="btn danger">Reset</button> \
+        </div> \
+      </form> \
+    ',
+    events: {
+      'submit form': 'onSubmitForm',
+      'reset form': 'onResetForm'
+    },
+
+    initialize: function() {
+      this.el = $(this.el);
+    },
+
+    render: function() {
+      var tmplData = {
+        note: this.model.toTemplateJSON(),
+      }
+      var templated = $.tmpl(this.template, tmplData);
+      this.el.html(templated);
+    },
+
+    onSubmitForm: function(e) {
+      e.preventDefault();
+      // TODO: save data ...
+      this.trigger('edit:complete');
+      this.remove();
+    },
+
+    onResetForm: function(e) {
+      e.preventDefault();
+      this.trigger('edit:complete');
+      this.remove();
     }
   });
 

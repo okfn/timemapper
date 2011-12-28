@@ -145,8 +145,20 @@ ul.thread-summary-list {
   width: 90px;
 }
 
+/************** Actions *******************/
+
 .note.view .action {
   display: none;
+}
+
+.note.view:hover .action {
+  display: inherit;
+  float: right;
+  margin-top: 5px;
+}
+
+.note.view:hover .action a {
+  padding: 2px 7px 3px;
 }
 
 .note.view .show-more {
