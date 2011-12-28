@@ -1,5 +1,3 @@
-@import url(hypernotes.css);
-
 /**********************************************************
   * Amendments to base theme (bootstrap)
   *********************************************************/
@@ -188,5 +186,37 @@ ul.thread-summary-list {
 
 .note.quick-add form input {
   width: 100%;
+}
+
+
+/**********************************************************
+  * Time Map
+  *********************************************************/
+
+#timemap {
+  padding: 5px 0px 0px 0px;
+}
+
+div#timelinecontainer{
+  width: 100%;
+  height: 225px;
+}
+
+div#timeline{
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  background: #CCCCCC;
+}
+
+div#mapcontainer {
+  width: 100%;
+  height: 300px;
+}
+
+div#map {
+  width: 100%;
+  height: 100%;
+  background: #EEEEEE;
 }
 
