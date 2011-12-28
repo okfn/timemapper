@@ -22,7 +22,16 @@ HyperNotes.Model = function($) {
       start: null,
       end: null,
     },
-    urlRoot: '/api/v1/note'
+    urlRoot: '/api/v1/note',
+    toTemplateJSON: function() {
+      function renderDate(date) {
+        return date ? date : 'unparsed';
+      }
+      var _data = this.toJSON();
+      _data.start_parsed = renderDate(_data.start_parsed);
+      _data.end_parsed = renderDate(_data.end_parsed);
+      return _data;
+    }
   });
 
   // Create a note from a summary string.

@@ -28,28 +28,30 @@ HyperNotes.View = function($) {
             <img src="${note.image}" alt="image" class="thumbnail" /> \
           </div> \
           {{/if}} \
-          <div class="description"> \
-            ${note.description} \
+          <div class="temporal"> \
+            {{if note.start}} \
+              ${note.start} (${note.start_parsed}) \
+              {{if note.end}} \
+               &ndash; ${note.end} (${note.end_parsed}) \
+              {{/if}} \
+           {{/if}} \
           </div> \
           <div class="location"> \
             {{if note.location.unparsed}} \
             @${note.location.unparsed} \
             {{/if}} \
           </div> \
-          <div class="temporal"> \
-            ${note.start} \
-            {{if note.end}} \
-             - ${note.end} \
-            {{/if}} \
-          </div> \
           <div class="tags"> \
             {{if note.tags.length}} \
             <ul class="tags"> \
               {{each note.tags}} \
-                <li>${$value}</li> \
+                <li>#${$value}</li> \
               {{/each}} \
             </ul> \
             {{/if}} \
+          </div> \
+          <div class="description"> \
+            ${note.description} \
           </div> \
           <div> \
             <a href="#more" class="show-more">More &raquo;</a> \
@@ -71,7 +73,7 @@ HyperNotes.View = function($) {
 
     render: function() {
       var tmplData = {
-        note: this.model.toJSON(),
+        note: this.model.toTemplateJSON(),
         permissions: this.permissions
       }
       var templated = $.tmpl(this.template, tmplData);
