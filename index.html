@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>HyperNotes</title>
+  <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+  <style type="text/css">
+    html, body {
+      background-color: #eee;
+    }
+    body {
+      padding-top: 40px; /* 40px to make the container go all the way to the bottom of the topbar */
+    }
+
+    .content {
+      background-color: #fff;
+      padding: 20px;
+      margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+      -webkit-border-radius: 0 0 6px 6px;
+         -moz-border-radius: 0 0 6px 6px;
+              border-radius: 0 0 6px 6px;
+      -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+         -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+              box-shadow: 0 1px 2px rgba(0,0,0,.15);
+    }
+
+    .page-header {
+      background-color: #f5f5f5;
+      padding: 20px 20px 10px;
+      margin: -20px -20px 20px;
+    }
+
+    /* specific additions */
+    .nav-logo img {
+      margin-top: 4px;
+    }
+    
+    .screenshot {
+      margin-top: 30px;
+    }
+
+    .screenshot img {
+      display: block;
+      width: 85%;
+      margin-left: 5%;
+    }
+
+    h4 {
+      line-height: 28px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <div class="fill">
+    <div class="container">
+      <a class="brand" href="#">HyperNotes</a>
+      <ul class="nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="http://github.com/okfn/hypernotes/">Github</a></li>
+        <li><a href="http://github.com/okfn/hypernotes/issues">Issues</a></li>
+        <li><a href="http://okfn.org/contact/">Contact</a></li>
+      </ul>
+      <a class="nav-logo pull-right" href="http://okfn.org/" title="An Open Knowledge Foundation Project">
+        <img src="http://assets.okfn.org/p/okfn/img/logo_28x30.png" alt="Open Knowledge Foundation logo" />
+      </a>
+    </div>
+  </div>
+</div>
+<div class="container"> 
+  <div class="content">
+    <div class="page-header">
+      <h1>
+        HyperNotes <small>Information Organization for the HyperText Age</small>
+      </h1>
+    </div>
+    <h4>
+      This is the project home page for the <a
+        href="http://github.com/okfn/hypernotes/">HyperNotes</a> project.  The
+      project is a rewrite and updating of the original <a
+        href="http://bitbucket.org/okfn/microfacts">Microfacts</a> codebase
+      (2007-2011) developed for the <a
+        href="http://weavinghistory.org/">Weaving History</a> project. The
+      rewrite is in pure javascript (NodeJS and Backbone).
+    </h4>
+
+    <h4>
+      Work is still at a relatively early stage so for documentation including
+      install information please see the <a
+        href="https://github.com/okfn/hypernotes">HyperNotes GitHub repo</a>.
+    </h4>
+
+    <div class="screenshot">
+      <img src="http://farm8.staticflickr.com/7015/6594135171_80db7c2f28_b.jpg" style="width: 90%" />
+    </div>
+  </div>
+</div>
+</body>
+</html>
