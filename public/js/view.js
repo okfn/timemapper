@@ -11,6 +11,16 @@ HyperNotes.View = function($) {
     };
   },
 
+  my.alert = function(msg, category) {
+    var _category = category || 'info';
+    var _template = '<div class="alert-message ${category}" data-alert="alert"><a class="close" href="#">×</a><p>${msg}</p></div>';
+    var _templated = $.tmpl(_template, {
+      msg: msg,
+      category: _category
+      });
+    $('.alert-messages').append(_templated);
+  }
+
   my.NoteView = Backbone.View.extend({
     className: 'note view summary',
     template: ' \
@@ -234,13 +244,13 @@ HyperNotes.View = function($) {
       this.model.set(modelData);
       this.model.save({}, {
         success: function(model) {
-          // TODO: flash('Saved dataset');
+          my.alert('Saved note.', 'success');
           self.trigger('edit:complete');
           self.remove();
         },
         error: function(model, error) {
           // TODO: Flash error ...
-          // flash('Error saving' + error.responseText, 'error');
+          my.alert('Error saving note' + error.responseText, 'error');
         }
       });
     },
@@ -390,9 +400,10 @@ HyperNotes.View = function($) {
         newNote.save(null, {
           success: function(data) {
             self.model.notes.add(newNote);
+            my.alert('New note created and added to thread.', 'success');
           },
           error: function(data) {
-            // TODO
+            my.alert('Failed to create note.' + data, 'error');
           }
         });
       });
@@ -425,7 +436,7 @@ HyperNotes.View = function($) {
           window.location = window.location + '/' + self.model.get('name');
         })
         .fail(function() {
-          alert('Failed ' + arguments);
+          my.alert('Failed ' + arguments, 'error');
         });
         ;
     },
