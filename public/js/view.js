@@ -128,20 +128,76 @@ HyperNotes.View = function($) {
       <h3><em>Editing</em> &ndash; ${note.title}</h3> \
       <form> \
         <fieldset> \
-          <label for="title">Title</label> \
-          <div class="input"> \
-            <input \
-              name="title" \
-              type="text" \
-              value="${note.title}" \
-              /> \
+          <legend> \
+          </legend> \
+          <div class="clearfix"> \
+            <label for="title">Title</label> \
+            <div class="input"> \
+              <input \
+                name="title" \
+                type="text" \
+                value="${note.title}" \
+                class="xlarge" \
+                /> \
+            </div> \
           </div> \
-          <span class="help-block"> \
-          </span> \
+             \
+          <div class="clearfix"> \
+            <label for="start">Start&ndash;End</label> \
+            <div class="input"> \
+              <div class="inline-inputs"> \
+                <input \
+                  name="start" \
+                  type="text" \
+                  value="${note.start}" \
+                  class="small" \
+                  /> \
+                &ndash; \
+                <input \
+                  name="end" \
+                  type="text" \
+                  value="${note.end}" \
+                  class="small" \
+                  /> \
+              </div> \
+            </div> \
+          </div> \
+          <div class="clearfix"> \
+            <label for="start_parsed">Start&ndash;End (parsed)</label> \
+            <div class="input"> \
+              <div class="inline-inputs"> \
+                <input \
+                  name="start_parsed" \
+                  type="text" \
+                  value="${note.start_parsed}" \
+                  class="small" \
+                  /> \
+                &ndash; \
+                <input \
+                  name="end_parsed" \
+                  type="text" \
+                  value="${note.end_parsed}" \
+                  class="small" \
+                  /> \
+              </div> \
+            </div> \
+          </div> \
+             \
+          <div class="clearfix"> \
+            <label for="description">Description</label> \
+            <div class="input"> \
+              <textarea \
+                name="description" \
+                type="text" \
+                class="xlarge" \
+                rows="15" \
+                >${note.description}</textarea> \
+            </div> \
+          </div> \
         </fieldset> \
         <div class="actions"> \
-          <button type="submit" class="btn primary">Save</button> \
-          <button type="reset" class="btn danger">Reset</button> \
+          <button type="submit" class="btn primary">Save changes</button> \
+          <button type="reset" class="btn danger">Cancel</button> \
         </div> \
       </form> \
     ',
@@ -152,21 +208,41 @@ HyperNotes.View = function($) {
 
     initialize: function() {
       this.el = $(this.el);
+      _.bindAll(this, 'onSubmitForm');
     },
 
     render: function() {
       var tmplData = {
-        note: this.model.toTemplateJSON(),
+        note: this.model.toJSON(),
       }
       var templated = $.tmpl(this.template, tmplData);
       this.el.html(templated);
     },
 
     onSubmitForm: function(e) {
+      var self = this;
       e.preventDefault();
       // TODO: save data ...
-      this.trigger('edit:complete');
-      this.remove();
+      var _data = this.el.find('form').serializeArray();
+      modelData = {};
+      $.each(_data, function(idx, value) {
+        // ignore empty strings and other null values
+        if (value.value!=null && value.value!='') {
+          modelData[value.name] = value.value
+        }
+      });
+      this.model.set(modelData);
+      this.model.save({}, {
+        success: function(model) {
+          // TODO: flash('Saved dataset');
+          self.trigger('edit:complete');
+          self.remove();
+        },
+        error: function(model, error) {
+          // TODO: Flash error ...
+          // flash('Error saving' + error.responseText, 'error');
+        }
+      });
     },
 
     onResetForm: function(e) {
