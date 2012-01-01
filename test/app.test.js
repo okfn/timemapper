@@ -1,7 +1,9 @@
+var http = require('http');
 var testCase = require('nodeunit').testCase;
 
-var http = require('http');
-var httputil = require('nodeunit').utils.httputil;
+var base = require('../test/base.js');
+var dao = require('../dao.js');
+
 
 var hostname = process.env.HOSTNAME || 'localhost';
 var port = process.env.PORT || 3000;
@@ -32,15 +34,21 @@ client.fetch = function (method, path, headers, respReady) {
 
 exports.API = testCase({
   setUp: function(callback) {
-    callback();
+    base.createFixtures(callback);
   }
   , tearDown: function(callback) {
+    // TODO: we must teardown but atm this leads to errors (seem to relate to async-ness (setUp does not seem to have been called yet ...)
+    
+    // dao.esclient.deleteIndex(dao.config.databaseName)
+    //  .on('done', callback)
+    //  .exec();
     callback();
   }
   , testNoteListGET: function(test) {
     test.expect(2);
     client.fetch('GET', '/api/v1/note', {}, function(res) {
       test.equal(200, res.statusCode);
+      console.log(res.bodyAsObject);
       test.ok(res.bodyAsObject.results.length > 0);
       test.done();
     });

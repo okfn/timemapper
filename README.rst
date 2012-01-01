@@ -50,7 +50,11 @@ So to execute all hypernotes tests::
   cd hypernotes
   nodeunit test
 
-To run javascript tests just open test/index.html in a browser.
+Note that for functional tests you will need the server running (in test mode)::
+
+  NODE_ENV=test node app.js
+
+To run javascript tests just open test/frontend/index.html in a browser.
 
 
 Run Application
