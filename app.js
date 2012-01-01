@@ -291,7 +291,7 @@ app.get('/api/v1/:objecttype', function(req,res) {
   var q = req.params.q;
   var qryObj = {};
   klass.search(qryObj, function(queryResult) {
-    res.send(queryResult.toJSON());
+    res.json(queryResult.toJSON());
   });
 });
 
