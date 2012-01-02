@@ -14,6 +14,7 @@ exports.test_isAuthorized = function(test) {
   var account = dao.Account.create({
     'id': 'joe'
   });
+  test.equals(authz.isAuthorized(null, 'create', account), true);
   test.equals(authz.isAuthorized('joe', 'update', account), true);
   test.equals(authz.isAuthorized(null, 'update', account), false);
   test.equals(authz.isAuthorized(null, 'read', account), true);

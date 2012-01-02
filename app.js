@@ -2,10 +2,9 @@ var express = require('express');
 
 var dao = require('./dao.js');
 var util = require('./util.js');
+var authz = require('./authz.js');
 
 var app = module.exports = express.createServer();
-
-var indexName = 'hypernotes';
 
 // Configuration
 app.configure(function(){
@@ -27,6 +26,13 @@ app.configure('production', function(){
 
 app.configure('development', function(){
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+});
+
+app.configure('test', function(){
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+  // TODO: repeats test/base.js (have to because runs independently of base.js for tests ...)
+  var dbName = 'hypernotes-test-njs';
+  dao.config.databaseName = dbName;
 });
 
 // ======================================
@@ -73,8 +79,12 @@ app.all('*', function(req, res, next) {
 });
 
 function setCurrentUser(req, callback) {
+  var DEBUG = false;
   if (req.session && req.session.hypernotesIdentity) {
     var userid = req.session.hypernotesIdentity;
+    dao.Account.get(userid, callback);
+  } else if (DEBUG) {
+    var userid = 'tester';
     dao.Account.get(userid, callback);
   } else {
     var currentUser = null;
@@ -262,24 +272,48 @@ app.get('/api/v1/:objecttype/:id', function(req, res, next) {
   klass.get(req.params.id, function(domainObj) {
     if (domainObj===null) {
       // next(new Error('Cannot find ' + req.params.objecttype + ' with id ' + req.params.id));
-      var msg = 'Cannot find ' + req.params.objecttype + ' with id ' + req.params.id;
-      res.send(msg, 404);
+      var msg = {
+        error: 'Cannot find ' + req.params.objecttype + ' with id ' + req.params.id
+        , status: 500
+      };
+      res.json(msg, 404);
+    }
+    var userId = req.currentUser ? req.currentUser.id : null;
+    var isAuthz = authz.isAuthorized(userId, 'read', domainObj);
+    if (isAuthz) {
+      res.json(domainObj.toJSON());
     } else {
-      res.send(domainObj.toJSON());
+      msg = {
+        error: 'Access not allowed'
+        , status: 401
+      };
+      res.json(msg, 401);
     }
   })
 });
 
 var apiUpsert = function(req, res) {
-    var objName = req.params.objecttype[0].toUpperCase() + req.params.objecttype.slice(1); 
-    var klass = dao[objName];
-    var data = req.body;
-    if (req.params.id) {
-      data.id = req.params.id;
-    }
-    klass.upsert(data, function(outData) {
-      res.send(outData)
+  var objName = req.params.objecttype[0].toUpperCase() + req.params.objecttype.slice(1); 
+  var klass = dao[objName];
+  var data = req.body;
+  if (req.params.id) {
+    data.id = req.params.id;
+  }
+  var obj = klass.create(data);
+  var action = req.params.id ? 'update' : 'create';
+  var userId = req.currentUser ? req.currentUser.id : null;
+  var isAuthz = authz.isAuthorized(userId, action, obj);
+  if (isAuthz) {
+    obj.save(function(outData) {
+      res.json(outData)
     });
+  } else {
+    msg = {
+      error: 'Access not allowed'
+      , status: 401
+    };
+    res.json(msg, 401);
+  }
 };
 
 app.post('/api/v1/:objecttype', apiUpsert);

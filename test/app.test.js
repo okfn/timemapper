@@ -48,8 +48,30 @@ exports.API = testCase({
     test.expect(2);
     client.fetch('GET', '/api/v1/note', {}, function(res) {
       test.equal(200, res.statusCode);
-      console.log(res.bodyAsObject);
+      // console.log(res.bodyAsObject);
       test.ok(res.bodyAsObject.results.length > 0);
+      test.done();
+    });
+  }
+  , testAccountGET: function(test) {
+    test.expect(1);
+    client.fetch('GET', '/api/v1/account/' + base.fixturesData.user.id, {}, function(res) {
+      test.equal(200, res.statusCode);
+      test.done();
+    });
+  }
+  , testAccountCreate: function(test) {
+    test.expect(1);
+    client.fetch('POST', '/api/v1/account', {id: 'new-test-user'}, function(res) {
+      test.equal(200, res.statusCode);
+      test.done();
+    });
+  }
+  , testAccountUpdate: function(test) {
+    test.expect(2);
+    client.fetch('PUT', '/api/v1/account/' + base.fixturesData.user.id, {id: 'tester', name: 'my-new-name'}, function(res) {
+      test.equal(401, res.statusCode);
+      test.deepEqual(res.bodyAsObject, {"error":"Access not allowed","status":401});
       test.done();
     });
   }
