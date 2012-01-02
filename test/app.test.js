@@ -54,9 +54,10 @@ exports.API = testCase({
     });
   }
   , testAccountGET: function(test) {
-    test.expect(1);
+    test.expect(2);
     client.fetch('GET', '/api/v1/account/' + base.fixturesData.user.id, {}, function(res) {
       test.equal(200, res.statusCode);
+      test.equal(res.bodyAsObject.email, undefined, 'Email should not be in Account object');
       test.done();
     });
   }

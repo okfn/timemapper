@@ -86,27 +86,26 @@ exports.basic= testCase({
   }
 
   , testDomainObject: function(test) {
-    var account = dao.Account.create({fullname: 'myname'});
+    var account = dao.Account.create({
+      fullname: 'myname'
+      , email: 'mytest@email.xyz'
+    });
     test.equal(account.getattr('fullname'), 'myname');
-    var raw = account.toJSON();
-    test.equal(raw.fullname, 'myname');
     account.setPassword('xyz');
+
     test.ok(account.checkPassword('xyz'));
     test.ok(!account.checkPassword('abc'));
+    var raw = account.toJSON();
+    test.equal(raw.fullname, 'myname');
+    test.equal(raw.password, undefined, 'password should not be in Account.toJSON');
+    test.equal(raw.email, undefined, 'email should not be in Account.toJSON');
+
     // now save
     test.ok(!account.id);
     account.save(function() {
       test.ok(account.id);
       var _now = new Date().toISOString();
       test.equal(account.getattr('_created').slice(0,4), _now.slice(0,4));
-    });
-
-    var account = dao.Account.create({
-        id: 'mytestusername'
-      , fullname: 'myname'
-    });
-    account.save(function() {
-      test.equal(account.id, 'mytestusername');
       test.done();
     });
   }

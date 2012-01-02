@@ -192,6 +192,13 @@ var Account = DomainObject.extend({
   , checkPassword: function(password) {
     return (password === this._data['password']);
   }
+  , toJSON: function() {
+    // crude deep copy
+    var _data = JSON.parse(JSON.stringify(this._data));
+    delete _data['password'];
+    delete _data['email'];
+    return _data;
+  }
 });
 
 var Note = DomainObject.extend({
