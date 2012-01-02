@@ -357,6 +357,10 @@ HyperNotes.View = function($) {
 
   my.ThreadView = Backbone.View.extend({
     template: ' \
+      <div class="thread-nav"> \
+        <a href="${thread.name}" class="btn disabled">Overview</a> \
+        <a href="${thread.name}/timemap" class="btn">TimeMap</a> \
+      </div> \
       <h1 class="title">${thread.title}</h1> \
       <div class="thread-info"> \
         <p class="description snippet">${thread.description}</p> \
