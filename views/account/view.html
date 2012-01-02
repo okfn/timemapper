@@ -8,6 +8,10 @@
         <dd>${distanceOfTimeInWords(account._created)}</dd>
         <dt>Name</dt>
         <dd>${account.fullname}</dd>
+        {{if isOwner}}
+        <dt>API Key</dt>
+        <dd>${account.api_key}</dd>
+        {{/if}}
       </dl>
     </div>
     <div class="span4">

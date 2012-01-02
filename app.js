@@ -155,6 +155,7 @@ app.post('/account/register', function(req, res){
       id: req.body.username
     , fullname: req.body.fullname
     , email: req.body.email
+    , api_key: util.uuidv4()
   });
   account.setPassword(req.body.password);
   account.save(function() {

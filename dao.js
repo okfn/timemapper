@@ -198,6 +198,7 @@ var Account = DomainObject.extend({
     var _data = JSON.parse(JSON.stringify(this._data));
     delete _data['password'];
     delete _data['email'];
+    delete _data['api_key'];
     return _data;
   }
 });

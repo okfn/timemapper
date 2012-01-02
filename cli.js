@@ -16,6 +16,7 @@ if (args && args[0] == 'fixtures') {
         id: 'tester'
         , email: 'tester@okfn.org'
         , fullname: 'The Tester'
+        , api_key: 'tester'
       });
       acc.setPassword('tester');
       acc.save(this);
