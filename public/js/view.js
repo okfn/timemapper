@@ -311,19 +311,27 @@ HyperNotes.View = function($) {
         }
       ];
       $.each(this.collection.models, function(idx, model) {
-        model = model.toJSON();
+        var modelJS = model.toJSON();
+        var view = new my.NoteView({
+          model: model
+        });
+        view.render();
+        view.el.removeClass('summary');
+        var viewHtml = view.el.clone().wrap('<div>').parent().html();
         var timemapObj = {
-          title : model.title,
-          start : model.start_parsed || model.start,
+          title : modelJS.title,
+          start : modelJS.start_parsed || modelJS.start,
           point: {
-              lon : model.location.centroid[0],
-              lat : model.location.centroid[1]
+              lon : modelJS.location.centroid[0],
+              lat : modelJS.location.centroid[1]
            },
-          options : {}
+          options : {
+            infoHtml: viewHtml
+          }
         };
         // timemap behaves oddly if you give it a null end date
-        if (model.end) {
-          timemapObj.end = model.end_parsed || model.end;
+        if (modelJS.end) {
+          timemapObj.end = modelJS.end_parsed || modelJS.end;
         }
         datasets[0].options.items.push(timemapObj);
       });
