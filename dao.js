@@ -1,4 +1,5 @@
 nodees = require('elasticsearchclient');
+var util = require('./util')
 
 var serverOptions = {
     host: 'localhost',
@@ -187,10 +188,10 @@ var DomainObject = {
 var Account = DomainObject.extend({
     __type__: 'account'
   , setPassword: function(password) {
-    this._data['password'] = password;
+    this._data['password'] = util.hashPassword(password);
   }
   , checkPassword: function(password) {
-    return (password === this._data['password']);
+    return util.verifyPasswordHash(password, this.getattr('password'));
   }
   , toJSON: function() {
     // crude deep copy
