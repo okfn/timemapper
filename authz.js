@@ -1,7 +1,7 @@
 var AUTHORIZATION = {
     'account': {
-      anonymous: ['create']
-    , user: []
+      anonymous: ['create', 'read']
+    , user: ['read']
     , owner: ['read', 'update', 'delete']
   }
   , 'note': {
@@ -17,16 +17,20 @@ var AUTHORIZATION = {
   }
 };
 
-exports.isAuthorized = function(userId, action, object) {
-  var userRole = '';
-  if (userId === null) {
-    userRole = 'anonymous';
-  } else if (userId === object.getattr('owner')) {
-    userRole = 'owner';
+exports.isAuthorized = function(accountId, action, object) {
+  var accountRole = '';
+  if (accountId === null) {
+    accountRole = 'anonymous';
+  } else if (
+      (object.__type__ === 'account' && object.id === accountId)
+      ||
+      (accountId === object.getattr('owner'))
+    ) {
+    accountRole = 'owner';
   } else {
-    userRole = 'user';
+    accountRole = 'user';
   }
-  var section = AUTHORIZATION[object.__type__][userRole];
+  var section = AUTHORIZATION[object.__type__][accountRole];
   if (section.indexOf(action) != -1) {
     return true;
   } else {
