@@ -79,7 +79,7 @@ app.all('*', function(req, res, next) {
 });
 
 function setCurrentUser(req, callback) {
-  var DEBUG = false;
+  var DEBUG = true;
   if (req.session && req.session.hypernotesIdentity) {
     var userid = req.session.hypernotesIdentity;
     dao.Account.get(userid, callback);
@@ -126,7 +126,7 @@ app.get('/search', function(req, res){
       }
     };
   }
-  dao.Thread.search(qryObj, function(queryResult) {
+  dao.Thread.search(qryObj, null, function(queryResult) {
     res.render('search.html', {
       threads: queryResult.toJSON()
       , q: q
@@ -323,9 +323,9 @@ app.put('/api/v1/:objecttype/:id?', apiUpsert);
 app.get('/api/v1/:objecttype', function(req,res) {
   var objName = req.params.objecttype[0].toUpperCase() + req.params.objecttype.slice(1); 
   var klass = dao[objName];
-  var q = req.params.q;
-  var qryObj = {};
-  klass.search(qryObj, function(queryResult) {
+  var queryObj = req.body;
+  var queryObj = null;
+  klass.search(queryObj, req.query, function(queryResult) {
     res.json(queryResult.toJSON());
   });
 });

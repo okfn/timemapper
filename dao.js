@@ -154,9 +154,13 @@ var DomainObject = {
       callback(data);
     });
   }
-  , search: function(qryObj, callback) {
+  // Search on this domain object
+  //
+  // :param qryObj: ES query object (data in POST or GET request as per ES client specs).
+  // :param options: query string data as dictionary
+  , search: function(qryObj, options, callback) {
     var self = this;
-    esclient.search(config.databaseName, this.__type__, qryObj)
+    esclient.search(config.databaseName, this.__type__, qryObj, options)
       .on('data', function(data) {
         var parsed = JSON.parse(data);
         if (parsed.status != undefined) {
@@ -217,7 +221,7 @@ var Thread = DomainObject.extend({
         }
       }
     };
-    this.search(qryObj, callback);
+    this.search(qryObj, null, callback);
   }
   , getByOwnerAndName: function(ownerId, threadName, callback) {
     var qryObj = {
@@ -238,7 +242,7 @@ var Thread = DomainObject.extend({
         }
       }
     };
-    this.search(qryObj, function(queryResult) {
+    this.search(qryObj, null, function(queryResult) {
       callback(queryResult.first());
     })
   }
