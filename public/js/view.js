@@ -369,9 +369,14 @@ HyperNotes.View = function($) {
         <a href="${thread.name}" class="btn disabled">Overview</a> \
         <a href="${thread.name}/timemap" class="btn">TimeMap</a> \
       </div> \
-      <h1 class="title">${thread.title}</h1> \
+      <h1 class="title editable-if-owner">${thread.title}</h1> \
       <div class="thread-info"> \
-        <p class="description snippet">${thread.description}</p> \
+        <p class="description snippet editable-if-owner"> \
+          ${thread.description} \
+          {{if !thread.description}} \
+            No description yet ... \
+          {{/if}} \
+        </p> \
       </div> \
       <div class="row"> \
         <div class="span8 left-pane"> \
