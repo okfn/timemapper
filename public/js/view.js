@@ -378,6 +378,7 @@ HyperNotes.View = function($) {
           <div class="note-list"> \
             <ul></ul> \
           </div> \
+          &nbsp; \
         </div> \
         <div class="span8 right-pane"> \
           {{if permissions.edit}} \
