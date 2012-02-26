@@ -3,7 +3,7 @@
   , "version": "0.1.0"
   , "private": true
   , "dependencies": {
-      "express": "2.4.6"
+      "express": "2.5.4"
     , "jqtpl": ">= 0.0.1"
     , "elasticsearchclient": ">=0.0.1"
     , "step": "0.0.4"
