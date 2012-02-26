@@ -22,7 +22,8 @@ port 9200.
 
 .. _ElasticSearch: http://www.elasticsearch.org/
 
-Install nodejs_ (>=0.4,<0.5) and npm_ then checkout the code::
+Install nodejs_ (>=0.6 suggested though may work with >=0.4) and npm_ then
+checkout the code::
 
   git clone https://github.com/okfn/hypernotes
 
