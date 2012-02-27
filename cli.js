@@ -5,7 +5,7 @@ var dao = require('./dao.js');
 var loader = require('./loader.js');
 
 // removes 'node' and this script
-args = process.ARGV.splice(2);
+args = process.argv.splice(2);
 
 // Create some fixtures (e.g. for demoing)
 if (args && args[0] == 'fixtures') {
