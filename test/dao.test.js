@@ -23,7 +23,7 @@ var inthread = {
   , 'owner': username
 };
 
-dao.config.databaseName = indexName;
+dao.config.set('database:name', indexName);
 
 exports.test_QueryResult = function(test) {
   var sample = {
@@ -70,7 +70,7 @@ exports.basic= testCase({
       .exec()
   }
   , tearDown: function(callback) {
-    dao.esclient.deleteIndex(dao.config.databaseName)
+    dao.esclient.deleteIndex(dao.config.get('database:name'))
       .on('done', callback)
       .exec();
   }
@@ -161,7 +161,7 @@ exports.thread = testCase({
     });
   }
   , tearDown: function(callback) {
-    dao.esclient.deleteIndex(dao.config.databaseName)
+    dao.esclient.deleteIndex(dao.config.get('database:name'))
       .on('done', callback)
       .exec();
   }

@@ -39,7 +39,7 @@ exports.API = testCase({
   , tearDown: function(callback) {
     // TODO: we must teardown but atm this leads to errors (seem to relate to async-ness (setUp does not seem to have been called yet ...)
     
-    // dao.esclient.deleteIndex(dao.config.databaseName)
+    // dao.esclient.deleteIndex(dao.config.get('database:name'))
     //  .on('done', callback)
     //  .exec();
     callback();

@@ -10,7 +10,7 @@ exports.Loader = testCase({
     callback();
   }
   , tearDown: function(callback) {
-    dao.esclient.deleteIndex(dao.config.databaseName)
+    dao.esclient.deleteIndex(dao.config.get('database:name'))
       .on('done', callback)
       .exec();
   }

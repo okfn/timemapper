@@ -6,3 +6,4 @@ app.cfg
 node_modules
 // nodemon
 .monitor
+settings.json

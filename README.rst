@@ -34,6 +34,17 @@ Then install the dependencies::
 
 .. _npm: http://npmjs.org/
 
+Finally, you may wish to set configuration options such as database name, port
+to run on etc. To do this::
+
+  # copy the settings.json template to settings.json
+  cp settings.json.tmpl settings.json
+  # then edit as necessary
+
+Now you can run the app::
+
+  node app.js
+
 
 Run Tests
 ---------

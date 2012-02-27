@@ -5,7 +5,7 @@ var step = require('step');
 var dao = require('../dao.js');
 
 var dbName = 'hypernotes-test-njs';
-dao.config.databaseName = dbName;
+dao.config.set('database:name', dbName);
 
 var username = 'tester';
 var threadName = 'default';

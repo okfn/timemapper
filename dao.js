@@ -1,16 +1,8 @@
-nodees = require('elasticsearchclient');
-var util = require('./util')
+var nodees = require('elasticsearchclient');
+var util = require('./util');
+var config = require('./config'); 
 
-var serverOptions = {
-    host: 'localhost',
-    port: 9200,
-};
-
-var config = {
-  databaseName: 'hypernotes'
-};
-
-esclient = new nodees(serverOptions);
+esclient = new nodees(config.get('database'));
 
 // =================================
 // Object oriented helpers
@@ -103,7 +95,7 @@ var DomainObject = {
   }
   , get: function(id, callback) {
     var self = this;
-    esclient.get(config.databaseName, this.__type__, id)
+    esclient.get(config.get('database:name'), this.__type__, id)
       .on('data', function(data) {
         var out = JSON.parse(data);
         // not found
@@ -127,7 +119,7 @@ var DomainObject = {
     if (!data._created) {
       data._created = _now.toISOString();
     }
-    esclient.index(config.databaseName, this.__type__, data)
+    esclient.index(config.get('database:name'), this.__type__, data)
       .on('data', function(outData) {
           // TODO: deep copy?
           var out = data;
@@ -160,7 +152,7 @@ var DomainObject = {
   // :param options: query string data as dictionary
   , search: function(qryObj, options, callback) {
     var self = this;
-    esclient.search(config.databaseName, this.__type__, qryObj, options)
+    esclient.search(config.get('database:name'), this.__type__, qryObj, options)
       .on('data', function(data) {
         var parsed = JSON.parse(data);
         if (parsed.status != undefined) {

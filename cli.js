@@ -1,5 +1,6 @@
 var step = require('step');
 
+var config = require('./cli.js');
 var dao = require('./dao.js');
 var loader = require('./loader.js');
 
@@ -69,9 +70,9 @@ if (args && args[0] == 'fixtures') {
       }
     }
   };
-  dao.esclient.deleteIndex(dao.config.databaseName)
+  dao.esclient.deleteIndex(config.get('database:name'))
     .on('done', function() {
-        dao.esclient.createIndex(dao.config.databaseName, mappings)
+        dao.esclient.createIndex(dao.config.get('database:name'), mappings)
           .on('done', function() {
             console.log('DB rebuilt');
           })
