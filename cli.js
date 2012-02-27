@@ -1,6 +1,6 @@
 var step = require('step');
 
-var config = require('./cli.js');
+var config = require('./config.js');
 var dao = require('./dao.js');
 var loader = require('./loader.js');
 
