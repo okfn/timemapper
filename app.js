@@ -29,6 +29,10 @@ app.configure('development', function(){
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
 });
 
+app.configure('testuser', function(){
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+});
+
 app.configure('test', function(){
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
   // TODO: repeats test/base.js (have to because runs independently of base.js for tests ...)
@@ -80,11 +84,10 @@ app.all('*', function(req, res, next) {
 });
 
 function setCurrentUser(req, callback) {
-  var DEBUG = true;
   if (req.session && req.session.hypernotesIdentity) {
     var userid = req.session.hypernotesIdentity;
     dao.Account.get(userid, callback);
-  } else if (DEBUG) {
+  } else if (app.settings.env === 'testuser' ) {
     var userid = 'tester';
     dao.Account.get(userid, callback);
   } else {
