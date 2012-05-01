@@ -119,7 +119,8 @@ var DomainObject = {
     if (!data._created) {
       data._created = _now.toISOString();
     }
-    esclient.index(config.get('database:name'), this.__type__, data)
+    // auto refresh index so we immediately get access to new doc
+    esclient.index(config.get('database:name'), this.__type__, data, {refresh: 'true'})
       .on('data', function(outData) {
           // TODO: deep copy?
           var out = data;

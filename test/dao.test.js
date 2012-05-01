@@ -167,7 +167,8 @@ exports.thread = testCase({
   }
   , testThreadGetByOwnerAndName:  function(test) {
     dao.Thread.getByOwnerAndName(inuser.id, inthread.name, function(thread) {
-      // test.equal(thread.getattr('title'), inthread.title);
+      test.ok(thread);
+      test.equal(thread.getattr('title'), inthread.title);
       test.done();
     });
   }
