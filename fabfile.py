@@ -52,12 +52,13 @@ def deploy(service_name):
         sudo('/etc/init.d/supervisor force-reload')
     print('Restarting supervised process for %s' % service_name)
     sudo('supervisorctl restart %s' % service_name)
-    print('You will now need to have your web server proxy to port 3000' % service_name)
+    print('You will now need to have your web server proxy to port 3000')
 
 
 supervisor_config = '''
 [program:%(service_name)s]
 command=node /home/okfn/var/srvc/%(service_name)s/app.js
+environment=NODE_ENV=production
 
 ; user that owns virtual environment.
 user=okfn
