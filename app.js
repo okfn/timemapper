@@ -282,6 +282,7 @@ app.get('/api/v1/:objecttype/:id', function(req, res, next) {
         , status: 500
       };
       res.json(msg, 404);
+      return;
     }
     var userId = req.currentUser ? req.currentUser.id : null;
     var isAuthz = authz.isAuthorized(userId, 'read', domainObj);
