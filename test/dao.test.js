@@ -4,7 +4,7 @@ var testCase = require('nodeunit').testCase;
 
 var indexName = 'hypernotes-test-njs';
 var username = 'tester';
-var threadName = 'default';
+var threadName = 'my-test-thread';
 var inuser = {
   'id': username,
   'fullname': 'The Tester'

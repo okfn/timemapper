@@ -15,6 +15,14 @@ function rebuildDb(callback) {
             start: { type: 'string' }
           , end: { type: 'string' }
         }
+      },
+      thread: {
+        properties: {
+          name: {
+            type: 'string',
+            index: 'not_analyzed'
+          }
+        }
       }
     }
   };
@@ -244,19 +252,22 @@ var Thread = DomainObject.extend({
   , getByOwnerAndName: function(ownerId, threadName, callback) {
     var qryObj = {
       query: {
-        bool: {
-          must: [
-            {
-              term: {
-                owner: ownerId
+        filtered: {
+          query: { match_all: {} },
+          filter: {
+            and: [
+              {
+                term: {
+                  owner: ownerId,
+                }
+              },
+              {
+                term: {
+                  name: threadName
+                }
               }
-            }
-            , {
-              term: {
-                name: threadName
-              }
-            }
-          ]
+            ]
+          }
         }
       }
     };
