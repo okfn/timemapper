@@ -5,6 +5,31 @@ var config = require('./config');
 esclient = new nodees(config.get('database'));
 
 // =================================
+// DB helpers
+
+function rebuildDb(callback) {
+  var mappings = {
+    mappings: {
+      note: {
+        properties: {
+            start: { type: 'string' }
+          , end: { type: 'string' }
+        }
+      }
+    }
+  };
+  esclient.deleteIndex(config.get('database:name'))
+    .on('done', function() {
+        esclient.createIndex(config.get('database:name'), mappings)
+          .on('done', function() {
+            callback();
+          })
+          .exec()
+      })
+    .exec();
+}
+
+// =================================
 // Object oriented helpers
 
 function clone(object) {
@@ -249,5 +274,6 @@ module.exports = {
   , Account: Account
   , Note: Note
   , Thread: Thread
+  , rebuildDb: rebuildDb
 };
 

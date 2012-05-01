@@ -70,9 +70,7 @@ exports.basic= testCase({
       .exec()
   }
   , tearDown: function(callback) {
-    dao.esclient.deleteIndex(dao.config.get('database:name'))
-      .on('done', callback)
-      .exec();
+    dao.rebuildDb(callback)
   }
   , testESGet: function(test) {
     var id = username;
@@ -161,9 +159,7 @@ exports.thread = testCase({
     });
   }
   , tearDown: function(callback) {
-    dao.esclient.deleteIndex(dao.config.get('database:name'))
-      .on('done', callback)
-      .exec();
+    dao.rebuildDb(callback)
   }
   , testThreadGetByOwnerAndName:  function(test) {
     dao.Thread.getByOwnerAndName(inuser.id, inthread.name, function(thread) {
