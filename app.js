@@ -1,9 +1,9 @@
 var express = require('express');
 
-var config = require('./config.js');
-var dao = require('./dao.js');
-var util = require('./util.js');
-var authz = require('./authz.js');
+var config = require('./lib/config.js');
+var dao = require('./lib/dao.js');
+var util = require('./lib/util.js');
+var authz = require('./lib/authz.js');
 
 var app = module.exports = express.createServer();
 
