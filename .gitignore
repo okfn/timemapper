@@ -4,6 +4,7 @@
 sandbox/*
 app.cfg
 node_modules
-// nodemon
+# nodemon
 .monitor
 settings.json
+test/data/db/*
