@@ -176,25 +176,20 @@ app.get('/:userId', function(req, res, next) {
     next();
     return;
   }
-  var account = null;
-  dao.Account.get(userId, function(acc) {
-    account = acc;
-    if (!account) {
+  var account = dao.Account.create({id: userId});
+  account.fetch(function(error) {
+    if (error) {
       res.send('Not found', 404);
       return;
     }
-    dao.Thread.getByOwner(userId, function(queryResult) {
-      var threads = [];
-      queryResult.results.forEach(function(item, idx) {
-        threads.push(item.toTemplateJSON());
-      });
-      var isOwner = (req.currentUser && req.currentUser.id == userId);
-      res.render('account/view.html', {
-        account: account.toTemplateJSON()
-        , threads: threads
-        , threadCount: queryResult.total
-        , isOwner: isOwner
-      });
+    var isOwner = (req.currentUser && req.currentUser.id == userId);
+    // TODO: reinstate listing of viz ...
+    var threads = [];
+    res.render('account/view.html', {
+      account: account.toTemplateJSON()
+      , threads: threads
+      , threadCount: 0
+      , isOwner: isOwner
     });
   });
 });
@@ -211,12 +206,13 @@ app.get('/:userId/:threadName', function(req, res, next) {
     return;
   }
   var threadName = req.params.threadName;
-  dao.Thread.getByOwnerAndName(userId, threadName, function(thread) {
-    if (!thread) {
-      res.send('Not found', 404);
+  var viz = dao.Viz.create({owner: userId, name: threadName});
+  viz.fetch(function(error) {
+    if (error) {
+      res.send('Not found ' + error.message, 404);
       return;
     }
-    var threadData = thread.toTemplateJSON();
+    var threadData = viz.toTemplateJSON();
     var isOwner = (req.currentUser && req.currentUser.id == threadData.owner);
     res.render('thread/view.html', {
       thread: threadData
