@@ -4,6 +4,7 @@
   , "private": true
   , "dependencies": {
       "express": "~3.2.6"
+    ,  "nunjucks": "~0.1.8",
     , "step": "0.0.4"
     , "nconf": "0.5.1"
   }

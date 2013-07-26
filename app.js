@@ -1,18 +1,16 @@
-var express = require('express');
-
-var config = require('./lib/config.js');
-var dao = require('./lib/dao.js');
-var util = require('./lib/util.js');
-var authz = require('./lib/authz.js');
+var express = require('express')
+  , nunjucks = require('nunjucks')
+  , config = require('./lib/config.js')
+  , dao = require('./lib/dao.js')
+  , util = require('./lib/util.js')
+  , authz = require('./lib/authz.js')
+  ;
 
 var app = module.exports = express.createServer();
 
 // Configuration
 app.configure(function(){
   app.set('views', __dirname + '/views');
-  app.set("view engine", "html");
-  app.register(".html", require("jqtpl").express);
-  app.set("jsonp callback");
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
@@ -20,6 +18,9 @@ app.configure(function(){
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
 });
+
+var env = new nunjucks.Environment(new nunjucks.FileSystemLoader('views'));
+env.express(app);
 
 app.configure('production', function(){
   app.use(express.errorHandler()); 
