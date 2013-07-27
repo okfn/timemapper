@@ -1,39 +1,112 @@
-<div class="hero-unit">
-  <h1>The Ultimate Research Tool</h1>
-  <p>HyperNotes combines a notebook, encyclopaedia and visualizations in one powerful package. Create <strong>notes &mdash; for places, people,
-    events &mdash;</strong> and string them together into
-  <strong>'threads'</strong> at the click of a button.
-  <strong>Automatically visualize</strong> the results
-  temporally and spatially, search by any attribute,
-  automatically <strong>import Wikipedia articles</strong>
-  and much more.</p>
-  <p>
-    <a href="/account/register" class="btn primary large">Get started &raquo;</a>
-    &ndash; or &ndash;
-    <a href="/tester/napoleon" class="btn primary large">See an Example &raquo;</a>
-  </p>
+{% extends "base.html" %}
+
+{% block content %}
+  <!-- Custom CSS for the Timeliner Online App -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="home">
+<div id="okf-panel" class="collapse">
+  <iframe src="http://assets.okfn.org/themes/okfn/okf-panel.html"></iframe>
+</div>
+<div class="okfn-ribbon">
+  <a data-toggle="collapse" data-target="#okf-panel" href="http://okfnlabs.org/" target="_blank">An Open Knowledge Foundation Labs Project</a>
 </div>
 
-<div class="row">
-  <div class="span-one-third column">
-    <h2>Create Notes</h2>
-    <p>Create notes for your research or for yourself. Notes can be created
-    from external sources such as Wikipedia articles, modified and re-exported.
-    Organize your notes into 'Threads' so that they can be easily viewed,
-    managed, shared and visualized.</p>
-  </div>
-  <div class="span-one-third column">
-    <h2>Share and Collaborate</h2>
-    <p>Share your notes and threads with everyone or just a select few. Allow
-    others to contribute and reuse your material. Follow what others are doing and easily embed your work on your website or elsewhere.</p>
-  </div>
-  <div class="span-one-third column">
-    <h2>Visualize</h2>
-    <p>Create timelines and timemaps at the click of a button.</p>
-	  <img
-      src="http://m.okfn.org/files/talks/media/weavinghistory-napoleon-20091107.png"
-      style="width: 80%;"
-      />
-  </div>
-</div>
+<div class="container">
+<div class="content">
+  <div class="page home">
+    <div class="page-header">
+      <h1>
+        Timeliner
+        <small>Make elegant timelines and timemaps using Google Spreadsheets</small>
+      </h1>
+    </div>
+      <div class="content">
+        <div class="row">
+          <div class="span8">
+            <form class="js-load-url form-horizontal">
+              <fieldset>
+                <legend>Connect Your Google Spreadsheet</legend>
+                <div class="control-group">
+                  <label for="source" class="control-label">Google Spreadsheet URL</label>
+                  <div class="controls">
+                    <input type="url" value="" name="source" class="input span10" placeholder="URL to Google Spreadsheet" />
+                    <button title="Select from Google Drive" class="gdrive-import btn"><i class="gdrive"></i></button>
+                    <p class="help-block">The Timeliner uses data in a spreadsheet in Google Docs allowing you to edit the timeline by editing the spreadsheet.</p>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <div class="controls">
+                    <button type="submit" class="btn btn-primary">Load &raquo;</button>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          <div class="span4">
+            <h4>Examples</h4>
+            <h5><a href="view/?url=https://docs.google.com/spreadsheet/ccc?key=0Al6mO9_3Hr2PdGZnRjEwUWxOekhreTNNZEFEMWRZbkE">Medieval Philosophers</a> (source)</h5>
+            <a href="view/?url=https://docs.google.com/spreadsheet/ccc?key=0Al6mO9_3Hr2PdGZnRjEwUWxOekhreTNNZEFEMWRZbkE">
+              <img src="http://farm6.staticflickr.com/5323/8768093210_3343870b2a_n.jpg" alt="Medieval Philosophers" />
+            </a>
+            <h5>
+              <a href="view/?url=https://docs.google.com/a/okfn.org/spreadsheet/ccc?key=0AvNIiaD6NBlTdC10NjhGOHp6am44VG00R0pNaVMtQ1E">London Tube</a> (<a href="https://docs.google.com/a/okfn.org/spreadsheet/ccc?key=0AvNIiaD6NBlTdC10NjhGOHp6am44VG00R0pNaVMtQ1E#gid=0">source</a>)
+            </h5>
+            <a href="view/?url=https://docs.google.com/a/okfn.org/spreadsheet/ccc?key=0AvNIiaD6NBlTdC10NjhGOHp6am44VG00R0pNaVMtQ1E">
+              <img src="..." alt="" />
+            </a>
+          </div>
+        </div>
 
+
+        <h2 style="text-align: center; margin: 30px;">How It Works</h2>
+        <div class="row instructions">
+          <div class="span4">
+            <div class="well">
+              <h3>Create a Spreadsheet</h3>
+              <p>We suggest you copy <a href="https://docs.google.com/spreadsheet/ccc?key=0Aon3JiuouxLUdDlGV2lCakoydVh1U014cHRqcXpoWVE">this template</a> so that columns have the right names.</p>
+            </div>
+          </div>
+          <div class="span4">
+            <div class="well">
+              <h3>Publish the Spreadsheet</h2>
+              <p>Publish your spreadsheet - see File menu &rarr; Publish to Web in Google Docs.</p>
+            </div>
+          </div>
+          <div class="span4">
+            <div class="well">
+              <h3>Connect it to Timeliner</h3>
+              <p>Paste the spreadsheet URL (e.g. ) into the form above and hit Load.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2 style="text-align: center; margin: 30px 0;" id="credits">Credits</h2>
+        <p style="width: 500px; margin: auto;">
+        Timeliner is only possible thanks to a set of awesome open-source components including <a href="http://timelinejs.org/">TimelineJS</a>, <a href="http://okfnlabs.org/recline/">ReclineJS</a>, <a href="http://leafletjs.com/">Leaflet</a>, <a href="http://backbonejs.org/">Backbone</a> and <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>. You can find the <a href="https://github.com/okfn/timeliner">full open-source source for Timeliner on GitHub here</a>.
+        </p>
+      </div>
+    <footer>
+    The <a href="http://timeliner.okfnlabs.org/"><strong>Timeliner </strong></a> is a project of <a href="http://okfnlabs.org/">Open Knowledge Foundation</a> &ndash; <a href="https://github.com/okfn/timeliner">Source Code</a>.
+    Timeliner is open-source &ndash; 
+    <a href="https://github.com/okfn/timeliner#copyright-and-license">Copyright &amp; License</a>.
+    </footer>
+  </div>
+</div> <!-- /content -->
+</div> <!-- / container-fluid -->
+  <!-- 3rd party JS libraries -->
+  <script type="text/javascript" src="vendor/recline/vendor/jquery/1.7.1/jquery.js"></script>
+  <script type="text/javascript" src="vendor/recline/vendor/underscore/1.4.4/underscore.js"></script>
+  <script type="text/javascript" src="vendor/recline/src/backend.gdocs.js"></script>
+
+  <script src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    // setup gdocs file picker
+    google.load('picker', '1');
+  </script>
+
+  <!-- non-library javascript specific to this demo -->
+  <script type="text/javascript" src="js/app.js"></script>
+
+{% endblock %}
