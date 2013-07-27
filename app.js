@@ -6,7 +6,7 @@ var express = require('express')
   , authz = require('./lib/authz.js')
   ;
 
-var app = module.exports = express.createServer();
+var app = module.exports = express();
 
 // Configuration
 app.configure(function(){
@@ -65,37 +65,37 @@ function getFlashMessages(req) {
   return result;
 }
 
-app.dynamicHelpers({
-  messages: function(req,res) {
-    return getFlashMessages(req);
-  }
-});
+// app.dynamicHelpers({
+//   messages: function(req,res) {
+//     return getFlashMessages(req);
+//   }
+// });
+// 
+// app.helpers({
+//   distanceOfTimeInWords: util.distanceOfTimeInWords
+// });
 
-app.helpers({
-  distanceOfTimeInWords: util.distanceOfTimeInWords
-});
-
-app.all('*', function(req, res, next) {
-  var currentUser = null;
-  setCurrentUser(req, function(currentUser) {
-    res.local('currentUser', currentUser);
-    req.currentUser = currentUser;
-    next();
-  });
-});
-
-function setCurrentUser(req, callback) {
-  if (req.session && req.session.hypernotesIdentity) {
-    var userid = req.session.hypernotesIdentity;
-    dao.Account.get(userid, callback);
-  } else if (app.settings.env === 'testuser' ) {
-    var userid = 'tester';
-    dao.Account.get(userid, callback);
-  } else {
-    var currentUser = null;
-    callback(currentUser);  
-  }
-}
+// app.all('*', function(req, res, next) {
+//   var currentUser = null;
+//   setCurrentUser(req, function(currentUser) {
+//     res.local('currentUser', currentUser);
+//     req.currentUser = currentUser;
+//     next();
+//   });
+// });
+// 
+// function setCurrentUser(req, callback) {
+//   if (req.session && req.session.hypernotesIdentity) {
+//     var userid = req.session.hypernotesIdentity;
+//     dao.Account.get(userid, callback);
+//   } else if (app.settings.env === 'testuser' ) {
+//     var userid = 'tester';
+//     dao.Account.get(userid, callback);
+//   } else {
+//     var currentUser = null;
+//     callback(currentUser);  
+//   }
+// }
 
 // ======================================
 // Main pages
@@ -307,5 +307,6 @@ app.get('/api/v1/:objecttype', function(req,res) {
   });
 });
 
-app.listen(config.get('express:port'));
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+app.listen(config.get('express:port'), function() {
+  console.log("Express server listening on port %d in %s mode", app.get('port'), app.get('env'));
+});
