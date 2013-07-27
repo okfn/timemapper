@@ -216,25 +216,10 @@ app.get('/:userId/:threadName', function(req, res, next) {
     var threadData = viz.toTemplateJSON();
     var isOwner = (req.currentUser && req.currentUser.id == threadData.owner);
     res.render('viz/timemap.html', {
-      thread: threadData
-      , threadJSON: JSON.stringify(threadData)
+      title: threadData.title
+      , viz: threadData
+      , vizJSON: JSON.stringify(threadData)
       , isOwner: isOwner
-    });
-  });
-});
-
-app.get('/:userId/:threadName/timemap', function(req, res, next) {
-  var userId = req.params.userId;
-  var threadName = req.params.threadName;
-  dao.Thread.getByOwnerAndName(userId, threadName, function(thread) {
-    if (!thread) {
-      res.send('Not found', 404);
-      return;
-    }
-    var threadData = thread.toTemplateJSON();
-    res.render('thread/timemap.html', {
-      thread: threadData
-      , threadJSON: JSON.stringify(threadData)
     });
   });
 });

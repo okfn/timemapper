@@ -24,13 +24,12 @@
 
   <!-- Open links in new window/tab by default -->
   <base target="_blank" />
-
 </head>
 <body class="view">
 <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand"></a>
+      <a class="brand">{{title}}</a>
       <ul class="nav">
       </ul>
       <ul class="nav pull-right">
@@ -80,6 +79,9 @@ Created with the <a href="http://timeliner.okfnlabs.org/"><strong>Timeliner </st
   </div>
 </div>
 </div>
+  <script type="text/javascript">
+    var VIZDATA = {{vizJSON}};
+  </script>
   <!-- 3rd party JS libraries -->
   <script type="text/javascript" src="/vendor/recline/vendor/jquery/1.7.1/jquery.js"></script>
   <script type="text/javascript" src="/vendor/recline/vendor/underscore/1.4.4/underscore.js"></script>

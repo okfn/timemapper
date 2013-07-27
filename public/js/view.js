@@ -2,20 +2,11 @@
   "use strict";
 
 jQuery(function($) {
-  var state = recline.View.parseQueryString(decodeURIComponent(window.location.search));
-  if (state) {
-    _.each(state, function(value, key) {
-      try {
-        value = JSON.parse(value);
-      } catch(e) {}
-      state[key] = value;
-    });
-  }
-  state.backend = 'gdocs';
-  if (state.embed !== undefined) {
-    $('body').addClass('embed');
-  }
-  var dataset = new recline.Model.Dataset(state);
+  console.log(VIZDATA)
+  var dataset = new recline.Model.Dataset({
+    fields: VIZDATA.resources[0].schema.fields,
+    records: VIZDATA.resources[0].records
+  });
   var timeliner = new TimelinerView({
     model: dataset,
     el: $('.data-views')

@@ -53,7 +53,7 @@ describe('DAO Storage', function() {
     var viz = dao.Viz.create({owner: username, name: 'napoleon'});
     viz.fetch(function(error) {
       var res = viz.toJSON();
-      assert.equal(res.title, 'Napoleon');
+      assert.equal(res.title, 'Battles in the Napoleonic Wars');
       done();
     });
   });
