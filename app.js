@@ -215,7 +215,7 @@ app.get('/:userId/:threadName', function(req, res, next) {
     }
     var threadData = viz.toTemplateJSON();
     var isOwner = (req.currentUser && req.currentUser.id == threadData.owner);
-    res.render('thread/view.html', {
+    res.render('viz/timemap.html', {
       thread: threadData
       , threadJSON: JSON.stringify(threadData)
       , isOwner: isOwner
