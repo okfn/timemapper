@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block bodyclass %}create{% endblock %}
+
+{% block content %}
+<h2 style="text-align: center; margin: 30px;">How It Works</h2>
+<div class="row instructions">
+  <div class="span4">
+    <div class="well">
+      <h3>Create a Spreadsheet</h3>
+      <p>We suggest you copy <a href="https://docs.google.com/spreadsheet/ccc?key=0Aon3JiuouxLUdDlGV2lCakoydVh1U014cHRqcXpoWVE">this template</a> so that columns have the right names.</p>
+    </div>
+  </div>
+  <div class="span4">
+    <div class="well">
+      <h3>Publish the Spreadsheet</h2>
+      <p>Publish your spreadsheet - see File menu &rarr; Publish to Web in Google Docs.</p>
+    </div>
+  </div>
+  <div class="span4">
+    <div class="well">
+      <h3>Connect it to Timeliner</h3>
+      <p>Select your spreadsheet using the form below and hit Load.</p>
+    </div>
+  </div>
+</div>
+
+<form class="js-load-url form-horizontal" action="" method="POST">
+  <fieldset>
+    <legend>Connect Your Google Spreadsheet</legend>
+    <div class="control-group">
+      <label for="source" class="control-label">Google Spreadsheet URL</label>
+      <div class="controls">
+        <input type="url" value="" name="source" class="input span10" placeholder="URL to Google Spreadsheet" />
+        <button title="Select from Google Drive" class="gdrive-import btn"><i class="gdrive"></i></button>
+        <p class="help-block">The Timeliner uses data in a spreadsheet in Google Docs allowing you to edit the timeline by editing the spreadsheet.</p>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <button type="submit" class="btn btn-primary">Load &raquo;</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+{% endblock %}
+
+{% block extrabody %}
+  <script type="text/javascript" src="vendor/recline/src/backend.gdocs.js"></script>
+
+  <script src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    // setup gdocs file picker
+    google.load('picker', '1');
+  </script>
+
+  <!-- non-library javascript specific to this demo -->
+  <script type="text/javascript" src="js/app.js"></script>
+{% endblock %}

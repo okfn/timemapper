@@ -2,11 +2,11 @@
   "use strict";
 
 jQuery(function($) {
-  console.log(VIZDATA)
-  var dataset = new recline.Model.Dataset({
-    fields: VIZDATA.resources[0].schema.fields,
-    records: VIZDATA.resources[0].records
-  });
+  var reclineDatasetInfo = $.extend({}, true, VIZDATA.resources[0]);
+  if (VIZDATA.resources[0].schema && VIZDATA.resources[0].schema.fields) {
+    reclineDatasetInfo.fields = VIZDATA.resources[0].schema.fields;
+  }
+  var dataset = new recline.Model.Dataset(reclineDatasetInfo);
   var timeliner = new TimelinerView({
     model: dataset,
     el: $('.data-views')

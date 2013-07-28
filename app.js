@@ -87,19 +87,6 @@ app.all('*', function(req, res, next) {
   next();
 });
 
-// function setCurrentUser(req, callback) {
-//   if (req.session && req.session.hypernotesIdentity) {
-//     var userid = req.session.hypernotesIdentity;
-//     dao.Account.get(userid, callback);
-//   } else if (app.settings.env === 'testuser' ) {
-//     var userid = 'tester';
-//     dao.Account.get(userid, callback);
-//   } else {
-//     var currentUser = null;
-//     callback(currentUser);  
-//   }
-// }
-
 // ======================================
 // Main pages
 // ======================================
@@ -115,6 +102,33 @@ var routePrefixes = {
 
 app.get('/', function(req, res){
   res.render('index.html', {title: 'TimeMapper'});
+});
+
+app.get('/create', function(req, res) {
+  res.render('create.html', {title: 'TimeMapper'});
+});
+
+app.post('/create', function(req, res) {
+  var url = req.body.source;
+  var name = 'xyz';
+  var userid = req.user ? req.user.id : 'tester';
+  var viz = dao.Viz.create({
+    name: name,
+    title: 'xyz',
+    owner: userid,
+    resources: [{
+      backend: 'gdocs',
+      url: url,
+      sources: [{
+        type: 'gdocs',
+        web: url
+      }]
+    }]
+  });
+  viz.save(function(err) {
+    console.log(err);
+    res.redirect('/' + userid + '/' + name);
+  });
 });
 
 // ======================================
