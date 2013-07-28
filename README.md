@@ -13,6 +13,8 @@ Then install the dependencies:
 
     cd hypernotes
     npm install . 
+    # for some vendor modules
+    git submodule init && gitsubmodule update
 
 Finally, you may wish to set configuration options such as database name, port
 to run on etc. To do this:
