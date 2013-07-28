@@ -293,5 +293,5 @@ app.get('/api/v1/:objecttype', function(req,res) {
 });
 
 app.listen(config.get('express:port'), function() {
-  console.log("Express server listening on port %d in %s mode", app.get('port'), app.get('env'));
+  console.log("Express server listening on port " + config.get('express:port') + " in mode " + app.get('env'));
 });

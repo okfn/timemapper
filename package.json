@@ -1,7 +1,8 @@
 {
     "name": "hypernotes"
   , "version": "0.2.0"
-  , "private": true
+  , "author": "@OKFN"
+  , "license": "MIT"
   , "dependencies": {
       "express": "~3.2.6"
     ,  "nunjucks": "~0.1.8",
