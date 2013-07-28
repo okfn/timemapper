@@ -13,13 +13,59 @@
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <!-- offline use -->
+  <!--
   <link href="/vendor/bootstrap/2.2.2/bootstrap.css" rel="stylesheet">
   <link href="/vendor/bootstrap/2.2.2/bootstrap-responsive.css" rel="stylesheet">
+  -->
   <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <!-- okf ribbon -->
   <link rel="stylesheet" href="http://assets.okfn.org/themes/okfn/okf-panel.css"/>
 
+  {% block extrahead %}{% endblock %}
+
+  <!-- Custom CSS for the Timeliner Online App -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="{% block bodyclass %}{{bodyclass}}{% endblock %}">
+<!--div id="okf-panel" class="collapse">
+  <iframe src="http://assets.okfn.org/themes/okfn/okf-panel.html"></iframe>
+</div>
+<div class="okfn-ribbon">
+  <a data-toggle="collapse" data-target="#okf-panel" href="http://okfnlabs.org/" target="_blank">An Open Knowledge Foundation Labs Project</a>
+</div-->
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand">TM {{title}}</a>
+      <ul class="nav">
+      </ul>
+      <ul class="nav pull-right">
+        {% block extranavbar %}{% endblock %}
+        {% if currentUser %} 
+        <li><a class="username" href="/{{currentUser.id}}">{{currentUser.id}}</a></li>
+        <li><a class="logout" href="/account/logout" title="sign out"><i class="icon-signout"></i></a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<div class="content">
+
 {% block content %}{{content}}{% endblock %}
+    <footer>
+    The <a href="http://timeliner.okfnlabs.org/"><strong>Timeliner </strong></a> is a project of <a href="http://okfnlabs.org/">Open Knowledge Foundation</a> &ndash; <a href="https://github.com/okfn/timeliner">Source Code</a>.
+    Timeliner is open-source &ndash; 
+    <a href="https://github.com/okfn/timeliner#copyright-and-license">Copyright &amp; License</a>.
+    </footer>
+  </div>
+</div> <!-- /content -->
+</div> <!-- / container-fluid -->
+
+{% block extrabody %}{% endblock %}
 
 <script type="text/javascript">
   var _gaq = _gaq || [];

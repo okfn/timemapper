@@ -1,29 +1,19 @@
 {% extends "base.html" %}
 
+{% block bodyclass %}home{% endblock %}
+
 {% block content %}
-  <!-- Custom CSS for the Timeliner Online App -->
-  <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body class="home">
-<div id="okf-panel" class="collapse">
-  <iframe src="http://assets.okfn.org/themes/okfn/okf-panel.html"></iframe>
-</div>
-<div class="okfn-ribbon">
-  <a data-toggle="collapse" data-target="#okf-panel" href="http://okfnlabs.org/" target="_blank">An Open Knowledge Foundation Labs Project</a>
-</div>
-
-<div class="container">
-<div class="content">
   <div class="page home">
-    <div class="page-header">
+    <div class="hero-unit">
       <h1>
         Timeliner
-        <small>Make elegant timelines and timemaps using Google Spreadsheets</small>
+        <small>Make elegant timelines and timemaps from Google Spreadsheets</small>
       </h1>
+      <br />
+      <p><a href="/account/login" class="btn btn-large btn-primary">Sign up or Sign in with Twitter <i class="icon-twitter"></i></a></p>
     </div>
       <div class="content">
-        <div class="row">
+        <div class="row-fluid">
           <div class="span8">
             <form class="js-load-url form-horizontal">
               <fieldset>
@@ -87,14 +77,9 @@
         Timeliner is only possible thanks to a set of awesome open-source components including <a href="http://timelinejs.org/">TimelineJS</a>, <a href="http://okfnlabs.org/recline/">ReclineJS</a>, <a href="http://leafletjs.com/">Leaflet</a>, <a href="http://backbonejs.org/">Backbone</a> and <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>. You can find the <a href="https://github.com/okfn/timeliner">full open-source source for Timeliner on GitHub here</a>.
         </p>
       </div>
-    <footer>
-    The <a href="http://timeliner.okfnlabs.org/"><strong>Timeliner </strong></a> is a project of <a href="http://okfnlabs.org/">Open Knowledge Foundation</a> &ndash; <a href="https://github.com/okfn/timeliner">Source Code</a>.
-    Timeliner is open-source &ndash; 
-    <a href="https://github.com/okfn/timeliner#copyright-and-license">Copyright &amp; License</a>.
-    </footer>
-  </div>
-</div> <!-- /content -->
-</div> <!-- / container-fluid -->
+{% endblock %}
+
+{% block extrabody %}
   <!-- 3rd party JS libraries -->
   <script type="text/javascript" src="vendor/recline/vendor/jquery/1.7.1/jquery.js"></script>
   <script type="text/javascript" src="vendor/recline/vendor/underscore/1.4.4/underscore.js"></script>
@@ -108,5 +93,4 @@
 
   <!-- non-library javascript specific to this demo -->
   <script type="text/javascript" src="js/app.js"></script>
-
 {% endblock %}

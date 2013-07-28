@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block bodyclass %}view{% endblock %}
+
+{% block extrahead %}
+  <!-- Open links in new window/tab by default -->
+  <base target="_blank" />
+
   <link rel="stylesheet" href="/vendor/recline/vendor/leaflet/0.4.4/leaflet.css">
   <!--[if lte IE 8]>
   <link rel="stylesheet" href="/vendor/recline/vendor/leaflet/0.4.4/leaflet.ie.css" />
@@ -15,34 +20,18 @@
   <!-- Recline CSS components -->
   <link rel="stylesheet" href="/vendor/recline/dist/recline.css">
   <!-- /Recline CSS components -->
+{% endblock %}
 
-  <!-- okf ribbon -->
-  <link rel="stylesheet" href="http://assets.okfn.org/themes/okfn/okf-panel.css"/>
+{% block extranavbar %}
+  <li class="tweet">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-related="OKFNLabs" data-hashtags="timeliner" data-dnt="true">Tweet</a>
+  </li>
+  <li>
+    <a class="js-embed" href="#">Embed Instructions</a>
+  </li>
+{% endblock %}
 
-  <!-- Custom CSS for the Timeliner Online App -->
-  <link rel="stylesheet" href="/css/style.css">
-
-  <!-- Open links in new window/tab by default -->
-  <base target="_blank" />
-</head>
-<body class="view">
-<div class="navbar">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="brand">{{title}}</a>
-      <ul class="nav">
-      </ul>
-      <ul class="nav pull-right">
-        <li class="tweet">
-          <a href="https://twitter.com/share" class="twitter-share-button" data-related="OKFNLabs" data-hashtags="timeliner" data-dnt="true">Tweet</a>
-        </li>
-        <li>
-          <a class="js-embed" href="#">Embed Instructions</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+{% block content %}
 <div class="data-views">
   <div class="controls">
     <div class="toolbox hideme">
@@ -64,9 +53,6 @@
     </div>
   </div>
 </div>
-<footer>
-Created with the <a href="http://timeliner.okfnlabs.org/"><strong>Timeliner </strong></a> from <a href="http://okfnlabs.org/">Open Knowledge Foundation Labs</a> using an <a href="http://timeliner.okfnlabs.org/#credits">awesome set of open-source libraries</a>
-</footer>
 
 <div class="modal hide fade embed-modal">
   <div class="modal-header">
@@ -79,6 +65,9 @@ Created with the <a href="http://timeliner.okfnlabs.org/"><strong>Timeliner </st
   </div>
 </div>
 </div>
+{% endblock %}
+
+{% block extrabody %}
   <script type="text/javascript">
     var VIZDATA = {{vizJSON}};
   </script>
@@ -99,5 +88,5 @@ Created with the <a href="http://timeliner.okfnlabs.org/"><strong>Timeliner </st
 
   <!-- non-library javascript specific to this demo -->
   <script type="text/javascript" src="/js/view.js"></script>
-
 {% endblock %}
+
