@@ -1,6 +1,10 @@
 var express = require('express')
   , nunjucks = require('nunjucks')
   , config = require('./lib/config.js')
+  , passport = require('passport-twitter')
+  , passport = require('passport')
+  , TwitterStrategy = require('passport-twitter').Strategy
+
   , dao = require('./lib/dao.js')
   , util = require('./lib/util.js')
   , authz = require('./lib/authz.js')
@@ -15,6 +19,8 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(express.cookieParser());
   app.use(express.session({ secret: config.get('express:secret')}));
+  app.use(passport.initialize());
+  app.use(passport.session());
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
 });
@@ -40,6 +46,7 @@ app.configure('test', function(){
   var dbName = 'hypernotes-test-njs';
   config.set('database:name', dbName);
 });
+
 
 // ======================================
 // Pre-preparation for views
@@ -75,15 +82,11 @@ function getFlashMessages(req) {
 //   distanceOfTimeInWords: util.distanceOfTimeInWords
 // });
 
-// app.all('*', function(req, res, next) {
-//   var currentUser = null;
-//   setCurrentUser(req, function(currentUser) {
-//     res.local('currentUser', currentUser);
-//     req.currentUser = currentUser;
-//     next();
-//   });
-// });
-// 
+app.all('*', function(req, res, next) {
+  app.locals.currentUser = req.user ? req.user.toJSON() : null; 
+  next();
+});
+
 // function setCurrentUser(req, callback) {
 //   if (req.session && req.session.hypernotesIdentity) {
 //     var userid = req.session.hypernotesIdentity;
@@ -111,62 +114,62 @@ var routePrefixes = {
 };
 
 app.get('/', function(req, res){
-  res.render('index.html', {});
+  res.render('index.html', {title: 'TimeMapper'});
 });
 
 // ======================================
 // User Accounts
 // ======================================
 
-app.get('/account', function(req, res){
-  var qryObj = {};
-  dao.Account.search(qryObj, function(queryResult) {
-    res.render('account/list.html', {accounts: queryResult.toJSON()});
-  });
-});
+app.get('/account/login', passport.authenticate('twitter'));
 
-app.get('/account/register', function(req, res){
-  res.render('account/register.html', {});
-});
+app.get('/account/auth/twitter/callback', 
+      passport.authenticate('twitter', { successRedirect: '/',
+                                             failureRedirect: '/login' }));
 
-app.post('/account/register', function(req, res){
-  // TODO: check form validates (e.g. password valid etc)
+var siginOrRegister = function(token, tokenSecret, profile, done) {
+  // twitter does not provide access to user email so this is always null :-(
+  var email = profile.emails && profile.emails.length > 0 ? profile.emails[0].value : null;
+  var photo = profile.photos && profile.photos.length > 0 ? profile.photos[0].value : null;
   account = dao.Account.create({
-      id: req.body.username
-    , fullname: req.body.fullname
-    , email: req.body.email
-    , api_key: util.uuidv4()
+    id: profile.username,
+    fullname: profile.displayName,
+    // hackish
+    description: profile._json.description,
+    provider: 'twitter',
+    email: email,
+    image: photo,
+    manifest_version: 1 });
+  account.save(function(err) {
+    if (err) { return done(err); }
+    // req.flash('success', 'Thanks for signing-up');
+    done(null, account);
   });
-  account.setPassword(req.body.password);
-  account.save(function() {
-    req.flash('success', 'Thanks for signing-up');
-    // log them in
-    req.session.hypernotesIdentity = account.id;
-    res.redirect('/' + account.id);
-  });
+};
+
+passport.use(new TwitterStrategy({
+    consumerKey: config.get('twitter:key'),
+    consumerSecret: config.get('twitter:secret'),
+    callbackURL: "http://localhost:5000/account/auth/twitter/callback"
+  },
+  siginOrRegister
+));
+
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
 });
 
-app.get('/account/login', function(req, res){
-  res.render('account/login.html', {});
-});
-
-app.post('/account/login', function(req, res){
-  var userid = req.body.username;
-  var password = req.body.password;
-  dao.Account.get(userid, function(account) {
-    if (account && account.checkPassword(password)) {
-      req.flash('success', 'Welcome, you are now logged in.');
-      req.session.hypernotesIdentity = account.id;
-      res.redirect('/' + account.id);
-    } else {
-      req.flash('error', 'Bad username or password');
-      res.render('account/login.html', {});
-    }
+passport.deserializeUser(function(id, done) {
+  var account = dao.Account.create({
+    id: id
+  });
+  account.fetch(function(err, user) {
+    done(err, account);
   });
 });
 
 app.get('/account/logout', function(req, res){
-  delete req.session.hypernotesIdentity;
+  req.logout();
   res.redirect('/');
 });
 
