@@ -164,7 +164,7 @@ var siginOrRegister = function(token, tokenSecret, profile, done) {
 passport.use(new TwitterStrategy({
     consumerKey: config.get('twitter:key'),
     consumerSecret: config.get('twitter:secret'),
-    callbackURL: "http://localhost:5000/account/auth/twitter/callback"
+    callbackURL: config.get('twitter:url')
   },
   siginOrRegister
 ));
