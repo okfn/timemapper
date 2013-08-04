@@ -29,17 +29,8 @@ Now you can run the app:
 
 To view the site, open localhost:3000 in a browser.
 
-## Load Fixtures
+## Deploy (to Heroku)
 
-To load some fixture data use the command line interface:
-
-    node cli.js fixtures
-    node cli.js load test/data/napoloen.js tester
-
-Then visit:
-
-    http://localhost:3000/tester/default
-    http://localhost:3000/tester/napoleon
 
 
 # User Stories
