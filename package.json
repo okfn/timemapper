@@ -9,5 +9,6 @@
     , "nconf": "0.5.1"
     , "passport": ""
     , "passport-twitter": ""
+    , "knox": ""
   }
 }

@@ -17,8 +17,11 @@ var inthread = {
   , 'owner': username
 };
 
-var testDir = path.join(__dirname, 'data', 'db');
+// fs option
+// var testDir = path.join(__dirname, 'data', 'db');
+var testDir = path.join('test', 'db');
 dao.config.set('database:path', testDir);
+// dao.config.set('database:backend', 'fs');
 
 describe('DAO Basics', function() {
   it('getDomainObjectClass', function(done) {
@@ -43,6 +46,7 @@ describe('DAO Storage', function() {
   it('FETCH Account', function(done) {
     var acc = dao.Account.create({id: username});
     acc.fetch(function(error, account) {
+      assert.equal(error, null);
       assert.equal(account.id, username, 'username incorrect');
       var res = account.toJSON();
       assert.equal(res.fullname, inuser.fullname);
