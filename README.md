@@ -1,6 +1,5 @@
 Create beautiful timelines and timemaps from Google Spreadsheets.
 
-
 # Install
 
 This is a Node web-app built using express.
@@ -31,7 +30,19 @@ To view the site, open localhost:3000 in a browser.
 
 ## Deploy (to Heroku)
 
+Standard stuff:
 
+    heroku create hypernotes
+    git push heroku
+
+You'll also need to set config. Suggest creating a `.env` file:
+
+    TWITTER_KEY=...
+    ...
+
+Then push it:
+
+    heroku config:push
 
 # User Stories
 
