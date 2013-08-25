@@ -201,13 +201,12 @@ app.get('/:userId', function(req, res, next) {
       return;
     }
     var isOwner = (req.currentUser && req.currentUser.id == userId);
-    // TODO: reinstate listing of viz ...
-    var threads = [];
-    res.render('account/view.html', {
-      account: account.toTemplateJSON()
-      , threads: threads
-      , threadCount: 0
-      , isOwner: isOwner
+    dao.Viz.getByOwner(userId, function(error, views) {
+      res.render('account/view.html', {
+        account: account.toTemplateJSON()
+        , views: views 
+        , isOwner: isOwner
+      });
     });
   });
 });

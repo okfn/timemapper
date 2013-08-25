@@ -53,7 +53,7 @@ Charlie: Admin of the website
 
 ## Register / Login
 
-As Alice I want to signup (using Twitter?) so that I have an account and can login
+[ip] As Alice I want to signup (using Twitter?) so that I have an account and can login
 
 As Alice I want to login (using Twitter?) so that I am identified to the system and the Vizs I create are owned by me
 

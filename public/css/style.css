@@ -162,3 +162,18 @@ body.embed .data-views {
   font-style: italic;
 }
 
+/**********************************************************
+  * Views - List
+  *********************************************************/
+
+ul.view-summary-list {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.view-summary-list ul li {
+}
+
+.view-summary-list h3 {
+
+}

@@ -5,26 +5,34 @@
   <h1>{{account.id}}</h1>
 
   <div class="row">
-    <div class="span12">
+    <div class="span4">
       <dl class="vcard">
         <dt>Member since</dt>
         <dd>{{account._created}}</dd>
         <dt>Name</dt>
         <dd>{{account.fullname}}</dd>
       </dl>
-    </div>
-    <div class="span4">
       <ul class="stats">
         <li>
-          <strong>{{threadCount}}</strong><span>threads</span>
+          <strong>{{views.length}}</strong> views
         </li>
       </ul>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="span12">
-      Viz List
+    <div class="span8">
+      <h2>Views</h2>
+      <ul class="view-summary-list">
+      {% for view in views %}
+        <li>
+          <h3>
+            <a href="/{{view.owner}}/{{view.name}}">
+              {{view.title}} <small>({{view.name}})</small>
+            </a>
+          </h3>
+          {{view.description}}
+        </li>
+      {% endfor %}
+      </ul>
     </div>
   </div>
 </div>

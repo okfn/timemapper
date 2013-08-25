@@ -1,6 +1,7 @@
 var assert = require('assert')
   , path = require('path')
   , dao = require('../lib/dao.js')
+  , _ = require('underscore')
   ;
 
 var indexName = 'hypernotes-test-njs';
@@ -17,11 +18,11 @@ var inthread = {
   , 'owner': username
 };
 
-// fs option
-// var testDir = path.join(__dirname, 'data', 'db');
 var testDir = path.join('test', 'db');
+// fs option
+var testDir = path.join(__dirname, 'data', 'db');
 dao.config.set('database:path', testDir);
-// dao.config.set('database:backend', 'fs');
+dao.config.set('database:backend', 'fs');
 
 describe('DAO Basics', function() {
   it('getDomainObjectClass', function(done) {
@@ -79,6 +80,17 @@ describe('DAO Storage', function() {
       assert(error === null);
       done();
     })
+  });
+  it('List Viz', function(done) {
+    // tester has at least napoleon as a subdirectory
+    var viz = dao.Viz.getByOwner(username, function(err, data) {
+      assert(err === null);
+      var names = _.pluck(data, 'name');
+      // console.log(data[0]);
+      assert(names.indexOf('napoleon') != -1, names);
+      assert.equal(names.indexOf('data.json'), -1, 'data.json should not be in list');
+      done();
+    });
   });
 });
 
