@@ -122,7 +122,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/create', function(req, res) {
-  res.render('create.html', {title: 'TimeMapper'});
+  res.render('create.html', {title: 'Create'});
 });
 
 app.post('/create', function(req, res) {

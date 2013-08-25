@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="account view">
-  <h1>{{account.id}}</h1>
+  <div class="page-header">
+    <h1>{{account.id}} <small>{{account.fullname}}</small></h1>
+  </div>
 
   <div class="row">
-    <div class="span4">
+    <div class="span3">
       <dl class="vcard">
         <dt>Member since</dt>
         <dd>{{account._created}}</dd>
@@ -19,7 +20,7 @@
       </ul>
     </div>
 
-    <div class="span8">
+    <div class="span9">
       <h2>Views</h2>
       <ul class="view-summary-list">
       {% for view in views %}
@@ -35,5 +36,4 @@
       </ul>
     </div>
   </div>
-</div>
 {% endblock %}
