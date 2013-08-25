@@ -71,22 +71,24 @@ As Alice I want to login (using Twitter?) so that I am identified to the system 
 
 As Alice I want to see a terms of service when I signup so that I know what the licensing arrangements are for what I create and do
 
-## Create Views
+## Create and Edit Views
+
+As Alice I want to create a timemap Viz quickly from a google spreadsheet ...
+  - I want to set the title and "slug" for my timemap
+  - I want to choose a license (or full copyright) - default license applied. Licenses will be open licenses or full copyright.
+  - I want to create an animated timemap in which the time and map interact ...
+  - I want to add a description (and attribution) to my Viz (perhaps now or later ...)
+
+As Alice I want to edit my Viz later after I've created it (e.g. change the title) so that I can correct typos or update info to reflect changes
 
 As Alice I want to create a timeline Viz quickly from my google spreadsheet so that I can share it with others
 
   - I want a nice url e.g. /alice/{name-of-viz}
 
-As Alice I want to create a timemap Viz quickly from a google spreadsheet ...
-
-As Alice I want to create an animated timemap in which the time and map interact ...
-
 As Alice I want to create a timeline quickly from a gist so that I can share it with others
   - Structure of gist??
 
 As Alice I want to create a map quickly from a google spreadsheet ...
-
-As Alice I want to add a description (and attribution) to my Viz 
 
 As Alice or Bob I want to embed my Viz in a website elsewhere so that people can see it there
 
@@ -101,12 +103,12 @@ I want to "fork" someone elses visualization so that I can modify and extend it
 
 ## Listing and Admin
 
-As Alice I want to list the "Vizs (viz?)" I've created 
+[x] As Alice I want to list the "Vizs (viz?)" I've created 
 
-As Bob I want to know what I can do with this service before I sign up so that I know whether it is worth doing so
+[ip] As Bob I want to know what I can do with this service before I sign up so that I know whether it is worth doing so
   - Some featured timemaps ...
 
-As Bob I want to see all the Vizs created by Alice so that I can see if there some I like
+[x] As Bob I want to see all the Vizs created by Alice so that I can see if there some I like
 
   - Most recent items ?
 
@@ -131,8 +133,19 @@ As Alice I want to restrict access to some of my Vizs so that only I can see the
 
 As Alice I want to restrict access to some of my Vizs but allow specific other people to view it so that other people than me can see it
 
+## Misc
+
+As Bob I want to find out about the website and project so that I get a sense of who's behind it / whether its trustworthy / whether there is other cool stuff they do
+
+As Alice I want to know how many people have viewed my Viz so that I know whether other people are interested
+
+As Bob (? may need to be logged in) I want to "star" a Viz I come across so that I recognize its value and store it for finding later
+
 ## Asides
 
+- config
+  - layout of the map / timeline (stacked versus side by side)
+  - date parsing
 - 2 types of data source - gists as well as google docs
   - data package structure in gists!
 
