@@ -1,5 +1,6 @@
 {
   "name"  : "napoleon",
+  "owner" : "tester",
   "title" : "Battles in the Napoleonic Wars",
   "resources" : [{
     "name": "default",
