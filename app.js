@@ -114,7 +114,11 @@ var routePrefixes = {
 };
 
 app.get('/', function(req, res){
-  res.render('index.html', {title: 'TimeMapper'});
+  if (req.user) {
+    routes.dashboard(req, res);
+  } else {
+    res.render('index.html', {title: 'Home'});
+  }
 });
 
 app.get('/create', function(req, res) {
