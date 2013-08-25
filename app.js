@@ -8,6 +8,7 @@ var express = require('express')
   , dao = require('./lib/dao.js')
   , util = require('./lib/util.js')
   , authz = require('./lib/authz.js')
+  , routes = require('./routes/index.js')
   ;
 
 var app = module.exports = express();
@@ -199,29 +200,11 @@ app.get('/account/logout', function(req, res){
   res.redirect('/');
 });
 
-app.get('/:userId', function(req, res, next) {
-  var userId = req.params.userId;
-  // HACK: we only want to handle threads and not other stuff
-  if (userId in routePrefixes) {
-    next();
-    return;
-  }
-  var account = dao.Account.create({id: userId});
-  account.fetch(function(error) {
-    if (error) {
-      res.send('Not found', 404);
-      return;
-    }
-    var isOwner = (req.currentUser && req.currentUser.id == userId);
-    dao.Viz.getByOwner(userId, function(error, views) {
-      res.render('account/view.html', {
-        account: account.toTemplateJSON()
-        , views: views 
-        , isOwner: isOwner
-      });
-    });
-  });
-});
+// ======================================
+// User Pages and Dashboards
+// ======================================
+
+app.get('/:userId', routes.userShow);
 
 // ======================================
 // Threads
