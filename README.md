@@ -28,6 +28,18 @@ Now you can run the app:
 
 To view the site, open localhost:3000 in a browser.
 
+### Configuration
+
+The default configuration can be found in  `lib/config.js`. You can override
+this in a couple of ways:
+
+1. Create a `settings.json` with specific values. `settings.json` has the same
+   form as nconf.defaults object in in `lib/config.js`.
+
+2. Set specific environment variables. The ones you can set are those used in
+   `nconf.defaults. This useful for deployment on Heroku where environment
+   variables are default way to configure.
+
 ## Deploy (to Heroku)
 
 Standard stuff:
