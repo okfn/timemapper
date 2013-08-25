@@ -83,8 +83,20 @@ function getFlashMessages(req) {
 // });
 
 app.all('*', function(req, res, next) {
-  app.locals.currentUser = req.user ? req.user.toJSON() : null; 
-  next();
+  function setup(req) {
+    app.locals.currentUser = req.user ? req.user.toJSON() : null; 
+    next();
+  }
+  if (config.get('test:testing') === true && config.get('test:user')) {
+    var userid = config.get('test:user');
+    var acc = dao.Account.create({id: userid});
+    acc.fetch(function() {
+      req.user = acc;
+      setup(req);
+    });
+  } else {
+    setup(req);
+  }
 });
 
 // ======================================
