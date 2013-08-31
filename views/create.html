@@ -3,37 +3,57 @@
 {% block bodyclass %}create{% endblock %}
 
 {% block content %}
-<h2 style="text-align: center; margin: 30px;">How It Works</h2>
-<div class="row instructions">
+<div class="page-header">
+  <h1>
+    Create your TimeMap
+  </h1>
+</div>
+
+<div class="instructions">
+<div class="row">
   <div class="span4">
     <div class="well">
-      <h3>Create a Spreadsheet</h3>
-      <p>We suggest you copy <a href="https://docs.google.com/spreadsheet/ccc?key=0Aon3JiuouxLUdDlGV2lCakoydVh1U014cHRqcXpoWVE">this template</a> so that columns have the right names.</p>
+      <h3>1. Connect</h3>
+      <p>Connect your spreadsheet (you can create too!)</p>
     </div>
   </div>
   <div class="span4">
     <div class="well">
-      <h3>Publish the Spreadsheet</h2>
-      <p>Publish your spreadsheet - see File menu &rarr; Publish to Web in Google Docs.</p>
+      <h3>2. Customize</h3>
+      <p>Tweak anything you need to - title, url, layout</p>
     </div>
   </div>
   <div class="span4">
     <div class="well">
-      <h3>Connect it to Timeliner</h3>
-      <p>Select your spreadsheet using the form below and hit Load.</p>
+      <h3>3. Publish</h3>
+      <p>Publish &ndash; its now ready for viewing, embedding and sharing.</p>
     </div>
   </div>
 </div>
 
+<h3 style="text-align: center;"><a href="">Let's get started &raquo;</a></h3>
+</div>
+
+<hr />
+
+<div class="connect">
+<h3>
+  1. Connect Your Google Spreadsheet
+  <small>(<a href="#spreadsheet">Need to create one?</a>)</small>
+</h3>
 <form class="js-load-url form-horizontal" action="" method="POST">
   <fieldset>
-    <legend>Connect Your Google Spreadsheet</legend>
     <div class="control-group">
-      <label for="source" class="control-label">Google Spreadsheet URL</label>
+      <label for="source" class="control-label">Spreadsheet</label>
       <div class="controls">
-        <input type="url" value="" name="source" class="input span10" placeholder="URL to Google Spreadsheet" />
-        <button title="Select from Google Drive" class="gdrive-import btn"><i class="gdrive"></i></button>
-        <p class="help-block">The Timeliner uses data in a spreadsheet in Google Docs allowing you to edit the timeline by editing the spreadsheet.</p>
+        <p>
+        <button title="Select from Google Drive" class="gdrive-import btn"><i class="gdrive"></i> Select from Your Google Drive</button>
+        <span class="demo-sheet">
+          (<a href="#" class="js-demo-sheet" data-url="https://docs.google.com/spreadsheet/ccc?key=0Al6mO9_3Hr2PdGZnRjEwUWxOekhreTNNZEFEMWRZbkE"
+            >Not sure what to use? Click here to use a demo sheet ...</a>)
+        </span>
+        </p>
+        <input type="url" value="" name="source" class="input span8" placeholder="Or paste the Google Spreadsheet URL directly" />
       </div>
     </div>
     <div class="control-group">
@@ -43,6 +63,22 @@
     </div>
   </fieldset>
 </form>
+</div>
+
+<hr />
+
+<h2 id="spreadsheet">Creating your Spreadsheet</h2>
+<p>The easiest way to get started is to copy (or follow) <strong><a href="https://docs.google.com/spreadsheet/ccc?key=0Aon3JiuouxLUdDlGV2lCakoydVh1U014cHRqcXpoWVE">this template</a></strong>.</p>
+
+<div class="alert" style="width: 300px;">
+Note: you must "Publish your spreadsheet": in your spreadsheet go to <em>File menu &rarr; Publish to Web</em> and then select "Start publishing..."
+</div>
+
+<h3>More Information</h3>
+<p>We just need a spreadsheet that has certain key columns.</p>
+<p>Columns like title, start etc</p>
+<p>You can have any number of other columns</p>
+
 {% endblock %}
 
 {% block extrabody %}
@@ -55,5 +91,5 @@
   </script>
 
   <!-- non-library javascript specific to this demo -->
-  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="js/create.js"></script>
 {% endblock %}

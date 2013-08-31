@@ -42,5 +42,13 @@ jQuery(function($) {
     });
   });
 
+
+  $('.js-demo-sheet').click(function(e) {
+    e.preventDefault();
+    var url = $(e.target).data('url');
+    $input.val(url);
+    // highlight the input so people realize it ahs changed
+    $input.stop().css("background-color", "#FFFF9C");
+  });
 });
 

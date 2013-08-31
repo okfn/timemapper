@@ -1,8 +1,13 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700);
+@import url(http://fonts.googleapis.com/css?family=News+Cycle:400,700|Merriweather:400,700,900);
 
 body {
   font-size: 14px;
+  font-family: Merriweather, serif;
   background-color: #eee;
+}
+
+h1, h2, h3, h4, h5, h6, .brand {
+  font-family: "News Cycle", Arial, sans-serif;
 }
 
 body .content {
@@ -29,10 +34,6 @@ footer {
   font-size: 90%;
 }
 
-h1, h2, h3, h4, h5, h6, body, p, input, button, select, textarea {
-	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-}
-
 i.gdrive {
   height: 20px;
   width: 20px;
@@ -48,10 +49,6 @@ i.gdrive {
 
 .vmm-timeline p {
   font-size: 12px;
-}
-
-body.home .row.instructions .span4 .well {
-  height: 100px;
 }
 
 .okfn-ribbon {
@@ -181,4 +178,29 @@ ul.view-summary-list {
 
 .view-summary-list h3 {
 
+}
+
+/**********************************************************
+  * Dashboard View
+  *********************************************************/
+
+.dashboard .menu {
+  margin: 50px 0px;
+}
+
+/**********************************************************
+  * Create View
+  *********************************************************/
+
+.create .instructions {
+}
+
+.create .instructions h3 {
+  margin-top: 0;
+  padding-top: 0px;
+}
+
+.create .demo-sheet {
+  font-size: 80%;
+  padding-left: 20px;
 }
