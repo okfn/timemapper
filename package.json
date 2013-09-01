@@ -10,5 +10,6 @@
     , "passport": ""
     , "passport-twitter": ""
     , "knox": ""
+    , "async": ""
   }
 }
