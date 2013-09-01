@@ -19,10 +19,12 @@ var inthread = {
 };
 
 var testDir = path.join('test', 'db');
+dao.config.set('database:backend', 's3');
 // fs option
-var testDir = path.join(__dirname, 'data', 'db');
+// var testDir = path.join(__dirname, 'data', 'db');
+// dao.config.set('database:backend', 'fs');
+// END fs option
 dao.config.set('database:path', testDir);
-dao.config.set('database:backend', 'fs');
 
 describe('DAO Basics', function() {
   it('getDomainObjectClass', function(done) {
@@ -83,6 +85,7 @@ describe('DAO Storage', function() {
   });
   it('List Viz', function(done) {
     // tester has at least napoleon as a subdirectory
+    this.timeout(5000);
     var viz = dao.Viz.getByOwner(username, function(err, data) {
       assert(err === null);
       var names = _.pluck(data, 'name');
