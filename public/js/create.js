@@ -23,7 +23,7 @@ jQuery(function($) {
   $input.change(function (e) {
     // NB: setCustomValidity primes the error messages ready for form submission,
     //     it doesn't show them immediately.
-    var url = recline.Backend.GDocs.getGDocsAPIUrls(e.target.value).spreadsheet;
+    var url = recline.Backend.GDocs.getGDocsApiUrls(e.target.value).spreadsheetAPI;
 
     $.ajax(url, {
       type: "HEAD",
