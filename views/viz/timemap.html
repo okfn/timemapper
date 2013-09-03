@@ -22,13 +22,29 @@
   <!-- /Recline CSS components -->
 {% endblock %}
 
-{% block extranavbar %}
-  <li class="tweet">
-    <a href="https://twitter.com/share" class="twitter-share-button" data-related="OKFNLabs" data-hashtags="timeliner" data-dnt="true">Tweet</a>
-  </li>
-  <li>
-    <a class="js-embed" href="#">Embed Instructions</a>
-  </li>
+{% block navbar %}
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="/">{{title}} - TimeMapper</a>
+      <ul class="nav">
+      </ul>
+      <ul class="nav pull-right">
+        <li class="tweet">
+          <a href="https://twitter.com/share" class="twitter-share-button" data-related="OKFNLabs" data-hashtags="timeliner" data-dnt="true">Tweet</a>
+        </li>
+        <li>
+          <a class="js-embed" href="#">Embed Instructions</a>
+        </li>
+        <li class="separator"></li>
+        {% if currentUser %} 
+        <li><a class="username" href="/{{currentUser.id}}">{{currentUser.id}}</a></li>
+        <li><a class="logout" href="/account/logout" title="sign out"><i class="icon-signout"></i></a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>
 {% endblock %}
 
 {% block content %}

@@ -36,6 +36,7 @@
 <div class="okfn-ribbon">
   <a data-toggle="collapse" data-target="#okf-panel" href="http://okfnlabs.org/" target="_blank">An Open Knowledge Foundation Labs Project</a>
 </div-->
+{% block navbar %}
 <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
@@ -43,7 +44,6 @@
       <ul class="nav">
       </ul>
       <ul class="nav pull-right">
-        {% block extranavbar %}{% endblock %}
         {% if currentUser %} 
         <li><a class="username" href="/{{currentUser.id}}">{{currentUser.id}}</a></li>
         <li><a class="logout" href="/account/logout" title="sign out"><i class="icon-signout"></i></a></li>
@@ -52,6 +52,7 @@
     </div>
   </div>
 </div>
+{% endblock %}
 
 <div class="container">
 <div class="content">
