@@ -19,11 +19,11 @@ var inthread = {
 };
 
 var testDir = path.join('test', 'db');
-dao.config.set('database:backend', 's3');
+// dao.config.set('database:backend', 's3');
 // fs option
-// var testDir = path.join(__dirname, 'data', 'db');
-// dao.config.set('database:backend', 'fs');
-// END fs option
+if (dao.config.get('database:backend') === 'fs') {
+  testDir = path.join(__dirname, 'data', 'db');
+}
 dao.config.set('database:path', testDir);
 
 describe('DAO Basics', function() {
@@ -56,8 +56,8 @@ describe('DAO Storage', function() {
       done();
     });
   });
-  it('FETCH Viz', function(done) {
-    var viz = dao.Viz.create({owner: username, name: 'napoleon'});
+  it('FETCH DataView', function(done) {
+    var viz = dao.DataView.create({owner: username, name: 'napoleon'});
     viz.fetch(function(error) {
       var res = viz.toJSON();
       assert.equal(res.title, 'Battles in the Napoleonic Wars');
@@ -76,17 +76,17 @@ describe('DAO Storage', function() {
       done();
     });
   });
-  it('Upsert Viz', function(done) {
-    var viz = dao.Viz.create(inthread);
+  it('Upsert DataView', function(done) {
+    var viz = dao.DataView.create(inthread);
     viz.upsert(function(error) {
       assert(error === null);
       done();
     })
   });
-  it('List Viz', function(done) {
+  it('List DataView', function(done) {
     // tester has at least napoleon as a subdirectory
     this.timeout(5000);
-    var viz = dao.Viz.getByOwner(username, function(err, data) {
+    var viz = dao.DataView.getByOwner(username, function(err, data) {
       assert(err === null);
       var names = _.pluck(data, 'name');
       // console.log(data[0]);

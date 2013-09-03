@@ -129,7 +129,7 @@ app.post('/create', function(req, res) {
   var url = req.body.source;
   var name = 'xyz';
   var userid = req.user ? req.user.id : 'tester';
-  var viz = dao.Viz.create({
+  var viz = dao.DataView.create({
     name: name,
     title: 'xyz',
     owner: userid,
@@ -222,7 +222,7 @@ app.get('/:userId/:threadName', function(req, res, next) {
     return;
   }
   var threadName = req.params.threadName;
-  var viz = dao.Viz.create({owner: userId, name: threadName});
+  var viz = dao.DataView.create({owner: userId, name: threadName});
   viz.fetch(function(error) {
     if (error) {
       res.send('Not found ' + error.message, 404);
