@@ -106,7 +106,7 @@ body.view footer {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
+  right: 0;
   margin: 0;
 }
 
@@ -135,7 +135,7 @@ body.view footer {
 .data-views .span4 {
   margin: 0;
   padding: 0;
-  width: 33.35%;
+  width: 33.33%;
 }
 
 .timeline {
