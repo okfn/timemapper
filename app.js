@@ -232,6 +232,7 @@ app.get('/:userId/:threadName', function(req, res, next) {
     var isOwner = (req.currentUser && req.currentUser.id == threadData.owner);
     res.render('viz/timemap.html', {
       title: threadData.title
+      , embed: (req.query.embed !== undefined)
       , viz: threadData
       , vizJSON: JSON.stringify(threadData)
       , isOwner: isOwner

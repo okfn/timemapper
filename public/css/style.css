@@ -126,8 +126,16 @@ body.view footer {
   margin-left: 0px;
 }
 
+/* correct so we have full width of page */
+.data-views .span8 {
+  margin: 0;
+  padding: 0;
+  width: 66.66%;
+}
 .data-views .span4 {
-  margin-left: 1%;
+  margin: 0;
+  padding: 0;
+  width: 33.35%;
 }
 
 .timeline {
