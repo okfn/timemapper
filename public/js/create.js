@@ -42,7 +42,30 @@ jQuery(function($) {
     });
   });
 
+  var url = $input.value;
+  var apiurl = recline.Backend.GDocs.getGDocsApiUrls(url).spreadsheetAPI;
+  $('.connect form').submit(function(e) {
+    e.preventDefault();
+    // TODO: notify user we are doing something
+    // TODO: get title, make slug and let user edit
 
+    var viewpackage = {
+      name: '',
+      title: '',
+      resources: [{
+        backend: 'gdocs',
+        url: null
+      }]
+    };
+
+    jQuery.getJSON(url, function (d) {
+      console.log(d);
+      var title = d.feed.title.$t;
+    });
+
+  });
+
+  // bit of UX to allow users to use a demo spreadsheet as a way to get started
   $('.js-demo-sheet').click(function(e) {
     e.preventDefault();
     var url = $(e.target).data('url');

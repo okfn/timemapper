@@ -11,7 +11,7 @@ var express = require('express')
   , routes = require('./routes/index.js')
   ;
 
-var app = module.exports = express();
+var app = express();
 
 // Configuration
 app.configure(function(){
@@ -229,7 +229,7 @@ app.get('/:userId/:threadName', function(req, res, next) {
       return;
     }
     var threadData = viz.toTemplateJSON();
-    var isOwner = (req.currentUser && req.currentUser.id == threadData.owner);
+    var isOwner = (req.user && req.user.id == threadData.owner);
     res.render('viz/timemap.html', {
       title: threadData.title
       , embed: (req.query.embed !== undefined)
@@ -244,10 +244,19 @@ app.get('/:userId/:threadName', function(req, res, next) {
 // API
 // ======================================
 
-app.get('/api/v1/:objecttype/:id', function(req, res, next) {
-  var objName = req.params.objecttype[0].toUpperCase() + req.params.objecttype.slice(1); 
-  var klass = dao[objName];
-  klass.get(req.params.id, function(domainObj) {
+app.get('/api/v1/account/:id', function(req, res) {
+  var obj = dao.Account.create({id: req.params.id});
+  apiGet(obj, req, res);
+});
+
+app.get('/api/v1/account/:id/dataview/:name', function(req, res) {
+  var obj = dao.DataView.create({owner: req.params.id, name: req.params.name});
+  apiGet(obj, req, res);
+});
+
+var apiGet = function(domainObj, req, res) {
+  domainObj.fetch(function(err, domainObj) {
+    // TODO: handle err
     if (domainObj===null) {
       // next(new Error('Cannot find ' + req.params.objecttype + ' with id ' + req.params.id));
       var msg = {
@@ -257,7 +266,7 @@ app.get('/api/v1/:objecttype/:id', function(req, res, next) {
       res.json(msg, 404);
       return;
     }
-    var userId = req.currentUser ? req.currentUser.id : null;
+    var userId = req.user ? req.user.id : null;
     var isAuthz = authz.isAuthorized(userId, 'read', domainObj);
     if (isAuthz) {
       res.json(domainObj.toJSON());
@@ -268,8 +277,8 @@ app.get('/api/v1/:objecttype/:id', function(req, res, next) {
       };
       res.json(msg, 401);
     }
-  })
-});
+  });
+}
 
 var apiUpsert = function(req, res) {
   var objName = req.params.objecttype[0].toUpperCase() + req.params.objecttype.slice(1); 
@@ -280,7 +289,7 @@ var apiUpsert = function(req, res) {
   }
   var obj = klass.create(data);
   var action = req.params.id ? 'update' : 'create';
-  var userId = req.currentUser ? req.currentUser.id : null;
+  var userId = req.user ? req.user.id : null;
   var isAuthz = authz.isAuthorized(userId, action, obj);
   if (isAuthz) {
     obj.save(function(outData) {
@@ -298,16 +307,19 @@ var apiUpsert = function(req, res) {
 app.post('/api/v1/:objecttype', apiUpsert);
 app.put('/api/v1/:objecttype/:id?', apiUpsert);
     
-app.get('/api/v1/:objecttype', function(req,res) {
-  var objName = req.params.objecttype[0].toUpperCase() + req.params.objecttype.slice(1); 
-  var klass = dao[objName];
-  var queryObj = req.body;
-  var queryObj = null;
-  klass.search(queryObj, req.query, function(queryResult) {
-    res.json(queryResult.toJSON());
-  });
-});
+// app.get('/api/v1/:objecttype', function(req,res) {
+//   var objName = req.params.objecttype[0].toUpperCase() + req.params.objecttype.slice(1); 
+//   var klass = dao[objName];
+//   var queryObj = req.body;
+//   var queryObj = null;
+//   klass.search(queryObj, req.query, function(queryResult) {
+//     res.json(queryResult.toJSON());
+//   });
+// });
 
 app.listen(config.get('express:port'), function() {
   console.log("Express server listening on port " + config.get('express:port') + " in mode " + app.get('env'));
 });
+
+exports.app = app;
+
