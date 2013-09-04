@@ -1,23 +1,24 @@
-var assert = require('assert');
-var authz = require('../authz.js');
-var dao = require('../dao.js');
-var testCase = require('nodeunit').testCase;
+var assert = require('assert')
+  , authz = require('../lib/authz.js')
+  , dao = require('../lib/dao.js')
+  ;
 
-exports.test_isAuthorized = function(test) {
-  var note = dao.Note.create({
-    'owner': 'joe'
+describe('Authz', function() {
+  it('isAuthorized correctly', function() {
+    var note = dao.DataView.create({
+      'name': 'xyz',
+      'owner': 'joe'
+    });
+    assert.equal(authz.isAuthorized('joe', 'update', note), true);
+    assert.equal(authz.isAuthorized(null, 'update', note), false);
+    assert.equal(authz.isAuthorized(null, 'read', note), true);
+
+    var account = dao.Account.create({
+      'id': 'joe'
+    });
+    assert.equal(authz.isAuthorized(null, 'create', account), true);
+    assert.equal(authz.isAuthorized('joe', 'update', account), true);
+    assert.equal(authz.isAuthorized(null, 'update', account), false);
+    assert.equal(authz.isAuthorized(null, 'read', account), true);
   });
-  test.equals(authz.isAuthorized('joe', 'update', note), true);
-  test.equals(authz.isAuthorized(null, 'update', note), false);
-  test.equals(authz.isAuthorized(null, 'read', note), true);
-
-  var account = dao.Account.create({
-    'id': 'joe'
-  });
-  test.equals(authz.isAuthorized(null, 'create', account), true);
-  test.equals(authz.isAuthorized('joe', 'update', account), true);
-  test.equals(authz.isAuthorized(null, 'update', account), false);
-  test.equals(authz.isAuthorized(null, 'read', account), true);
-  test.done();
-}
-
+});
