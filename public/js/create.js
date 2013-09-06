@@ -21,6 +21,7 @@ jQuery(function($) {
   });
 
   $input.change(function (e) {
+    $('.stage2').show('slow');
     // NB: setCustomValidity primes the error messages ready for form submission,
     //     it doesn't show them immediately.
     var url = recline.Backend.GDocs.getGDocsApiUrls(e.target.value).spreadsheetAPI;
@@ -42,28 +43,50 @@ jQuery(function($) {
     });
   });
 
-  var url = $input.value;
-  var apiurl = recline.Backend.GDocs.getGDocsApiUrls(url).spreadsheetAPI;
   $('.connect form').submit(function(e) {
+    // var apiurl = recline.Backend.GDocs.getGDocsApiUrls(url).spreadsheetAPI;
     e.preventDefault();
     // TODO: notify user we are doing something
     // TODO: get title, make slug and let user edit
 
-    var viewpackage = {
-      name: '',
-      title: '',
+    // jQuery.getJSON(url, function (d) {
+    //  console.log(d);
+    //  var title = d.feed.title.$t;
+    // });
+
+    _createDataView();
+  });
+
+  _createDataView = function() {
+    var currentUser = $('.username').text();
+    var dataview = {
+      name: $('input[name="slug"]').val(),
+      owner: currentUser,
+      title: $('input[name="title"]').val(),
+      licenses: [{
+        id: 'cc-by',
+        name: 'Creative Commons Attribution',
+        version: '3.0',
+        url: 'http://creativecommons.org/licenses/by/3.0/'
+      }],
       resources: [{
         backend: 'gdocs',
-        url: null
+        url: $input.val()
       }]
     };
-
-    jQuery.getJSON(url, function (d) {
-      console.log(d);
-      var title = d.feed.title.$t;
+    // TODO: some validation?
+    $.ajax({
+      url: '/api/v1/account/' + currentUser + '/dataview/',
+      type: 'post',
+      data: dataview,
+      success: function() {
+        // TODO: notify success and then redirect ...
+      },
+      error: function(err) {
+        alert('Error on saving: ' + err.responseText);
+      }
     });
-
-  });
+  }
 
   // bit of UX to allow users to use a demo spreadsheet as a way to get started
   $('.js-demo-sheet').click(function(e) {

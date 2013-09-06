@@ -56,6 +56,21 @@
         <input type="url" value="" name="source" class="input span8" placeholder="Or paste the Google Spreadsheet URL directly" />
       </div>
     </div>
+    <div class="stage2" style="display: none;">
+      <div class="control-group">
+        <label for="title" class="control-label">Title</label>
+        <div class="controls">
+          <input type="text" value="My TimeMap Title" name="title" class="input span8" placeholder="" />
+        </div>
+      </div>
+      <div class="control-group">
+        <label for="slug" class="control-label">Slug</label>
+        <div class="controls">
+          <input type="text" value="my-timemap-title" name="slug" class="input span8" placeholder="" />
+          <p class="help-block">Your new Data View will appear at /your-username/{slug}. Can only contain alphanumeric, '-', '_'</p>
+        </div>
+      </div>
+    </div>
     <div class="control-group">
       <div class="controls">
         <button type="submit" class="btn btn-primary">Load &raquo;</button>
