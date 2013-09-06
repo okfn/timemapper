@@ -41,7 +41,7 @@ function getUserInfoFull(userId, cb) {
       cb(error);
       return;
     }
-    dao.Viz.getByOwner(userId, function(error, views) {
+    dao.DataView.getByOwner(userId, function(error, views) {
       account.views = views;
       cb(error, account);
     });
