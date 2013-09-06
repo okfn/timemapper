@@ -280,15 +280,7 @@ var apiGet = function(domainObj, req, res) {
   });
 }
 
-var apiUpsert = function(req, res) {
-  var objName = req.params.objecttype[0].toUpperCase() + req.params.objecttype.slice(1); 
-  var klass = dao[objName];
-  var data = req.body;
-  if (req.params.id) {
-    data.id = req.params.id;
-  }
-  var obj = klass.create(data);
-  var action = req.params.id ? 'update' : 'create';
+var apiUpsert = function(obj, action, req, res) {
   var userId = req.user ? req.user.id : null;
   var isAuthz = authz.isAuthorized(userId, action, obj);
   if (isAuthz) {
@@ -304,8 +296,21 @@ var apiUpsert = function(req, res) {
   }
 };
 
-app.post('/api/v1/:objecttype', apiUpsert);
-app.put('/api/v1/:objecttype/:id?', apiUpsert);
+// app.post('/api/v1/:objecttype', apiUpsert);
+app.post('/api/v1/account/:id/dataview/', function(req, res) {
+  var data = req.body;
+  var obj = dao.DataView.create(data);
+  // check whether already exists
+  obj.fetch(function(err) {
+    // TODO: we assume error is 404 but could be something else ...
+    if (!err) {
+      res.json(409, {message: 'Conflict - Object already exists'});
+    }
+    else {
+      apiUpsert(obj, 'create', req, res);
+    }
+  });
+});
     
 // app.get('/api/v1/:objecttype', function(req,res) {
 //   var objName = req.params.objecttype[0].toUpperCase() + req.params.objecttype.slice(1); 
