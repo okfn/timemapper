@@ -38,7 +38,7 @@
         </li>
         <li class="separator"></li>
         {% if currentUser %} 
-        <li><a class="username" href="/{{currentUser.id}}">{{currentUser.id}}</a></li>
+        <li><a class="username" href="/{{currentUser.id}}"><i class="icon-user"></i> {{currentUser.id}}</a></li>
         <li><a class="logout" href="/account/logout" title="sign out"><i class="icon-signout"></i></a></li>
         {% endif %}
       </ul>
