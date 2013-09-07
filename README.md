@@ -74,7 +74,7 @@ As Alice I want to see a terms of service when I signup so that I know what the 
 ## Create and Edit Views
 
 As Alice I want to create a timemap Viz quickly from a google spreadsheet ...
-  - I want to set the title and "slug" for my timemap
+  - I want to set the title and "slug" for my timemap and have a nice url /alice/{name-of-viz}
   - I want to choose a license (or full copyright) - default license applied. Licenses will be open licenses or full copyright.
   - I want to create an animated timemap in which the time and map interact ...
   - I want to add a description (and attribution) to my Viz (perhaps now or later ...)
@@ -83,9 +83,7 @@ As Alice I want to edit my Viz later after I've created it (e.g. change the titl
 
 As Alice I want to create a timeline Viz quickly from my google spreadsheet so that I can share it with others
 
-  - I want a nice url e.g. /alice/{name-of-viz}
-
-As Alice I want to create a timeline quickly from a gist so that I can share it with others
+As Alice I want to create a timemap / timeline quickly from a gist so that I can share it with others
   - Structure of gist??
 
 As Alice I want to create a map quickly from a google spreadsheet ...
