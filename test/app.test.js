@@ -19,7 +19,7 @@ describe('GET API', function() {
   });
   it('DataView GET', function(done) {
     request(app)
-      .get('/api/v1/account/tester/dataview/napoleon')
+      .get('/api/v1/dataview/tester/napoleon')
       .expect('Content-Type', /json/)
       .end(function(err, res) {
         // console.log(res);
@@ -30,7 +30,7 @@ describe('GET API', function() {
   });
   it('DataView Create Conflict if object with name already exists', function(done) {
     request(app)
-      .post('/api/v1/account/tester/dataview/')
+      .post('/api/v1/dataview/')
       .send({
         owner: 'tester',
         name: 'napoleon'
@@ -45,7 +45,7 @@ describe('GET API', function() {
       name: 'test-api-create'
     };
     request(app)
-      .post('/api/v1/account/tester/dataview/')
+      .post('/api/v1/dataview/')
       .send(data)
       .expect('Content-Type', /json/)
       .expect(401, done)
@@ -57,7 +57,7 @@ describe('GET API', function() {
   };
   it('DataView Create OK', function(done) {
     request(app)
-      .post('/api/v1/account/tester/dataview/')
+      .post('/api/v1/dataview/')
       .send(dataViewData)
       .expect('Content-Type', /json/)
       .expect(200)

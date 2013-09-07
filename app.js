@@ -249,8 +249,8 @@ app.get('/api/v1/account/:id', function(req, res) {
   apiGet(obj, req, res);
 });
 
-app.get('/api/v1/account/:id/dataview/:name', function(req, res) {
-  var obj = dao.DataView.create({owner: req.params.id, name: req.params.name});
+app.get('/api/v1/dataview/:owner/:name', function(req, res) {
+  var obj = dao.DataView.create({owner: req.params.owner, name: req.params.name});
   apiGet(obj, req, res);
 });
 
@@ -297,7 +297,7 @@ var apiUpsert = function(obj, action, req, res) {
 };
 
 // app.post('/api/v1/:objecttype', apiUpsert);
-app.post('/api/v1/account/:id/dataview/', function(req, res) {
+app.post('/api/v1/dataview', function(req, res) {
   var data = req.body;
   var obj = dao.DataView.create(data);
   // check whether already exists
