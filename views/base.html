@@ -19,7 +19,7 @@
   <link href="/vendor/bootstrap/2.2.2/bootstrap-responsive.css" rel="stylesheet">
   -->
   <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
-  <link href="/vendor/bootstrap/2.2.2/bootstrap.css" rel="stylesheet">
+  <!-- link href="/vendor/bootstrap/2.2.2/bootstrap.css" rel="stylesheet"-->
   <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <!-- okf ribbon -->
   <link rel="stylesheet" href="http://assets.okfn.org/themes/okfn/okf-panel.css"/>
@@ -69,6 +69,14 @@
 
 <script type="text/javascript" src="/vendor/recline/vendor/jquery/1.7.1/jquery.js"></script>
 <script type="text/javascript" src="/vendor/recline/vendor/underscore/1.4.4/underscore.js"></script>
+
+<script type="text/javascript">
+  // define global TM object and set some config
+  var TM = TM || {};
+  TM.locals = {
+    currentUser: "{{currentUser.id}}"
+  };
+</script>
 
 {% block extrabody %}{% endblock %}
 

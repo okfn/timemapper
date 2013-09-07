@@ -1,5 +1,12 @@
 jQuery(function($) {
-  var $input = $('input[name="source"]');
+  var $input = $('input[name="source"]')
+    , $form = $('.connect form')
+    , $submit = $form.find('.js-submit')
+    , $name = $('input[name="slug"]')
+    , $title = $('input[name="title"]')
+    , currentUser = TM.locals.currentUser
+    ;
+
   $(".gdrive-import").click(function (e) {
     e.preventDefault();
     
@@ -21,48 +28,65 @@ jQuery(function($) {
   });
 
   $input.change(function (e) {
-    $('.stage2').show('slow');
-    // NB: setCustomValidity primes the error messages ready for form submission,
-    //     it doesn't show them immediately.
+  // on entering the gdoc url we do several things ...
+  // 1. Check we can access the gdoc - if not we'll set an error that will show
+  // when you try to submit
     var url = recline.Backend.GDocs.getGDocsApiUrls(e.target.value).spreadsheetAPI;
 
     $.ajax(url, {
-      type: "HEAD",
-      success: function (jqXHR) {
+      type: "GET",
+      success: function (data) {
         e.target.setCustomValidity("");
+        var sheetTitle = data.feed.title.$t;
+        var name = sheetTitle
+          .toLowerCase()
+          .replace(/ /g, '-')
+          .replace(/--+/g, '-')
+          .replace(/[^\w-]+/g, '')
+          ;
+        $title.val(sheetTitle);
+        $name.val(name);
+        $('.stage2').show('slow');
       },
       error: function (jqXHR, textStatus) {
         var error;
         if (jqXHR.status === 404) {
           error = "That URL doesn't exist";
         } else {
-          error = "We could not retrieve this URL. Have you published this spreadsheet?";
+          error = "Spreadsheet is not accessible (via API). Have you published it?";
         }
         e.target.setCustomValidity(error);
+        // setCustomValidity primes the error messages ready for form
+        // submission it doesn't show them immediately.
+        // so let's trigger the submit so we see the error show up immediately
+        // Note you have to actually click the submit button rather than call submit event!
+        $submit.click()
       }
     });
   });
 
   $('.connect form').submit(function(e) {
-    // var apiurl = recline.Backend.GDocs.getGDocsApiUrls(url).spreadsheetAPI;
     e.preventDefault();
-    // TODO: notify user we are doing something
-    // TODO: get title, make slug and let user edit
 
-    // jQuery.getJSON(url, function (d) {
-    //  console.log(d);
-    //  var title = d.feed.title.$t;
-    // });
-
-    _createDataView();
+    // if form is good to go let's submit it
+    if (e.target.checkValidity()) {
+      $submit.html('<i class="icon-spinner icon-spin icon-large"></i> Saving and publishing - this should only take a moment ...');
+      _createDataView(function(err, url) {
+        if (err) {
+          alert('Error on saving: ' + err.responseText);
+        } else {
+          $submit.html('All done! About to redirect to you to your new view ...').removeClass('btn-primary').addClass('btn-success'); 
+          setTimeout(function() {window.location = url}, 2000);
+        }
+      });
+    }
   });
 
-  _createDataView = function() {
-    var currentUser = $('.username').text();
+  _createDataView = function(cb) {
     var dataview = {
-      name: $('input[name="slug"]').val(),
+      name: $name.val(),
       owner: currentUser,
-      title: $('input[name="title"]').val(),
+      title: $title.val(),
       licenses: [{
         id: 'cc-by',
         name: 'Creative Commons Attribution',
@@ -74,16 +98,15 @@ jQuery(function($) {
         url: $input.val()
       }]
     };
-    // TODO: some validation?
     $.ajax({
-      url: '/api/v1/account/' + currentUser + '/dataview/',
+      url: '/api/v1/dataview/',
       type: 'post',
       data: dataview,
       success: function() {
-        // TODO: notify success and then redirect ...
+        cb(null, '/' + currentUser + '/' + dataview.name);
       },
       error: function(err) {
-        alert('Error on saving: ' + err.responseText);
+        cb(err);
       }
     });
   }
@@ -95,6 +118,7 @@ jQuery(function($) {
     $input.val(url);
     // highlight the input so people realize it ahs changed
     $input.stop().css("background-color", "#FFFF9C");
+    $input.change();
   });
 });
 
