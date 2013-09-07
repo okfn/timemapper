@@ -3,11 +3,23 @@
 body {
   font-size: 14px;
   font-family: Merriweather, serif;
+  font-weight: 300;
   background-color: #eee;
 }
 
 h1, h2, h3, h4, h5, h6, .brand {
   font-family: "News Cycle", Arial, sans-serif;
+  font-weight: 700;
+}
+
+.navbar .brand {
+  font-weight: 200;
+  color: #333;
+  padding-top: 6px;
+}
+
+.brand-ext {
+  color: #08C;
 }
 
 body .content {
