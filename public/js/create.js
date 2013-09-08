@@ -114,6 +114,13 @@ jQuery(function($) {
   // bit of UX to allow users to use a demo spreadsheet as a way to get started
   $('.js-demo-sheet').click(function(e) {
     e.preventDefault();
+
+    $('html,body').animate({
+      scrollTop: $('#connect').offset().top
+      },
+      'fast'
+    );
+
     var url = $(e.target).data('url');
     $input.val(url);
     // highlight the input so people realize it ahs changed
