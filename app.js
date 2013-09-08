@@ -163,7 +163,7 @@ var siginOrRegister = function(token, tokenSecret, profile, done) {
   var email = profile.emails && profile.emails.length > 0 ? profile.emails[0].value : null;
   var photo = profile.photos && profile.photos.length > 0 ? profile.photos[0].value : null;
   account = dao.Account.create({
-    id: profile.username,
+    id: profile.username.toLowerCase(),
     fullname: profile.displayName,
     // hackish
     description: profile._json.description,
