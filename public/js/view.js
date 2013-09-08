@@ -57,12 +57,15 @@ var TimelinerView = Backbone.View.extend({
       }
     });
 
-    // Timeline will sort the entries by timestamp, but we need the order to be the same for the map
+    // Timeline will sort the entries by timestamp, and we need the order to be
+    // the same for the map which runs off the model
     this.model.records.comparator = function (a, b) {
-      var a = self.timeline._parseDate(a.get("start"));
-      var b = self.timeline._parseDate(b.get("start"));
+      // VMM.Date.parse is the timelinejs date parser
+      var a = VMM.Date.parse(self.timeline._parseDate(a.get("start")));
+      var b = VMM.Date.parse(self.timeline._parseDate(b.get("start")));
       return a - b;
     };
+
 
     this.timeline.convertRecord = function(record, fields) {
       if (record.attributes.start[0] == "'") {
@@ -94,9 +97,7 @@ var TimelinerView = Backbone.View.extend({
         }
         out.text += '<p class="source">Source: ' + s + '</p>';
       }
-      // hacky but it will work ...
-      // do not want time part of the dates
-      out.startDate = String(out.startDate.getFullYear()) + ',' + String(out.startDate.getMonth()+1) + ',' + String(out.startDate.getDate());
+
       return out;
     };
 
