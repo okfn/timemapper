@@ -156,10 +156,6 @@ var TimelinerView = Backbone.View.extend({
         // become false again. The callback associated with the UPDATE event sets it to True, but is otherwise a no-op.
         $("div.slider").trigger("UPDATE");
 
-        var title = self.model.get('spreadsheetTitle');
-        $('.navbar .brand').text(title);
-        document.title = title + ' - Timeliner';
-
         // set up twitter share button
         // do this here rather than in page so it picks up title correctly
         !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
