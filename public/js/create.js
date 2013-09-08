@@ -1,9 +1,9 @@
 jQuery(function($) {
-  var $input = $('input[name="source"]')
-    , $form = $('.connect form')
+  var $form = $('.js-connect form')
+    , $input = $('.js-connect input[name="source"]')
     , $submit = $form.find('.js-submit')
-    , $name = $('input[name="slug"]')
-    , $title = $('input[name="title"]')
+    , $name = $('.js-connect input[name="slug"]')
+    , $title = $('.js-connect input[name="title"]')
     , currentUser = TM.locals.currentUser
     ;
 
@@ -65,7 +65,7 @@ jQuery(function($) {
     });
   });
 
-  $('.connect form').submit(function(e) {
+  $form.submit(function(e) {
     e.preventDefault();
 
     // if form is good to go let's submit it
