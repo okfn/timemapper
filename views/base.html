@@ -58,11 +58,14 @@
 <div class="content">
 
 {% block content %}{{content}}{% endblock %}
-    <footer>
-    The <a href="http://timeliner.okfnlabs.org/"><strong>TimeMapper</strong></a> is a project of <a href="http://okfnlabs.org/">Open Knowledge Foundation</a> &ndash; <a href="https://github.com/okfn/timeliner">Source Code</a>.
-    TimeMapper is open-source &ndash; 
-    <a href="https://github.com/okfn/timeliner#copyright-and-license">Copyright &amp; License</a>.
-    </footer>
+
+    <div class="footer">
+      {% block footer %}
+      The <a href="http://timemapper.okfnlabs.org/"><strong>TimeMapper</strong></a> is a project of <a href="http://okfnlabs.org/">Open Knowledge Foundation</a> &ndash; <a href="https://github.com/okfn/timeliner">Source Code</a>.
+      TimeMapper is open-source &ndash; 
+      <a href="https://github.com/okfn/timeliner#copyright-and-license">Copyright &amp; License</a>.
+      {% endblock %}
+    </div>
   </div>
 </div> <!-- /content -->
 </div> <!-- / container-fluid -->

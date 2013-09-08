@@ -231,7 +231,9 @@ app.get('/:userId/:threadName', function(req, res, next) {
     var threadData = viz.toTemplateJSON();
     var isOwner = (req.user && req.user.id == threadData.owner);
     res.render('viz/timemap.html', {
-      title: threadData.title
+        title: threadData.title
+      , permalink: 'http://timemapper.okfnlabs.org/' + threadData.owner + '/' + threadData.name
+      , authorLink: 'http://timemapper.okfnlabs.org/' + threadData.owner
       , embed: (req.query.embed !== undefined)
       , viz: threadData
       , vizJSON: JSON.stringify(threadData)

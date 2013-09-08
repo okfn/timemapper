@@ -26,7 +26,12 @@
 <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="/">{{title}} - TimeMapper</a>
+      <div class="brand">
+        {{title}}
+        <small>by</small> <a href="{{authorLink}}">{{viz.owner}}</a>
+        <small>using</small>
+        <a href="/" title="Created with TimeMapper" style="color: #333;">Time<span class="brand-ext">Mapper</span></a>
+      </div>
       <ul class="nav">
       </ul>
       <ul class="nav pull-right">
@@ -81,6 +86,13 @@
   </div>
 </div>
 </div>
+{% endblock %}
+
+{% block footer %}
+  <a href="{{permalink}}">{{title}}</a> by <a href="{{authorLink}}">{{viz.owner}}</a> using <a href="http://timemapper.okfnlabs.org/">TimeMapper</a> from the <a href="http://okfnlabs.org/">Open Knowledge Foundation</a>.
+  {% if viz.licenses.length != 0 %}
+  <a href="{{viz.licenses[0].url}}" title="{{viz.licenses[0].name}}">License</a>.
+  {% endif %}
 {% endblock %}
 
 {% block extrabody %}
