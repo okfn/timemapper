@@ -203,6 +203,7 @@ body.embed .data-views {
 ul.view-summary-list {
   padding-left: 0;
   list-style-type: none;
+  margin-left: 0;
 }
 
 .view-summary-list ul li {
