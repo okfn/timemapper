@@ -87,7 +87,7 @@ describe('DAO Storage', function() {
     // tester has at least napoleon as a subdirectory
     this.timeout(5000);
     var viz = dao.DataView.getByOwner(username, function(err, data) {
-      assert(err === null);
+      assert.equal(err, null);
       var names = _.pluck(data, 'name');
       // console.log(data[0]);
       assert(names.indexOf('napoleon') != -1, names);

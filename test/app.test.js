@@ -1,13 +1,19 @@
-var request = require('supertest')
+var fs = require('fs')
+    path = require('path')
+  , request = require('supertest')
   , express = require('express')
   , assert = require('assert')
   , dao = require('../lib/dao.js')
+  , config = require('../lib/config.js')
   // , base = require('../test/base.js');
   ;
 
 var app = require('../app.js').app;
 
-describe('GET API', function() {
+// make sure we are in testing mode
+config.set('test:testing', true);
+
+describe('API', function() {
   it('Account GET', function(done) {
     request(app)
       .get('/api/v1/account/' + 'tester')
@@ -62,6 +68,7 @@ describe('GET API', function() {
       .expect('Content-Type', /json/)
       .expect(200)
       .end(function(err, res) {
+        assert.deepEqual(res.body, {}, 'Error on API create: ' + JSON.stringify(res.body));
         var obj = dao.DataView.create({
           owner: dataViewData.owner,
           name: dataViewData.name
@@ -78,7 +85,13 @@ describe('GET API', function() {
   });
   after(function(done) {
     var obj = dao.DataView.create(dataViewData);
-    obj.delete(done);
+    obj.delete(function() {
+      var dir = path.join(dao.getBackend().root,
+        path.dirname(obj.offset())
+        );
+      fs.rmdirSync(dir);
+      done();
+    });
   });
 //   it('Account Create': function(done) {
 //     test.expect(1);
