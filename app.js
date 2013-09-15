@@ -104,15 +104,6 @@ app.all('*', function(req, res, next) {
 // Main pages
 // ======================================
 
-var routePrefixes = {
-    'js': ''
-  , 'css': ''
-  , 'vendor': ''
-  , 'img': ''
-  , 'account': ''
-  , 'dashboard': ''
-};
-
 app.get('/', function(req, res){
   if (req.user) {
     routes.dashboard(req, res);
@@ -121,32 +112,7 @@ app.get('/', function(req, res){
   }
 });
 
-app.get('/create', function(req, res) {
-  res.render('create.html', {title: 'Create'});
-});
-
-app.post('/create', function(req, res) {
-  var url = req.body.source;
-  var name = 'xyz';
-  var userid = req.user ? req.user.id : 'tester';
-  var viz = dao.DataView.create({
-    name: name,
-    title: 'xyz',
-    owner: userid,
-    resources: [{
-      backend: 'gdocs',
-      url: url,
-      sources: [{
-        type: 'gdocs',
-        web: url
-      }]
-    }]
-  });
-  viz.save(function(err) {
-    console.log(err);
-    res.redirect('/' + userid + '/' + name);
-  });
-});
+app.get('/create', routes.create);
 
 // ======================================
 // User Accounts
@@ -211,36 +177,10 @@ app.get('/account/logout', function(req, res){
 app.get('/:userId', routes.userShow);
 
 // ======================================
-// Threads
+// Data Views
 // ======================================
 
-app.get('/:userId/:threadName', function(req, res, next) {
-  var userId = req.params.userId;
-  // HACK: we only want to handle threads and not other stuff
-  if (userId in routePrefixes) {
-    next();
-    return;
-  }
-  var threadName = req.params.threadName;
-  var viz = dao.DataView.create({owner: userId, name: threadName});
-  viz.fetch(function(error) {
-    if (error) {
-      res.send('Not found ' + error.message, 404);
-      return;
-    }
-    var threadData = viz.toTemplateJSON();
-    var isOwner = (req.user && req.user.id == threadData.owner);
-    res.render('viz/timemap.html', {
-        title: threadData.title
-      , permalink: 'http://timemapper.okfnlabs.org/' + threadData.owner + '/' + threadData.name
-      , authorLink: 'http://timemapper.okfnlabs.org/' + threadData.owner
-      , embed: (req.query.embed !== undefined)
-      , viz: threadData
-      , vizJSON: JSON.stringify(threadData)
-      , isOwner: isOwner
-    });
-  });
-});
+app.get('/:userId/:threadName', routes.timeMap);
 
 // ======================================
 // API

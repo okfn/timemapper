@@ -17,6 +17,14 @@ exports.dashboard = function(req, res) {
   });
 };
 
+exports.create = function(req, res) {
+  res.render('create.html', {title: 'Create'});
+}
+
+// ======================================
+// User Pages and Dashboards
+// ======================================
+
 exports.userShow = function(req, res) {
   var userId = req.params.userId;
   var account = dao.Account.create({id: userId});
@@ -48,3 +56,43 @@ function getUserInfoFull(userId, cb) {
   });
 }
 
+// ======================================
+// Data Views
+// ======================================
+
+var routePrefixes = {
+    'js': ''
+  , 'css': ''
+  , 'vendor': ''
+  , 'img': ''
+  , 'account': ''
+  , 'dashboard': ''
+};
+
+exports.timeMap = function(req, res, next) {
+  var userId = req.params.userId;
+  // HACK: we only want to handle threads and not other stuff
+  if (userId in routePrefixes) {
+    next();
+    return;
+  }
+  var threadName = req.params.threadName;
+  var viz = dao.DataView.create({owner: userId, name: threadName});
+  viz.fetch(function(error) {
+    if (error) {
+      res.send('Not found ' + error.message, 404);
+      return;
+    }
+    var threadData = viz.toTemplateJSON();
+    var isOwner = (req.user && req.user.id == threadData.owner);
+    res.render('viz/timemap.html', {
+        title: threadData.title
+      , permalink: 'http://timemapper.okfnlabs.org/' + threadData.owner + '/' + threadData.name
+      , authorLink: 'http://timemapper.okfnlabs.org/' + threadData.owner
+      , embed: (req.query.embed !== undefined)
+      , viz: threadData
+      , vizJSON: JSON.stringify(threadData)
+      , isOwner: isOwner
+    });
+  });
+}
