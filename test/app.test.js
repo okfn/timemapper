@@ -5,6 +5,7 @@ var fs = require('fs')
   , assert = require('assert')
   , dao = require('../lib/dao.js')
   , config = require('../lib/config.js')
+  , _ = require('underscore')
   // , base = require('../test/base.js');
   ;
 
@@ -61,7 +62,7 @@ describe('API', function() {
     name: 'test-api-create',
     title: 'My Test DataView'
   };
-  it('DataView Create OK', function(done) {
+  it('DataView Create and Update OK', function(done) {
     request(app)
       .post('/api/v1/dataview/')
       .send(dataViewData)
@@ -78,11 +79,37 @@ describe('API', function() {
           // console.log(err);
           assert(!err, 'New DataView exists');
           assert.equal(obj.get('title'), dataViewData.title);
-          done();
+          testUpdate(obj, done);
         });
       })
       ;
   });
+
+  function testUpdate(obj, done) {
+    var newData = {
+      title: 'my new title'
+    };
+    var newobj = _.extend(obj.toJSON(), newData);
+    request(app)
+      .post('/api/v1/dataview/tester/test-api-create')
+      .send(newobj)
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end(function(err, res) {
+        assert.deepEqual(res.body, {}, 'Error on API update: ' + JSON.stringify(res.body));
+        var obj = dao.DataView.create({
+          owner: dataViewData.owner,
+          name: dataViewData.name
+        });
+        obj.fetch(function(err) {
+          assert(!err)
+          assert.equal(obj.get('title'), newData.title);
+          done();
+        });
+      })
+      ;
+  }
+
   after(function(done) {
     var obj = dao.DataView.create(dataViewData);
     obj.delete(function() {

@@ -253,6 +253,13 @@ app.post('/api/v1/dataview', function(req, res) {
     }
   });
 });
+
+app.post('/api/v1/dataview/:userId/:name', function(req, res) {
+  var data = req.body;
+  var obj = dao.DataView.create(data);
+  // TODO: ? check whether it exists?
+  apiUpsert(obj, 'update', req, res);
+});
     
 // app.get('/api/v1/:objecttype', function(req,res) {
 //   var objName = req.params.objecttype[0].toUpperCase() + req.params.objecttype.slice(1); 
