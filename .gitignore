@@ -6,6 +6,6 @@ app.cfg
 node_modules
 # nodemon
 .monitor
-settings.json
+settings.json*
 test/data/db/*
 .env
