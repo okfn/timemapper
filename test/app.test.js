@@ -137,3 +137,14 @@ describe('API', function() {
 //   }
 });
 
+describe('Site', function() {
+  it('DataView Edit OK', function(done) {
+    request(app)
+      .get('/tester/napoleon/edit')
+      .end(function(err, res) {
+        assert.ok(res.text.indexOf('Edit') != -1);
+        done();
+      });
+  });
+});
+

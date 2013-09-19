@@ -96,3 +96,20 @@ exports.timeMap = function(req, res, next) {
     });
   });
 }
+
+exports.dataViewEdit = function(req, res) {
+  var userId = req.params.userId;
+  var threadName = req.params.threadName;
+  var viz = dao.DataView.create({owner: userId, name: threadName});
+  viz.fetch(function(error) {
+    if (error) {
+      res.send('Not found ' + error.message, 404);
+      return;
+    }
+    var dataview = viz.toTemplateJSON();
+    res.render('dataview/edit.html', {
+        dataview: dataview
+      , dataviewJson: JSON.stringify(viz.toJSON())
+    });
+  });
+}
