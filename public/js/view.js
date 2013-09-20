@@ -47,14 +47,19 @@ var TimelinerView = Backbone.View.extend({
     var self = this;
     // explicitly set width as otherwise Timeline does extends a bit too far (seems to use window width rather than width of actual div)
     // $el.width((this.el.width() - 45)/2.0);
+    var state = {};
+    if (VIZDATA && VIZDATA.tmconfig) {
+      state = _.extend({}, VIZDATA.tmconfig.timeline, {
+        nonUSDates: VIZDATA.tmconfig.dayfirst,
+        timelineJSOptions: _.extend({}, VIZDATA.tmconfig.timelineJSOptions, {
+          "hash_bookmark": true
+        })
+      });
+    }
     this.timeline = new recline.View.Timeline({
       model: this.model,
       el: this.$el.find('.timeline'),
-      state: {
-        timelineJSOptions: {
-          "hash_bookmark": true
-        }
-      }
+      state: state
     });
 
     // Timeline will sort the entries by timestamp, and we need the order to be
