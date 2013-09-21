@@ -78,9 +78,12 @@
       <div class="control-group">
         <label for="title" class="control-label">Title</label>
         <div class="controls">
-          <input type="text" value="My TimeMap Title" name="title" class="input span6"
+          <input type="text"
+            value=""
+            name="title"
+            class="input span6"
             required
-            placeholder="" />
+            placeholder="My TimeMap Title" />
         </div>
       </div>
       <div class="control-group">
@@ -88,8 +91,11 @@
         <div class="controls">
           <div class="input-prepend">
             <span class="add-on">/{{currentUser.id}}/</span>
-            <input type="text" value="my-timemap-title" name="slug" class="input span4"
-              placeholder=""
+            <input type="text"
+              value=""
+              name="slug"
+              class="input span4"
+              placeholder="my-timemap-title"
               required
               pattern="[a-z0-9-]+"
               title="The slug needs to be 'url-usable' and so must be lowercase containing only alphanumeric characters and '-'"
