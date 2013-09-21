@@ -41,9 +41,11 @@
         <li>
           <a class="js-embed" href="#"><i class="icon-code"></i> Embed</a>
         </li>
+        {% if currentUser %} 
         <li>
           <a href="/{{viz.owner}}/{{viz.name}}/edit/" title="Edit Settings"><i class="icon-cog"></i></a>
         </li>
+        {% endif %}
         <li class="divider-vertical"></li>
         {% if currentUser %} 
         <li><a class="username" href="/{{currentUser.id}}" title="My Dashboard"><i class="icon-user"></i></a></li>
