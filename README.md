@@ -1,6 +1,12 @@
 Create beautiful timelines and timemaps from Google Spreadsheets.
 
+Built by members of [Open Knowledge Foundation Labs](http://okfnlabs.org/).
+
+See it in action at <http://timemapper.okfnlabs.org/>
+
 # Install
+
+## Local Install
 
 This is a Node web-app built using express.
 
@@ -55,6 +61,49 @@ You'll also need to set config. Suggest creating a `.env` file:
 Then push it:
 
     heroku config:push
+
+----
+
+# Overview for Developers
+
+* NodeJS app but very frontend JS oriented
+* Most of "presentation" including visualizations are almost entirely in frontend javascript
+* Backend storage of "metadata" is onto s3 or local filesystem with storage of
+  actual data (data for timelines/timemaps etc) into google docs spreadsheets
+
+## Backend Storage
+
+Layout follows frontend urls:
+
+    /{username}/data.json                     # user info
+    /{username}/{dataview}/datapackage.json   # config for the dataview
+    /{username}/{dataview}/... other files    # (none atm but possibly we store data locally in future)
+
+## Data View info
+
+Stored in datapackage.json following [Data Package spec][dp-spec]. Key points:
+
+* name, title, licenses etc as per [Data Package][dp-spec]
+* info on google doc data source stored in first resources item in format compatible with [Recline][]
+
+      resources: [{
+        backend: 'gdocs',
+        url: 'gdocs url ...'
+      }]
+
+* additional config specific to timemapper in item call tmconfig. We will
+  be gradually adding values here but at the moment have:
+
+      tmconfig: {
+        dayfirst: false     # are dates dayfirst
+        layout: timemap     # timemap | map | timeline
+        timelineJSOptions:  # options to pass to timelinejs
+      }
+
+[dp-spec]: http://data.okfn.org/standards/data-package
+[Recline}: http://okfnlabs.org/recline/
+
+----
 
 # User Stories
 
