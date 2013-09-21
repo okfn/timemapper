@@ -62,7 +62,7 @@ Then push it:
 
     heroku config:push
 
-----
+
 
 # Overview for Developers
 
@@ -84,26 +84,26 @@ Layout follows frontend urls:
 Stored in datapackage.json following [Data Package spec][dp-spec]. Key points:
 
 * name, title, licenses etc as per [Data Package][dp-spec]
-* info on google doc data source stored in first resources item in format compatible with [Recline][]
+* info on google doc data source stored in first resources item in format compatible with [Recline][]:
 
-      resources: [{
-        backend: 'gdocs',
-        url: 'gdocs url ...'
-      }]
+        resources: [{
+          backend: 'gdocs',
+          url: 'gdocs url ...'
+        }]
 
 * additional config specific to timemapper in item call tmconfig. We will
   be gradually adding values here but at the moment have:
 
-      tmconfig: {
-        dayfirst: false     # are dates dayfirst
-        layout: timemap     # timemap | map | timeline
-        timelineJSOptions:  # options to pass to timelinejs
-      }
+        tmconfig: {
+          dayfirst: false     # are dates dayfirst
+          layout: timemap     # timemap | map | timeline
+          timelineJSOptions:  # options to pass to timelinejs
+        }
 
 [dp-spec]: http://data.okfn.org/standards/data-package
-[Recline}: http://okfnlabs.org/recline/
+[Recline]: http://okfnlabs.org/recline/
 
-----
+
 
 # User Stories
 
