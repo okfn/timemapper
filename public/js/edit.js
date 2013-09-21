@@ -40,12 +40,12 @@ var doDataViewUpdate = function(cb) {
   // dataViewData
   var dataview = _.extend(dataViewData, {
     title: getFormAttr('title'),
-    resources: _.extend(dataViewData.resources, {
-      resources: [{
+    resources: [
+      _.extend({}, dataViewData.resources[0], {
         backend: 'gdocs',
         url: getFormAttr('url')
-      }]
-    }),
+      })
+    ],
     tmconfig: _.extend({}, dataViewData.tmconfig, {
       dayfirst: Boolean(formData.dayfirst)
     })
