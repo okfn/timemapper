@@ -41,7 +41,10 @@
         <li>
           <a class="js-embed" href="#">Embed Instructions</a>
         </li>
-        <li class="separator"></li>
+        <li>
+          <a href="/{{viz.owner}}/{{viz.name}}/edit/" title="Edit Settings"><i class="icon-cog"></i></a>
+        </li>
+        <li class="divider-vertical"></li>
         {% if currentUser %} 
         <li><a class="username" href="/{{currentUser.id}}"><i class="icon-user"></i> {{currentUser.id}}</a></li>
         <li><a class="logout" href="/account/logout" title="sign out"><i class="icon-signout"></i></a></li>
