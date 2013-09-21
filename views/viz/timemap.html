@@ -39,14 +39,14 @@
           <a href="https://twitter.com/share" class="twitter-share-button" data-related="OKFNLabs" data-hashtags="timeliner" data-dnt="true">Tweet</a>
         </li>
         <li>
-          <a class="js-embed" href="#">Embed Instructions</a>
+          <a class="js-embed" href="#"><i class="icon-code"></i> Embed</a>
         </li>
         <li>
           <a href="/{{viz.owner}}/{{viz.name}}/edit/" title="Edit Settings"><i class="icon-cog"></i></a>
         </li>
         <li class="divider-vertical"></li>
         {% if currentUser %} 
-        <li><a class="username" href="/{{currentUser.id}}"><i class="icon-user"></i> {{currentUser.id}}</a></li>
+        <li><a class="username" href="/{{currentUser.id}}" title="My Dashboard"><i class="icon-user"></i></a></li>
         <li><a class="logout" href="/account/logout" title="sign out"><i class="icon-signout"></i></a></li>
         {% endif %}
       </ul>

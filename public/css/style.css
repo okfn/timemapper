@@ -94,6 +94,10 @@ body.view .navbar {
   margin-bottom: 0px; 
 }
 
+body.view .navbar ul.pull-right a {
+  padding: 10px 10px 10px;
+}
+
 body.view li.tweet {
   margin-top: 10px;
 }
