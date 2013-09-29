@@ -9,7 +9,8 @@
   </h1>
 </div>
 
-<div class="instructions">
+<div class="overview">
+  <h2>It's as easy as 1-2-3!</h2>
   <div class="row">
     <div class="span4">
       <div class="well">
@@ -34,32 +35,37 @@
 
 <hr />
 
+<div class="instructions">
+
+<h2>Let's Get Started &hellip;</h2>
 <div id="create" class="row">
-  <div class="span8 offset2 well">
-    <h2>1. Create your Spreadsheet</h2>
-    <div class="alert alert-success" style="width: 60%; margin-left: auto; margin-right: auto;">
-      Impatient to try this out but don't have a spreadsheet yet?<br />
-    <a href="#" class="js-demo-sheet" data-url="https://docs.google.com/spreadsheet/ccc?key=0Al6mO9_3Hr2PdGZnRjEwUWxOekhreTNNZEFEMWRZbkE"
-      >
-      Click here to use a pre-prepared example &raquo;</a>
+  <div class="span8 offset2"><div class="well">
+    <h3>
+      1. Create your Spreadsheet
+      <br />
+      <small>(if you don't have one already!)</small>
+    </h3>
+
+    <div class="row">
+      <div class="span6 offset1">
+        <p>Get started by copying <strong><a href="https://docs.google.com/a/okfn.org/spreadsheet/ccc?key=0AqR8dXc6Ji4JdFRNOTVYYTRqTmh6TUNNd3U2X2pKMGc#gid=0">this template</a></strong>. For more details or help with problems check out the <a href="#faq">FAQ below</a>.</p>
+
+        <div class="alert alert-success" style="margin-top: 30px;">
+          Impatient to try this out but don't have a spreadsheet yet?<br />
+        <a href="#" class="js-demo-sheet" data-url="https://docs.google.com/spreadsheet/ccc?key=0Al6mO9_3Hr2PdGZnRjEwUWxOekhreTNNZEFEMWRZbkE"
+          >
+          Click here to use a pre-prepared example &raquo;</a>
+        </div>
+      </div>
     </div>
-
-    <p>The easiest way to get started is to copy (or follow) <strong><a href="https://docs.google.com/spreadsheet/ccc?key=0Aon3JiuouxLUdDlGV2lCakoydVh1U014cHRqcXpoWVE">this template</a></strong>.
-    </p>
-
-    <div class="alert">
-    Note: you must "Publish" your spreadsheet: in the spreadsheet go to <em>File menu &rarr; Publish to Web</em> and then select "Start publishing..."
-    </div>
-
-    <p>Any problems check out the FAQ below.</p>
-  </div>
+  </div></div>
 </div>
 
 <div id="connect" class="row js-connect">
-  <div class="span8 offset2 well">
-<h2>
-  2+3. Connect, Customize and Publish
-</h2>
+  <div class="span8 offset2"><div class="well">
+<h3>
+  2. Connect, Customize and Publish
+</h3>
 
 <form class="js-load-url form-horizontal" action="" method="GET">
   <fieldset>
@@ -72,6 +78,9 @@
         <input type="url" value="" name="source" required
           class="input span6"
           placeholder="Or paste the Google Spreadsheet URL directly" />
+        <span class="help-block">
+          Note: you must "Publish" your spreadsheet &ndash; go to <em>File menu &rarr; Publish to Web</em> in the spreadsheet and then select <em>"Start publishing..."</em>
+        </span>
       </div>
     </div>
     <div class="stage2" style="display: none;">
@@ -112,12 +121,14 @@
     </div>
   </fieldset>
 </form>
+</div></div>
 </div>
-</div>
+
+</div> <!-- /instructions -->
 
 <hr />
 
-<div class="faq">
+<div id="faq" class="faq">
   <h2>FAQ</h2>
 
   <h3>What Structure must the Spreadsheet Have?</h3>

@@ -12,6 +12,10 @@ h1, h2, h3, h4, h5, h6, .brand {
   font-weight: 700;
 }
 
+h3 {
+  line-height: 32px;
+}
+
 .navbar .brand {
   font-weight: 200;
   color: #333;
@@ -229,15 +233,18 @@ ul.view-summary-list {
   * Create View
   *********************************************************/
 
-.create .instructions {
-}
-
-.create .instructions h3 {
+.create .overview h3 {
   margin-top: 0;
   padding-top: 0px;
 }
 
 .help-block {
   font-size: 90%;
+}
+
+body.create h2, body.create .instructions h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
