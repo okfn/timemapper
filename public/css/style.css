@@ -116,6 +116,7 @@ body.view .content {
 }
 
 body.view .controls {
+  display: none;
   position: absolute;
   left: 0;
   z-index: 1000;
