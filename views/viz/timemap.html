@@ -94,10 +94,13 @@
 {% endblock %}
 
 {% block footer %}
-  <a href="{{permalink}}">{{title}}</a> by <a href="{{authorLink}}">{{viz.owner}}</a> using <a href="http://timemapper.okfnlabs.org/">TimeMapper</a> from the <a href="http://okfnlabs.org/">Open Knowledge Foundation</a>.
+  <a href="{{permalink}}">{{title}}</a> by <a href="{{authorLink}}">{{viz.owner}}</a> using <a href="http://timemapper.okfnlabs.org/">TimeMapper</a>
   {% if viz.licenses.length != 0 %}
-  <a href="{{viz.licenses[0].url}}" title="{{viz.licenses[0].name}}">License</a>.
+  &ndash;
+  <a href="{{viz.licenses[0].url}}" title="{{viz.licenses[0].name}}">License</a>
   {% endif %}
+  &ndash;
+  <a href="{{viz.resources[0].url}}">Source Data</a>
 {% endblock %}
 
 {% block extrabody %}
