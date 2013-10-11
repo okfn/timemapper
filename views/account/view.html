@@ -6,17 +6,26 @@
 
 {% block content %}
   <div class="page-header">
-    <h1>{{account.id}} <small>{{account.fullname}}</small></h1>
+    <h1>
+      <img src="{{account.image}}" class="gravatar" alt="" />
+      {{account.fullname}}
+      <small>({{account.id}})</small>
+    </h1>
   </div>
 
   <div class="row">
-    <div class="span3">
-      <dl class="vcard">
-        <dt>Member since</dt>
-        <dd>{{account._created}}</dd>
-        <dt>Name</dt>
-        <dd>{{account.fullname}}</dd>
-      </dl>
+    <div class="span3 meta">
+      <ul class="vcard">
+        <li>
+          <i class="icon-time" title="Joined date is"></i> {{account.createdNice}}
+        </li>
+        <li>
+          <i class="icon-twitter"></i> <a href="{{account.id}}">{{account.id}}</a>
+        </li>
+        <li class="description">
+          {{account.description}}
+        </li>
+      </ul>
       <ul class="stats">
         <li>
           <strong>{{views.length}}</strong> views
@@ -25,7 +34,6 @@
     </div>
 
     <div class="span9">
-      <h2>Views</h2>
       <ul class="view-summary-list">
       {% for view in views %}
         <li>

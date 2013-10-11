@@ -260,23 +260,6 @@ body.embed .data-views {
 }
 
 /**********************************************************
-  * Views - List
-  *********************************************************/
-
-ul.view-summary-list {
-  padding-left: 0;
-  list-style-type: none;
-  margin-left: 0;
-}
-
-.view-summary-list ul li {
-}
-
-.view-summary-list h3 {
-
-}
-
-/**********************************************************
   * Dashboard View
   *********************************************************/
 
@@ -303,3 +286,65 @@ body.create h2, body.create .instructions h3 {
   text-align: center;
 }
 
+/**********************************************************
+  * User View
+  *********************************************************/
+
+.gravatar {
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+body.account .page-header .gravatar {
+  margin-top: -9px;
+}
+
+body.account .meta {
+  font-size: 16px;
+}
+
+body.account .meta ul {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+body.account .meta ul.vcard {
+  margin-top: 8px;
+}
+
+body.account .meta ul.vcard li {
+  margin-bottom: 5px;
+}
+
+body.account .meta ul.vcard .description {
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.meta ul.stats li {
+  display: inline-block; 
+}
+
+.meta ul.stats li strong {
+  display: block;
+  font-size: 42px;
+  line-height: 50px;
+}
+
+/**********************************************************
+  * Views - List
+  *********************************************************/
+
+ul.view-summary-list {
+  padding-left: 0;
+  list-style-type: none;
+  margin-left: 0;
+  margin-bottom: 50px;
+}
+
+.view-summary-list ul li {
+}
+
+.view-summary-list h3:first-child {
+  margin-top: 0;
+}

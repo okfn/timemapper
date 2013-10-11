@@ -34,10 +34,13 @@ exports.userShow = function(req, res) {
       return;
     }
     var isOwner = (req.currentUser && req.currentUser.id == userId);
+    var accountJson = account.toTemplateJSON();
+    accountJson.createdNice = new Date(accountJson._created).toDateString();
     res.render('account/view.html', {
-      account: account.toTemplateJSON()
+        account: accountJson
       , views: account.views 
       , isOwner: isOwner
+      , bodyclass: 'account'
     });
   });
 };
