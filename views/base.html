@@ -29,17 +29,21 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="{% block bodyclass %}{{bodyclass}}{% endblock %}">
-<!--div id="okf-panel" class="collapse">
+{% block navbar %}
+<div id="okf-panel" class="collapse">
   <iframe src="http://assets.okfn.org/themes/okfn/okf-panel.html"></iframe>
 </div>
 <div class="okfn-ribbon">
   <a data-toggle="collapse" data-target="#okf-panel" href="http://okfnlabs.org/" target="_blank">An Open Knowledge Foundation Labs Project</a>
-</div-->
-{% block navbar %}
+</div>
 <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="/">Time<span class="brand-ext">Mapper</span> from the Open Knowledge Foundation</a>
+      <div class="brand">
+        <a href="/" class="black">Time<span class="brand-ext">Mapper</span></a>
+        from
+        <a class="by" href="http://okfnlabs.org/">Open Knowledge Foundation Labs</a>
+      </div>
       <ul class="nav">
       </ul>
       <ul class="nav pull-right">
@@ -57,23 +61,27 @@
 <div class="content">
 
 {% block content %}{{content}}{% endblock %}
-
-    <div class="footer">
-      {% block footer %}
-      The <a href="http://timemapper.okfnlabs.org/"><strong>TimeMapper</strong></a> is a project of <a href="http://okfnlabs.org/">Open Knowledge Foundation</a> &ndash; <a href="http://okfnlabs.org/contact/">Contact Us</a>.
-      TimeMapper is open-source
-      &ndash; 
-      <a href="https://github.com/okfn/timeliner">Source Code</a>
-      &ndash;
-      <a href="https://github.com/okfn/timeliner#copyright-and-license">Copyright &amp; License</a>.
-      {% endblock %}
-    </div>
   </div>
 </div> <!-- /content -->
 </div> <!-- / container-fluid -->
 
+<div class="footer">
+  {% block footer %}
+<div class="container">
+  The <a href="http://timemapper.okfnlabs.org/"><strong>TimeMapper</strong></a> is a project of <a href="http://okfnlabs.org/">Open Knowledge Foundation Labs</a> &ndash; <a href="http://okfnlabs.org/contact/">Contact Us</a>.
+  TimeMapper is open-source
+  &ndash; 
+  <a href="https://github.com/okfn/timeliner">Source Code</a>
+  &ndash;
+  <a href="https://github.com/okfn/timeliner#copyright-and-license">Copyright &amp; License</a>.
+</div>
+  {% endblock %}
+</div>
+
 <script type="text/javascript" src="/vendor/recline/vendor/jquery/1.7.1/jquery.js"></script>
 <script type="text/javascript" src="/vendor/recline/vendor/underscore/1.4.4/underscore.js"></script>
+<script src="http://assets.okfn.org/themes/okfn/collapse.min.js" type="text/javascript"></script>
+<script src="http://assets.okfn.org/themes/okfn/okf-panel.js" type="text/javascript"></script>
 
 <script type="text/javascript">
   // define global TM object and set some config
