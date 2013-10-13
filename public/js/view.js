@@ -51,18 +51,10 @@ var TimeMapperView = Backbone.View.extend({
       state: timelineState
     });
 
-    // Timeline will sort the entries by timestamp, and we need the order to be
-    // the same for the map which runs off the model
-    this.model.records.comparator = function (a, b) {
-      // VMM.Date.parse is the timelinejs date parser
-      var a = VMM.Date.parse(self.timeline._parseDate(a.get("start")));
-      var b = VMM.Date.parse(self.timeline._parseDate(b.get("start")));
-      return a - b;
-    };
-
     // now load the data
     this.model.fetch()
       .done(function() {
+        self._dataChanges();
         // HACK: We postpone rendering until now, because otherwise timeline
         // might try to navigate to a non-existent marker
         self.render();
@@ -76,6 +68,43 @@ var TimeMapperView = Backbone.View.extend({
         // do this here rather than in page so it picks up title correctly
         !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
       });
+  },
+
+  _dataChanges: function() {
+    var self = this;
+    // VMM.Date.parse is the timelinejs date parser
+    this.model.records.each(function(rec) {
+      rec.set({
+        // VMM.Date.parse is the timelinejs date parser
+        startParsed: VMM.Date.parse(normalizeDate(rec.get("start"), self.datapackage.tmconfig.dayfirst))
+      }, {
+        silent: true
+      });
+    });
+
+    var starts = this.model.records.pluck('startParsed')
+      , minDate = _.min(starts)
+      , maxDate =  _.max(starts)
+      , dateRange = maxDate - minDate
+      ;
+    // set opacity - we compute opacity between 0.1 and 1 based on distance from most recent date
+    var minOpacity = 0.1
+      , opacityRange = 1.0 - minOpacity
+      ;
+    this.model.records.each(function(rec) {
+      var temporalRangeLocation = (rec.get('startParsed') - minDate) / dateRange;
+      rec.set({
+        temporalRangeLocation: temporalRangeLocation,
+        opacity: minOpacity + (opacityRange * temporalRangeLocation)
+      });
+    });
+
+    // Timeline will sort the entries by timestamp, and we need the order to be
+    // the same for the map which runs off the model
+    this.model.records.comparator = function (a, b) {
+      return a.get('startParsed') - b.get('startParsed');
+    };
+    this.model.records.sort();
   },
 
   _setupOnHashChange: function() {
@@ -109,7 +138,6 @@ var TimeMapperView = Backbone.View.extend({
 
   render: function() {
     var self = this;
-    var state = {};
     this.timeline.convertRecord = function(record, fields) {
       if (record.attributes.start[0] == "'") {
         record.attributes.start = record.attributes.start.slice(1);
@@ -162,6 +190,7 @@ var TimeMapperView = Backbone.View.extend({
       var record = this.model.records.get(feature.properties.cid);
       var recordAttr = record.toJSON();
       marker.bindLabel(recordAttr.title);
+      marker.setOpacity(recordAttr.opacity);
 
       // customize with icon column
       if (recordAttr.icon !== undefined) {
@@ -192,5 +221,34 @@ var TimeMapperView = Backbone.View.extend({
     this.map.render();
   }
 });
+
+// convert dates into a format TimelineJS will handle
+// TimelineJS does not document this at all so combo of read the code +
+// trial and error
+// Summary (AFAICt):
+// Preferred: [-]yyyy[,mm,dd,hh,mm,ss]
+// Supported: mm/dd/yyyy
+var normalizeDate = function(date, dayfirst) {
+  if (!date) {
+    return null;
+  }
+  var out = $.trim(date);
+  out = out.replace(/(\d)th/g, '$1');
+  out = out.replace(/(\d)st/g, '$1');
+  out = $.trim(out);
+  if (out.match(/\d\d\d\d-\d\d-\d\d(T.*)?/)) {
+    out = out.replace(/-/g, ',').replace('T', ',').replace(':',',');
+  }
+  if (out.match(/\d\d-\d\d-\d\d.*/)) {
+    out = out.replace(/-/g, '/');
+  }
+  if (dayfirst) {
+    var parts = out.match(/(\d\d)\/(\d\d)\/(\d\d.*)/);
+    if (parts) {
+      out = [parts[2], parts[1], parts[3]].join('/');
+    }
+  }
+  return out;
+}
 
 })();
