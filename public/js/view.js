@@ -7,12 +7,12 @@ jQuery(function($) {
     reclineDatasetInfo.fields = VIZDATA.resources[0].schema.fields;
   }
   var dataset = new recline.Model.Dataset(reclineDatasetInfo);
-  var timeliner = new TimelinerView({
+  var timemapper = new TimeMapperView({
     model: dataset,
+    datapackage: VIZDATA,
     el: $('.data-views')
   });
-  timeliner.render();
-
+  // TODO: move this stuff into a proper view
   $('.js-embed').on('click', function(e) {
     e.preventDefault();
     var url = window.location.href.replace(/#.*$/, "") + '?embed=1'; // for now, just remove any fragment id
@@ -22,10 +22,74 @@ jQuery(function($) {
   });
 });
 
-var TimelinerView = Backbone.View.extend({
+var TimeMapperView = Backbone.View.extend({
   events: {
     'click .controls .js-show-toolbox': '_onShowToolbox',
     'submit .toolbox form': '_onSearch'
+  },
+
+  initialize: function(options) {
+    var self = this;
+    this._setupOnHashChange();
+
+    this.datapackage = options.datapackage;
+    // fix up for datapackage without right structure
+    if (!this.datapackage.tmconfig) {
+      this.datapackage.tmconfig = {};
+    }
+    var timelineState = _.extend({}, this.datapackage.tmconfig.timeline, {
+      nonUSDates: this.datapackage.tmconfig.dayfirst,
+      timelineJSOptions: _.extend({}, this.datapackage.tmconfig.timelineJSOptions, {
+        "hash_bookmark": true
+      })
+    });
+
+    // Create subviews (timeline and map)
+    this.timeline = new recline.View.Timeline({
+      model: this.model,
+      el: this.$el.find('.timeline'),
+      state: timelineState
+    });
+
+    // Timeline will sort the entries by timestamp, and we need the order to be
+    // the same for the map which runs off the model
+    this.model.records.comparator = function (a, b) {
+      // VMM.Date.parse is the timelinejs date parser
+      var a = VMM.Date.parse(self.timeline._parseDate(a.get("start")));
+      var b = VMM.Date.parse(self.timeline._parseDate(b.get("start")));
+      return a - b;
+    };
+
+    // now load the data
+    this.model.fetch()
+      .done(function() {
+        // HACK: We postpone rendering until now, because otherwise timeline
+        // might try to navigate to a non-existent marker
+        self.render();
+        self.timeline.render();
+        // Nasty hack. Timeline ignores hashchange events unless is_moving ==
+        // True. However, once it's True, it can never become false again. The
+        // callback associated with the UPDATE event sets it to True, but is
+        // otherwise a no-op.
+        $("div.slider").trigger("UPDATE");
+        // set up twitter share button
+        // do this here rather than in page so it picks up title correctly
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+      });
+  },
+
+  _setupOnHashChange: function() {
+    var self = this;
+    // listen for hashchange to update map
+    $(window).on("hashchange", function () {
+      var hash = window.location.hash.substring(1);
+      if (parseInt(hash, 10)) {
+        var record = self.model.records.at(hash);
+        if (record && record.marker) {
+          record.marker.openPopup();
+        }
+      }
+    });
   },
 
   _onShowToolbox: function(e) {
@@ -45,35 +109,7 @@ var TimelinerView = Backbone.View.extend({
 
   render: function() {
     var self = this;
-    // explicitly set width as otherwise Timeline does extends a bit too far (seems to use window width rather than width of actual div)
-    // $el.width((this.el.width() - 45)/2.0);
     var state = {};
-    // backwards compat - going forward everything should have this
-    if (!VIZDATA.tmconfig) {
-      VIZDATA.tmconfig = {};
-    }
-    state = _.extend({}, VIZDATA.tmconfig.timeline, {
-      nonUSDates: VIZDATA.tmconfig.dayfirst,
-      timelineJSOptions: _.extend({}, VIZDATA.tmconfig.timelineJSOptions, {
-        "hash_bookmark": true
-      })
-    });
-    this.timeline = new recline.View.Timeline({
-      model: this.model,
-      el: this.$el.find('.timeline'),
-      state: state
-    });
-
-    // Timeline will sort the entries by timestamp, and we need the order to be
-    // the same for the map which runs off the model
-    this.model.records.comparator = function (a, b) {
-      // VMM.Date.parse is the timelinejs date parser
-      var a = VMM.Date.parse(self.timeline._parseDate(a.get("start")));
-      var b = VMM.Date.parse(self.timeline._parseDate(b.get("start")));
-      return a - b;
-    };
-
-
     this.timeline.convertRecord = function(record, fields) {
       if (record.attributes.start[0] == "'") {
         record.attributes.start = record.attributes.start.slice(1);
@@ -154,30 +190,6 @@ var TimelinerView = Backbone.View.extend({
       return marker;
     };
     this.map.render();
-
-    // load the data
-    this.model.fetch()
-      .done(function() {
-        // We postpone rendering until now, because otherwise timeline might try to navigate to a non-existent marker
-        self.timeline.render();
-        // Nasty hack. Timeline ignores hashchange events unless is_moving == True. However, once it's True, it can never
-        // become false again. The callback associated with the UPDATE event sets it to True, but is otherwise a no-op.
-        $("div.slider").trigger("UPDATE");
-
-        // set up twitter share button
-        // do this here rather than in page so it picks up title correctly
-        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-      });
-
-    $(window).on("hashchange", function () {
-      var hash = window.location.hash.substring(1);
-      if (parseInt(hash, 10)) {
-        var record = self.model.records.at(hash);
-        if (record && record.marker) {
-          record.marker.openPopup();
-        }
-      }
-    });
   }
 });
 
