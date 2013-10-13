@@ -80,12 +80,17 @@ var TimeMapperView = Backbone.View.extend({
       }, {
         silent: true
       });
+      if (rec.get('size') || rec.get('size') === 0) {
+        rec.set({size: parseFloat(rec.get('size'))}, {silent: true});
+      }
     });
 
     var starts = this.model.records.pluck('startParsed')
       , minDate = _.min(starts)
       , maxDate =  _.max(starts)
       , dateRange = maxDate - minDate
+      , sizes = this.model.records.pluck('size')
+      , maxSize = _.max(sizes)
       ;
     // set opacity - we compute opacity between 0.1 and 1 based on distance from most recent date
     var minOpacity = 0.3
@@ -95,7 +100,8 @@ var TimeMapperView = Backbone.View.extend({
       var temporalRangeLocation = (rec.get('startParsed') - minDate) / dateRange;
       rec.set({
         temporalRangeLocation: temporalRangeLocation,
-        opacity: minOpacity + (opacityRange * temporalRangeLocation)
+        opacity: minOpacity + (opacityRange * temporalRangeLocation),
+        relativeSize: parseFloat(rec.get('size')) / maxSize
       });
     });
 
@@ -186,11 +192,28 @@ var TimeMapperView = Backbone.View.extend({
     };
 
     this.map.geoJsonLayerOptions.pointToLayer = function(feature, latlng) {
-      var marker = new L.Marker(latlng);
       var record = this.model.records.get(feature.properties.cid);
       var recordAttr = record.toJSON();
-      marker.bindLabel(recordAttr.title);
-      marker.setOpacity(recordAttr.opacity);
+      var maxSize = 400;
+      var radius = parseInt(Math.sqrt(maxSize * recordAttr.relativeSize));
+      if (radius) {
+        var marker = new L.CircleMarker(latlng, {
+          radius: radius,
+          fillcolor: '#fe9131',
+          color: '#fe9131',
+          opacity: recordAttr.opacity,
+          fillOpacity: recordAttr.opacity * 0.9
+        });
+      } else {
+        var marker = new L.Marker(latlng, {
+          opacity: recordAttr.opacity
+        });
+      }
+      var label = recordAttr.title + '<br />Date: ' + recordAttr.start;
+      if (recordAttr.size) {
+        label += '<br />Size: ' + recordAttr.size;
+      }
+      marker.bindLabel(label);
 
       // customize with icon column
       if (recordAttr.icon !== undefined) {
@@ -205,7 +228,7 @@ var TimeMapperView = Backbone.View.extend({
       }
       
       // this is for cluster case
-      this.markers.addLayer(marker);
+      // this.markers.addLayer(marker);
 
       // When a marker is clicked, update the fragment id, which will in turn update the timeline
       marker.on("click", function (e) {
