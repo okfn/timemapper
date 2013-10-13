@@ -88,7 +88,7 @@ var TimeMapperView = Backbone.View.extend({
       , dateRange = maxDate - minDate
       ;
     // set opacity - we compute opacity between 0.1 and 1 based on distance from most recent date
-    var minOpacity = 0.1
+    var minOpacity = 0.3
       , opacityRange = 1.0 - minOpacity
       ;
     this.model.records.each(function(rec) {
