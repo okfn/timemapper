@@ -73,6 +73,13 @@ var TimeMapperView = Backbone.View.extend({
   _dataChanges: function() {
     var self = this;
     this.model.records.each(function(record) {
+      if (record.get('startdate') && !record.get('start')) {
+        record.set({
+          start: record.get('startdate'),
+          end: record.get('enddate')
+        }, {silent: true}
+        );
+      }
       var data = {
         // VMM.Date.parse is the timelinejs date parser
         startParsed: VMM.Date.parse(normalizeDate(record.get("start"), self.datapackage.tmconfig.dayfirst)),
