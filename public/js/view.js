@@ -72,17 +72,20 @@ var TimeMapperView = Backbone.View.extend({
 
   _dataChanges: function() {
     var self = this;
-    // VMM.Date.parse is the timelinejs date parser
-    this.model.records.each(function(rec) {
-      rec.set({
+    this.model.records.each(function(record) {
+      var data = {
         // VMM.Date.parse is the timelinejs date parser
-        startParsed: VMM.Date.parse(normalizeDate(rec.get("start"), self.datapackage.tmconfig.dayfirst))
-      }, {
-        silent: true
-      });
-      if (rec.get('size') || rec.get('size') === 0) {
-        rec.set({size: parseFloat(rec.get('size'))}, {silent: true});
+        startParsed: VMM.Date.parse(normalizeDate(record.get("start"), self.datapackage.tmconfig.dayfirst)),
+        title: record.get('title') || record.get('headline'),
+        description: record.get('description') || record.get('text'),
+        media: record.get('image') || record.get('media'),
+        mediacaption: record.get('caption') || record.get('mediacaption') || record.get('imagecaption'),
+        mediacredit: record.get('imagecredit') || record.get('mediacredit'),
+      };
+      if (record.get('size') || record.get('size') === 0) {
+        data.size = parseFloat(record.get('size'));
       }
+      record.set(data, { silent: true });
     });
 
     var starts = this.model.records.pluck('startParsed')
@@ -145,6 +148,8 @@ var TimeMapperView = Backbone.View.extend({
   render: function() {
     var self = this;
     this.timeline.convertRecord = function(record, fields) {
+      // HACK: support people who put '2013-08-20 in gdocs (to force gdocs to
+      // not attempt to parse the date)
       if (record.attributes.start[0] == "'") {
         record.attributes.start = record.attributes.start.slice(1);
       }
@@ -160,15 +165,17 @@ var TimeMapperView = Backbone.View.extend({
         if (typeof console !== "undefined" && console.warn) console.warn('Failed to extract date from: ' + JSON.stringify(record.toJSON()));
         return null;
       }
-      if (record.get('image')) {
+      if (record.get('media')) {
         out.asset = {
-          media: record.get('image'),
+          media: record.get('media'),
+          caption: record.get('mediacaption'),
+          credit: record.get('mediacredit'),
           thumbnail: record.get('icon')
         };
       }
       out.text = record.get('description');
-      if (record.get('source')) {
-        var s = record.get('source');
+      if (record.get('source') || record.get('sourceurl')) {
+        var s = record.get('source') || record.get('sourceurl');
         if (record.get('sourceurl')) {
           s = '<a href="' + record.get('sourceurl') + '">' + s + '</a>';
         }
