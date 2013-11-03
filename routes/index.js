@@ -3,6 +3,14 @@ var config = require('../lib/config.js')
   , util = require('../lib/util.js')
   ;
 
+exports.create = function(req, res) {
+  res.render('create.html', {title: 'Create'});
+}
+
+// ======================================
+// User Pages and Dashboards
+// ======================================
+
 exports.dashboard = function(req, res) {
   var userId = req.user.id;
   getUserInfoFull(req.user.id, function(error, account) {
@@ -16,14 +24,6 @@ exports.dashboard = function(req, res) {
     });
   });
 };
-
-exports.create = function(req, res) {
-  res.render('create.html', {title: 'Create'});
-}
-
-// ======================================
-// User Pages and Dashboards
-// ======================================
 
 exports.userShow = function(req, res) {
   var userId = req.params.userId;
