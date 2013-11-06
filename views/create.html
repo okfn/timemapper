@@ -144,12 +144,14 @@
   <h3>How do I format dates?</h3>
   <p>The preferred date format is ISO 8601 (YYYY-MM-DD), but TimeMapper recognizes most types of date.</p>
 
-  <p>If a date's month and day are ambiguous (e.g. is 08-03-1798 UK notation for 8 March, or is it US notation for 3 August?), the first number will be interpreted as the month.</p>
+  <p>If a date's month and day are ambiguous (e.g. is 08-03-1798 UK notation for 8 March, or is it US notation for 3 August?), by default, the first number will be interpreted as the month. You can change this by clicking the <b>edit</b> button in the top right corner of your TimeMap's display and selecting between US- and non-US-style dates.</p>
 
   <h3>What kinds of geodata are supported?</h3>
-  <p>The <b>Location</b> column accepts two types of geodata: latitude-longitude coordinates or GeoJSON objects. Coordinates must be in the format <emph>lat, long</emph> (e.g. <emph>37.5, -122</emph>).</p>
+  <p>The <b>Location</b> column accepts two types of geodata: latitude-longitude coordinates or GeoJSON objects.</p>
+  
+  <p>Coordinates must be in the format <emph>lat, long</emph> (e.g. <emph>37.5, -122</emph>). The <a href="https://docs.google.com/a/okfn.org/spreadsheet/ccc?key=0AqR8dXc6Ji4JdFRNOTVYYTRqTmh6TUNNd3U2X2pKMGc#gid=0">spreadsheet template</a> includes a formula which automatically looks up coordinates corresponding to human-readable place names in the <b>Place</b> column. This formula is explained in a School of <a href="http://schoolofdata.org/2013/02/19/geocoding-part-ii-geocoding-data-in-a-google-docs-spreadsheet/">Data blog post</a>.</p>
 
-  <p>See blog posts on School of Data for more information on getting <a href="http://schoolofdata.org/2013/02/19/geocoding-part-ii-geocoding-data-in-a-google-docs-spreadsheet/">lat-long coordinates</a> and <a href="http://schoolofdata.org/2013/10/31/geocoding-geojson-boundaries-koordinates/">GeoJSON boundaries</a> into your spreadsheet.</p>  
+  <p>Advanced users who want to go beyond simple coordinates can use GeoJSON feature objects. For an example, see this blog post on adding <a href="http://schoolofdata.org/2013/10/31/geocoding-geojson-boundaries-koordinates/">GeoJSON country boundaries</a> to spreadsheets.</p>  
 
 </div>
 
