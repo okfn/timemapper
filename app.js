@@ -113,6 +113,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/create', routes.create);
+app.get('/preview', routes.preview);
 
 // ======================================
 // User Accounts

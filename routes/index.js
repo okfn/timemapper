@@ -7,6 +7,28 @@ exports.create = function(req, res) {
   res.render('create.html', {title: 'Create'});
 }
 
+exports.preview = function(req, res) {
+  var threadData = {
+    name: 'whatever-you-want',
+    title: req.query.title || 'Untitled',
+    owner: req.query.owner || 'Anonymous',
+    resources: [
+      {
+        url: req.query.url,
+        backend: 'gdocs'
+      }
+    ]
+  };
+  var isOwner = false;
+  res.render('viz/timemap.html', {
+      title: threadData.title
+    , embed: (req.query.embed !== undefined)
+    , viz: threadData
+    , vizJSON: JSON.stringify(threadData)
+    , isOwner: isOwner
+  });
+}
+
 // ======================================
 // User Pages and Dashboards
 // ======================================
