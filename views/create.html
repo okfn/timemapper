@@ -131,12 +131,28 @@
 <div id="faq" class="faq">
   <h2>FAQ</h2>
 
-  <h3>What Structure must the Spreadsheet Have?</h3>
-  <p>TimeMapper recognizes certain specific columns / fields in your spreadsheet data. Best overview is <a href="https://docs.google.com/a/okfn.org/spreadsheet/ccc?key=0AqR8dXc6Ji4JdFRNOTVYYTRqTmh6TUNNd3U2X2pKMGc#gid=0">the template</a>. Note that not all fields are required (strictly, the only required fields are title and start field, though even start can be omitted if you only want a map).</p>
-  <p>Note that you can also add any number of other columns beyond those that TimeMapper uses.</p>
+  <h3>What URL do I use to connect my spreadsheet?</h3>
+  <p>Use the URL you get by clicking your spreadsheet's <strong>Share</strong> button and copying the <strong>Link to share</strong> box.</p>
 
-  <h3>Date Formats</h3>
-  <p>Preferred date format is ISO 8601 (e.g. 2000-01-01), but TimeMapper recognizes most types of date.</p>
+  <p>Note that although you must also <strong>Publish to the web</strong>, TimeMapper does not use the URL found in the publication pop-up.</p>
+
+  <h3>What structure must the spreadsheet have?</h3>
+  <p>TimeMapper recognizes certain columns with specific names. The best overview of these columns is <a href="https://docs.google.com/a/okfn.org/spreadsheet/ccc?key=0AqR8dXc6Ji4JdFRNOTVYYTRqTmh6TUNNd3U2X2pKMGc#gid=0">the template</a>, which has rows of instructions and examples.</p>
+
+  <p>Not all fields are required. The only required fields are <b>Title</b> and <b>Start</b> fields, and even <b>Start</b> can be omitted if you just want a map. Note that you can add any number of other columns beyond those that TimeMapper uses.</p>
+
+  <h3>How do I format dates?</h3>
+  <p>The preferred date format is ISO 8601 (YYYY-MM-DD), but TimeMapper recognizes most types of date.</p>
+
+  <p>If a date's month and day are ambiguous (e.g. is 08-03-1798 UK notation for 8 March, or is it US notation for 3 August?), by default, the first number will be interpreted as the month. You can change this by clicking the <b>edit</b> button in the top right corner of your TimeMap's display and selecting between US- and non-US-style dates.</p>
+
+  <h3>What kinds of geodata are supported?</h3>
+  <p>The <b>Location</b> column accepts two types of geodata: latitude-longitude coordinates or GeoJSON objects.</p>
+  
+  <p>Coordinates must be in the format <emph>lat, long</emph> (e.g. <emph>37.5, -122</emph>). The <a href="https://docs.google.com/a/okfn.org/spreadsheet/ccc?key=0AqR8dXc6Ji4JdFRNOTVYYTRqTmh6TUNNd3U2X2pKMGc#gid=0">spreadsheet template</a> includes a formula which automatically looks up coordinates corresponding to human-readable place names in the <b>Place</b> column. This formula is explained in a School of <a href="http://schoolofdata.org/2013/02/19/geocoding-part-ii-geocoding-data-in-a-google-docs-spreadsheet/">Data blog post</a>.</p>
+
+  <p>Advanced users who want to go beyond simple coordinates can use GeoJSON feature objects. For an example, see this blog post on adding <a href="http://schoolofdata.org/2013/10/31/geocoding-geojson-boundaries-koordinates/">GeoJSON country boundaries</a> to spreadsheets.</p>  
+
 </div>
 
 {% endblock %}
