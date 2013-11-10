@@ -60,7 +60,11 @@ describe('API', function() {
   });
   var dataViewData = { owner: 'tester',
     name: 'test-api-create',
-    title: 'My Test DataView'
+    title: 'My Test DataView',
+    tmconfig: {
+      // note a string false - this is what we will get via API (POSTs stringify all values!)
+      dayfirst: 'false'
+    }
   };
   it('DataView Create and Update OK', function(done) {
     request(app)
@@ -79,6 +83,7 @@ describe('API', function() {
           // console.log(err);
           assert(!err, 'New DataView exists');
           assert.equal(obj.get('title'), dataViewData.title);
+          assert.equal(obj.get('tmconfig').dayfirst, false);
           testUpdate(obj, done);
         });
       })
