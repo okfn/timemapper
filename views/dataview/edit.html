@@ -9,95 +9,14 @@
   <h1>
     Edit your Time<span class="brand-ext">Map</span>
   </h1>
-</div>
-<form class="js-dataview-edit form-horizontal" action="" method="GET">
-  <fieldset>
-    <div class="control-group">
-      <label for="source" class="control-label">Data Source</label>
-      <div class="controls">
-        <p>
-        <button title="Select from Google Drive" class="gdrive-import btn"><i class="gdrive"></i> Select from Your Google Drive</button>
-        </p>
-        <input
-          type="url"
-          value="{{dataview.resources[0].url}}"
-          name="url"
-          required=""
-          class="input span6"
-          placeholder="Or paste the Google Spreadsheet URL directly" />
-      </div>
-    </div>
-    <div class="stage2">
-      <div class="control-group">
-        <label for="title" class="control-label">Title</label>
-        <div class="controls">
-          <input
-            type="text"
-            value="{{dataview.title}}"
-            name="title"
-            class="input span6"
-            required=""
-            placeholder="Title for your View" />
-        </div>
-      </div>
-      <div class="control-group">
-        <label for="slug" class="control-label">Slug</label>
-        <div class="controls">
-          <div class="input-prepend">
-            <span class="add-on">/{{currentUser.id}}/</span>
-            <input type="text" value="{{dataview.name}}" name="name" class="input span4"
-              placeholder=""
-              readonly=""
-              required=""
-              pattern="[a-z0-9-]+"
-              title="The slug needs to be 'url-usable' and so must be lowercase containing only alphanumeric characters and '-'"
-              />
-          </div>
-          <span class="help-block">The url of your new timemap. Choose wisely as this is hard to change!</span>
-        </div>
-      </div>
-    </div>
-    <div class="control-group">
-      <label class="control-label">
-        Ambiguous Date Handling
-      </label>
-      <div class="controls">
-        <label class="radio">
-          <input
-            type="radio"
-            name="dayfirst"
-            value=""
-            {% if not dataview.tmconfig.dayfirst %}
-            checked="true"
-            {% endif %}
-            />
-          <strong>mm</strong>/dd/yyyy &ndash; month first (US style)
-        </label>
-        <label class="radio">
-          <input
-            type="radio"
-            name="dayfirst"
-            value="true"
-            {% if dataview.tmconfig.dayfirst %}
-            checked="true"
-            {% endif %}
-            />
-          <strong>dd</strong>/mm/yyyy &ndash; day first (non-US style)
-        </label>
-        <span class="help-block">
-          How to handle ambiguous dates like "05/08/2012" in source data (could be read as 5th August or 8th of May).
-          <br />
-          If you do not have any dates formatted like this then you can ignore this!
-        </span>
-      </div>
-    </div>
+  <form class="js-dataview-edit form-horizontal" action="" method="GET">
+    {% include 'dataview/form.html' %}
     <div class="control-group">
       <div class="controls">
         <button type="submit" class="btn btn-primary js-submit">Update &raquo;</button>
       </div>
     </div>
-  </fieldset>
-</form>
+  </form>
 </div>
 {% endblock %}
 

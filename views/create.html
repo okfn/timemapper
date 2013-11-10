@@ -62,66 +62,22 @@
 </div>
 
 <div id="connect" class="row js-connect">
-  <div class="span8 offset2"><div class="well">
-<h3>
-  2. Connect, Customize and Publish
-</h3>
+  <div class="span8 offset2">
+    <div class="well">
+      <h3>
+        2. Connect, Customize and Publish
+      </h3>
 
-<form class="js-load-url form-horizontal" action="" method="GET">
-  <fieldset>
-    <div class="control-group">
-      <label for="source" class="control-label">Spreadsheet</label>
-      <div class="controls">
-        <p>
-        <button title="Select from Google Drive" class="gdrive-import btn"><i class="gdrive"></i> Select from Your Google Drive</button>
-        </p>
-        <input type="url" value="" name="source" required
-          class="input span6"
-          placeholder="Or paste the Google Spreadsheet URL directly" />
-        <span class="help-block">
-          Note: you must "Publish" your spreadsheet &ndash; go to <em>File menu &rarr; Publish to Web</em> in the spreadsheet and then select <em>"Start publishing..."</em>
-        </span>
-      </div>
-    </div>
-    <div class="stage2" style="display: none;">
-      <div class="control-group">
-        <label for="title" class="control-label">Title</label>
-        <div class="controls">
-          <input type="text"
-            value=""
-            name="title"
-            class="input span6"
-            required
-            placeholder="My TimeMap Title" />
-        </div>
-      </div>
-      <div class="control-group">
-        <label for="slug" class="control-label">Slug</label>
-        <div class="controls">
-          <div class="input-prepend">
-            <span class="add-on">/{{currentUser.id}}/</span>
-            <input type="text"
-              value=""
-              name="slug"
-              class="input span4"
-              placeholder="my-timemap-title"
-              required
-              pattern="[a-z0-9-]+"
-              title="The slug needs to be 'url-usable' and so must be lowercase containing only alphanumeric characters and '-'"
-              />
+      <form class="js-load-url form-horizontal" action="" method="GET">
+        {% include 'dataview/form.html' %}
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn btn-primary js-submit">Connect and Publish &raquo;</button>
           </div>
-          <span class="help-block">The url of your new timemap. Choose wisely as this hard to change!</span>
         </div>
-      </div>
+      </form>
     </div>
-    <div class="control-group">
-      <div class="controls">
-        <button type="submit" class="btn btn-primary js-submit">Connect and Publish &raquo;</button>
-      </div>
-    </div>
-  </fieldset>
-</form>
-</div></div>
+  </div>
 </div>
 
 </div> <!-- /instructions -->

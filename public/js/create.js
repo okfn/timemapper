@@ -1,8 +1,8 @@
 jQuery(function($) {
   var $form = $('.js-connect form')
-    , $input = $('.js-connect input[name="source"]')
+    , $input = $('.js-connect input[name="url"]')
     , $submit = $form.find('.js-submit')
-    , $name = $('.js-connect input[name="slug"]')
+    , $name = $('.js-connect input[name="name"]')
     , $title = $('.js-connect input[name="title"]')
     , currentUser = TM.locals.currentUser
     ;
@@ -83,6 +83,9 @@ jQuery(function($) {
   });
 
   _createDataView = function(cb) {
+    var formData = _.object(_.map($form.serializeArray(), function(item) {
+      return [ item.name, item.value ];
+    }));
     var dataview = {
       name: $name.val(),
       owner: currentUser,
@@ -96,7 +99,10 @@ jQuery(function($) {
       resources: [{
         backend: 'gdocs',
         url: $input.val()
-      }]
+      }],
+      tmconfig: {
+        dayfirst: Boolean(formData.dayfirst)
+      }
     };
     $.ajax({
       url: '/api/v1/dataview/',
