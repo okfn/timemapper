@@ -84,7 +84,8 @@ var TimeMapperView = Backbone.View.extend({
         // VMM.Date.parse is the timelinejs date parser
         startParsed: VMM.Date.parse(normalizeDate(record.get("start"), self.datapackage.tmconfig.dayfirst)),
         title: record.get('title') || record.get('headline'),
-        description: record.get('description') || record.get('text'),
+        description: record.get('description') || record.get('text') || '',
+        url: record.get('url') || record.get('webpage'),
         media: record.get('image') || record.get('media'),
         mediacaption: record.get('caption') || record.get('mediacaption') || record.get('imagecaption'),
         mediacredit: record.get('imagecredit') || record.get('mediacredit'),
@@ -180,6 +181,13 @@ var TimeMapperView = Backbone.View.extend({
           thumbnail: record.get('icon')
         };
       }
+      out.headline = record.get('title');
+      if (record.get('url')) {
+        out.headline = '<a href="%url" class="title-link" title="%url">%headline <i class="icon-external-link title-link"></i></a>'
+          .replace(/%url/g, record.get('url'))
+          .replace(/%headline/g, out.headline)
+          ;
+      }
       out.text = record.get('description');
       if (record.get('source') || record.get('sourceurl')) {
         var s = record.get('source') || record.get('sourceurl');
@@ -200,7 +208,7 @@ var TimeMapperView = Backbone.View.extend({
     // customize with icon column
     this.map.infobox = function(record) {
       if (record.icon !== undefined) {
-        return '<img src="' + record.get('icon') + '" width="100px"> ' +record.get('title');
+        return '<img src="' + record.get('icon') + '" width="100px"> ' + record.get('title');
       }
       return record.get('title');
     };

@@ -264,6 +264,20 @@ body.embed .data-views {
   font-style: italic;
 }
 
+.vco-storyjs a.title-link {
+  color: #0088cc;
+}
+
+i.title-link {
+  font-size: 50%;
+  color: #000;
+}
+
+/* hack to hide the link icon in the forward / back links at the side */
+.nav-container i.title-link {
+  display: none;
+}
+
 /**********************************************************
   * Dashboard View
   *********************************************************/
