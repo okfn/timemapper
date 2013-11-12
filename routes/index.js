@@ -4,7 +4,7 @@ var config = require('../lib/config.js')
   ;
 
 exports.create = function(req, res) {
-  res.render('create.html', {title: 'Create'});
+  res.render('dataview/create.html', {title: 'Create'});
 }
 
 exports.preview = function(req, res) {
