@@ -17,7 +17,10 @@ exports.preview = function(req, res) {
         url: req.query.url,
         backend: 'gdocs'
       }
-    ]
+    ],
+    tmconfig: {
+      dayfirst: req.query.dayfirst
+    }
   };
   var isOwner = false;
   res.render('viz/timemap.html', {

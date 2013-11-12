@@ -151,11 +151,11 @@ describe('Site', function() {
         done();
       });
   });
-  it('Preview OK', function(done) {
+  it('(Pre)view OK', function(done) {
     var url = 'https://docs.google.com/a/okfn.org/spreadsheet/ccc?key=0AqR8dXc6Ji4JdERlNXQ3ekttQk5USmFRaTFMYUNJTkE';
     var title = 'Abc is the title';
     request(app)
-      .get('/preview?url=' + url + '&title=' + title)
+      .get('/view?url=' + url + '&title=' + title)
       .end(function(err, res) {
         assert.ok(res.text.indexOf(title) != -1);
         done();
