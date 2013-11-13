@@ -106,6 +106,15 @@ var createDataView = function(cb) {
   var formData = _.object(_.map($form.serializeArray(), function(item) {
     return [ item.name, item.value ];
   }));
+
+  // anonymous case (not logged in)
+  if (!currentUser) {
+    var url = '/view?url=' + encodeURIComponent(formData.url) + '&title=' + encodeURIComponent(formData.title) + '&dayfirst=' + formData.dayfirst;
+    cb(null, url);
+    return;
+  }
+
+  // else we are logged in and we'll save it ...
   var dataview = {
     name: formData.name,
     owner: currentUser,
@@ -140,6 +149,7 @@ var createDataView = function(cb) {
 // bit of UX to allow users to use a demo spreadsheet as a way to get started
 var onDemoSheetClick = function(e) {
   e.preventDefault();
+  var $input = $('.js-connect input[name="url"]')
 
   $('html,body').animate({
     scrollTop: $('#connect').offset().top

@@ -65,14 +65,23 @@
   <div class="span8 offset2">
     <div class="well">
       <h3>
-        2. Connect, Customize and Publish
+        2. Connect and Customize
       </h3>
+      {% if not currentUser %}
+      <div class="alert alert-warning">
+        Just letting you know you are <strong>not signed in</strong>. That means the timemap will be created anonymously. That is <strong>no problem</strong> and if you are happy with that you can forge ahead! If you do want to "own" your timemap more formally you should <a href="/account/login">signin right now</a> (or <a href="/account/login">signup</a> - it takes just 15 seconds using your twitter account). <a href="#faq-anon">Read more about anonymous vs non-anonymous creation &raquo;</a>
+      </div>
+      {% endif %}
 
       <form class="js-load-url form-horizontal" action="" method="GET">
         {% include 'dataview/form.html' %}
+
+        <h3>
+          3. Let's Publish It!
+        </h3>
         <div class="control-group">
           <div class="controls">
-            <button type="submit" class="btn btn-primary js-submit">Connect and Publish &raquo;</button>
+            <button type="submit" class="btn btn-primary js-submit">Publish &raquo;</button>
           </div>
         </div>
       </form>
@@ -86,6 +95,15 @@
 
 <div id="faq" class="faq">
   <h2>FAQ</h2>
+  <h3 id="faq-anon">Anonymous Creation</h3>
+  <p>You do not need an account to create a timemap - they can be created anonymously and will have all the same features and shareability of normal timemaps. However, there are some benefits of creating an account and creating your timemap whilst logged in:</p>
+  <ul>
+    <li>You'll get a nice url for your timemap at <code>/your-username/a-name-you-choose-for-your-timemap</code></li>
+    <li>All of your timemaps will be nicely listed at <code>/your-username</code></li>
+    <li>As you'll be identified as the owner you'll be able to re-configure (or delete) your timemap later</li>
+  </ul>
+
+  <p>If you do want an account signup is very easy &ndash; <a href="/account/login">it takes just 15 seconds is very secure and uses your twitter account</a> (so need to think up a new username and password!).</p>
 
   <h3>What URL do I use to connect my spreadsheet?</h3>
   <p>Use the URL you get by clicking your spreadsheet's <strong>Share</strong> button and copying the <strong>Link to share</strong> box.</p>
