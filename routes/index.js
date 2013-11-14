@@ -19,7 +19,8 @@ exports.preview = function(req, res) {
       }
     ],
     tmconfig: {
-      dayfirst: req.query.dayfirst
+      dayfirst: req.query.dayfirst,
+      type: req.query.type || 'timemap'
     }
   };
   var isOwner = false;

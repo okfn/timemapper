@@ -1,5 +1,9 @@
 @import url(http://fonts.googleapis.com/css?family=News+Cycle:400,700|Merriweather:400,300,700);
 
+html {
+  height: 100%;
+}
+
 body {
   font-size: 14px;
   font-family: Merriweather, serif;
@@ -148,6 +152,10 @@ i.gdrive {
   * Data Views
   *************************************************************/
 
+body.view {
+  height: 100%;
+}
+
 body.view .navbar {
   margin-bottom: 0px; 
 }
@@ -215,7 +223,7 @@ body.view .navbar ul.nav.pull-right {
   right: 0;
 }
 
-.row-fluid, .row-fluid > div, .map, .map > div, .recline-map, .recline-map .map, .recline-timeline {
+.panes, .panes > div, .map, .map > div, .recline-map, .recline-map .map, .recline-timeline {
   height: 100%;
 }
 
@@ -224,15 +232,17 @@ body.view .navbar ul.nav.pull-right {
 }
 
 /* correct so we have full width of page */
-.data-views .span8 {
+.data-views .timeline-pane {
   margin: 0;
   padding: 0;
   width: 66.66%;
+  float: left;
 }
-.data-views .span4 {
+.data-views .map-pane {
   margin: 0;
   padding: 0;
   width: 33.33%;
+  float: left;
 }
 
 .timeline {
@@ -285,6 +295,14 @@ i.title-link {
 /* hack to hide the link icon in the forward / back links at the side */
 .nav-container i.title-link {
   display: none;
+}
+
+body.view.timeline .map-pane {
+  display: none; 
+}
+
+body.view.timeline .timeline-pane {
+  width: 100%;
 }
 
 /**********************************************************

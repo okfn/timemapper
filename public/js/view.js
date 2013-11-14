@@ -37,6 +37,9 @@ var TimeMapperView = Backbone.View.extend({
     if (!this.datapackage.tmconfig) {
       this.datapackage.tmconfig = {};
     }
+    this.datapackage.tmconfig = _.defaults(this.datapackage.tmconfig, {
+      type: 'timemap'
+    });
     this.timelineState = _.extend({}, this.datapackage.tmconfig.timeline, {
       nonUSDates: this.datapackage.tmconfig.dayfirst,
       timelineJSOptions: _.extend({}, this.datapackage.tmconfig.timelineJSOptions, {
@@ -58,10 +61,19 @@ var TimeMapperView = Backbone.View.extend({
   _onDataLoaded: function() {
     $('.js-loading').hide();
 
-    // Note: We postpone setup until now as otherwise timeline
+    // Note: We *have* to postpone setup until now as otherwise timeline
     // might try to navigate to a non-existent marker
-    this._setupTimeline();
-    this._setupMap();
+    if (this.datapackage.tmconfig.type === 'timemap') {
+      $('body').addClass('timemap');
+      this._setupTimeline();
+      this._setupMap();
+    } else {
+      // timeline only
+      $('body').addClass('timeline');
+      // fix height of timeline to be window height minus navbar and footer
+      $('.timeline-pane').height($(window).height() - 42 - 41);
+      this._setupTimeline();
+    }
 
     // Nasty hack. Timeline ignores hashchange events unless is_moving ==
     // True. However, once it's True, it can never become false again. The
