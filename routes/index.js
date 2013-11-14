@@ -23,7 +23,7 @@ exports.preview = function(req, res) {
     }
   };
   var isOwner = false;
-  res.render('viz/timemap.html', {
+  res.render('dataview/timemap.html', {
       title: threadData.title
     , embed: (req.query.embed !== undefined)
     , viz: threadData
@@ -113,7 +113,7 @@ exports.timeMap = function(req, res, next) {
     }
     var threadData = viz.toTemplateJSON();
     var isOwner = (req.user && req.user.id == threadData.owner);
-    res.render('viz/timemap.html', {
+    res.render('dataview/timemap.html', {
         title: threadData.title
       , permalink: 'http://timemapper.okfnlabs.org/' + threadData.owner + '/' + threadData.name
       , authorLink: 'http://timemapper.okfnlabs.org/' + threadData.owner
