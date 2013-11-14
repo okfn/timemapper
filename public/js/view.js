@@ -52,7 +52,8 @@ var TimeMapperView = Backbone.View.extend({
     });
 
     // now load the data
-    this.model.fetch()
+    this.model.fetch().done(function() {
+      self.model.query({size: self.model.recordCount})
       .done(function() {
         self._dataChanges();
         // HACK: We postpone rendering until now, because otherwise timeline
@@ -68,6 +69,7 @@ var TimeMapperView = Backbone.View.extend({
         // do this here rather than in page so it picks up title correctly
         !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
       });
+    });
   },
 
   _dataChanges: function() {
