@@ -37,39 +37,41 @@ var TimeMapperView = Backbone.View.extend({
     if (!this.datapackage.tmconfig) {
       this.datapackage.tmconfig = {};
     }
-    var timelineState = _.extend({}, this.datapackage.tmconfig.timeline, {
+    this.timelineState = _.extend({}, this.datapackage.tmconfig.timeline, {
       nonUSDates: this.datapackage.tmconfig.dayfirst,
       timelineJSOptions: _.extend({}, this.datapackage.tmconfig.timelineJSOptions, {
         "hash_bookmark": true
       })
     });
-
-    // Create subviews (timeline and map)
-    this.timeline = new recline.View.Timeline({
-      model: this.model,
-      el: this.$el.find('.timeline'),
-      state: timelineState
-    });
+    this._setupTwitter();
 
     // now load the data
     this.model.fetch().done(function() {
       self.model.query({size: self.model.recordCount})
       .done(function() {
         self._dataChanges();
-        // HACK: We postpone rendering until now, because otherwise timeline
-        // might try to navigate to a non-existent marker
-        self.render();
-        self.timeline.render();
-        // Nasty hack. Timeline ignores hashchange events unless is_moving ==
-        // True. However, once it's True, it can never become false again. The
-        // callback associated with the UPDATE event sets it to True, but is
-        // otherwise a no-op.
-        $("div.slider").trigger("UPDATE");
-        // set up twitter share button
-        // do this here rather than in page so it picks up title correctly
-        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+        self._onDataLoaded();
       });
     });
+  },
+
+  _onDataLoaded: function() {
+    $('.js-loading').hide();
+
+    // Note: We postpone setup until now as otherwise timeline
+    // might try to navigate to a non-existent marker
+    this._setupTimeline();
+    this._setupMap();
+
+    // Nasty hack. Timeline ignores hashchange events unless is_moving ==
+    // True. However, once it's True, it can never become false again. The
+    // callback associated with the UPDATE event sets it to True, but is
+    // otherwise a no-op.
+    $("div.slider").trigger("UPDATE");
+  },
+
+  _setupTwitter: function(e) {
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
   },
 
   _dataChanges: function() {
@@ -155,9 +157,13 @@ var TimeMapperView = Backbone.View.extend({
     this.model.query({q: query});
   },
 
-  render: function() {
-    var self = this;
-    $('.js-loading').hide();
+  _setupTimeline: function() {
+    this.timeline = new recline.View.Timeline({
+      model: this.model,
+      el: this.$el.find('.timeline'),
+      state: this.timelineState
+    });
+
     this.timeline.convertRecord = function(record, fields) {
       // HACK: support people who put '2013-08-20 in gdocs (to force gdocs to
       // not attempt to parse the date)
@@ -202,7 +208,10 @@ var TimeMapperView = Backbone.View.extend({
 
       return out;
     };
+    this.timeline.render();
+  },
 
+  _setupMap: function() {
     this.map = new recline.View.Map({
       model: this.model
     });
