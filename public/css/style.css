@@ -194,6 +194,15 @@ body.view .footer {
   padding: 8px;
 }
 
+body.view .loading {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 45px;
+}
+
 body.view .navbar ul.nav.pull-right {
   margin-right: 0;
 }

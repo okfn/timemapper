@@ -157,6 +157,7 @@ var TimeMapperView = Backbone.View.extend({
 
   render: function() {
     var self = this;
+    $('.js-loading').hide();
     this.timeline.convertRecord = function(record, fields) {
       // HACK: support people who put '2013-08-20 in gdocs (to force gdocs to
       // not attempt to parse the date)
