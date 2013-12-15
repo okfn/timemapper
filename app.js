@@ -6,9 +6,8 @@ var express = require('express')
   , TwitterStrategy = require('passport-twitter').Strategy
 
   , dao = require('./lib/dao.js')
-  , util = require('./lib/util.js')
-  , authz = require('./lib/authz.js')
   , routes = require('./routes/index.js')
+  , api = require('./routes/api.js')
   ;
 
 var app = express();
@@ -189,90 +188,18 @@ app.get('/:userId/:threadName/edit', routes.dataViewEdit);
 // API
 // ======================================
 
-app.get('/api/v1/account/:id', function(req, res) {
-  var obj = dao.Account.create({id: req.params.id});
-  apiGet(obj, req, res);
-});
+app.get('/api/v1/account/:id', api.getAccount);
 
-app.get('/api/v1/dataview/:owner/:name', function(req, res) {
-  var obj = dao.DataView.create({owner: req.params.owner, name: req.params.name});
-  apiGet(obj, req, res);
-});
-
-var apiGet = function(domainObj, req, res) {
-  domainObj.fetch(function(err, domainObj) {
-    // TODO: handle err
-    if (domainObj===null) {
-      // next(new Error('Cannot find ' + req.params.objecttype + ' with id ' + req.params.id));
-      var msg = {
-        error: 'Cannot find ' + req.params.objecttype + ' with id ' + req.params.id
-        , status: 500
-      };
-      res.json(msg, 404);
-      return;
-    }
-    var userId = req.user ? req.user.id : null;
-    var isAuthz = authz.isAuthorized(userId, 'read', domainObj);
-    if (isAuthz) {
-      res.json(domainObj.toJSON());
-    } else {
-      msg = {
-        error: 'Access not allowed'
-        , status: 401
-      };
-      res.json(msg, 401);
-    }
-  });
-}
-
-var apiUpsert = function(obj, action, req, res) {
-  var userId = req.user ? req.user.id : null;
-  var isAuthz = authz.isAuthorized(userId, action, obj);
-  if (isAuthz) {
-    obj.save(function(outData) {
-      res.json(outData)
-    });
-  } else {
-    msg = {
-      error: 'Access not allowed'
-      , status: 401
-    };
-    res.json(msg, 401);
-  }
-};
+app.get('/api/v1/dataview/:owner/:name', api.getDataView);
 
 // app.post('/api/v1/:objecttype', apiUpsert);
-app.post('/api/v1/dataview', function(req, res) {
-  var data = req.body;
-  var obj = dao.DataView.create(data);
-  // check whether already exists
-  obj.fetch(function(err) {
-    // TODO: we assume error is 404 but could be something else ...
-    if (!err) {
-      res.json(409, {message: 'Conflict - Object already exists'});
-    }
-    else {
-      apiUpsert(obj, 'create', req, res);
-    }
-  });
-});
+app.post('/api/v1/dataview', api.createDataView);
 
-app.post('/api/v1/dataview/:userId/:name', function(req, res) {
-  var data = req.body;
-  var obj = dao.DataView.create(data);
-  // TODO: ? check whether it exists?
-  apiUpsert(obj, 'update', req, res);
-});
-    
-// app.get('/api/v1/:objecttype', function(req,res) {
-//   var objName = req.params.objecttype[0].toUpperCase() + req.params.objecttype.slice(1); 
-//   var klass = dao[objName];
-//   var queryObj = req.body;
-//   var queryObj = null;
-//   klass.search(queryObj, req.query, function(queryResult) {
-//     res.json(queryResult.toJSON());
-//   });
-// });
+app.post('/api/v1/dataview/:userId/:name', api.updateDataView);
+
+// ======================================
+// Boot the Server
+// ======================================
 
 app.listen(config.get('express:port'), function() {
   console.log("Express server listening on port " + config.get('express:port') + " in mode " + app.get('env'));
