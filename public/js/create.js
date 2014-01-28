@@ -109,7 +109,7 @@ var createDataView = function(cb) {
 
   // anonymous case (not logged in)
   if (!currentUser) {
-    var url = '/view?url=' + encodeURIComponent(formData.url) + '&title=' + encodeURIComponent(formData.title) + '&dayfirst=' + formData.dayfirst;
+    var url = '/view?url=' + encodeURIComponent(formData.url) + '&title=' + encodeURIComponent(formData.title) + '&dayfirst=' + formData.dayfirst + '&startfrom=' + formData.startfrom;
     cb(null, url);
     return;
   }
@@ -130,7 +130,8 @@ var createDataView = function(cb) {
       url: formData.url,
     }],
     tmconfig: {
-      dayfirst: Boolean(formData.dayfirst)
+      dayfirst: Boolean(formData.dayfirst),
+      startfrom: formData.startfrom
     }
   };
   $.ajax({

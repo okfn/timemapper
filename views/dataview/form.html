@@ -80,5 +80,48 @@
         </span>
       </div>
     </div>
+    <div class="control-group">
+      <label class="control-label">
+        Start from
+      </label>
+      <div class="controls">
+        <label class="radio">
+          <input
+            type="radio"
+            name="startfrom"
+            value="start"
+            {% if not dataview.tmconfig.startfrom or dataview.tmconfig.startfrom == 'start' %}
+            checked="true"
+            {% endif %}
+            />
+          First event
+        </label>
+        <label class="radio">
+          <input
+            type="radio"
+            name="startfrom"
+            value="end"
+            {% if dataview.tmconfig.startfrom == 'end' %}
+            checked="true"
+            {% endif %}
+            />
+          Last event
+        </label>
+        <label class="radio">
+          <input
+            type="radio"
+            name="startfrom"
+            value="today"
+            {% if dataview.tmconfig.startfrom == 'today' %}
+            checked="true"
+            {% endif %}
+            />
+          Present day
+        </label>
+        <span class="help-block">
+          Where on the timeline should the user start.
+        </span>
+      </div>
+    </div>
   </fieldset>
 

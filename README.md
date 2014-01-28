@@ -96,6 +96,7 @@ Stored in datapackage.json following [Data Package spec][dp-spec]. Key points:
 
         tmconfig: {
           dayfirst: false     # are dates dayfirst
+          startfrom: start    # start | end | today
           layout: timemap     # timemap | map | timeline
           timelineJSOptions:  # options to pass to timelinejs
         }
