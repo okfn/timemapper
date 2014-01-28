@@ -53,9 +53,34 @@ var TimeMapperView = Backbone.View.extend({
       self.model.query({size: self.model.recordCount})
       .done(function() {
         self._dataChanges();
+        self._setStartPosition();
         self._onDataLoaded();
       });
     });
+  },
+
+  _setStartPosition: function() {
+    var startAtSlide = 0;
+    switch (this.datapackage.tmconfig.startfrom) {
+      case 'start':
+        // done
+        break;
+      case 'end':
+        startAtSlide = this.model.recordCount - 1;
+        break;
+      case 'today':
+        var dateToday = new Date();
+        this.model.records.each(function(rec, i) {
+          if (rec.get('startParsed') < dateToday) {
+            startAtSlide = i;
+          }
+        });
+        break;
+    }
+    this.timelineState.timelineJSOptions = _.extend(this.timelineState.timelineJSOptions, {
+        "start_at_slide": startAtSlide
+      }
+    );
   },
 
   _onDataLoaded: function() {

@@ -63,7 +63,8 @@ describe('API', function() {
     title: 'My Test DataView',
     tmconfig: {
       // note a string false - this is what we will get via API (POSTs stringify all values!)
-      dayfirst: 'false'
+      dayfirst: 'false',
+      startfrom: 'first'
     }
   };
   it('DataView Create and Update OK', function(done) {

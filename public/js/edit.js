@@ -47,7 +47,8 @@ var doDataViewUpdate = function(cb) {
       })
     ],
     tmconfig: _.extend({}, dataViewData.tmconfig, {
-      dayfirst: Boolean(formData.dayfirst)
+      dayfirst: Boolean(formData.dayfirst),
+      startfrom: formData.startfrom
     })
   });
   $.ajax({

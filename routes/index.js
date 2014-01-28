@@ -20,6 +20,7 @@ exports.preview = function(req, res) {
     ],
     tmconfig: {
       dayfirst: req.query.dayfirst,
+      startfrom: req.query.startfrom,
       type: req.query.type || 'timemap'
     }
   };
