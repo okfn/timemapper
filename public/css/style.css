@@ -19,6 +19,12 @@ h3 {
   line-height: 32px;
 }
 
+input.input {
+  box-sizing: border-box;
+  height: 30px;
+  width: 100%;
+}
+
 .page-header {
   border-bottom: 1px solid #ccc;
   padding-bottom: 5px;
