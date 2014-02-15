@@ -38,7 +38,7 @@ var TimeMapperView = Backbone.View.extend({
       this.datapackage.tmconfig = {};
     }
     this.datapackage.tmconfig = _.defaults(this.datapackage.tmconfig, {
-      type: 'timemap'
+      viewtype: 'timemap'
     });
     this.timelineState = _.extend({}, this.datapackage.tmconfig.timeline, {
       nonUSDates: this.datapackage.tmconfig.dayfirst,

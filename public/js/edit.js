@@ -47,6 +47,7 @@ var doDataViewUpdate = function(cb) {
       })
     ],
     tmconfig: _.extend({}, dataViewData.tmconfig, {
+      viewtype: formData.viewtype, 
       dayfirst: Boolean(formData.dayfirst),
       startfrom: formData.startfrom
     })

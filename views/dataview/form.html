@@ -48,6 +48,31 @@
     {% endif %}
     <div class="control-group">
       <label class="control-label">
+        Type of Data View
+      </label>
+      <div class="controls">
+        {% for val in ['timemap', 'timeline', 'map'] %}
+        <label class="radio">
+          <input
+            type="radio"
+            name="viewtype"
+            value="{{val}}"
+            {% if dataview.tmconfig.viewtype == val %}
+            checked="true"
+            {% endif %}
+            />
+          {{ val[0].toUpperCase() + val.slice(1) }}
+        </label>
+        {% endfor %}
+        <span class="help-block">
+          Choose the visualization type of your data - TimeMap (Timeline and Map combined), Timeline or Map.
+        </span>
+      </div>
+    </div>
+
+    <h4>Options</h4>
+    <div class="control-group">
+      <label class="control-label">
         Ambiguous Date Handling
       </label>
       <div class="controls">

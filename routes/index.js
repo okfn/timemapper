@@ -4,7 +4,17 @@ var config = require('../lib/config.js')
   ;
 
 exports.create = function(req, res) {
-  res.render('dataview/create.html', {title: 'Create'});
+  // just a stub for form
+  var dataview = {
+    tmconfig: {
+      // default
+      type: 'timemap'
+    }
+  };
+  res.render('dataview/create.html', {
+    title: 'Create',
+    dataview: dataview
+  });
 }
 
 exports.preview = function(req, res) {

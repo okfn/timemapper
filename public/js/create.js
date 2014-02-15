@@ -130,6 +130,7 @@ var createDataView = function(cb) {
       url: formData.url,
     }],
     tmconfig: {
+      viewtype: formData.viewtype, 
       dayfirst: Boolean(formData.dayfirst),
       startfrom: formData.startfrom
     }
