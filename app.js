@@ -1,7 +1,6 @@
 var express = require('express')
   , nunjucks = require('nunjucks')
   , config = require('./lib/config.js')
-  , passport = require('passport-twitter')
   , passport = require('passport')
   , TwitterStrategy = require('passport-twitter').Strategy
 
