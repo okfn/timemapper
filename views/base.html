@@ -47,7 +47,16 @@
       <ul class="nav">
       </ul>
       <ul class="nav pull-right">
+        <li class="divider-vertical"></li>
+        <li>
+          <a href="http://okfnlabs.org/contact">Contact Us</a>
+        </li>
+        <li class="divider-vertical"></li>
+        <li>
+          <a href="https://github.com/okfn/timemapper">Report an Issue</a>
+        </li>
         {% if currentUser %} 
+        <li class="divider-vertical"></li>
         <li><a class="username" href="/{{currentUser.id}}"><i class="icon-user"></i> {{currentUser.id}}</a></li>
         <li><a class="logout" href="/account/logout" title="sign out"><i class="icon-signout"></i></a></li>
         {% endif %}
