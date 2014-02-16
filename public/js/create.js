@@ -5,7 +5,6 @@ jQuery(function($) {
 
   $(".gdrive-import").click(onGdriveImportClick);
   $input.change(onUrlChange);
-  $form.submit(onFormSubmit);
   $('.js-demo-sheet').click(onDemoSheetClick);
 });
 
@@ -69,81 +68,6 @@ var onUrlChange = function(e) {
       // so let's trigger the submit so we see the error show up immediately
       // Note you have to actually click the submit button rather than call submit event!
       $submit.click()
-    }
-  });
-}
-
-var onFormSubmit = function(e) {
-  var $form = $('.js-connect form')
-    , $submit = $form.find('.js-submit')
-    ;
-
-  e.preventDefault();
-
-  // if form is good to go let's submit it
-  if (e.target.checkValidity()) {
-    $submit.html('<i class="icon-spinner icon-spin icon-large"></i> Saving and publishing - this should only take a moment ...');
-    createDataView(function(err, url) {
-      if (err) {
-        alert('Error on saving: ' + err.responseText);
-      } else {
-        $submit.html('All done! About to redirect to you to your new view ...').removeClass('btn-primary').addClass('btn-success'); 
-        setTimeout(function() {window.location = url}, 2000);
-      }
-    });
-  }
-}
-
-var createDataView = function(cb) {
-  var $form = $('.js-connect form')
-    , $input = $('.js-connect input[name="url"]')
-    , $submit = $form.find('.js-submit')
-    , $name = $('.js-connect input[name="name"]')
-    , $title = $('.js-connect input[name="title"]')
-    , currentUser = TM.locals.currentUser
-    ;
-
-  var formData = _.object(_.map($form.serializeArray(), function(item) {
-    return [ item.name, item.value ];
-  }));
-
-  // anonymous case (not logged in)
-  if (!currentUser) {
-    var url = '/view?url=' + encodeURIComponent(formData.url) + '&title=' + encodeURIComponent(formData.title) + '&dayfirst=' + formData.dayfirst + '&startfrom=' + formData.startfrom;
-    cb(null, url);
-    return;
-  }
-
-  // else we are logged in and we'll save it ...
-  var dataview = {
-    name: formData.name,
-    owner: currentUser,
-    title: formData.title,
-    licenses: [{
-      id: 'cc-by',
-      name: 'Creative Commons Attribution',
-      version: '3.0',
-      url: 'http://creativecommons.org/licenses/by/3.0/'
-    }],
-    resources: [{
-      backend: 'gdocs',
-      url: formData.url,
-    }],
-    tmconfig: {
-      viewtype: formData.viewtype, 
-      dayfirst: Boolean(formData.dayfirst),
-      startfrom: formData.startfrom
-    }
-  };
-  $.ajax({
-    url: '/api/v1/dataview/',
-    type: 'post',
-    data: dataview,
-    success: function() {
-      cb(null, '/' + currentUser + '/' + dataview.name);
-    },
-    error: function(err) {
-      cb(err);
     }
   });
 }

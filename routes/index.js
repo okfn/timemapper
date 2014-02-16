@@ -1,5 +1,6 @@
 var config = require('../lib/config.js')
   , dao = require('../lib/dao.js')
+  , logic = require('../lib/logic')
   , util = require('../lib/util.js')
   ;
 
@@ -8,13 +9,39 @@ exports.create = function(req, res) {
   var dataview = {
     tmconfig: {
       // default
-      type: 'timemap'
+      viewtype: 'timemap'
     }
   };
   res.render('dataview/create.html', {
     title: 'Create',
     dataview: dataview
   });
+}
+
+exports.createPost = function(req, res) {
+  var data = req.body;
+  // set the owner
+  // TODO: anon case
+  if (!req.user) {
+    res.send(401, 'You are not logged in');
+    return;
+  }
+  data.owner = req.user.id; 
+  logic.createDataView(data, req.user, function(err, out) {
+    if (err) {
+      res.send(err.code, err.message);
+    } else {
+      // req.flash('Data View Created');
+      res.redirect(urlFor(data.owner, data.name));
+    }
+  });
+}
+
+function urlFor(owner, dataView) {
+  return '/' + [
+    owner,
+    dataView
+    ].join('/')
 }
 
 exports.preview = function(req, res) {

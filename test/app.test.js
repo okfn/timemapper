@@ -6,7 +6,7 @@ var fs = require('fs')
   , dao = require('../lib/dao.js')
   , config = require('../lib/config.js')
   , _ = require('underscore')
-  // , base = require('../test/base.js');
+  , base = require('./base');
   ;
 
 var app = require('../app.js').app;
@@ -15,6 +15,11 @@ var app = require('../app.js').app;
 config.set('test:testing', true);
 
 describe('API', function() {
+  before(function(done) {
+    base.resetDb();
+    done();
+  });
+
   it('Account GET', function(done) {
     request(app)
       .get('/api/v1/account/' + 'tester')
@@ -144,6 +149,11 @@ describe('API', function() {
 });
 
 describe('Site', function() {
+  before(function(done) {
+    base.resetDb();
+    done();
+  });
+
   it('DataView Edit OK', function(done) {
     request(app)
       .get('/tester/napoleon/edit')
@@ -163,5 +173,38 @@ describe('Site', function() {
       });
   });
 
+  var dataViewData = {
+    name: 'test-api-create',
+    title: 'My Test DataView',
+    'tmconfig[dayfirst]': 'false',
+    'tmconfig[startfrom]': 'first'
+  };
+  // owner will be set to logged in user
+  var owner = 'tester'
+
+  it('DataView Create POST OK', function(done) {
+    request(app)
+      .post('/create')
+      .type('form')
+      .send(dataViewData)
+      .expect(302)
+      .end(function(err, res) {
+        assert(!err, err);
+        assert.equal(res.header['location'], '/' + owner + '/' + dataViewData.name);
+        var obj = dao.DataView.create({
+          owner: owner,
+          name: dataViewData.name
+        });
+        obj.fetch(function(err) {
+          assert(!err, 'New DataView exists');
+          assert.equal(obj.get('title'), dataViewData.title);
+          assert.equal(obj.get('tmconfig').dayfirst, false);
+          var lic = obj.get('licenses');
+          assert.equal(lic[0].type, 'cc-by');
+          done();
+        });
+      })
+      ;
+  });
 });
 

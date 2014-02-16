@@ -12,7 +12,8 @@
           required=""
           class="input span6"
           placeholder="Or paste the Google Spreadsheet URL directly" />
-          <span class="help-block"><strong>Important</strong>: you must "publish" your Google Spreadsheet. See <a href="#faq-publish">the FAQ below</a> for details</span>.
+          <span class="help-block"><strong>Important</strong>: you must "publish" your Google Spreadsheet: go to File Menu in your spreadsheet, then 'Publish to the Web', then click 'Start Publishing'. See <a href="#faq-publish">the FAQ below</a> for more details</span>.
+
       </div>
     </div>
     <div class="stage2">
@@ -41,7 +42,7 @@
               title="The slug needs to be 'url-usable' and so must be lowercase containing only alphanumeric characters and '-'"
               />
           </div>
-          <span class="help-block">The url of your new timemap. Choose wisely as this is hard to change!</span>
+          <span class="help-block">The url of your new timemap. This must be different from the name for any of your existing timemaps. Choose wisely as this is hard to change!</span>
         </div>
       </div>
     </div>
@@ -55,7 +56,7 @@
         <label class="radio">
           <input
             type="radio"
-            name="viewtype"
+            name="tmconfig[viewtype]"
             value="{{val}}"
             {% if dataview.tmconfig.viewtype == val %}
             checked="true"
@@ -70,7 +71,7 @@
       </div>
     </div>
 
-    <h4>Options</h4>
+    <h4 style="text-align: center;">More Options</h4>
     <div class="control-group">
       <label class="control-label">
         Ambiguous Date Handling
@@ -79,7 +80,7 @@
         <label class="radio">
           <input
             type="radio"
-            name="dayfirst"
+            name="tmconfig[dayfirst]"
             value=""
             {% if not dataview.tmconfig.dayfirst %}
             checked="true"
@@ -90,7 +91,7 @@
         <label class="radio">
           <input
             type="radio"
-            name="dayfirst"
+            name="tmconfig[dayfirst]"
             value="true"
             {% if dataview.tmconfig.dayfirst %}
             checked="true"
@@ -110,39 +111,19 @@
         Start from
       </label>
       <div class="controls">
+        {% for val in [['start', 'First event'], ['end', 'Last event'], ['today', 'Today']] %}
         <label class="radio">
           <input
             type="radio"
-            name="startfrom"
-            value="start"
-            {% if not dataview.tmconfig.startfrom or dataview.tmconfig.startfrom == 'start' %}
+            name="tmconfig[startfrom]"
+            value="{{val[0]}}"
+            {% if (val[0] == 'start' and not dataview.tmconfig.startfrom) or dataview.tmconfig.startfrom == val[0]  %}
             checked="true"
             {% endif %}
             />
-          First event
+          {{val[1]}}
         </label>
-        <label class="radio">
-          <input
-            type="radio"
-            name="startfrom"
-            value="end"
-            {% if dataview.tmconfig.startfrom == 'end' %}
-            checked="true"
-            {% endif %}
-            />
-          Last event
-        </label>
-        <label class="radio">
-          <input
-            type="radio"
-            name="startfrom"
-            value="today"
-            {% if dataview.tmconfig.startfrom == 'today' %}
-            checked="true"
-            {% endif %}
-            />
-          Present day
-        </label>
+        {% endfor %}
         <span class="help-block">
           Where on the timeline should the user start.
         </span>
