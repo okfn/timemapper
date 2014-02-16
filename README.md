@@ -30,7 +30,7 @@ to run on, etc. To do this:
 
 Now you can run the app:
 
-    node app.js
+    node run.js
 
 To view the site, open localhost:3000 in a browser.
 
