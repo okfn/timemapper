@@ -13,4 +13,12 @@
     , "underscore": ""
     , "async": ""
   }
+  , "devDependencies": {
+    "supertest": ""
+    , "mocha": ""
+    , "wrench": ""
+  }
+  , "scripts": {
+    "test": "mocha tests/"
+  }
 }

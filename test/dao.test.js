@@ -2,6 +2,8 @@ var assert = require('assert')
   , path = require('path')
   , dao = require('../lib/dao.js')
   , _ = require('underscore')
+  // sets up db path
+  , base = require('./base')
   ;
 
 var indexName = 'hypernotes-test-njs';
@@ -17,14 +19,6 @@ var inthread = {
   ,'description': 'None at the moment'
   , 'owner': username
 };
-
-var testDir = path.join('test', 'db');
-// dao.config.set('database:backend', 's3');
-// fs option
-if (dao.config.get('database:backend') === 'fs') {
-  testDir = path.join(__dirname, 'data', 'db');
-}
-dao.config.set('database:path', testDir);
 
 describe('DAO Basics', function() {
   it('getDomainObjectClass', function(done) {
@@ -46,6 +40,10 @@ describe('DAO Basics', function() {
 });
 
 describe('DAO Storage', function() {
+  before(function(done) {
+    base.resetDb();
+    done();
+  });
   it('FETCH Account', function(done) {
     var acc = dao.Account.create({id: username});
     acc.fetch(function(error, account) {

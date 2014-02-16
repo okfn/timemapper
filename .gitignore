@@ -7,5 +7,5 @@ node_modules
 # nodemon
 .monitor
 settings.json*
-test/data/db/*
 .env
+test/tmpdb/*
