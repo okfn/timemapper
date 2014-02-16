@@ -5,6 +5,7 @@ var express = require('express')
   , TwitterStrategy = require('passport-twitter').Strategy
 
   , dao = require('./lib/dao.js')
+  , logic = require('./lib/logic')
   , routes = require('./routes/index.js')
   , api = require('./routes/api.js')
   ;
@@ -201,8 +202,14 @@ app.post('/api/v1/dataview/:userId/:name', api.updateDataView);
 // Boot the Server
 // ======================================
 
-app.listen(config.get('express:port'), function() {
-  console.log("Express server listening on port " + config.get('express:port') + " in mode " + app.get('env'));
+logic.ensureAnonAccountExists(function(err) {
+  if (err) {
+    console.error(err);
+    throw err;
+  }
+  app.listen(config.get('express:port'), function() {
+    console.log("Express server listening on port " + config.get('express:port') + " in mode " + app.get('env'));
+  });
 });
 
 exports.app = app;

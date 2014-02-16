@@ -6,18 +6,17 @@ var assert = require('assert')
   , base = require('./base')
   ;
 
-
 describe('createDataView', function() {
   before(function(done) {
     base.resetDb();
     done();
   });
-  it('createDataView - conflict', function(done) {
+  it('conflict', function(done) {
     var data = {
       name: 'napoleon',
       owner: 'tester'
     };
-    logic.createDataView(data, null, function(err, out) {
+    logic.createDataView(data, {id: 'tester'}, function(err, out) {
       assert(err);
       assert.equal(err.code, 409);
       done();
@@ -30,14 +29,7 @@ describe('createDataView', function() {
     owner: 'tester',
     url: 'xxxxx'
   };
-  it('createDataView - 401', function(done) {
-    logic.createDataView(data, null, function(err, out) {
-      assert(err);
-      assert.equal(err.code, 401);
-      done();
-    });
-  });
-  it('createDataView - OK', function(done) {
+  it('OK', function(done) {
     logic.createDataView(data, {id: 'tester'}, function(err, out) {
       assert(!err, err);
       var view = dao.DataView.create({
@@ -60,6 +52,19 @@ describe('createDataView', function() {
       });
     });
   });
+  it('anonymous - OK', function(done) {
+    var data = {
+      title: 'Xyz',
+      url: 'xxxx'
+    };
+    logic.createDataView(data, null, function(err, out) {
+      var out = out.toJSON();
+      assert(!err, err);
+      assert.equal(out.title, data.title);
+      assert.equal(out.name.substr(7), data.title.toLowerCase());
+      done();
+    });
+  });
 });
 
 describe('upsertDataView', function() {
@@ -79,14 +84,14 @@ describe('upsertDataView', function() {
 
 
   it('should get 401 with anon', function(done) {
-    logic.upsertDataView(obj, 'create', null, function(err, out) {
+    logic.upsertDataView(obj, 'update', null, function(err, out) {
       assert(err);
       assert.equal(err.code, 401);
       done();
     });
   });
   it('should get 401 with wrong user', function(done) {
-    logic.upsertDataView(obj, 'create', wrongUser, function(err, out) {
+    logic.upsertDataView(obj, 'update', wrongUser, function(err, out) {
       assert(err);
       assert.equal(err.code, 401);
       done();

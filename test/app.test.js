@@ -208,3 +208,49 @@ describe('Site', function() {
   });
 });
 
+describe('Site - Anonymous Mode', function() {
+  before(function(done) {
+    base.resetDb();
+    // unset testing mode so that we are not logged in
+    config.set('test:testing', false);
+    done();
+  });
+  after(function(done) {
+    // set back to testing
+    config.set('test:testing', true);
+    done();
+  });
+
+  var dataViewData = {
+    title: 'My Test DataView',
+    'tmconfig[dayfirst]': 'false',
+    'tmconfig[startfrom]': 'first'
+  };
+  // owner will be set to logged in user
+  var owner = 'anon'
+  it('Create POST OK', function(done) {
+    request(app)
+      .post('/create')
+      .type('form')
+      .send(dataViewData)
+      .expect(302)
+      .end(function(err, res) {
+        assert(!err, err);
+        assert.equal(res.header['location'].indexOf('/' + owner), 0);
+        var name = res.header['location'].split('/')[2]
+        var obj = dao.DataView.create({
+          owner: owner,
+          name: name
+        });
+        obj.fetch(function(err) {
+          assert(!err, 'New DataView exists');
+          assert.equal(obj.get('title'), dataViewData.title);
+          assert.equal(obj.get('tmconfig').dayfirst, false);
+          var lic = obj.get('licenses');
+          assert.equal(lic[0].type, 'cc-by');
+          done();
+        });
+      })
+      ;
+  });
+});

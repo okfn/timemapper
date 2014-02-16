@@ -20,19 +20,13 @@ exports.create = function(req, res) {
 
 exports.createPost = function(req, res) {
   var data = req.body;
-  // set the owner
-  // TODO: anon case
-  if (!req.user) {
-    res.send(401, 'You are not logged in');
-    return;
-  }
-  data.owner = req.user.id; 
   logic.createDataView(data, req.user, function(err, out) {
+    var out = out.toJSON();
     if (err) {
       res.send(err.code, err.message);
     } else {
       // req.flash('Data View Created');
-      res.redirect(urlFor(data.owner, data.name));
+      res.redirect(urlFor(out.owner, out.name));
     }
   });
 }
