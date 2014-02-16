@@ -114,6 +114,7 @@ var TimeMapperView = Backbone.View.extend({
   _dataChanges: function() {
     var self = this;
     this.model.records.each(function(record) {
+      // normalize date field names
       if (record.get('startdate') && !record.get('start')) {
         record.set({
           start: record.get('startdate'),
@@ -121,9 +122,10 @@ var TimeMapperView = Backbone.View.extend({
         }, {silent: true}
         );
       }
+      var startDate = VMM.Date.parse(normalizeDate(record.get("start"), self.datapackage.tmconfig.dayfirst));
       var data = {
         // VMM.Date.parse is the timelinejs date parser
-        startParsed: VMM.Date.parse(normalizeDate(record.get("start"), self.datapackage.tmconfig.dayfirst)),
+        startParsed: startDate,
         title: record.get('title') || record.get('headline'),
         description: record.get('description') || record.get('text') || '',
         url: record.get('url') || record.get('webpage'),
@@ -201,14 +203,14 @@ var TimeMapperView = Backbone.View.extend({
       state: this.timelineState
     });
 
+    // convert the record to a structure suitable for timeline.js
     this.timeline.convertRecord = function(record, fields) {
-      // HACK: support people who put '2013-08-20 in gdocs (to force gdocs to
-      // not attempt to parse the date)
-      if (record.attributes.start[0] == "'") {
-        record.attributes.start = record.attributes.start.slice(1);
-      }
-      if (record.attributes.end && record.attributes.end[0] == "'") {
-        record.attributes.end = record.attributes.end.slice(1);
+      if (record.get('startParsed') == 'Invalid Date') {
+        if (typeof console !== "undefined" && console.warn) {
+          console.warn('Failed to extract date from record');
+          console.warn(record.toJSON());
+        }
+        return null;
       }
       try {
         var out = this._convertRecord(record, fields);
@@ -216,7 +218,10 @@ var TimeMapperView = Backbone.View.extend({
         out = null;
       }
       if (!out) {
-        if (typeof console !== "undefined" && console.warn) console.warn('Failed to extract date from: ' + JSON.stringify(record.toJSON()));
+        if (typeof console !== "undefined" && console.warn) {
+          console.warn('Failed to extract timeline entry from record');
+          console.warn(record.toJSON());
+        }
         return null;
       }
       if (record.get('media')) {
@@ -324,9 +329,14 @@ var TimeMapperView = Backbone.View.extend({
 // Supported: mm/dd/yyyy
 var normalizeDate = function(date, dayfirst) {
   if (!date) {
-    return null;
+    return '';
   }
   var out = $.trim(date);
+  // HACK: support people who put '2013-08-20 in gdocs (to force gdocs to
+  // not attempt to parse the date)
+  if (out.length && out[0] === "'") {
+    out = out.slice(1);
+  }
   out = out.replace(/(\d)th/g, '$1');
   out = out.replace(/(\d)st/g, '$1');
   out = $.trim(out);
