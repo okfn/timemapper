@@ -37,10 +37,6 @@ var TimeMapperView = Backbone.View.extend({
     if (!this.datapackage.tmconfig) {
       this.datapackage.tmconfig = {};
     }
-    this.datapackage.tmconfig = _.defaults(this.datapackage.tmconfig, {
-      viewtype: 'timemap'
-    });
-    console.log(this.datapackage.tmconfig);
     this.timelineState = _.extend({}, this.datapackage.tmconfig.timeline, {
       nonUSDates: this.datapackage.tmconfig.dayfirst,
       timelineJSOptions: _.extend({}, this.datapackage.tmconfig.timelineJSOptions, {
@@ -91,14 +87,15 @@ var TimeMapperView = Backbone.View.extend({
     // might try to navigate to a non-existent marker
     if (this.datapackage.tmconfig.viewtype === 'timeline') {
       // timeline only
-      $('body').addClass('timeline');
+      $('body').addClass('viewtype-timeline');
       // fix height of timeline to be window height minus navbar and footer
       $('.timeline-pane').height($(window).height() - 42 - 41);
       this._setupTimeline();
     } else if (this.datapackage.tmconfig.viewtype === 'map') {
-      // TODO
+      $('body').addClass('viewtype-map');
+      this._setupMap();
     } else {
-      $('body').addClass('timemap');
+      $('body').addClass('viewtype-timemap');
       this._setupTimeline();
       this._setupMap();
     }

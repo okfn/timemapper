@@ -303,12 +303,29 @@ i.title-link {
   display: none;
 }
 
-body.view.timeline .map-pane {
+/**********************************************************
+  * Timeline Only View
+  *********************************************************/
+
+body.viewtype-timeline .map-pane {
   display: none; 
 }
 
-body.view.timeline .timeline-pane {
+body.viewtype-timeline .timeline-pane {
   width: 100%;
+}
+
+/**********************************************************
+  * Timeline Only View
+  *********************************************************/
+
+body.viewtype-map .timeline-pane {
+  display: none; 
+}
+
+body.viewtype-map .map-pane {
+  width: 100%;
+  height: 100%;
 }
 
 /**********************************************************
