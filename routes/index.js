@@ -52,9 +52,10 @@ exports.preview = function(req, res) {
     tmconfig: {
       dayfirst: req.query.dayfirst,
       startfrom: req.query.startfrom,
-      type: req.query.type || 'timemap'
+      viewtype: req.query.viewtype || 'timemap'
     }
   };
+  console.log(threadData.tmconfig);
   var isOwner = false;
   res.render('dataview/timemap.html', {
       title: threadData.title
