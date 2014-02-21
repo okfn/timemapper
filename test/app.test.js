@@ -153,6 +153,10 @@ describe('Site', function() {
     base.resetDb();
     done();
   });
+  after(function(done) {
+    base.resetDb();
+    done();
+  });
 
   it('DataView Edit OK', function(done) {
     request(app)
@@ -201,6 +205,41 @@ describe('Site', function() {
           assert.equal(obj.get('tmconfig').dayfirst, false);
           var lic = obj.get('licenses');
           assert.equal(lic[0].type, 'cc-by');
+          done();
+        });
+      })
+      ;
+  });
+
+  it('DataView Update POST OK', function(done) {
+    var dataViewData = {
+      title: 'Updated Data View',
+      'tmconfig[viewtype]': 'map',
+      'tmconfig[dayfirst]': 'false',
+      'tmconfig[startfrom]': 'first'
+    };
+    var owner = 'tester';
+ 
+    request(app)
+      .post('/tester/napoleon/edit')
+      .type('form')
+      .send(dataViewData)
+      .expect(302)
+      .end(function(err, res) {
+        assert(!err, err);
+        assert.equal(res.header['location'], '/tester/napoleon');
+        var obj = dao.DataView.create({
+          owner: owner,
+          name: 'napoleon'
+        });
+        obj.fetch(function(err) {
+          assert(!err, 'DataView exists');
+          assert.equal(obj.get('title'), dataViewData.title);
+          assert.equal(obj.get('tmconfig').dayfirst, false);
+          assert.equal(obj.get('tmconfig').viewtype, 'map');
+          // existing data unchanged
+          var lic = obj.get('licenses');
+          assert.equal(lic[0].type, 'cc-by-sa');
           done();
         });
       })

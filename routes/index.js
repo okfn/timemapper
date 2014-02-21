@@ -1,4 +1,5 @@
-var config = require('../lib/config.js')
+var _ = require('underscore')
+  , config = require('../lib/config.js')
   , dao = require('../lib/dao.js')
   , logic = require('../lib/logic')
   , util = require('../lib/util.js')
@@ -55,7 +56,6 @@ exports.preview = function(req, res) {
       viewtype: req.query.viewtype || 'timemap'
     }
   };
-  console.log(threadData.tmconfig);
   var isOwner = false;
   res.render('dataview/timemap.html', {
       title: threadData.title
@@ -175,3 +175,35 @@ exports.dataViewEdit = function(req, res) {
     });
   });
 }
+
+exports.dataViewEditPost = function(req, res) {
+  var userId = req.params.userId
+    , threadName = req.params.threadName
+    , data = req.body
+    ;
+  var viz = dao.DataView.create({owner: userId, name: threadName});
+  viz.fetch(function(error) {
+    var dataViewData = viz.toJSON();
+    var vizData = _.extend(dataViewData, {
+      title: data.title,
+      resources: [
+        _.extend({}, dataViewData.resources[0], {
+          url: data.url
+        })
+      ],
+      tmconfig: _.extend({}, dataViewData.tmconfig, data.tmconfig)
+    });
+    // RECREATE as create does casting correctly
+    newviz = dao.DataView.create(dataViewData);
+    logic.upsertDataView(newviz, 'update', req.user, function(err, out) {
+      var out = out.toJSON();
+      if (err) {
+        res.send(err.code, err.message);
+      } else {
+        // req.flash('Data View Updated');
+        res.redirect(urlFor(out.owner, out.name));
+      }
+    });
+  });
+}
+

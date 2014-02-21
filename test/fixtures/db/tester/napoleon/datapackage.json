@@ -3,7 +3,7 @@
   "owner" : "tester",
   "title" : "Battles in the Napoleonic Wars",
   "licenses": [{
-    "id": "cc-by-sa",
+    "type": "cc-by-sa",
     "name": "Creative Commons Attribution ShareAlike",
     "url": "http://creativecommons.org/licenses/by-sa/3.0/"
   }],

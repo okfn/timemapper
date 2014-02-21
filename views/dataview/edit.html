@@ -9,7 +9,7 @@
   <h1>
     Edit your Time<span class="brand-ext">Map</span>
   </h1>
-  <form class="js-dataview-edit form-horizontal" action="" method="GET">
+  <form class="js-dataview-edit form-horizontal" action="" method="POST">
     {% include 'dataview/form.html' %}
     <div class="control-group">
       <div class="controls">
@@ -28,11 +28,4 @@
     // setup gdocs file picker
     google.load('picker', '1');
   </script>
-
-  <!-- non-library javascript specific to this demo -->
-  <script type="text/javascript">
-    var dataViewData = {{ dataviewJson }};
-  </script>
-
-  <script type="text/javascript" src="/js/edit.js"></script>
 {% endblock %}

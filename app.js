@@ -183,6 +183,7 @@ app.get('/:userId', routes.userShow);
 app.get('/:userId/:threadName', routes.timeMap);
 
 app.get('/:userId/:threadName/edit', routes.dataViewEdit);
+app.post('/:userId/:threadName/edit', routes.dataViewEditPost);
 
 // ======================================
 // API
