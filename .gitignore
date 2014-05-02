@@ -9,3 +9,4 @@ node_modules
 settings.json*
 .env
 test/tmpdb/*
+db/*
