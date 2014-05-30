@@ -17,9 +17,9 @@ app.configure(function(){
   app.set('views', __dirname + '/views');
   app.use( i18n.abide({
     supported_languages: [
-      "en_US" , "zh_TW"
+      "en-US" , "zh-TW"
     ],
-    default_lang: "en_US",
+    default_lang: "en-US",
     translation_directory: "locale",
     locale_on_url: true
   }));
