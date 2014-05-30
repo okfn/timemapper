@@ -1,0 +1,80 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2014-05-30 13:09+0000\n"
+"PO-Revision-Date: 2014-05-30 21:10+0800\n"
+"Last-Translator: 陳信屹 <ossug.hychen@gmail.com>\n"
+"Language-Team: Chinese (traditional)\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:14
+msgid "It's free and easy to use"
+msgstr "簡單且容易使用"
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:15
+msgid "Get started now"
+msgstr "現在就開始使用"
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:21
+msgid "Watch the 1 minute Tutorial"
+msgstr "觀看一分鐘教學影片"
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:27
+msgid "Examples"
+msgstr "範例"
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:50
+msgid "How It Works"
+msgstr "如何使用"
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:54
+msgid "1. Create a Spreadsheet"
+msgstr "1. 建立一份列表"
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:55
+msgid "Add your dates and places to a Google Spreadsheet."
+msgstr "在 Google Spreadsheet 上加上時間跟地址。"
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:60
+msgid "2. Connect and Customize"
+msgstr "2. 綁定跟客製化"
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:61
+msgid "Connect your spreadsheet with TimeMapper and customize the results."
+msgstr "將TimeMapper跟你的Google綁在一起並且客製化結果。"
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:66
+msgid "3. Publish, Embed and Share"
+msgstr "3. 公佈，嵌入，以及分享"
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:67
+msgid ""
+"Publish your TimeMap at your own personal url, then share or embed on your "
+"site."
+msgstr "用你的專屬網址公佈你的TimeMap，然後分享或嵌入在你的網站上。"
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:72
+msgid "Credits"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:74
+msgid ""
+"TimeMapper is an open-source project of <a href=\"http://okfnlabs.org/"
+"\">Open Knowledge Foundation Labs</a>."
+msgstr ""
+"TimeMapper是<a href=\"http://okfnlabs.org/\">Open Knowledge Foundation Labs</"
+"a>的開源碼專案。"
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:74
+msgid ""
+"It is possible thanks to a set of awesome open-source components including "
+"<a href=\"http://timeline.verite.co/\">TimelineJS</a>, <a href=\"http://"
+"okfnlabs.org/recline/\">ReclineJS</a>, <a href=\"http://leafletjs.com/"
+"\">Leaflet</a>, <a href=\"http://backbonejs.org/\">Backbone</a> and <a href="
+"\"http://twitter.github.com/bootstrap/\">Bootstrap</a>. You can find the <a "
+"href=\"https://github.com/okfn/timemapper\">full open-source source for "
+"TimeMapper on GitHub here"
+msgstr ""

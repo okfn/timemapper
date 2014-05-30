@@ -1,0 +1,78 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2014-05-30 13:09+0000\n"
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:14
+msgid "It's free and easy to use"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:15
+msgid "Get started now"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:21
+msgid "Watch the 1 minute Tutorial"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:27
+msgid "Examples"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:50
+msgid "How It Works"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:54
+msgid "1. Create a Spreadsheet"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:55
+msgid "Add your dates and places to a Google Spreadsheet."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:60
+msgid "2. Connect and Customize"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:61
+msgid "Connect your spreadsheet with TimeMapper and customize the results."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:66
+msgid "3. Publish, Embed and Share"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:67
+msgid ""
+"Publish your TimeMap at your own personal url, then share or embed on your "
+"site."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:72
+msgid "Credits"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:74
+msgid ""
+"TimeMapper is an open-source project of <a "
+"href=\"http://okfnlabs.org/\">Open Knowledge Foundation Labs</a>."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/index.html:74
+msgid ""
+"It is possible thanks to a set of awesome open-source components including "
+"<a href=\"http://timeline.verite.co/\">TimelineJS</a>, <a "
+"href=\"http://okfnlabs.org/recline/\">ReclineJS</a>, <a "
+"href=\"http://leafletjs.com/\">Leaflet</a>, <a "
+"href=\"http://backbonejs.org/\">Backbone</a> and <a "
+"href=\"http://twitter.github.com/bootstrap/\">Bootstrap</a>. You can find "
+"the <a href=\"https://github.com/okfn/timemapper\">full open-source source "
+"for TimeMapper on GitHub here"
+msgstr ""
