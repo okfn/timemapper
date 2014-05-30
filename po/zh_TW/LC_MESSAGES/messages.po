@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-30 13:09+0000\n"
+"POT-Creation-Date: 2014-05-30 17:18+0000\n"
 "PO-Revision-Date: 2014-05-30 21:10+0800\n"
 "Last-Translator: 陳信屹 <ossug.hychen@gmail.com>\n"
 "Language-Team: Chinese (traditional)\n"
@@ -31,26 +31,33 @@ msgid "How It Works"
 msgstr "如何使用"
 
 #: /Users/hychen/github/hychen/timemapper/views/index.html:54
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:17
 msgid "1. Create a Spreadsheet"
 msgstr "1. 建立一份列表"
 
 #: /Users/hychen/github/hychen/timemapper/views/index.html:55
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:18
 msgid "Add your dates and places to a Google Spreadsheet."
 msgstr "在 Google Spreadsheet 上加上時間跟地址。"
 
 #: /Users/hychen/github/hychen/timemapper/views/index.html:60
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:23
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:68
 msgid "2. Connect and Customize"
 msgstr "2. 綁定跟客製化"
 
 #: /Users/hychen/github/hychen/timemapper/views/index.html:61
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:24
 msgid "Connect your spreadsheet with TimeMapper and customize the results."
 msgstr "將TimeMapper跟你的Google綁在一起並且客製化結果。"
 
 #: /Users/hychen/github/hychen/timemapper/views/index.html:66
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:29
 msgid "3. Publish, Embed and Share"
 msgstr "3. 公佈，嵌入，以及分享"
 
 #: /Users/hychen/github/hychen/timemapper/views/index.html:67
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:30
 msgid ""
 "Publish your TimeMap at your own personal url, then share or embed on your "
 "site."
@@ -78,3 +85,212 @@ msgid ""
 "href=\"https://github.com/okfn/timemapper\">full open-source source for "
 "TimeMapper on GitHub here"
 msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:8
+msgid "Create your"
+msgstr "建立你的"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:40
+#, fuzzy
+msgid "Let's Get Started"
+msgstr "現在就開始使用"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:44
+#, fuzzy
+msgid "1. Create your Spreadsheet"
+msgstr "1. 建立一份列表"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:46
+msgid "if you don't have one already!"
+msgstr "如果你還沒有!"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:51
+msgid ""
+"Get started by copying <strong><a href=\"https://docs.google.com/a/okfn.org/"
+"spreadsheet/ccc?key=0AqR8dXc6Ji4JdFRNOTVYYTRqTmh6TUNNd3U2X2pKMGc#gid=0\"></"
+"a></strong>. For more details or help with problems check out the <a href="
+"\"#faq\">FAQ below</a>.</p>"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:54
+msgid "Impatient to try this out but don't have a spreadsheet yet?"
+msgstr "受不了想立刻試用但還有沒spreadsheet?"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:57
+msgid "Click here to use a pre-prepared example"
+msgstr "點擊這裡使用我們事先準備的範例"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:72
+msgid ""
+"ALERT: you are <strong>not signed in</strong> so your timemap will be "
+"created <strong>'anonymously'</strong>."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:88
+msgid "3. Let's Publish It!"
+msgstr "3. 發佈它"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:92
+msgid "Publish"
+msgstr "發佈"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:105
+msgid "FAQ"
+msgstr "常見問題"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:106
+msgid "Can I make a timemap anonymously?"
+msgstr "我能匿名使用嗎?"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:75
+msgid ""
+"If want to 'own' your timemap you should <a href=\"/account/login\">sign in "
+"(or sign-up) now &raquo;</a>"
+msgstr ""
+"如果想'擁有'你的timemap，你需要現在<a href=\"/account/login\">登入 (或註冊)  "
+"&raquo;</a>"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:77
+msgid ""
+"(Sign-up takes a few seconds with your  <a href=\"/account/login\">twitter "
+"account &raquo;</a>)"
+msgstr ""
+"(使用你的Twiiter帳號 <a href=\"/account/login\">twitter account &raquo;</a>只"
+"要幾秒鐘)"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:107
+msgid ""
+"Yes! You do not need an account to create a timemap - they can be created "
+"anonymously and will have all the same features and shareability of normal "
+"timemaps. However, there are some benefits of creating an account and "
+"creating your timemap whilst logged in:"
+msgstr ""
+"是的！建立timemap不需要帳號 - 它們可以被匿名建立並且跟一般的timemap擁有一樣的"
+"功能也能分享。 無論如何，建立一個帳號以及在登入狀態下建立timemap還是有些好"
+"處。"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:109
+msgid ""
+"You'll get a nice URL for your timemap at <code>/your-username/a-name-you-"
+"choose-for-your-timemap</code>"
+msgstr ""
+"你的timemap會在<code>/your-username/a-name-you-choose-for-your-timemap</code>"
+"有專屬的URL"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:110
+msgid ""
+"All of your timemaps will be nicely listed at <code>/your-username</code>"
+msgstr "你所有的timemaps會列在<code>/your-username</code>"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:111
+msgid ""
+"As you'll be identified as the owner you'll be able to re-configure (or "
+"delete) your timemap later"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:114
+msgid "If you do want an account, signup is very easy"
+msgstr "你果你真的想要一個帳號，註冊非常簡單"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:114
+msgid "it takes just 15 seconds, is very secure, and uses your Twitter account"
+msgstr "使用你的Twitter帳號，只需要15秒，非常安全"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:114
+msgid "(no need to think up a new username and password!)."
+msgstr "(不需要想新的使用者名稱跟密碼！)"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:117
+msgid ""
+"Go to File Menu in your spreadsheet, then 'Publish to the Web', then click "
+"'Start Publishing'. This tutorial walks you through."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:121
+msgid "What URL do I use to connect my spreadsheet?"
+msgstr "哪種URL才是用來綁定我的 spreadsheet？"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:122
+msgid ""
+"Use the URL you get by clicking your spreadsheet's <strong>Share</strong> "
+"button and copying the <strong>Link to share</strong> box."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:124
+msgid ""
+"Note that although you must also <strong>Publish to the web</strong>, "
+"TimeMapper does not use the URL found in the publication pop-up."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:126
+msgid "What structure must the spreadsheet have?"
+msgstr "spreadsheet要有怎樣的結構？"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:127
+msgid ""
+"TimeMapper recognizes certain columns with specific names. The best overview "
+"of these columns is <a href=\"https://docs.google.com/a/okfn.org/spreadsheet/"
+"ccc?key=0AqR8dXc6Ji4JdFRNOTVYYTRqTmh6TUNNd3U2X2pKMGc#gid=0\">the template</"
+"a>, which has rows of instructions and examples."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:129
+msgid ""
+"Not all fields are required. The only required fields are <b>Title</b> and "
+"<b>Start</b> fields, and even <b>Start</b> can be omitted if you just want a "
+"map. Note that you can add any number of other columns beyond those that "
+"TimeMapper uses."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:131
+msgid "How do I format dates?"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:132
+msgid ""
+"The preferred date format is ISO 8601 (YYYY-MM-DD), but TimeMapper "
+"recognizes most types of date."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:134
+msgid ""
+"If a date's month and day are ambiguous (e.g. is 08-03-1798 UK notation for "
+"8 March, or is it US notation for 3 August?), by default, the first number "
+"will be interpreted as the month. You can change this by clicking the "
+"<b>edit</b> button in the top right corner of your TimeMap's display and "
+"selecting between US- and non-US-style dates."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:136
+msgid "What kinds of geodata are supported?"
+msgstr "支援哪幾種 geodata？"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:137
+msgid ""
+"The <b>Location</b> column accepts two types of geodata: latitude-longitude "
+"coordinates or GeoJSON objects."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:139
+msgid ""
+"Coordinates must be in the format <emph>lat, long</emph> (e.g. <emph>37.5, "
+"-122</emph>). The <a href=\"https://docs.google.com/a/okfn.org/spreadsheet/"
+"ccc?key=0AqR8dXc6Ji4JdFRNOTVYYTRqTmh6TUNNd3U2X2pKMGc#gid=0\">spreadsheet "
+"template</a> includes a formula which automatically looks up coordinates "
+"corresponding to human-readable place names in the <b>Place</b> column. This "
+"formula is explained in a School of <a href=\"http://schoolofdata."
+"org/2013/02/19/geocoding-part-ii-geocoding-data-in-a-google-docs-spreadsheet/"
+"\">Data blog post</a>."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:141
+msgid ""
+"Advanced users who want to go beyond simple coordinates can use GeoJSON "
+"feature objects. For an example, see this blog post on adding <a href="
+"\"http://schoolofdata.org/2013/10/31/geocoding-geojson-boundaries-"
+"koordinates/\">GeoJSON country boundaries</a> to spreadsheets."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:13
+msgid "It's as easy as 1-2-3!"
+msgstr "1-2-3 超簡單"

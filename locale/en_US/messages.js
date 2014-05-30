@@ -1,7 +1,7 @@
 ;var json_locale_data = {
    "messages": {
       "": {
-         "Project-Id-Version": " PACKAGE VERSION\nLanguage-Team: English\nPO-Revision-Date: 2014-05-30 21:10+0800\nLanguage: en_US\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPOT-Creation-Date: 2014-05-30 13:09+0000\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
+         "Project-Id-Version": " PACKAGE VERSION\nPOT-Creation-Date: 2014-05-30 17:18+0000\nPO-Revision-Date: 2014-05-30 21:10+0800\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nLanguage-Team: English\nLanguage: en_US\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
       },
       "It's free and easy to use": [
          null,
@@ -58,321 +58,150 @@
       "It is possible thanks to a set of awesome open-source components including <a href=\"http://timeline.verite.co/\">TimelineJS</a>, <a href=\"http://okfnlabs.org/recline/\">ReclineJS</a>, <a href=\"http://leafletjs.com/\">Leaflet</a>, <a href=\"http://backbonejs.org/\">Backbone</a> and <a href=\"http://twitter.github.com/bootstrap/\">Bootstrap</a>. You can find the <a href=\"https://github.com/okfn/timemapper\">full open-source source for TimeMapper on GitHub here": [
          null,
          "It is possible thanks to a set of awesome open-source components including <a href=\"http://timeline.verite.co/\">TimelineJS</a>, <a href=\"http://okfnlabs.org/recline/\">ReclineJS</a>, <a href=\"http://leafletjs.com/\">Leaflet</a>, <a href=\"http://backbonejs.org/\">Backbone</a> and <a href=\"http://twitter.github.com/bootstrap/\">Bootstrap</a>. You can find the <a href=\"https://github.com/okfn/timemapper\">full open-source source for TimeMapper on GitHub here"
-      ]
-   }
-}
-{
-   "messages": {
-      "": {
-         "Project-Id-Version": " PACKAGE VERSION\nLanguage-Team: English\nPO-Revision-Date: 2014-05-30 21:10+0800\nLanguage: en_US\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPOT-Creation-Date: 2014-05-30 13:09+0000\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
-      },
-      "It's free and easy to use": [
-         null,
-         "It's free and easy to use"
       ],
-      "Get started now": [
+      "Create your": [
+         null,
+         ""
+      ],
+      "Let's Get Started": [
          null,
          "Get started now"
       ],
-      "Watch the 1 minute Tutorial": [
-         null,
-         "Watch the 1 minute Tutorial"
-      ],
-      "Examples": [
-         null,
-         "Examples"
-      ],
-      "How It Works": [
-         null,
-         "How It Works"
-      ],
-      "1. Create a Spreadsheet": [
+      "1. Create your Spreadsheet": [
          null,
          "1. Create a Spreadsheet"
       ],
-      "Add your dates and places to a Google Spreadsheet.": [
+      "if you don't have one already!": [
          null,
-         "Add your dates and places to a Google Spreadsheet."
+         ""
       ],
-      "2. Connect and Customize": [
+      "Get started by copying <strong><a href=\"https://docs.google.com/a/okfn.org/spreadsheet/ccc?key=0AqR8dXc6Ji4JdFRNOTVYYTRqTmh6TUNNd3U2X2pKMGc#gid=0\"></a></strong>. For more details or help with problems check out the <a href=\"#faq\">FAQ below</a>.</p>": [
          null,
-         "2. Connect and Customize"
+         ""
       ],
-      "Connect your spreadsheet with TimeMapper and customize the results.": [
+      "Impatient to try this out but don't have a spreadsheet yet?": [
          null,
-         "Connect your spreadsheet with TimeMapper and customize the results."
+         ""
       ],
-      "3. Publish, Embed and Share": [
+      "Click here to use a pre-prepared example": [
          null,
-         "3. Publish, Embed and Share"
+         ""
       ],
-      "Publish your TimeMap at your own personal url, then share or embed on your site.": [
+      "ALERT: you are <strong>not signed in</strong> so your timemap will be created <strong>'anonymously'</strong>.": [
          null,
-         "Publish your TimeMap at your own personal url, then share or embed on your site."
+         ""
       ],
-      "Credits": [
+      "3. Let's Publish It!": [
          null,
-         "Credits"
+         ""
       ],
-      "TimeMapper is an open-source project of <a href=\"http://okfnlabs.org/\">Open Knowledge Foundation Labs</a>.": [
+      "Publish": [
          null,
-         "TimeMapper is an open-source project of <a href=\"http://okfnlabs.org/\">Open Knowledge Foundation Labs</a>."
+         ""
       ],
-      "It is possible thanks to a set of awesome open-source components including <a href=\"http://timeline.verite.co/\">TimelineJS</a>, <a href=\"http://okfnlabs.org/recline/\">ReclineJS</a>, <a href=\"http://leafletjs.com/\">Leaflet</a>, <a href=\"http://backbonejs.org/\">Backbone</a> and <a href=\"http://twitter.github.com/bootstrap/\">Bootstrap</a>. You can find the <a href=\"https://github.com/okfn/timemapper\">full open-source source for TimeMapper on GitHub here": [
+      "FAQ": [
          null,
-         "It is possible thanks to a set of awesome open-source components including <a href=\"http://timeline.verite.co/\">TimelineJS</a>, <a href=\"http://okfnlabs.org/recline/\">ReclineJS</a>, <a href=\"http://leafletjs.com/\">Leaflet</a>, <a href=\"http://backbonejs.org/\">Backbone</a> and <a href=\"http://twitter.github.com/bootstrap/\">Bootstrap</a>. You can find the <a href=\"https://github.com/okfn/timemapper\">full open-source source for TimeMapper on GitHub here"
-      ]
-   }
-}
-{
-   "messages": {
-      "": {
-         "Project-Id-Version": " PACKAGE VERSION\nLanguage-Team: English\nPO-Revision-Date: 2014-05-30 21:10+0800\nLanguage: en_US\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPOT-Creation-Date: 2014-05-30 13:09+0000\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
-      },
-      "It's free and easy to use": [
-         null,
-         "It's free and easy to use"
+         ""
       ],
-      "Get started now": [
+      "Can I make a timemap anonymously?": [
          null,
-         "Get started now"
+         ""
       ],
-      "Watch the 1 minute Tutorial": [
+      "If want to 'own' your timemap you should <a href=\"/account/login\">sign in (or sign-up) now &raquo;</a>": [
          null,
-         "Watch the 1 minute Tutorial"
+         ""
       ],
-      "Examples": [
+      "(Sign-up takes a few seconds with your  <a href=\"/account/login\">twitter account &raquo;</a>)": [
          null,
-         "Examples"
+         ""
       ],
-      "How It Works": [
+      "Yes! You do not need an account to create a timemap - they can be created anonymously and will have all the same features and shareability of normal timemaps. However, there are some benefits of creating an account and creating your timemap whilst logged in:": [
          null,
-         "How It Works"
+         ""
       ],
-      "1. Create a Spreadsheet": [
+      "You'll get a nice URL for your timemap at <code>/your-username/a-name-you-choose-for-your-timemap</code>": [
          null,
-         "1. Create a Spreadsheet"
+         ""
       ],
-      "Add your dates and places to a Google Spreadsheet.": [
+      "All of your timemaps will be nicely listed at <code>/your-username</code>": [
          null,
-         "Add your dates and places to a Google Spreadsheet."
+         ""
       ],
-      "2. Connect and Customize": [
+      "As you'll be identified as the owner you'll be able to re-configure (or delete) your timemap later": [
          null,
-         "2. Connect and Customize"
+         ""
       ],
-      "Connect your spreadsheet with TimeMapper and customize the results.": [
+      "If you do want an account, signup is very easy": [
          null,
-         "Connect your spreadsheet with TimeMapper and customize the results."
+         ""
       ],
-      "3. Publish, Embed and Share": [
+      "it takes just 15 seconds, is very secure, and uses your Twitter account": [
          null,
-         "3. Publish, Embed and Share"
+         ""
       ],
-      "Publish your TimeMap at your own personal url, then share or embed on your site.": [
+      "(no need to think up a new username and password!).": [
          null,
-         "Publish your TimeMap at your own personal url, then share or embed on your site."
+         ""
       ],
-      "Credits": [
+      "Go to File Menu in your spreadsheet, then 'Publish to the Web', then click 'Start Publishing'. This tutorial walks you through.": [
          null,
-         "Credits"
+         ""
       ],
-      "TimeMapper is an open-source project of <a href=\"http://okfnlabs.org/\">Open Knowledge Foundation Labs</a>.": [
+      "What URL do I use to connect my spreadsheet?": [
          null,
-         "TimeMapper is an open-source project of <a href=\"http://okfnlabs.org/\">Open Knowledge Foundation Labs</a>."
+         ""
       ],
-      "It is possible thanks to a set of awesome open-source components including <a href=\"http://timeline.verite.co/\">TimelineJS</a>, <a href=\"http://okfnlabs.org/recline/\">ReclineJS</a>, <a href=\"http://leafletjs.com/\">Leaflet</a>, <a href=\"http://backbonejs.org/\">Backbone</a> and <a href=\"http://twitter.github.com/bootstrap/\">Bootstrap</a>. You can find the <a href=\"https://github.com/okfn/timemapper\">full open-source source for TimeMapper on GitHub here": [
+      "Use the URL you get by clicking your spreadsheet's <strong>Share</strong> button and copying the <strong>Link to share</strong> box.": [
          null,
-         "It is possible thanks to a set of awesome open-source components including <a href=\"http://timeline.verite.co/\">TimelineJS</a>, <a href=\"http://okfnlabs.org/recline/\">ReclineJS</a>, <a href=\"http://leafletjs.com/\">Leaflet</a>, <a href=\"http://backbonejs.org/\">Backbone</a> and <a href=\"http://twitter.github.com/bootstrap/\">Bootstrap</a>. You can find the <a href=\"https://github.com/okfn/timemapper\">full open-source source for TimeMapper on GitHub here"
-      ]
-   }
-}
-{
-   "messages": {
-      "": {
-         "Project-Id-Version": " PACKAGE VERSION\nLanguage-Team: English\nPO-Revision-Date: 2014-05-30 21:10+0800\nLanguage: en_US\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPOT-Creation-Date: 2014-05-30 13:09+0000\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
-      },
-      "It's free and easy to use": [
-         null,
-         "It's free and easy to use"
+         ""
       ],
-      "Get started now": [
+      "Note that although you must also <strong>Publish to the web</strong>, TimeMapper does not use the URL found in the publication pop-up.": [
          null,
-         "Get started now"
+         ""
       ],
-      "Watch the 1 minute Tutorial": [
+      "What structure must the spreadsheet have?": [
          null,
-         "Watch the 1 minute Tutorial"
+         ""
       ],
-      "Examples": [
+      "TimeMapper recognizes certain columns with specific names. The best overview of these columns is <a href=\"https://docs.google.com/a/okfn.org/spreadsheet/ccc?key=0AqR8dXc6Ji4JdFRNOTVYYTRqTmh6TUNNd3U2X2pKMGc#gid=0\">the template</a>, which has rows of instructions and examples.": [
          null,
-         "Examples"
+         ""
       ],
-      "How It Works": [
+      "Not all fields are required. The only required fields are <b>Title</b> and <b>Start</b> fields, and even <b>Start</b> can be omitted if you just want a map. Note that you can add any number of other columns beyond those that TimeMapper uses.": [
          null,
-         "How It Works"
+         ""
       ],
-      "1. Create a Spreadsheet": [
+      "How do I format dates?": [
          null,
-         "1. Create a Spreadsheet"
+         ""
       ],
-      "Add your dates and places to a Google Spreadsheet.": [
+      "The preferred date format is ISO 8601 (YYYY-MM-DD), but TimeMapper recognizes most types of date.": [
          null,
-         "Add your dates and places to a Google Spreadsheet."
+         ""
       ],
-      "2. Connect and Customize": [
+      "If a date's month and day are ambiguous (e.g. is 08-03-1798 UK notation for 8 March, or is it US notation for 3 August?), by default, the first number will be interpreted as the month. You can change this by clicking the <b>edit</b> button in the top right corner of your TimeMap's display and selecting between US- and non-US-style dates.": [
          null,
-         "2. Connect and Customize"
+         ""
       ],
-      "Connect your spreadsheet with TimeMapper and customize the results.": [
+      "What kinds of geodata are supported?": [
          null,
-         "Connect your spreadsheet with TimeMapper and customize the results."
+         ""
       ],
-      "3. Publish, Embed and Share": [
+      "The <b>Location</b> column accepts two types of geodata: latitude-longitude coordinates or GeoJSON objects.": [
          null,
-         "3. Publish, Embed and Share"
+         ""
       ],
-      "Publish your TimeMap at your own personal url, then share or embed on your site.": [
+      "Coordinates must be in the format <emph>lat, long</emph> (e.g. <emph>37.5, -122</emph>). The <a href=\"https://docs.google.com/a/okfn.org/spreadsheet/ccc?key=0AqR8dXc6Ji4JdFRNOTVYYTRqTmh6TUNNd3U2X2pKMGc#gid=0\">spreadsheet template</a> includes a formula which automatically looks up coordinates corresponding to human-readable place names in the <b>Place</b> column. This formula is explained in a School of <a href=\"http://schoolofdata.org/2013/02/19/geocoding-part-ii-geocoding-data-in-a-google-docs-spreadsheet/\">Data blog post</a>.": [
          null,
-         "Publish your TimeMap at your own personal url, then share or embed on your site."
+         ""
       ],
-      "Credits": [
+      "Advanced users who want to go beyond simple coordinates can use GeoJSON feature objects. For an example, see this blog post on adding <a href=\"http://schoolofdata.org/2013/10/31/geocoding-geojson-boundaries-koordinates/\">GeoJSON country boundaries</a> to spreadsheets.": [
          null,
-         "Credits"
+         ""
       ],
-      "TimeMapper is an open-source project of <a href=\"http://okfnlabs.org/\">Open Knowledge Foundation Labs</a>.": [
+      "It's as easy as 1-2-3!": [
          null,
-         "TimeMapper is an open-source project of <a href=\"http://okfnlabs.org/\">Open Knowledge Foundation Labs</a>."
-      ],
-      "It is possible thanks to a set of awesome open-source components including <a href=\"http://timeline.verite.co/\">TimelineJS</a>, <a href=\"http://okfnlabs.org/recline/\">ReclineJS</a>, <a href=\"http://leafletjs.com/\">Leaflet</a>, <a href=\"http://backbonejs.org/\">Backbone</a> and <a href=\"http://twitter.github.com/bootstrap/\">Bootstrap</a>. You can find the <a href=\"https://github.com/okfn/timemapper\">full open-source source for TimeMapper on GitHub here": [
-         null,
-         "It is possible thanks to a set of awesome open-source components including <a href=\"http://timeline.verite.co/\">TimelineJS</a>, <a href=\"http://okfnlabs.org/recline/\">ReclineJS</a>, <a href=\"http://leafletjs.com/\">Leaflet</a>, <a href=\"http://backbonejs.org/\">Backbone</a> and <a href=\"http://twitter.github.com/bootstrap/\">Bootstrap</a>. You can find the <a href=\"https://github.com/okfn/timemapper\">full open-source source for TimeMapper on GitHub here"
-      ]
-   }
-}
-{
-   "messages": {
-      "": {
-         "Project-Id-Version": " PACKAGE VERSION\nPOT-Creation-Date: 2014-05-30 13:09+0000\nPO-Revision-Date: 2014-05-30 21:10+0800\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nLanguage-Team: English\nLanguage: en_US\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
-      },
-      "It's free and easy to use": [
-         null,
-         "It's free and easy to use"
-      ],
-      "Get started now": [
-         null,
-         "Get started now"
-      ],
-      "Watch the 1 minute Tutorial": [
-         null,
-         "Watch the 1 minute Tutorial"
-      ],
-      "Examples": [
-         null,
-         "Examples"
-      ],
-      "How It Works": [
-         null,
-         "How It Works"
-      ],
-      "1. Create a Spreadsheet": [
-         null,
-         "1. Create a Spreadsheet"
-      ],
-      "Add your dates and places to a Google Spreadsheet.": [
-         null,
-         "Add your dates and places to a Google Spreadsheet."
-      ],
-      "2. Connect and Customize": [
-         null,
-         "2. Connect and Customize"
-      ],
-      "Connect your spreadsheet with TimeMapper and customize the results.": [
-         null,
-         "Connect your spreadsheet with TimeMapper and customize the results."
-      ],
-      "3. Publish, Embed and Share": [
-         null,
-         "3. Publish, Embed and Share"
-      ],
-      "Publish your TimeMap at your own personal url, then share or embed on your site.": [
-         null,
-         "Publish your TimeMap at your own personal url, then share or embed on your site."
-      ],
-      "Credits": [
-         null,
-         "Credits"
-      ],
-      "TimeMapper is an open-source project of <a href=\"http://okfnlabs.org/\">Open Knowledge Foundation Labs</a>.": [
-         null,
-         "TimeMapper is an open-source project of <a href=\"http://okfnlabs.org/\">Open Knowledge Foundation Labs</a>."
-      ],
-      "It is possible thanks to a set of awesome open-source components including <a href=\"http://timeline.verite.co/\">TimelineJS</a>, <a href=\"http://okfnlabs.org/recline/\">ReclineJS</a>, <a href=\"http://leafletjs.com/\">Leaflet</a>, <a href=\"http://backbonejs.org/\">Backbone</a> and <a href=\"http://twitter.github.com/bootstrap/\">Bootstrap</a>. You can find the <a href=\"https://github.com/okfn/timemapper\">full open-source source for TimeMapper on GitHub here": [
-         null,
-         "It is possible thanks to a set of awesome open-source components including <a href=\"http://timeline.verite.co/\">TimelineJS</a>, <a href=\"http://okfnlabs.org/recline/\">ReclineJS</a>, <a href=\"http://leafletjs.com/\">Leaflet</a>, <a href=\"http://backbonejs.org/\">Backbone</a> and <a href=\"http://twitter.github.com/bootstrap/\">Bootstrap</a>. You can find the <a href=\"https://github.com/okfn/timemapper\">full open-source source for TimeMapper on GitHub here"
-      ]
-   }
-}
-{
-   "messages": {
-      "": {
-         "Project-Id-Version": " PACKAGE VERSION\nPOT-Creation-Date: 2014-05-30 13:09+0000\nPO-Revision-Date: 2014-05-30 21:10+0800\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nLanguage-Team: English\nLanguage: en_US\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
-      },
-      "It's free and easy to use": [
-         null,
-         "It's free and easy to use"
-      ],
-      "Get started now": [
-         null,
-         "Get started now"
-      ],
-      "Watch the 1 minute Tutorial": [
-         null,
-         "Watch the 1 minute Tutorial"
-      ],
-      "Examples": [
-         null,
-         "Examples"
-      ],
-      "How It Works": [
-         null,
-         "How It Works"
-      ],
-      "1. Create a Spreadsheet": [
-         null,
-         "1. Create a Spreadsheet"
-      ],
-      "Add your dates and places to a Google Spreadsheet.": [
-         null,
-         "Add your dates and places to a Google Spreadsheet."
-      ],
-      "2. Connect and Customize": [
-         null,
-         "2. Connect and Customize"
-      ],
-      "Connect your spreadsheet with TimeMapper and customize the results.": [
-         null,
-         "Connect your spreadsheet with TimeMapper and customize the results."
-      ],
-      "3. Publish, Embed and Share": [
-         null,
-         "3. Publish, Embed and Share"
-      ],
-      "Publish your TimeMap at your own personal url, then share or embed on your site.": [
-         null,
-         "Publish your TimeMap at your own personal url, then share or embed on your site."
-      ],
-      "Credits": [
-         null,
-         "Credits"
-      ],
-      "TimeMapper is an open-source project of <a href=\"http://okfnlabs.org/\">Open Knowledge Foundation Labs</a>.": [
-         null,
-         "TimeMapper is an open-source project of <a href=\"http://okfnlabs.org/\">Open Knowledge Foundation Labs</a>."
-      ],
-      "It is possible thanks to a set of awesome open-source components including <a href=\"http://timeline.verite.co/\">TimelineJS</a>, <a href=\"http://okfnlabs.org/recline/\">ReclineJS</a>, <a href=\"http://leafletjs.com/\">Leaflet</a>, <a href=\"http://backbonejs.org/\">Backbone</a> and <a href=\"http://twitter.github.com/bootstrap/\">Bootstrap</a>. You can find the <a href=\"https://github.com/okfn/timemapper\">full open-source source for TimeMapper on GitHub here": [
-         null,
-         "It is possible thanks to a set of awesome open-source components including <a href=\"http://timeline.verite.co/\">TimelineJS</a>, <a href=\"http://okfnlabs.org/recline/\">ReclineJS</a>, <a href=\"http://leafletjs.com/\">Leaflet</a>, <a href=\"http://backbonejs.org/\">Backbone</a> and <a href=\"http://twitter.github.com/bootstrap/\">Bootstrap</a>. You can find the <a href=\"https://github.com/okfn/timemapper\">full open-source source for TimeMapper on GitHub here"
+         ""
       ]
    }
 }
