@@ -1,2 +1,1 @@
-cd ..
-./node_modules/.bin/extract-pot -l locale  -t jinja  -f html views	
+./node_modules/.bin/extract-pot -l po  -t jinja  -f html views	
