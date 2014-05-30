@@ -3,11 +3,11 @@
   <p>There are ${accounts.total} registered accounts.</p>
   <div class="row">
     <ul class="account list">
-    {{each(idx, account) accounts.results}}
+    {% for account in  accounts.results %}
       <li>
         <a href="/${account.id}">${account.id} - ${account.fullname}</a>
       </li>
-    {{/each}}
+    {% endfor %}
   </ul>
   </div>
 </div>
