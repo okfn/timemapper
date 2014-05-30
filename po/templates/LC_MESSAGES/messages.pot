@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2014-05-30 17:18+0000\n"
+"POT-Creation-Date: 2014-05-30 18:08+0000\n"
 
 #: /Users/hychen/github/hychen/timemapper/views/index.html:14
 msgid "It's free and easy to use"
@@ -281,4 +281,12 @@ msgstr ""
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:13
 msgid "It's as easy as 1-2-3!"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/edit.html:5
+msgid "Edit - "
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/edit.html:10
+msgid "Edit your "
 msgstr ""

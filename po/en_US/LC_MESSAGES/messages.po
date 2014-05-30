@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-30 17:18+0000\n"
+"POT-Creation-Date: 2014-05-30 18:08+0000\n"
 "PO-Revision-Date: 2014-05-30 21:10+0800\n"
 "Last-Translator: 陳信屹 <ossug.hychen@gmail.com>\n"
 "Language-Team: English\n"
@@ -294,4 +294,12 @@ msgstr ""
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:13
 msgid "It's as easy as 1-2-3!"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/edit.html:5
+msgid "Edit - "
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/edit.html:10
+msgid "Edit your "
 msgstr ""

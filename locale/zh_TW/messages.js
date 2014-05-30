@@ -1,7 +1,7 @@
 ;var json_locale_data = {
    "messages": {
       "": {
-         "Project-Id-Version": " PACKAGE VERSION\nPOT-Creation-Date: 2014-05-30 17:18+0000\nPO-Revision-Date: 2014-05-30 21:10+0800\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nLanguage-Team: Chinese (traditional)\nLanguage: zh_TW\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+         "Project-Id-Version": " PACKAGE VERSION\nPOT-Creation-Date: 2014-05-30 18:08+0000\nPO-Revision-Date: 2014-05-30 21:10+0800\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nLanguage-Team: Chinese (traditional)\nLanguage: zh_TW\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
       },
       "It's free and easy to use": [
          null,
@@ -89,7 +89,7 @@
       ],
       "ALERT: you are <strong>not signed in</strong> so your timemap will be created <strong>'anonymously'</strong>.": [
          null,
-         ""
+         "警告：你<strong>尚未登入</strong>，所以你的timemap會以匿名方式建立。"
       ],
       "3. Let's Publish It!": [
          null,
@@ -129,7 +129,7 @@
       ],
       "As you'll be identified as the owner you'll be able to re-configure (or delete) your timemap later": [
          null,
-         ""
+         "當你能被辯認為timemap的擁有者時，之後你將能夠重新設定(或是刪除) 你的timemap"
       ],
       "If you do want an account, signup is very easy": [
          null,
@@ -145,7 +145,7 @@
       ],
       "Go to File Menu in your spreadsheet, then 'Publish to the Web', then click 'Start Publishing'. This tutorial walks you through.": [
          null,
-         ""
+         "到你的spreadsheet的檔案選單，然後'公佈到網路上'，然後點'開始公佈'. 這份教學會帶你走過一遍。"
       ],
       "What URL do I use to connect my spreadsheet?": [
          null,
@@ -153,15 +153,15 @@
       ],
       "Use the URL you get by clicking your spreadsheet's <strong>Share</strong> button and copying the <strong>Link to share</strong> box.": [
          null,
-         ""
+         "點擊你的spreadsheet的<strong>分享</strong>按鈕然後複製<strong>分享連結</strong>"
       ],
       "Note that although you must also <strong>Publish to the web</strong>, TimeMapper does not use the URL found in the publication pop-up.": [
          null,
-         ""
+         "儘管你也必須<strong>發佈到網路</strong>TimMapper並沒有用當你發佈後出現的彈跳視窗顯示的URL"
       ],
       "What structure must the spreadsheet have?": [
          null,
-         "spreadsheet要有怎樣的結構？"
+         "Spreadsheet要有怎樣的結構？"
       ],
       "TimeMapper recognizes certain columns with specific names. The best overview of these columns is <a href=\"https://docs.google.com/a/okfn.org/spreadsheet/ccc?key=0AqR8dXc6Ji4JdFRNOTVYYTRqTmh6TUNNd3U2X2pKMGc#gid=0\">the template</a>, which has rows of instructions and examples.": [
          null,
@@ -169,19 +169,19 @@
       ],
       "Not all fields are required. The only required fields are <b>Title</b> and <b>Start</b> fields, and even <b>Start</b> can be omitted if you just want a map. Note that you can add any number of other columns beyond those that TimeMapper uses.": [
          null,
-         ""
+         "不是所有的欄位都需要。必備的欄位是<b>Title</b>還有<b>Start</b>。如果只是建立地圖，<b>Start</b>可以不需要。 記得在TimeMmapper使用的欄位之外，你可以加任意數量的其他欄位"
       ],
       "How do I format dates?": [
          null,
-         ""
+         "日期要怎麼寫？"
       ],
       "The preferred date format is ISO 8601 (YYYY-MM-DD), but TimeMapper recognizes most types of date.": [
          null,
-         ""
+         "日期格式是ISO 8601 (YYYY-MM-DD)，但TimeMapper能辨認更多日期形式。"
       ],
       "If a date's month and day are ambiguous (e.g. is 08-03-1798 UK notation for 8 March, or is it US notation for 3 August?), by default, the first number will be interpreted as the month. You can change this by clicking the <b>edit</b> button in the top right corner of your TimeMap's display and selecting between US- and non-US-style dates.": [
          null,
-         ""
+         "如果日期的月份跟日子不精確 (e.g (e.g. 08-03-1798 是指英國標示法的三月八號還是指得是美國標示法的八月三號。預設上，第一個數字將會被當成月份，要改變它，你可以點擊在你的TimeMap的左上角的<b>edit</b>按鈕並且在美國格式跟非美國格式之間切換。"
       ],
       "What kinds of geodata are supported?": [
          null,
@@ -189,19 +189,27 @@
       ],
       "The <b>Location</b> column accepts two types of geodata: latitude-longitude coordinates or GeoJSON objects.": [
          null,
-         ""
+         "<b>Location</b> 欄位接受兩種 geodata: 經緯度或是GeoJSON物件"
       ],
       "Coordinates must be in the format <emph>lat, long</emph> (e.g. <emph>37.5, -122</emph>). The <a href=\"https://docs.google.com/a/okfn.org/spreadsheet/ccc?key=0AqR8dXc6Ji4JdFRNOTVYYTRqTmh6TUNNd3U2X2pKMGc#gid=0\">spreadsheet template</a> includes a formula which automatically looks up coordinates corresponding to human-readable place names in the <b>Place</b> column. This formula is explained in a School of <a href=\"http://schoolofdata.org/2013/02/19/geocoding-part-ii-geocoding-data-in-a-google-docs-spreadsheet/\">Data blog post</a>.": [
          null,
-         ""
+         "坐標必須是<emph>lat, long</emph> (e.g. <emph>37.5, -122</emph>)的格式。 includes a formula which automatically looks up coordinates corresponding to human-readable place names in the <b>Place</b> column. This formula is explained in a School of <a href=\"http://schoolofdata.org/2013/02/19/geocoding-part-ii-geocoding-data-in-a-google-docs-spreadsheet/\">Data blog post</a>."
       ],
       "Advanced users who want to go beyond simple coordinates can use GeoJSON feature objects. For an example, see this blog post on adding <a href=\"http://schoolofdata.org/2013/10/31/geocoding-geojson-boundaries-koordinates/\">GeoJSON country boundaries</a> to spreadsheets.": [
          null,
-         ""
+         "進階使用者可以使用GeoJSON物件。舉例來說，請見這份Blog文章 - 在spreadsheets 上加<a href=\"http://schoolofdata.org/2013/10/31/geocoding-geojson-boundaries-koordinates/\">GeoJSON 國家邊界</a>。"
       ],
       "It's as easy as 1-2-3!": [
          null,
          "1-2-3 超簡單"
+      ],
+      "Edit - ": [
+         null,
+         ""
+      ],
+      "Edit your ": [
+         null,
+         ""
       ]
    }
 }
