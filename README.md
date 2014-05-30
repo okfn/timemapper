@@ -17,7 +17,7 @@ Install Node (>=0.8 suggested) and npm then checkout the code:
 Then install the dependencies:
 
     cd timemapper
-    npm install . 
+    npm install .
     # for some vendor modules
     git submodule init && git submodule update
 
@@ -104,7 +104,23 @@ Stored in datapackage.json following [Data Package spec][dp-spec]. Key points:
 [dp-spec]: http://data.okfn.org/standards/data-package
 [Recline]: http://okfnlabs.org/recline/
 
+## Translation info
 
+to extract gettext message
+
+```
+$ ./node_modules/i18n-abide/bin/merge-po.sh po
+```
+
+to re-compile translation json files.
+
+```
+$ locale/compile-msg-json.sh
+```
+
+for more details, please read [Mozilla - Localization in Action][localization-in-action].
+
+[localization-in-action]: https://hacks.mozilla.org/2013/04/localization-in-action-part-3-of-3-a-node-js-holiday-season-part-11/
 
 # User Stories
 
@@ -151,7 +167,7 @@ I want to "fork" someone elses visualization so that I can modify and extend it
 
 ## Listing and Admin
 
-[x] As Alice I want to list the "Vizs (viz?)" I've created 
+[x] As Alice I want to list the "Vizs (viz?)" I've created
 
 [ip] As Bob I want to know what I can do with this service before I sign up so that I know whether it is worth doing so
   - Some featured timemaps ...
@@ -200,4 +216,3 @@ As Bob (? may need to be logged in) I want to "star" a Viz I come across so that
 # History
 
 First version was Microfacts / Weaving History <http://weavinghistory.org>
-
