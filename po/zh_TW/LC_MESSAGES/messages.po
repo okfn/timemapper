@@ -124,7 +124,7 @@ msgstr "點擊這裡使用我們事先準備的範例"
 msgid ""
 "ALERT: you are <strong>not signed in</strong> so your timemap will be "
 "created <strong>'anonymously'</strong>."
-msgstr ""
+msgstr "警告：你<strong>尚未登入</strong>，所以你的timemap會以匿名方式建立。"
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:88
 msgid "3. Let's Publish It!"
@@ -186,7 +186,8 @@ msgstr "你所有的timemaps會列在<code>/your-username</code>"
 msgid ""
 "As you'll be identified as the owner you'll be able to re-configure (or "
 "delete) your timemap later"
-msgstr ""
+msgstr "當你能被辯認為timemap的擁有者時，之後你將能夠重新設定(或是"
+"刪除) 你的timemap"
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:114
 msgid "If you do want an account, signup is very easy"
@@ -204,7 +205,8 @@ msgstr "(不需要想新的使用者名稱跟密碼！)"
 msgid ""
 "Go to File Menu in your spreadsheet, then 'Publish to the Web', then click "
 "'Start Publishing'. This tutorial walks you through."
-msgstr ""
+msgstr "到你的spreadsheet的檔案選單，然後'公佈到網路上'，然後點"
+"'開始公佈'. 這份教學會帶你走過一遍。"
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:121
 msgid "What URL do I use to connect my spreadsheet?"
@@ -214,17 +216,20 @@ msgstr "哪種URL才是用來綁定我的 spreadsheet？"
 msgid ""
 "Use the URL you get by clicking your spreadsheet's <strong>Share</strong> "
 "button and copying the <strong>Link to share</strong> box."
-msgstr ""
+msgstr "點擊你的spreadsheet的<strong>分享</strong>"
+"按鈕然後複製<strong>分享連結</strong>"
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:124
 msgid ""
 "Note that although you must also <strong>Publish to the web</strong>, "
 "TimeMapper does not use the URL found in the publication pop-up."
 msgstr ""
+"儘管你也必須<strong>發佈到網路</strong>"
+"TimMapper並沒有用當你發佈後出現的彈跳視窗顯示的URL"
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:126
 msgid "What structure must the spreadsheet have?"
-msgstr "spreadsheet要有怎樣的結構？"
+msgstr "Spreadsheet要有怎樣的結構？"
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:127
 msgid ""
@@ -240,17 +245,18 @@ msgid ""
 "<b>Start</b> fields, and even <b>Start</b> can be omitted if you just want a "
 "map. Note that you can add any number of other columns beyond those that "
 "TimeMapper uses."
-msgstr ""
+msgstr "不是所有的欄位都需要。必備的欄位是<b>Title</b>還有<b>Start</b>。如果只是建立地圖，<b>Start</b>"
+"可以不需要。 記得在TimeMmapper使用的欄位之外，你可以加任意數量的其他欄位"
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:131
 msgid "How do I format dates?"
-msgstr ""
+msgstr "日期要怎麼寫？"
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:132
 msgid ""
 "The preferred date format is ISO 8601 (YYYY-MM-DD), but TimeMapper "
 "recognizes most types of date."
-msgstr ""
+msgstr "日期格式是ISO 8601 (YYYY-MM-DD)，但TimeMapper能辨認更多日期形式。"
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:134
 msgid ""
@@ -259,7 +265,8 @@ msgid ""
 "will be interpreted as the month. You can change this by clicking the "
 "<b>edit</b> button in the top right corner of your TimeMap's display and "
 "selecting between US- and non-US-style dates."
-msgstr ""
+msgstr "如果日期的月份跟日子不精確 (e.g (e.g. 08-03-1798 是指英國標示法的三月八號還是"
+"指得是美國標示法的八月三號。預設上，第一個數字將會被當成月份，要改變它，你可以點擊在你的TimeMap的左上角的<b>edit</b>按鈕並且在美國格式跟非美國格式之間切換。"
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:136
 msgid "What kinds of geodata are supported?"
@@ -269,7 +276,7 @@ msgstr "支援哪幾種 geodata？"
 msgid ""
 "The <b>Location</b> column accepts two types of geodata: latitude-longitude "
 "coordinates or GeoJSON objects."
-msgstr ""
+msgstr "<b>Location</b> 欄位接受兩種 geodata: 經緯度或是GeoJSON物件"
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:139
 msgid ""
@@ -281,7 +288,12 @@ msgid ""
 "formula is explained in a School of <a href=\"http://schoolofdata."
 "org/2013/02/19/geocoding-part-ii-geocoding-data-in-a-google-docs-spreadsheet/"
 "\">Data blog post</a>."
-msgstr ""
+msgstr "坐標必須是<emph>lat, long</emph> (e.g. <emph>37.5, "
+"-122</emph>)的格式。 includes a formula which automatically looks up coordinates "
+"corresponding to human-readable place names in the <b>Place</b> column. This "
+"formula is explained in a School of <a href=\"http://schoolofdata."
+"org/2013/02/19/geocoding-part-ii-geocoding-data-in-a-google-docs-spreadsheet/"
+"\">Data blog post</a>."
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:141
 msgid ""
@@ -289,7 +301,10 @@ msgid ""
 "feature objects. For an example, see this blog post on adding <a href="
 "\"http://schoolofdata.org/2013/10/31/geocoding-geojson-boundaries-"
 "koordinates/\">GeoJSON country boundaries</a> to spreadsheets."
-msgstr ""
+msgstr "進階使用者可以使用GeoJSON物件。"
+"舉例來說，請見這份Blog文章 - 在spreadsheets 上加<a href="
+"\"http://schoolofdata.org/2013/10/31/geocoding-geojson-boundaries-"
+"koordinates/\">GeoJSON 國家邊界</a>。"
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:13
 msgid "It's as easy as 1-2-3!"
