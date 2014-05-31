@@ -1,7 +1,7 @@
 {
    "messages": {
       "": {
-         "Project-Id-Version": " PACKAGE VERSION\nPOT-Creation-Date: 2014-05-31 06:39+0000\nPO-Revision-Date: 2014-05-30 21:10+0800\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nLanguage-Team: English\nLanguage: en_US\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
+         "Project-Id-Version": " PACKAGE VERSION\nPOT-Creation-Date: 2014-05-31 07:22+0000\nPO-Revision-Date: 2014-05-30 21:10+0800\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nLanguage-Team: English\nLanguage: en_US\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
       },
       "It's free and easy to use": [
          null,
@@ -268,6 +268,86 @@
          ""
       ],
       "Source Data": [
+         null,
+         ""
+      ],
+      "Data Source": [
+         null,
+         ""
+      ],
+      "Select from Your Google Drive": [
+         null,
+         ""
+      ],
+      "If nothing happens check you are not blocking popups ...": [
+         null,
+         ""
+      ],
+      "Important": [
+         null,
+         ""
+      ],
+      "you must \"publish\" your Google Spreadsheet: go to File Menu in your spreadsheet, then 'Publish to the Web', then click 'Start Publishing'. See": [
+         null,
+         ""
+      ],
+      "the FAQ below": [
+         null,
+         ""
+      ],
+      "for more details": [
+         null,
+         ""
+      ],
+      "Title": [
+         null,
+         ""
+      ],
+      "Slug": [
+         null,
+         ""
+      ],
+      "The url of your new timemap. This must be different from the name for any of your existing timemaps. Choose wisely as this is hard to change!": [
+         null,
+         ""
+      ],
+      "Type of Data View": [
+         null,
+         ""
+      ],
+      "Choose the visualization type of your data - TimeMap (Timeline and Map combined), Timeline or Map.": [
+         null,
+         ""
+      ],
+      "More Options": [
+         null,
+         ""
+      ],
+      "Ambiguous Date Handling": [
+         null,
+         ""
+      ],
+      "month first (US style)": [
+         null,
+         ""
+      ],
+      "day first (non-US style)": [
+         null,
+         ""
+      ],
+      "How to handle ambiguous dates like \"05/08/2012\" in source data (could be read as 5th August or 8th of May).": [
+         null,
+         ""
+      ],
+      "If you do not have any dates formatted like this then you can ignore this!": [
+         null,
+         ""
+      ],
+      "Start from": [
+         null,
+         ""
+      ],
+      "Where on the timeline should the user start.": [
          null,
          ""
       ]

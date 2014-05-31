@@ -1,7 +1,7 @@
 {
    "messages": {
       "": {
-         "Project-Id-Version": " PACKAGE VERSION\nPOT-Creation-Date: 2014-05-31 06:39+0000\nPO-Revision-Date: 2014-05-30 21:10+0800\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nLanguage-Team: Chinese (traditional)\nLanguage: zh_TW\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+         "Project-Id-Version": " PACKAGE VERSION\nPOT-Creation-Date: 2014-05-31 07:22+0000\nPO-Revision-Date: 2014-05-30 21:10+0800\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nLanguage-Team: Chinese (traditional)\nLanguage: zh_TW\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
       },
       "It's free and easy to use": [
          null,
@@ -270,6 +270,86 @@
       "Source Data": [
          null,
          "來源資料"
+      ],
+      "Data Source": [
+         null,
+         "資料來源"
+      ],
+      "Select from Your Google Drive": [
+         null,
+         "從你的 Google Drive 選擇"
+      ],
+      "If nothing happens check you are not blocking popups ...": [
+         null,
+         "如果什麼事都沒發生，檢查你是否有擋彈跳視窗 ..."
+      ],
+      "Important": [
+         null,
+         "重要"
+      ],
+      "you must \"publish\" your Google Spreadsheet: go to File Menu in your spreadsheet, then 'Publish to the Web', then click 'Start Publishing'. See": [
+         null,
+         "到你的spreadsheet的檔案選單，然後'公佈到網路上'，然後點'開始公佈'. 這份教學會帶你走過一遍。"
+      ],
+      "the FAQ below": [
+         null,
+         "常見問題如下"
+      ],
+      "for more details": [
+         null,
+         "更多細節"
+      ],
+      "Title": [
+         null,
+         "標題"
+      ],
+      "Slug": [
+         null,
+         ""
+      ],
+      "The url of your new timemap. This must be different from the name for any of your existing timemaps. Choose wisely as this is hard to change!": [
+         null,
+         "你的新timemap網址。 這必須跟你現有的timemap不同。 謹慎思考名字，因為這很難修改！"
+      ],
+      "Type of Data View": [
+         null,
+         "資料顯示方式"
+      ],
+      "Choose the visualization type of your data - TimeMap (Timeline and Map combined), Timeline or Map.": [
+         null,
+         "選擇你資料的視覺化模式 - TimeMap (時間軸與地圖整合)，時間軸或地圖"
+      ],
+      "More Options": [
+         null,
+         "更多選項"
+      ],
+      "Ambiguous Date Handling": [
+         null,
+         "歧義時間處理"
+      ],
+      "month first (US style)": [
+         null,
+         "月份優先 (美國格式)"
+      ],
+      "day first (non-US style)": [
+         null,
+         "日子優先 (美國格式)"
+      ],
+      "How to handle ambiguous dates like \"05/08/2012\" in source data (could be read as 5th August or 8th of May).": [
+         null,
+         "如何處理在來源資料裡像\"05/08/2012\"(可能念做八月五號或是五月八號)的日期。"
+      ],
+      "If you do not have any dates formatted like this then you can ignore this!": [
+         null,
+         "如果你的日期格式沒一個長得像這樣，你可以忽略這件事"
+      ],
+      "Start from": [
+         null,
+         "從何時開始"
+      ],
+      "Where on the timeline should the user start.": [
+         null,
+         "為時間軸的起點"
       ]
    }
 }

@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2014-05-31 06:39+0000\n"
+"POT-Creation-Date: 2014-05-31 07:22+0000\n"
 
 #: /Users/hychen/github/hychen/timemapper/views/index.html:14
 msgid "It's free and easy to use"
@@ -349,4 +349,92 @@ msgstr ""
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:106
 msgid "Source Data"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:3
+msgid "Data Source"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:6
+msgid "Select from Your Google Drive"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:7
+msgid "If nothing happens check you are not blocking popups ..."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:16
+msgid "Important"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:16
+msgid ""
+"you must \"publish\" your Google Spreadsheet: go to File Menu in your "
+"spreadsheet, then 'Publish to the Web', then click 'Start Publishing'. See"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:16
+msgid "the FAQ below"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:16
+msgid "for more details"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:22
+msgid "Title"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:35
+msgid "Slug"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:46
+msgid ""
+"The url of your new timemap. This must be different from the name for any "
+"of your existing timemaps. Choose wisely as this is hard to change!"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:53
+msgid "Type of Data View"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:70
+msgid ""
+"Choose the visualization type of your data - TimeMap (Timeline and Map "
+"combined), Timeline or Map."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:75
+msgid "More Options"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:78
+msgid "Ambiguous Date Handling"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:90
+msgid "month first (US style)"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:101
+msgid "day first (non-US style)"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:104
+msgid ""
+"How to handle ambiguous dates like \"05/08/2012\" in source data (could be "
+"read as 5th August or 8th of May)."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:106
+msgid "If you do not have any dates formatted like this then you can ignore this!"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:112
+msgid "Start from"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:129
+msgid "Where on the timeline should the user start."
 msgstr ""

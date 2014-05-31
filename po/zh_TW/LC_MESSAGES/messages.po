@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-31 06:39+0000\n"
+"POT-Creation-Date: 2014-05-31 07:22+0000\n"
 "PO-Revision-Date: 2014-05-30 21:10+0800\n"
 "Last-Translator: 陳信屹 <ossug.hychen@gmail.com>\n"
 "Language-Team: Chinese (traditional)\n"
@@ -386,3 +386,95 @@ msgstr "授權條款"
 #: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:106
 msgid "Source Data"
 msgstr "來源資料"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:3
+msgid "Data Source"
+msgstr "資料來源"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:6
+msgid "Select from Your Google Drive"
+msgstr "從你的 Google Drive 選擇"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:7
+msgid "If nothing happens check you are not blocking popups ..."
+msgstr "如果什麼事都沒發生，檢查你是否有擋彈跳視窗 ..."
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:16
+msgid "Important"
+msgstr "重要"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:16
+#, fuzzy
+msgid ""
+"you must \"publish\" your Google Spreadsheet: go to File Menu in your "
+"spreadsheet, then 'Publish to the Web', then click 'Start Publishing'. See"
+msgstr ""
+"到你的spreadsheet的檔案選單，然後'公佈到網路上'，然後點'開始公佈'. 這份教學會"
+"帶你走過一遍。"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:16
+msgid "the FAQ below"
+msgstr "常見問題如下"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:16
+msgid "for more details"
+msgstr "更多細節"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:22
+msgid "Title"
+msgstr "標題"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:35
+msgid "Slug"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:46
+msgid ""
+"The url of your new timemap. This must be different from the name for any of "
+"your existing timemaps. Choose wisely as this is hard to change!"
+msgstr "你的新timemap網址。 這必須跟你現有的timemap不同。 謹慎思考名字，因為這很難修改！"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:53
+msgid "Type of Data View"
+msgstr "資料顯示方式"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:70
+msgid ""
+"Choose the visualization type of your data - TimeMap (Timeline and Map "
+"combined), Timeline or Map."
+msgstr "選擇你資料的視覺化模式 - TimeMap (時間軸與地圖整合)，時間軸或地圖"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:75
+msgid "More Options"
+msgstr "更多選項"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:78
+msgid "Ambiguous Date Handling"
+msgstr "歧義時間處理"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:90
+msgid "month first (US style)"
+msgstr "月份優先 (美國格式)"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:101
+msgid "day first (non-US style)"
+msgstr "日子優先 (美國格式)"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:104
+msgid ""
+"How to handle ambiguous dates like \"05/08/2012\" in source data (could be "
+"read as 5th August or 8th of May)."
+msgstr "如何處理在來源資料裡像\"05/08/2012\"(可能念做八月五號或是五月八號)的日期。"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:106
+msgid ""
+"If you do not have any dates formatted like this then you can ignore this!"
+msgstr "如果你的日期格式沒一個長得像這樣，你可以忽略這件事"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:112
+msgid "Start from"
+msgstr "從何時開始"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:129
+msgid "Where on the timeline should the user start."
+msgstr "為時間軸的起點"
