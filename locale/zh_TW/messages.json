@@ -1,7 +1,7 @@
 {
    "messages": {
       "": {
-         "Project-Id-Version": " PACKAGE VERSION\nPOT-Creation-Date: 2014-05-31 07:44+0000\nPO-Revision-Date: 2014-05-30 21:10+0800\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nLanguage-Team: Chinese (traditional)\nLanguage: zh_TW\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+         "Project-Id-Version": " PACKAGE VERSION\nPOT-Creation-Date: 2014-05-31 17:22+0000\nPO-Revision-Date: 2014-05-30 21:10+0800\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nLanguage-Team: Chinese (traditional)\nLanguage: zh_TW\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
       },
       "It's free and easy to use": [
          null,
@@ -390,6 +390,26 @@
       "Copyright": [
          null,
          "版權所有"
+      ],
+      "Find out more on anonymous vs logged in": [
+         null,
+         "了解更多匿名使用跟登入後使用的差別"
+      ],
+      "read FAQ below": [
+         null,
+         "常見問題如下"
+      ],
+      "Title for your View": [
+         null,
+         "你的標題"
+      ],
+      "The slug needs to be 'url-usable' and so must be lowercase containing only alphanumeric characters and '-'": [
+         null,
+         ""
+      ],
+      "Elegant timelines and maps created in seconds": [
+         null,
+         "幾秒內就建立美觀的時間軸跟地圖"
       ]
    }
 }
