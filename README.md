@@ -106,6 +106,10 @@ Stored in datapackage.json following [Data Package spec][dp-spec]. Key points:
 
 ## Translation info
 
+TimeMappers uses `i18n-abide` with `gettext`. 
+
+It currently supporte loclaes `en-US`, `zh-TW` locales.
+
 To update po files after modify `views/*.html`
 
 ```
