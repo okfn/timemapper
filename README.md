@@ -106,16 +106,16 @@ Stored in datapackage.json following [Data Package spec][dp-spec]. Key points:
 
 ## Translation info
 
-to extract gettext message
+To update po files after modify `views/*.html`
 
 ```
-$ ./node_modules/i18n-abide/bin/merge-po.sh po
+$ npm run update-po
 ```
 
-to re-compile translation json files.
+To re-compile translation json files.
 
 ```
-$ locale/compile-msg-json.sh
+$ npm run gen-po-json
 ```
 
 for more details, please read [Mozilla - Localization in Action][localization-in-action].
