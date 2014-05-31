@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-31 07:22+0000\n"
+"POT-Creation-Date: 2014-05-31 07:44+0000\n"
 "PO-Revision-Date: 2014-05-30 21:10+0800\n"
 "Last-Translator: 陳信屹 <ossug.hychen@gmail.com>\n"
 "Language-Team: Chinese (traditional)\n"
@@ -380,6 +380,7 @@ msgid "using"
 msgstr "使用"
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:103
+#: /Users/hychen/github/hychen/timemapper/views/base.html:85
 msgid "License"
 msgstr "授權條款"
 
@@ -432,7 +433,9 @@ msgstr ""
 msgid ""
 "The url of your new timemap. This must be different from the name for any of "
 "your existing timemaps. Choose wisely as this is hard to change!"
-msgstr "你的新timemap網址。 這必須跟你現有的timemap不同。 謹慎思考名字，因為這很難修改！"
+msgstr ""
+"你的新timemap網址。 這必須跟你現有的timemap不同。 謹慎思考名字，因為這很難修"
+"改！"
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:53
 msgid "Type of Data View"
@@ -464,7 +467,8 @@ msgstr "日子優先 (美國格式)"
 msgid ""
 "How to handle ambiguous dates like \"05/08/2012\" in source data (could be "
 "read as 5th August or 8th of May)."
-msgstr "如何處理在來源資料裡像\"05/08/2012\"(可能念做八月五號或是五月八號)的日期。"
+msgstr ""
+"如何處理在來源資料裡像\"05/08/2012\"(可能念做八月五號或是五月八號)的日期。"
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:106
 msgid ""
@@ -478,3 +482,56 @@ msgstr "從何時開始"
 #: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:129
 msgid "Where on the timeline should the user start."
 msgstr "為時間軸的起點"
+
+#: /Users/hychen/github/hychen/timemapper/views/base.html:7
+#, fuzzy
+msgid "TimeMapper - Make Timelines and TimeMaps fast!"
+msgstr "建立新的時間軸或時間地圖"
+
+#: /Users/hychen/github/hychen/timemapper/views/base.html:8
+msgid "from the Open Knowledge Foundation Labs"
+msgstr "由Open Knowledge Foundation Labs 開發"
+
+#: /Users/hychen/github/hychen/timemapper/views/base.html:10
+msgid ""
+"TimeMapper - Make Timelines and TimeMaps fast! - from the Open Knowledge "
+"Foundation Labs"
+msgstr ""
+"TimeMapper - 快速建立時間軸跟時間地圖！ - 由Open Knowledge Foundation Labs 開"
+"發"
+
+#: /Users/hychen/github/hychen/timemapper/views/base.html:37
+msgid "An Open Knowledge Foundation Labs Project"
+msgstr "一個 Open Knowledge Foundation Labs 專案"
+
+#: /Users/hychen/github/hychen/timemapper/views/base.html:52
+#: /Users/hychen/github/hychen/timemapper/views/base.html:80
+msgid "Contact Us"
+msgstr "聯絡我們"
+
+#: /Users/hychen/github/hychen/timemapper/views/base.html:56
+msgid "Report an Issue"
+msgstr "回報問題"
+
+#: /Users/hychen/github/hychen/timemapper/views/base.html:80
+#, fuzzy
+msgid ""
+"The <a href=\"http://timemapper.okfnlabs.org/\"><strong>TimeMapper</strong></"
+"a> is a project of <a href=\"http://okfnlabs.org/\">Open Knowledge "
+"Foundation Labs</a>"
+msgstr ""
+"TimeMapper是<a href=\"http://okfnlabs.org/\">Open Knowledge Foundation Labs</"
+"a>的開源碼專案。"
+
+#: /Users/hychen/github/hychen/timemapper/views/base.html:81
+msgid "TimeMapper is open-source"
+msgstr "TimeMapper是開放源碼"
+
+#: /Users/hychen/github/hychen/timemapper/views/base.html:83
+#, fuzzy
+msgid "Source Code"
+msgstr "來源資料"
+
+#: /Users/hychen/github/hychen/timemapper/views/base.html:85
+msgid "Copyright"
+msgstr "版權所有"

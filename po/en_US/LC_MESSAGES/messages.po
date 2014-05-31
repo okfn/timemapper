@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-31 07:22+0000\n"
+"POT-Creation-Date: 2014-05-31 07:44+0000\n"
 "PO-Revision-Date: 2014-05-30 21:10+0800\n"
 "Last-Translator: 陳信屹 <ossug.hychen@gmail.com>\n"
 "Language-Team: English\n"
@@ -357,6 +357,7 @@ msgid "using"
 msgstr ""
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:103
+#: /Users/hychen/github/hychen/timemapper/views/base.html:85
 msgid "License"
 msgstr ""
 
@@ -451,4 +452,53 @@ msgstr ""
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:129
 msgid "Where on the timeline should the user start."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/base.html:7
+msgid "TimeMapper - Make Timelines and TimeMaps fast!"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/base.html:8
+msgid "from the Open Knowledge Foundation Labs"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/base.html:10
+msgid ""
+"TimeMapper - Make Timelines and TimeMaps fast! - from the Open Knowledge "
+"Foundation Labs"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/base.html:37
+msgid "An Open Knowledge Foundation Labs Project"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/base.html:52
+#: /Users/hychen/github/hychen/timemapper/views/base.html:80
+msgid "Contact Us"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/base.html:56
+msgid "Report an Issue"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/base.html:80
+#, fuzzy
+msgid ""
+"The <a href=\"http://timemapper.okfnlabs.org/\"><strong>TimeMapper</strong></"
+"a> is a project of <a href=\"http://okfnlabs.org/\">Open Knowledge "
+"Foundation Labs</a>"
+msgstr ""
+"TimeMapper is an open-source project of <a href=\"http://okfnlabs.org/"
+"\">Open Knowledge Foundation Labs</a>."
+
+#: /Users/hychen/github/hychen/timemapper/views/base.html:81
+msgid "TimeMapper is open-source"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/base.html:83
+msgid "Source Code"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/base.html:85
+msgid "Copyright"
 msgstr ""

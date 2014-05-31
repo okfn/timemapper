@@ -1,7 +1,7 @@
 ;var json_locale_data = {
    "messages": {
       "": {
-         "Project-Id-Version": " PACKAGE VERSION\nPOT-Creation-Date: 2014-05-31 07:22+0000\nPO-Revision-Date: 2014-05-30 21:10+0800\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nLanguage-Team: Chinese (traditional)\nLanguage: zh_TW\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+         "Project-Id-Version": " PACKAGE VERSION\nPOT-Creation-Date: 2014-05-31 07:44+0000\nPO-Revision-Date: 2014-05-30 21:10+0800\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nLanguage-Team: Chinese (traditional)\nLanguage: zh_TW\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
       },
       "It's free and easy to use": [
          null,
@@ -350,6 +350,46 @@
       "Where on the timeline should the user start.": [
          null,
          "為時間軸的起點"
+      ],
+      "TimeMapper - Make Timelines and TimeMaps fast!": [
+         null,
+         "建立新的時間軸或時間地圖"
+      ],
+      "from the Open Knowledge Foundation Labs": [
+         null,
+         "由Open Knowledge Foundation Labs 開發"
+      ],
+      "TimeMapper - Make Timelines and TimeMaps fast! - from the Open Knowledge Foundation Labs": [
+         null,
+         "TimeMapper - 快速建立時間軸跟時間地圖！ - 由Open Knowledge Foundation Labs 開發"
+      ],
+      "An Open Knowledge Foundation Labs Project": [
+         null,
+         "一個 Open Knowledge Foundation Labs 專案"
+      ],
+      "Contact Us": [
+         null,
+         "聯絡我們"
+      ],
+      "Report an Issue": [
+         null,
+         "回報問題"
+      ],
+      "The <a href=\"http://timemapper.okfnlabs.org/\"><strong>TimeMapper</strong></a> is a project of <a href=\"http://okfnlabs.org/\">Open Knowledge Foundation Labs</a>": [
+         null,
+         "TimeMapper是<a href=\"http://okfnlabs.org/\">Open Knowledge Foundation Labs</a>的開源碼專案。"
+      ],
+      "TimeMapper is open-source": [
+         null,
+         "TimeMapper是開放源碼"
+      ],
+      "Source Code": [
+         null,
+         "來源資料"
+      ],
+      "Copyright": [
+         null,
+         "版權所有"
       ]
    }
 }
