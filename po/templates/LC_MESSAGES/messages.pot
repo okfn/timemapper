@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2014-05-31 17:22+0000\n"
+"POT-Creation-Date: 2014-05-31 17:46+0000\n"
 
 #: /Users/hychen/github/hychen/timemapper/views/index.html:14
 msgid "It's free and easy to use"
@@ -127,6 +127,7 @@ msgid "3. Let's Publish It!"
 msgstr ""
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:92
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:116
 msgid "Publish"
 msgstr ""
 
@@ -507,4 +508,20 @@ msgstr ""
 
 #: /Users/hychen/github/hychen/timemapper/views/index.html:9
 msgid "Elegant timelines and maps created in seconds"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:3
+msgid "create"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:116
+msgid "Your Spreadsheet"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/edit.html:16
+msgid "Update"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:15
+msgid "Or paste the Google Spreadsheet URL directly"
 msgstr ""

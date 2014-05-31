@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-31 17:22+0000\n"
+"POT-Creation-Date: 2014-05-31 17:46+0000\n"
 "PO-Revision-Date: 2014-05-30 21:10+0800\n"
 "Last-Translator: 陳信屹 <ossug.hychen@gmail.com>\n"
 "Language-Team: English\n"
@@ -141,6 +141,7 @@ msgid "3. Let's Publish It!"
 msgstr ""
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:92
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:116
 msgid "Publish"
 msgstr ""
 
@@ -523,4 +524,21 @@ msgstr ""
 
 #: /Users/hychen/github/hychen/timemapper/views/index.html:9
 msgid "Elegant timelines and maps created in seconds"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:3
+msgid "create"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:116
+#, fuzzy
+msgid "Your Spreadsheet"
+msgstr "1. Create a Spreadsheet"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/edit.html:16
+msgid "Update"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:15
+msgid "Or paste the Google Spreadsheet URL directly"
 msgstr ""

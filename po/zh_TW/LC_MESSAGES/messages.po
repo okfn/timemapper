@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-31 17:22+0000\n"
+"POT-Creation-Date: 2014-05-31 17:46+0000\n"
 "PO-Revision-Date: 2014-05-30 21:10+0800\n"
 "Last-Translator: 陳信屹 <ossug.hychen@gmail.com>\n"
 "Language-Team: Chinese (traditional)\n"
@@ -65,7 +65,7 @@ msgstr "用你的專屬網址公佈你的TimeMap，然後分享或嵌入在你�
 
 #: /Users/hychen/github/hychen/timemapper/views/index.html:72
 msgid "Credits"
-msgstr ""
+msgstr "鳴謝"
 
 #: /Users/hychen/github/hychen/timemapper/views/index.html:74
 msgid ""
@@ -131,6 +131,7 @@ msgid "3. Let's Publish It!"
 msgstr "3. 發佈它"
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:92
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:116
 msgid "Publish"
 msgstr "發佈"
 
@@ -206,8 +207,8 @@ msgid ""
 "Go to File Menu in your spreadsheet, then 'Publish to the Web', then click "
 "'Start Publishing'. This tutorial walks you through."
 msgstr ""
-"到你的試算表的檔案選單，然後'公佈到網路上'，然後點'開始公佈'. 這份教學會"
-"帶你走過一遍。"
+"到你的試算表的檔案選單，然後'公佈到網路上'，然後點'開始公佈'. 這份教學會帶你"
+"走過一遍。"
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:121
 msgid "What URL do I use to connect my spreadsheet?"
@@ -218,8 +219,7 @@ msgid ""
 "Use the URL you get by clicking your spreadsheet's <strong>Share</strong> "
 "button and copying the <strong>Link to share</strong> box."
 msgstr ""
-"點擊你的試算表<strong>分享</strong>按鈕然後複製<strong>分享連結</"
-"strong>"
+"點擊你的試算表<strong>分享</strong>按鈕然後複製<strong>分享連結</strong>"
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:124
 msgid ""
@@ -310,8 +310,8 @@ msgid ""
 "\"http://schoolofdata.org/2013/10/31/geocoding-geojson-boundaries-"
 "koordinates/\">GeoJSON country boundaries</a> to spreadsheets."
 msgstr ""
-"進階使用者可以使用GeoJSON物件。舉例來說，請見這份Blog文章 - 在試算表上"
-"加<a href=\"http://schoolofdata.org/2013/10/31/geocoding-geojson-boundaries-"
+"進階使用者可以使用GeoJSON物件。舉例來說，請見這份Blog文章 - 在試算表上加<a "
+"href=\"http://schoolofdata.org/2013/10/31/geocoding-geojson-boundaries-"
 "koordinates/\">GeoJSON 國家邊界</a>。"
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:13
@@ -553,8 +553,25 @@ msgstr "你的標題"
 msgid ""
 "The slug needs to be 'url-usable' and so must be lowercase containing only "
 "alphanumeric characters and '-'"
-msgstr ""
+msgstr "slug 必須是網址合法字元，所以只能是小寫英文字母跟'-'"
 
 #: /Users/hychen/github/hychen/timemapper/views/index.html:9
 msgid "Elegant timelines and maps created in seconds"
 msgstr "幾秒內就建立美觀的時間軸跟地圖"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:3
+msgid "create"
+msgstr "建立"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:116
+#, fuzzy
+msgid "Your Spreadsheet"
+msgstr "1. 建立一份試算表"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/edit.html:16
+msgid "Update"
+msgstr "更新"
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:15
+msgid "Or paste the Google Spreadsheet URL directly"
+msgstr "或者直接貼上Google試算表的網址"

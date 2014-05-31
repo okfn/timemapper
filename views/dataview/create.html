@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block bodyclass %}create{% endblock %}
+{% block bodyclass %}{{ gettext('create') }}{% endblock %}
 
 {% block content %}
 <div class="page-header">
@@ -113,7 +113,7 @@
 
   <p>{{ gettext('If you do want an account, signup is very easy') }} &ndash; <a href="/account/login">{{ gettext('it takes just 15 seconds, is very secure, and uses your Twitter account') }}</a> {{ gettext('(no need to think up a new username and password!).') }}</p>
 
-  <h3 id="faq-publish">&quot;Publish&quot; Your Spreadsheet</h3>
+  <h3 id="faq-publish">&quot;{{ gettext('Publish') }}&quot; {{ gettext('Your Spreadsheet') }}</h3>
   <p>{{ gettext("Go to File Menu in your spreadsheet, then 'Publish to the Web', then click 'Start Publishing'. This tutorial walks you through.") }}</p>
 
   <iframe width="480" height="360" src="//www.youtube.com/embed/lCpilatN9yE?rel=0" frameborder="0" allowfullscreen></iframe>
