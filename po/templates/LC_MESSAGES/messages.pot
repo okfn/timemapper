@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2014-05-31 06:17+0000\n"
+"POT-Creation-Date: 2014-05-31 06:39+0000\n"
 
 #: /Users/hychen/github/hychen/timemapper/views/index.html:14
 msgid "It's free and easy to use"
@@ -305,4 +305,48 @@ msgstr ""
 
 #: /Users/hychen/github/hychen/timemapper/views/dashboard.html:17
 msgid "Your Existing TimeMaps"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:3
+msgid "view"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:3
+msgid "embed"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:42
+msgid "Embed"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:47
+msgid "Edit"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:67
+msgid "Search data ..."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:87
+msgid "Embed Instructions"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:90
+msgid "Copy and paste the following into your web page"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:96
+msgid "Loading data..."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:100
+msgid "using"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:103
+msgid "License"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:106
+msgid "Source Data"
 msgstr ""

@@ -1,7 +1,7 @@
 ;var json_locale_data = {
    "messages": {
       "": {
-         "Project-Id-Version": " PACKAGE VERSION\nPOT-Creation-Date: 2014-05-31 06:17+0000\nPO-Revision-Date: 2014-05-30 21:10+0800\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nLanguage-Team: Chinese (traditional)\nLanguage: zh_TW\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+         "Project-Id-Version": " PACKAGE VERSION\nPOT-Creation-Date: 2014-05-31 06:39+0000\nPO-Revision-Date: 2014-05-30 21:10+0800\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nLanguage-Team: Chinese (traditional)\nLanguage: zh_TW\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
       },
       "It's free and easy to use": [
          null,
@@ -226,6 +226,50 @@
       "Your Existing TimeMaps": [
          null,
          "你目前的時間地圖"
+      ],
+      "view": [
+         null,
+         "檢視"
+      ],
+      "embed": [
+         null,
+         "嵌入"
+      ],
+      "Embed": [
+         null,
+         "嵌入"
+      ],
+      "Edit": [
+         null,
+         "修改"
+      ],
+      "Search data ...": [
+         null,
+         "搜尋資料中..."
+      ],
+      "Embed Instructions": [
+         null,
+         "嵌入方式"
+      ],
+      "Copy and paste the following into your web page": [
+         null,
+         "將下面複製貼上到你的網頁"
+      ],
+      "Loading data...": [
+         null,
+         "讀取資料中..."
+      ],
+      "using": [
+         null,
+         "使用"
+      ],
+      "License": [
+         null,
+         "授權條款"
+      ],
+      "Source Data": [
+         null,
+         "來源資料"
       ]
    }
 }

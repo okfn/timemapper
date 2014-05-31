@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-31 06:17+0000\n"
+"POT-Creation-Date: 2014-05-31 06:39+0000\n"
 "PO-Revision-Date: 2014-05-30 21:10+0800\n"
 "Last-Translator: 陳信屹 <ossug.hychen@gmail.com>\n"
 "Language-Team: English\n"
@@ -318,4 +318,48 @@ msgstr ""
 
 #: /Users/hychen/github/hychen/timemapper/views/dashboard.html:17
 msgid "Your Existing TimeMaps"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:3
+msgid "view"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:3
+msgid "embed"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:42
+msgid "Embed"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:47
+msgid "Edit"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:67
+msgid "Search data ..."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:87
+msgid "Embed Instructions"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:90
+msgid "Copy and paste the following into your web page"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:96
+msgid "Loading data..."
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:100
+msgid "using"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:103
+msgid "License"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dataview/timemap.html:106
+msgid "Source Data"
 msgstr ""
