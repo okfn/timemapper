@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-30 18:08+0000\n"
+"POT-Creation-Date: 2014-05-31 06:17+0000\n"
 "PO-Revision-Date: 2014-05-30 21:10+0800\n"
 "Last-Translator: 陳信屹 <ossug.hychen@gmail.com>\n"
 "Language-Team: Chinese (traditional)\n"
@@ -325,3 +325,19 @@ msgstr "修改 - "
 #: /Users/hychen/github/hychen/timemapper/views/dataview/edit.html:10
 msgid "Edit your "
 msgstr "修改你的 "
+
+#: /Users/hychen/github/hychen/timemapper/views/dashboard.html:3
+msgid "Dashboard"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dashboard.html:8
+msgid "Hi there"
+msgstr "你好"
+
+#: /Users/hychen/github/hychen/timemapper/views/dashboard.html:13
+msgid "Create a new Timeline or TimeMap"
+msgstr "建立新的時間軸或時間地圖"
+
+#: /Users/hychen/github/hychen/timemapper/views/dashboard.html:17
+msgid "Your Existing TimeMaps"
+msgstr "你目前的時間地圖"

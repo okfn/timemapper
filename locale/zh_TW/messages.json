@@ -1,7 +1,7 @@
 {
    "messages": {
       "": {
-         "Project-Id-Version": " PACKAGE VERSION\nPOT-Creation-Date: 2014-05-30 18:08+0000\nPO-Revision-Date: 2014-05-30 21:10+0800\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nLanguage-Team: Chinese (traditional)\nLanguage: zh_TW\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+         "Project-Id-Version": " PACKAGE VERSION\nPOT-Creation-Date: 2014-05-31 06:17+0000\nPO-Revision-Date: 2014-05-30 21:10+0800\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nLanguage-Team: Chinese (traditional)\nLanguage: zh_TW\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
       },
       "It's free and easy to use": [
          null,
@@ -205,11 +205,27 @@
       ],
       "Edit - ": [
          null,
-         ""
+         "修改 - "
       ],
       "Edit your ": [
          null,
+         "修改你的 "
+      ],
+      "Dashboard": [
+         null,
          ""
+      ],
+      "Hi there": [
+         null,
+         "你好"
+      ],
+      "Create a new Timeline or TimeMap": [
+         null,
+         "建立新的時間軸或時間地圖"
+      ],
+      "Your Existing TimeMaps": [
+         null,
+         "你目前的時間地圖"
       ]
    }
 }

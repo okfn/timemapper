@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2014-05-30 18:08+0000\n"
+"POT-Creation-Date: 2014-05-31 06:17+0000\n"
 
 #: /Users/hychen/github/hychen/timemapper/views/index.html:14
 msgid "It's free and easy to use"
@@ -289,4 +289,20 @@ msgstr ""
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/edit.html:10
 msgid "Edit your "
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dashboard.html:3
+msgid "Dashboard"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dashboard.html:8
+msgid "Hi there"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dashboard.html:13
+msgid "Create a new Timeline or TimeMap"
+msgstr ""
+
+#: /Users/hychen/github/hychen/timemapper/views/dashboard.html:17
+msgid "Your Existing TimeMaps"
 msgstr ""

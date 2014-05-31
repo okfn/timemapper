@@ -1,7 +1,7 @@
 ;var json_locale_data = {
    "messages": {
       "": {
-         "Project-Id-Version": " PACKAGE VERSION\nPOT-Creation-Date: 2014-05-30 18:08+0000\nPO-Revision-Date: 2014-05-30 21:10+0800\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nLanguage-Team: English\nLanguage: en_US\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
+         "Project-Id-Version": " PACKAGE VERSION\nPOT-Creation-Date: 2014-05-31 06:17+0000\nPO-Revision-Date: 2014-05-30 21:10+0800\nLast-Translator: 陳信屹 <ossug.hychen@gmail.com>\nLanguage-Team: English\nLanguage: en_US\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\n"
       },
       "It's free and easy to use": [
          null,
@@ -208,6 +208,22 @@
          ""
       ],
       "Edit your ": [
+         null,
+         ""
+      ],
+      "Dashboard": [
+         null,
+         ""
+      ],
+      "Hi there": [
+         null,
+         ""
+      ],
+      "Create a new Timeline or TimeMap": [
+         null,
+         ""
+      ],
+      "Your Existing TimeMaps": [
          null,
          ""
       ]
