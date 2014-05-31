@@ -49,7 +49,7 @@ msgstr "2. 綁定跟客製化"
 #: /Users/hychen/github/hychen/timemapper/views/index.html:61
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:24
 msgid "Connect your spreadsheet with TimeMapper and customize the results."
-msgstr "將TimeMapper跟你的Google綁在一起並且客製化結果。"
+msgstr "將TimeMapper跟你的Google試算表綁在一起並且客製化結果。"
 
 #: /Users/hychen/github/hychen/timemapper/views/index.html:66
 #: /Users/hychen/github/hychen/timemapper/views/dataview/create.html:29
@@ -410,7 +410,7 @@ msgid ""
 "you must \"publish\" your Google Spreadsheet: go to File Menu in your "
 "spreadsheet, then 'Publish to the Web', then click 'Start Publishing'. See"
 msgstr ""
-"到你的spreadsheet的檔案選單，然後'公佈到網路上'，然後點'開始公佈'. 這份教學會"
+"到你的試算表的檔案選單，然後'公佈到網路上'，然後點'開始公佈'. 這份教學會"
 "帶你走過一遍。"
 
 #: /Users/hychen/github/hychen/timemapper/views/dataview/form.html:16

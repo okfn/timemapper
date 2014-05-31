@@ -37,7 +37,7 @@
       ],
       "Connect your spreadsheet with TimeMapper and customize the results.": [
          null,
-         "將TimeMapper跟你的Google綁在一起並且客製化結果。"
+         "將TimeMapper跟你的Google試算表綁在一起並且客製化結果。"
       ],
       "3. Publish, Embed and Share": [
          null,
@@ -289,7 +289,7 @@
       ],
       "you must \"publish\" your Google Spreadsheet: go to File Menu in your spreadsheet, then 'Publish to the Web', then click 'Start Publishing'. See": [
          null,
-         "到你的spreadsheet的檔案選單，然後'公佈到網路上'，然後點'開始公佈'. 這份教學會帶你走過一遍。"
+         "到你的試算表的檔案選單，然後'公佈到網路上'，然後點'開始公佈'. 這份教學會帶你走過一遍。"
       ],
       "the FAQ below": [
          null,
