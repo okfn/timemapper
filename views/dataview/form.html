@@ -27,7 +27,7 @@
             name="title"
             class="input span6"
             required=""
-            placeholder="Title for your View" />
+            placeholder="{{ gettext('Title for your View') }}" />
         </div>
       </div>
       {% if currentUser %}
@@ -40,7 +40,7 @@
               placeholder=""
               required=""
               pattern="[a-z0-9-]+"
-              title="The slug needs to be 'url-usable' and so must be lowercase containing only alphanumeric characters and '-'"
+              title="{{ gettext('The slug needs to be \'url-usable\' and so must be lowercase containing only alphanumeric characters and \'-\'') }}"
               />
           </div>
           <span class="help-block">{{ gettext('The url of your new timemap. This must be different from the name for any of your existing timemaps. Choose wisely as this is hard to change!') }}</span>
