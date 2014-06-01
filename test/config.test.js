@@ -41,7 +41,9 @@ describe('config', function() {
     assert.equal(config.get('twitter:key'), 'x');
     assert.equal(config.get('twitter:secret'), 'x');
     assert.equal(config.get('twitter:url'), 'x');
-
+    assert.equal(config.get('s3:key'), 'x');
+    assert.equal(config.get('s3:secret'), 'x');
+    assert.equal(config.get('s3:bucket'), 'x');
     done();
   });
 });
