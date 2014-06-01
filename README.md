@@ -225,6 +225,7 @@ Contributors include:
 
 * Rufus Pollock <http://rufuspollock.org/> (Open Knowledge)
 * Dan Wilson -  <https://github.com/djw>
+* Chen Hsin-Yi - <https://github.com/hychen>
 
 We also use a whole bunch of fantastic open-source libraries, including:
 
