@@ -217,6 +217,23 @@ As Bob (? may need to be logged in) I want to "star" a Viz I come across so that
 - 2 types of data source - gists as well as google docs
   - data package structure in gists!
 
-# History
+# License, Contributors and History
+
+This is an open-source project licensed under the MIT License - see `LICENSE` file for details.
+
+Contributors include:
+
+* Rufus Pollock <http://rufuspollock.org/> (Open Knowledge)
+* Dan Wilson -  <https://github.com/djw>
+
+We also use a whole bunch of fantastic open-source libraries, including:
+
+* <a href="http://timeline.verite.co/">TimelineJS</a>
+* <a href="http://okfnlabs.org/recline/">ReclineJS</a>
+* <a href="http://leafletjs.com/">Leaflet</a>
+* <a href="http://backbonejs.org/">Backbone</a>
+* <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>
 
 First version was Microfacts / Weaving History <http://weavinghistory.org>
+which ran from 2007-2010.
+
