@@ -2,18 +2,18 @@
 
 {% block bodyclass %}edit{% endblock %}
 
-{% block title %}Edit - {{dataview.title}}{% endblock %}
+{% block title %}{{ gettext('Edit - ') }}{{dataview.title}}{% endblock %}
 
 {% block content %}
 <div class="page-header">
   <h1>
-    Edit your Time<span class="brand-ext">Map</span>
+    {{ gettext("Edit your ") }}Time<span class="brand-ext">Map</span>
   </h1>
   <form class="js-dataview-edit form-horizontal" action="" method="POST">
     {% include 'dataview/form.html' %}
     <div class="control-group">
       <div class="controls">
-        <button type="submit" class="btn btn-primary js-submit">Update &raquo;</button>
+        <button type="submit" class="btn btn-primary js-submit">{{ gettext('Update') }} &raquo;</button>
       </div>
     </div>
   </form>

@@ -1,5 +1,6 @@
 var express = require('express')
   , nunjucks = require('nunjucks')
+  , i18n = require('i18n-abide')
   , config = require('./lib/config.js')
   , passport = require('passport')
   , TwitterStrategy = require('passport-twitter').Strategy
@@ -14,6 +15,14 @@ var app = express();
 // Configuration
 app.configure(function(){
   app.set('views', __dirname + '/views');
+  app.use( i18n.abide({
+    supported_languages: [
+      "en-US" , "zh-TW"
+    ],
+    default_lang: "en-US",
+    translation_directory: "locale",
+    locale_on_url: true
+  }));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
@@ -27,20 +36,22 @@ app.configure(function(){
 var env = new nunjucks.Environment(new nunjucks.FileSystemLoader('views'));
 env.express(app);
 
+
+
 app.configure('production', function(){
-  app.use(express.errorHandler()); 
+  app.use(express.errorHandler());
 });
 
 app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
 app.configure('testuser', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
 app.configure('test', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
   // TODO: repeats test/base.js (have to because runs independently of base.js for tests ...)
   var dbName = 'hypernotes-test-njs';
   config.set('database:name', dbName);
@@ -56,7 +67,7 @@ function getFlashMessages(req) {
     , types = Object.keys(messages)
     , len = types.length
     , result = [];
-  
+
   for (var i = 0; i < len; ++i) {
     var type = types[i]
       , msgs = messages[type];
@@ -76,14 +87,14 @@ function getFlashMessages(req) {
 //     return getFlashMessages(req);
 //   }
 // });
-// 
+//
 // app.helpers({
 //   distanceOfTimeInWords: util.distanceOfTimeInWords
 // });
 
 app.all('*', function(req, res, next) {
   function setup(req) {
-    app.locals.currentUser = req.user ? req.user.toJSON() : null; 
+    app.locals.currentUser = req.user ? req.user.toJSON() : null;
     next();
   }
   if (config.get('test:testing') === true && config.get('test:user')) {
@@ -120,7 +131,7 @@ app.get('/view', routes.preview);
 
 app.get('/account/login', passport.authenticate('twitter'));
 
-app.get('/account/auth/twitter/callback', 
+app.get('/account/auth/twitter/callback',
       passport.authenticate('twitter', { successRedirect: '/',
                                              failureRedirect: '/login' }));
 
@@ -199,4 +210,3 @@ app.post('/api/v1/dataview', api.createDataView);
 app.post('/api/v1/dataview/:userId/:name', api.updateDataView);
 
 exports.app = app;
-

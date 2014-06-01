@@ -1,33 +1,33 @@
 {% extends "base.html" %}
 
-{% block bodyclass %}create{% endblock %}
+{% block bodyclass %}{{ gettext('create') }}{% endblock %}
 
 {% block content %}
 <div class="page-header">
   <h1>
-    Create your Time<span class="brand-ext">Map</span>
+    {{ gettext("Create your") }} Time<span class="brand-ext">Map</span>
   </h1>
 </div>
 
 <div class="overview">
-  <h2>It's as easy as 1-2-3!</h2>
+  <h2>{{ gettext("It's as easy as 1-2-3!") }}</h2>
   <div class="row">
     <div class="span4">
       <div class="well">
-        <h3>1. Create a Spreadsheet</h3>
-        <p>Add your dates and places to a Google Spreadsheet.</p>
+        <h3>{{ gettext("1. Create a Spreadsheet") }}</h3>
+        <p>{{ gettext("Add your dates and places to a Google Spreadsheet.") }}</p>
       </div>
     </div>
     <div class="span4">
       <div class="well">
-        <h3>2. Connect and Customize</h2>
-        <p>Connect your spreadsheet with TimeMapper and customize the results.</p>
+        <h3>{{ gettext("2. Connect and Customize") }}</h2>
+        <p>{{ gettext("Connect your spreadsheet with TimeMapper and customize the results.") }}</p>
       </div>
     </div>
     <div class="span4">
       <div class="well">
-        <h3>3. Publish, Embed and Share</h3>
-        <p>Publish your TimeMap at your own personal url, then share or embed on your site.</p>
+        <h3>{{ gettext("3. Publish, Embed and Share") }}</h3>
+        <p>{{ gettext("Publish your TimeMap at your own personal url, then share or embed on your site.") }}</p>
       </div>
     </div>
   </div>
@@ -37,24 +37,24 @@
 
 <div class="instructions">
 
-<h2>Let's Get Started &hellip;</h2>
+<h2>{{ gettext("Let's Get Started") }} &hellip;</h2>
 <div id="create" class="row">
   <div class="span8 offset2"><div class="well">
     <h3>
-      1. Create your Spreadsheet
+      {{ gettext("1. Create your Spreadsheet") }}
       <br />
-      <small>(if you don't have one already!)</small>
+      <small>({{ gettext("if you don't have one already!") }})</small>
     </h3>
 
     <div class="row">
       <div class="span6 offset1">
-        <p>Get started by copying <strong><a href="https://docs.google.com/a/okfn.org/spreadsheet/ccc?key=0AqR8dXc6Ji4JdFRNOTVYYTRqTmh6TUNNd3U2X2pKMGc#gid=0">this template</a></strong>. For more details or help with problems check out the <a href="#faq">FAQ below</a>.</p>
+        <p>{{ gettext('Get started by copying <strong><a href="https://docs.google.com/a/okfn.org/spreadsheet/ccc?key=0AqR8dXc6Ji4JdFRNOTVYYTRqTmh6TUNNd3U2X2pKMGc#gid=0"></a></strong>. For more details or help with problems check out the <a href="#faq">FAQ below</a>.</p>') }}
 
         <div class="alert alert-success" style="margin-top: 30px;">
-          Impatient to try this out but don't have a spreadsheet yet?<br />
+          {{ gettext("Impatient to try this out but don't have a spreadsheet yet?") }}<br />
         <a href="#" class="js-demo-sheet" data-url="https://docs.google.com/spreadsheet/ccc?key=0Al6mO9_3Hr2PdGZnRjEwUWxOekhreTNNZEFEMWRZbkE"
           >
-          Click here to use a pre-prepared example &raquo;</a>
+          {{ gettext("Click here to use a pre-prepared example") }} &raquo;</a>
         </div>
       </div>
     </div>
@@ -65,19 +65,19 @@
   <div class="span8 offset2">
     <div class="well">
       <h3>
-        2. Connect and Customize
+        {{ gettext('2. Connect and Customize') }}
       </h3>
       {% if not currentUser %}
       <div class="alert alert-warning" style="width: 80%; margin: auto; margin-bottom: 15px; text-align: center;">
-        ALERT: you are <strong>not signed in</strong> so your timemap will be created <strong>'anonymously'</strong>.
+        {{ gettext("ALERT: you are <strong>not signed in</strong> so your timemap will be created <strong>'anonymously'</strong>.") }}
         <br />
         <br />
-        If want to 'own' your timemap you should <a href="/account/login">sign in (or sign-up) now &raquo;</a>
+        {{ gettext('If want to \'own\' your timemap you should <a href="/account/login">sign in (or sign-up) now &raquo;</a>') }}
         <br />
-        (Sign-up takes a few seconds with your  <a href="/account/login">twitter account &raquo;</a>)
+        {{ gettext('(Sign-up takes a few seconds with your  <a href="/account/login">twitter account &raquo;</a>)') }}
         <br />
         <br />
-        Find out more on anonymous vs logged in - <a href="#faq-anon">read FAQ below &raquo;</a>
+        {{ gettext('Find out more on anonymous vs logged in') }} - <a href="#faq-anon">{{ gettext('read FAQ below') }} &raquo;</a>
       </div>
       {% endif %}
 
@@ -85,11 +85,11 @@
         {% include 'dataview/form.html' %}
 
         <h3>
-          3. Let's Publish It!
+          {{ gettext("3. Let's Publish It!") }}
         </h3>
         <div class="control-group">
           <div class="controls">
-            <button type="submit" class="btn btn-primary js-submit">Publish &raquo;</button>
+            <button type="submit" class="btn btn-primary js-submit">{{ gettext('Publish') }} &raquo;</button>
           </div>
         </div>
       </form>
@@ -102,43 +102,43 @@
 <hr />
 
 <div id="faq" class="faq">
-  <h2>FAQ</h2>
-  <h3 id="faq-anon">Can I make a timemap anonymously?</h3>
-  <p>Yes! You do not need an account to create a timemap - they can be created anonymously and will have all the same features and shareability of normal timemaps. However, there are some benefits of creating an account and creating your timemap whilst logged in:</p>
+  <h2>{{ gettext('FAQ') }}</h2>
+  <h3 id="faq-anon">{{ gettext('Can I make a timemap anonymously?') }}</h3>
+  <p>{{ gettext('Yes! You do not need an account to create a timemap - they can be created anonymously and will have all the same features and shareability of normal timemaps. However, there are some benefits of creating an account and creating your timemap whilst logged in:') }}</p>
   <ul>
-    <li>You'll get a nice URL for your timemap at <code>/your-username/a-name-you-choose-for-your-timemap</code></li>
-    <li>All of your timemaps will be nicely listed at <code>/your-username</code></li>
-    <li>As you'll be identified as the owner you'll be able to re-configure (or delete) your timemap later</li>
+    <li>{{ gettext("You'll get a nice URL for your timemap at <code>/your-username/a-name-you-choose-for-your-timemap</code>") }}</li>
+    <li>{{ gettext('All of your timemaps will be nicely listed at <code>/your-username</code>') }}</li>
+    <li>{{ gettext("As you'll be identified as the owner you'll be able to re-configure (or delete) your timemap later") }}</li>
   </ul>
 
-  <p>If you do want an account, signup is very easy &ndash; <a href="/account/login">it takes just 15 seconds, is very secure, and uses your Twitter account</a> (no need to think up a new username and password!).</p>
+  <p>{{ gettext('If you do want an account, signup is very easy') }} &ndash; <a href="/account/login">{{ gettext('it takes just 15 seconds, is very secure, and uses your Twitter account') }}</a> {{ gettext('(no need to think up a new username and password!).') }}</p>
 
-  <h3 id="faq-publish">&quot;Publish&quot; Your Spreadsheet</h3>
-  <p>Go to File Menu in your spreadsheet, then 'Publish to the Web', then click 'Start Publishing'. This tutorial walks you through.</p>
+  <h3 id="faq-publish">&quot;{{ gettext('Publish') }}&quot; {{ gettext('Your Spreadsheet') }}</h3>
+  <p>{{ gettext("Go to File Menu in your spreadsheet, then 'Publish to the Web', then click 'Start Publishing'. This tutorial walks you through.") }}</p>
 
   <iframe width="480" height="360" src="//www.youtube.com/embed/lCpilatN9yE?rel=0" frameborder="0" allowfullscreen></iframe>
 
-  <h3>What URL do I use to connect my spreadsheet?</h3>
-  <p>Use the URL you get by clicking your spreadsheet's <strong>Share</strong> button and copying the <strong>Link to share</strong> box.</p>
+  <h3>{{ gettext("What URL do I use to connect my spreadsheet?") }}</h3>
+  <p>{{ gettext("Use the URL you get by clicking your spreadsheet's <strong>Share</strong> button and copying the <strong>Link to share</strong> box.") }}</p>
 
-  <p>Note that although you must also <strong>Publish to the web</strong>, TimeMapper does not use the URL found in the publication pop-up.</p>
-  
-  <h3>What structure must the spreadsheet have?</h3>
-  <p>TimeMapper recognizes certain columns with specific names. The best overview of these columns is <a href="https://docs.google.com/a/okfn.org/spreadsheet/ccc?key=0AqR8dXc6Ji4JdFRNOTVYYTRqTmh6TUNNd3U2X2pKMGc#gid=0">the template</a>, which has rows of instructions and examples.</p>
+  <p>{{ gettext("Note that although you must also <strong>Publish to the web</strong>, TimeMapper does not use the URL found in the publication pop-up.") }}</p>
 
-  <p>Not all fields are required. The only required fields are <b>Title</b> and <b>Start</b> fields, and even <b>Start</b> can be omitted if you just want a map. Note that you can add any number of other columns beyond those that TimeMapper uses.</p>
+  <h3>{{ gettext("What structure must the spreadsheet have?") }}</h3>
+  <p>{{ gettext('TimeMapper recognizes certain columns with specific names. The best overview of these columns is <a href="https://docs.google.com/a/okfn.org/spreadsheet/ccc?key=0AqR8dXc6Ji4JdFRNOTVYYTRqTmh6TUNNd3U2X2pKMGc#gid=0">the template</a>, which has rows of instructions and examples.') }}</p>
 
-  <h3>How do I format dates?</h3>
-  <p>The preferred date format is ISO 8601 (YYYY-MM-DD), but TimeMapper recognizes most types of date.</p>
+  <p>{{ gettext('Not all fields are required. The only required fields are <b>Title</b> and <b>Start</b> fields, and even <b>Start</b> can be omitted if you just want a map. Note that you can add any number of other columns beyond those that TimeMapper uses.') }}</p>
 
-  <p>If a date's month and day are ambiguous (e.g. is 08-03-1798 UK notation for 8 March, or is it US notation for 3 August?), by default, the first number will be interpreted as the month. You can change this by clicking the <b>edit</b> button in the top right corner of your TimeMap's display and selecting between US- and non-US-style dates.</p>
+  <h3>{{ gettext('How do I format dates?') }}</h3>
+  <p>{{ gettext('The preferred date format is ISO 8601 (YYYY-MM-DD), but TimeMapper recognizes most types of date.') }}</p>
 
-  <h3>What kinds of geodata are supported?</h3>
-  <p>The <b>Location</b> column accepts two types of geodata: latitude-longitude coordinates or GeoJSON objects.</p>
-  
-  <p>Coordinates must be in the format <emph>lat, long</emph> (e.g. <emph>37.5, -122</emph>). The <a href="https://docs.google.com/a/okfn.org/spreadsheet/ccc?key=0AqR8dXc6Ji4JdFRNOTVYYTRqTmh6TUNNd3U2X2pKMGc#gid=0">spreadsheet template</a> includes a formula which automatically looks up coordinates corresponding to human-readable place names in the <b>Place</b> column. This formula is explained in a School of <a href="http://schoolofdata.org/2013/02/19/geocoding-part-ii-geocoding-data-in-a-google-docs-spreadsheet/">Data blog post</a>.</p>
+  <p>{{ gettext("If a date's month and day are ambiguous (e.g. is 08-03-1798 UK notation for 8 March, or is it US notation for 3 August?), by default, the first number will be interpreted as the month. You can change this by clicking the <b>edit</b> button in the top right corner of your TimeMap's display and selecting between US- and non-US-style dates.") }}</p>
 
-  <p>Advanced users who want to go beyond simple coordinates can use GeoJSON feature objects. For an example, see this blog post on adding <a href="http://schoolofdata.org/2013/10/31/geocoding-geojson-boundaries-koordinates/">GeoJSON country boundaries</a> to spreadsheets.</p>  
+  <h3>{{ gettext('What kinds of geodata are supported?') }}</h3>
+  <p>{{ gettext('The <b>Location</b> column accepts two types of geodata: latitude-longitude coordinates or GeoJSON objects.') }}</p>
+
+  <p>{{ gettext('Coordinates must be in the format <emph>lat, long</emph> (e.g. <emph>37.5, -122</emph>). The <a href="https://docs.google.com/a/okfn.org/spreadsheet/ccc?key=0AqR8dXc6Ji4JdFRNOTVYYTRqTmh6TUNNd3U2X2pKMGc#gid=0">spreadsheet template</a> includes a formula which automatically looks up coordinates corresponding to human-readable place names in the <b>Place</b> column. This formula is explained in a School of <a href="http://schoolofdata.org/2013/02/19/geocoding-part-ii-geocoding-data-in-a-google-docs-spreadsheet/">Data blog post</a>.') }}</p>
+
+  <p>{{ gettext('Advanced users who want to go beyond simple coordinates can use GeoJSON feature objects. For an example, see this blog post on adding <a href="http://schoolofdata.org/2013/10/31/geocoding-geojson-boundaries-koordinates/">GeoJSON country boundaries</a> to spreadsheets.') }}</p>
 
 </div>
 
