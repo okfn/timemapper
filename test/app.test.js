@@ -9,10 +9,13 @@ var fs = require('fs')
   , base = require('./base');
   ;
 
-var app = require('../app.js').app;
-
 // make sure we are in testing mode
 config.set('test:testing', true);
+config.set('twitter:key', 'test');
+config.set('twitter:secret', 'test');
+config.set('database:backend', 'fs');
+
+var app = require('../app.js').app;
 
 describe('API', function() {
   before(function(done) {
