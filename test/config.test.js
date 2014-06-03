@@ -24,6 +24,8 @@ describe('config', function() {
     done();
   });
   it('should use environment variable if it is given. .', function(done) {
+    var bk_process = process
+    process = {'env': {}}
     process.env['DATABASE_PATH'] = 'x'
     process.env['DATABASE_BACKEND'] = 'x'
     process.env['EXPRESS_PORT'] = 'x'
@@ -46,6 +48,7 @@ describe('config', function() {
     assert.equal(config.get('s3:key'), 'x');
     assert.equal(config.get('s3:secret'), 'x');
     assert.equal(config.get('s3:bucket'), 'x');
+    process = bk_process;
     done();
   });
 });
