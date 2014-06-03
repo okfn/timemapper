@@ -6,25 +6,25 @@
     <div class="hero-unit">
       <h1>
         Time<span class="brand-ext">Mapper</span>
-        <small>Elegant timelines and maps created in seconds</small>
+        <small>{{ gettext('Elegant timelines and maps created in seconds') }}</small>
       </h1>
       <br />
       <p>
         <a href="/create" class="btn btn-large btn-primary">
-          It's free and easy to use &ndash;
-          Get started now &raquo;
+          {{ gettext("It's free and easy to use") }} &ndash;
+          {{ gettext("Get started now") }} &raquo;
         </a>
       </p>
     </div>
 
     <div class="">
-      <h2 style="text-align: center;">Watch the 1 minute Tutorial</h2>
+      <h2 style="text-align: center;">{{ gettext("Watch the 1 minute Tutorial") }}</h2>
       <iframe width="480" height="360" src="//www.youtube.com/embed/lCpilatN9yE?rel=0" frameborder="0" allowfullscreen style="display: block; margin: auto;"></iframe>
     <div>
 
     <div class="examples row">
       <div class="span12">
-        <h2 style="text-align: center;">Examples</h2>
+        <h2 style="text-align: center;">{{ gettext("Examples") }}</h2>
       </div>
       <div class="span4">
         <h4><a href="/rufuspollock/major-battles-napoleonic-wars">Battles in the Napoleonic Wars</a></h4>
@@ -47,31 +47,31 @@
     </div>
 
 
-        <h2 style="text-align: center; margin: 30px;">How It Works</h2>
+        <h2 style="text-align: center; margin: 30px;">{{ gettext("How It Works") }}</h2>
         <div class="row instructions">
           <div class="span4">
             <div class="well">
-              <h3>1. Create a Spreadsheet</h3>
-              <p>Add your dates and places to a Google Spreadsheet.</p>
+              <h3>{{ gettext("1. Create a Spreadsheet") }}</h3>
+              <p>{{ gettext("Add your dates and places to a Google Spreadsheet.") }}</p>
             </div>
           </div>
           <div class="span4">
             <div class="well">
-              <h3>2. Connect and Customize</h2>
-              <p>Connect your spreadsheet with TimeMapper and customize the results.</p>
+              <h3>{{ gettext("2. Connect and Customize") }}</h2>
+              <p>{{ gettext("Connect your spreadsheet with TimeMapper and customize the results.") }}</p>
             </div>
           </div>
           <div class="span4">
             <div class="well">
-              <h3>3. Publish, Embed and Share</h3>
-              <p>Publish your TimeMap at your own personal url, then share or embed on your site.</p>
+              <h3>{{ gettext("3. Publish, Embed and Share") }}</h3>
+              <p>{{ gettext("Publish your TimeMap at your own personal url, then share or embed on your site.") }}</p>
             </div>
           </div>
         </div>
 
-        <h2 style="text-align: center; margin: 30px 0;" id="credits">Credits</h2>
+        <h2 style="text-align: center; margin: 30px 0;" id="credits">{{ gettext("Credits") }}</h2>
         <p style="width: 500px; margin: auto;">
-        TimeMapper is an open-source project of <a href="http://okfnlabs.org/">Open Knowledge Foundation Labs</a>. It is possible thanks to a set of awesome open-source components including <a href="http://timeline.verite.co/">TimelineJS</a>, <a href="http://okfnlabs.org/recline/">ReclineJS</a>, <a href="http://leafletjs.com/">Leaflet</a>, <a href="http://backbonejs.org/">Backbone</a> and <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>. You can find the <a href="https://github.com/okfn/timemapper">full open-source source for TimeMapper on GitHub here</a>.
+        {{ gettext('TimeMapper is an open-source project of <a href="http://okfnlabs.org/">Open Knowledge Foundation Labs</a>.') }} {{ gettext('It is possible thanks to a set of awesome open-source components including <a href="http://timeline.verite.co/">TimelineJS</a>, <a href="http://okfnlabs.org/recline/">ReclineJS</a>, <a href="http://leafletjs.com/">Leaflet</a>, <a href="http://backbonejs.org/">Backbone</a> and <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>. You can find the <a href="https://github.com/okfn/timemapper">full open-source source for TimeMapper on GitHub here') }}</a>.
         </p>
       </div>
 {% endblock %}

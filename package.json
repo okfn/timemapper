@@ -6,6 +6,7 @@
   , "dependencies": {
       "express": "~3.2.6"
     ,  "nunjucks": "~0.1.8"
+    ,  "i18n-abide": ""
     , "nconf": "0.5.1"
     , "passport": ""
     , "passport-twitter": ""
@@ -19,6 +20,10 @@
     , "wrench": ""
   }
   , "scripts": {
-    "test": "mocha tests/"
+    "test": "./node_modules/.bin/mocha",
+    "gen-pot": "./node_modules/.bin/extract-pot -l po  -t jinja  -f html views",
+    "merge-po": "./node_modules/i18n-abide/bin/merge-po.sh po",
+    "update-po": "npm run gen-pot && npm run merge-po",
+    "gen-po-json": "./locale/compile-msg-json.sh"
   }
 }

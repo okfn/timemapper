@@ -10,3 +10,4 @@ settings.json*
 .env
 test/tmpdb/*
 db/*
+test/db

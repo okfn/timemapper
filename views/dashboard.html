@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %}{{ gettext('Dashboard') }}{% endblock %}
 {% block bodyclass %}dashboard{% endblock %}
 
 {% block content %}
   <div class="page-header">
-    <h1>Hi there {{account.fullname}}</h1>
+    <h1>{{ gettext('Hi there') }} {{account.fullname}}</h1>
   </div>
   
   <div class="menu">
     <p>
-      <a href="/create" class="btn btn-large btn-success">Create a new Timeline or TimeMap &raquo;</a>
+      <a href="/create" class="btn btn-large btn-success">{{ gettext('Create a new Timeline or TimeMap') }} &raquo;</a>
     </p>
   </div>
 
-  <h2>Your Existing TimeMaps</h2>
+  <h2>{{ gettext('Your Existing TimeMaps') }}</h2>
   <ul class="view-summary-list">
   {% for view in views %}
     <li>

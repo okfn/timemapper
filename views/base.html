@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ lang }}" dir="{{ lang_dir }}">
 <head>
   <meta charset="utf-8" />
   <title>
     {% block title%}{{title}}{% endblock %}
-    - TimeMapper - Make Timelines and TimeMaps fast!
-    - from the Open Knowledge Foundation Labs
+    - {{ gettext('TimeMapper - Make Timelines and TimeMaps fast!') }}
+    - {{ gettext('from the Open Knowledge Foundation Labs') }}
   </title>
-  <meta name="description" content="TimeMapper - Make Timelines and TimeMaps fast! - from the Open Knowledge Foundation Labs" />
+  <meta name="description" content="{{ gettext('TimeMapper - Make Timelines and TimeMaps fast! - from the Open Knowledge Foundation Labs') }}" />
 
   <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
   <!--[if lt IE 9]>
@@ -34,7 +34,7 @@
   <iframe src="http://assets.okfn.org/themes/okfn/okf-panel.html"></iframe>
 </div>
 <div class="okfn-ribbon">
-  <a data-toggle="collapse" data-target="#okf-panel" href="http://okfnlabs.org/" target="_blank">An Open Knowledge Foundation Labs Project</a>
+  <a data-toggle="collapse" data-target="#okf-panel" href="http://okfnlabs.org/" target="_blank">{{ gettext('An Open Knowledge Foundation Labs Project') }}</a>
 </div>
 <div class="navbar">
   <div class="navbar-inner">
@@ -49,11 +49,11 @@
       <ul class="nav pull-right">
         <li class="divider-vertical"></li>
         <li>
-          <a href="http://okfnlabs.org/contact">Contact Us</a>
+          <a href="http://okfnlabs.org/contact">{{ gettext('Contact Us') }}</a>
         </li>
         <li class="divider-vertical"></li>
         <li>
-          <a href="https://github.com/okfn/timemapper">Report an Issue</a>
+          <a href="https://github.com/okfn/timemapper">{{ gettext('Report an Issue') }}</a>
         </li>
         {% if currentUser %} 
         <li class="divider-vertical"></li>
@@ -77,12 +77,12 @@
 <div class="footer">
   {% block footer %}
 <div class="container">
-  The <a href="http://timemapper.okfnlabs.org/"><strong>TimeMapper</strong></a> is a project of <a href="http://okfnlabs.org/">Open Knowledge Foundation Labs</a> &ndash; <a href="http://okfnlabs.org/contact/">Contact Us</a>.
-  TimeMapper is open-source
+  {{ gettext('The <a href="http://timemapper.okfnlabs.org/"><strong>TimeMapper</strong></a> is a project of <a href="http://okfnlabs.org/">Open Knowledge Foundation Labs</a>') }} &ndash; <a href="http://okfnlabs.org/contact/">{{ gettext('Contact Us') }}</a>.
+  {{ gettext('TimeMapper is open-source') }}
   &ndash; 
-  <a href="https://github.com/okfn/timeliner">Source Code</a>
+  <a href="https://github.com/okfn/timeliner">{{ gettext('Source Code') }}</a>
   &ndash;
-  <a href="https://github.com/okfn/timeliner#copyright-and-license">Copyright &amp; License</a>.
+  <a href="https://github.com/okfn/timeliner#copyright-and-license">{{ gettext('Copyright') }} &amp; {{ gettext('License') }}</a>.
 </div>
   {% endblock %}
 </div>

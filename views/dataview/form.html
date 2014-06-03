@@ -1,10 +1,10 @@
   <fieldset>
     <div class="control-group">
-      <label for="source" class="control-label">Data Source</label>
+      <label for="source" class="control-label">{{ gettext('Data Source') }}</label>
       <div class="controls">
         <p>
-          <button title="Select from Google Drive" class="gdrive-import btn"><i class="gdrive"></i> Select from Your Google Drive</button>
-          <span class="help-block">(If nothing happens check you are not blocking popups ...)</span>
+          <button title="Select from Google Drive" class="gdrive-import btn"><i class="gdrive"></i> {{ gettext('Select from Your Google Drive') }}</button>
+          <span class="help-block">({{ gettext('If nothing happens check you are not blocking popups ...') }})</span>
         </p>
         <input
           type="url"
@@ -12,14 +12,14 @@
           name="url"
           required=""
           class="input span6"
-          placeholder="Or paste the Google Spreadsheet URL directly" />
-          <span class="help-block"><strong>Important</strong>: you must "publish" your Google Spreadsheet: go to File Menu in your spreadsheet, then 'Publish to the Web', then click 'Start Publishing'. See <a href="#faq-publish">the FAQ below</a> for more details</span>.
+          placeholder="{{ gettext('Or paste the Google Spreadsheet URL directly') }}" />
+          <span class="help-block"><strong>{{ gettext('Important') }}</strong>: {{ gettext("you must \"publish\" your Google Spreadsheet: go to File Menu in your spreadsheet, then 'Publish to the Web', then click 'Start Publishing'. See") }} <a href="#faq-publish">{{ gettext('the FAQ below') }}</a> {{ gettext('for more details') }}</span>.
 
       </div>
     </div>
     <div class="stage2">
       <div class="control-group">
-        <label for="title" class="control-label">Title</label>
+        <label for="title" class="control-label">{{ gettext('Title') }}</label>
         <div class="controls">
           <input
             type="text"
@@ -27,12 +27,12 @@
             name="title"
             class="input span6"
             required=""
-            placeholder="Title for your View" />
+            placeholder="{{ gettext('Title for your View') }}" />
         </div>
       </div>
       {% if currentUser %}
       <div class="control-group">
-        <label for="slug" class="control-label">Slug</label>
+        <label for="slug" class="control-label">{{ gettext('Slug') }}</label>
         <div class="controls">
           <div class="input-prepend">
             <span class="add-on">/{{currentUser.id}}/</span>
@@ -40,17 +40,17 @@
               placeholder=""
               required=""
               pattern="[a-z0-9-]+"
-              title="The slug needs to be 'url-usable' and so must be lowercase containing only alphanumeric characters and '-'"
+              title="{{ gettext('The slug needs to be \'url-usable\' and so must be lowercase containing only alphanumeric characters and \'-\'') }}"
               />
           </div>
-          <span class="help-block">The url of your new timemap. This must be different from the name for any of your existing timemaps. Choose wisely as this is hard to change!</span>
+          <span class="help-block">{{ gettext('The url of your new timemap. This must be different from the name for any of your existing timemaps. Choose wisely as this is hard to change!') }}</span>
         </div>
       </div>
     </div>
     {% endif %}
     <div class="control-group">
       <label class="control-label">
-        Type of Data View
+        {{ gettext('Type of Data View') }}
       </label>
       <div class="controls">
         {% for val in ['timemap', 'timeline', 'map'] %}
@@ -67,15 +67,15 @@
         </label>
         {% endfor %}
         <span class="help-block">
-          Choose the visualization type of your data - TimeMap (Timeline and Map combined), Timeline or Map.
+          {{ gettext('Choose the visualization type of your data - TimeMap (Timeline and Map combined), Timeline or Map.') }}
         </span>
       </div>
     </div>
 
-    <h4 style="text-align: center;">More Options</h4>
+    <h4 style="text-align: center;">{{ gettext('More Options') }}</h4>
     <div class="control-group">
       <label class="control-label">
-        Ambiguous Date Handling
+        {{ gettext('Ambiguous Date Handling') }}
       </label>
       <div class="controls">
         <label class="radio">
@@ -87,7 +87,7 @@
             checked="true"
             {% endif %}
             />
-          <strong>mm</strong>/dd/yyyy &ndash; month first (US style)
+          <strong>mm</strong>/dd/yyyy &ndash; {{ gettext("month first (US style)") }}
         </label>
         <label class="radio">
           <input
@@ -98,18 +98,18 @@
             checked="true"
             {% endif %}
             />
-          <strong>dd</strong>/mm/yyyy &ndash; day first (non-US style)
+          <strong>dd</strong>/mm/yyyy &ndash; {{ gettext("day first (non-US style)") }}
         </label>
         <span class="help-block">
-          How to handle ambiguous dates like "05/08/2012" in source data (could be read as 5th August or 8th of May).
+          {{ gettext('How to handle ambiguous dates like "05/08/2012" in source data (could be read as 5th August or 8th of May).') }}
           <br />
-          If you do not have any dates formatted like this then you can ignore this!
+          {{ gettext('If you do not have any dates formatted like this then you can ignore this!') }}
         </span>
       </div>
     </div>
     <div class="control-group">
       <label class="control-label">
-        Start from
+        {{ gettext('Start from') }}
       </label>
       <div class="controls">
         {% for val in [['start', 'First event'], ['end', 'Last event'], ['today', 'Today']] %}
@@ -126,7 +126,7 @@
         </label>
         {% endfor %}
         <span class="help-block">
-          Where on the timeline should the user start.
+          {{ gettext('Where on the timeline should the user start.') }}
         </span>
       </div>
     </div>

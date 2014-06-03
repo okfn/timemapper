@@ -17,7 +17,7 @@ Install Node (>=0.8 suggested) and npm then checkout the code:
 Then install the dependencies:
 
     cd timemapper
-    npm install . 
+    npm install .
     # for some vendor modules
     git submodule init && git submodule update
 
@@ -104,7 +104,27 @@ Stored in datapackage.json following [Data Package spec][dp-spec]. Key points:
 [dp-spec]: http://data.okfn.org/standards/data-package
 [Recline]: http://okfnlabs.org/recline/
 
+## Translation info
 
+TimeMappers uses `i18n-abide` with `gettext`. 
+
+It currently supporte loclaes `en-US`, `zh-TW` locales.
+
+To update po files after modify `views/*.html`
+
+```
+$ npm run update-po
+```
+
+To re-compile translation json files.
+
+```
+$ npm run gen-po-json
+```
+
+for more details, please read [Mozilla - Localization in Action][localization-in-action].
+
+[localization-in-action]: https://hacks.mozilla.org/2013/04/localization-in-action-part-3-of-3-a-node-js-holiday-season-part-11/
 
 # User Stories
 
@@ -151,7 +171,7 @@ I want to "fork" someone elses visualization so that I can modify and extend it
 
 ## Listing and Admin
 
-[x] As Alice I want to list the "Vizs (viz?)" I've created 
+[x] As Alice I want to list the "Vizs (viz?)" I've created
 
 [ip] As Bob I want to know what I can do with this service before I sign up so that I know whether it is worth doing so
   - Some featured timemaps ...
@@ -197,7 +217,24 @@ As Bob (? may need to be logged in) I want to "star" a Viz I come across so that
 - 2 types of data source - gists as well as google docs
   - data package structure in gists!
 
-# History
+# License, Contributors and History
+
+This is an open-source project licensed under the MIT License - see `LICENSE` file for details.
+
+Contributors include:
+
+* Rufus Pollock <http://rufuspollock.org/> (Open Knowledge)
+* Dan Wilson -  <https://github.com/djw>
+* Chen Hsin-Yi - <https://github.com/hychen>
+
+We also use a whole bunch of fantastic open-source libraries, including:
+
+* <a href="http://timeline.verite.co/">TimelineJS</a>
+* <a href="http://okfnlabs.org/recline/">ReclineJS</a>
+* <a href="http://leafletjs.com/">Leaflet</a>
+* <a href="http://backbonejs.org/">Backbone</a>
+* <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>
 
 First version was Microfacts / Weaving History <http://weavinghistory.org>
+which ran from 2007-2010.
 
