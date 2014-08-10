@@ -17,15 +17,24 @@
   <h2>{{ gettext('Your Existing TimeMaps') }}</h2>
   <ul class="view-summary-list">
   {% for view in views %}
-    <li>
+    <li class="view-summary">
       <h3>
         <a href="/{{view.owner}}/{{view.name}}">
           {{view.title}} <small>({{view.name}})</small>
         </a>
       </h3>
+      <div class="actions">
+        <a class="btn btn-success btn-small" href="/{{view.owner}}/{{view.name}}/edit">
+            <i class="fa fa-pencil"></i> Edit</a>
+          <a class="btn btn-danger btn-small js-delete" href="#delete" data-owner="{{view.owner}}" data-name="{{view.name}}">
+          <i class="fa fa-trash-o"></i> Delete (Move to Trash)</a>
+      </div>
     </li>
   {% endfor %}
   </ul>
 </div>
-  
+{% endblock %}
+
+{% block extrabody %}
+  <script type="text/javascript" src="/js/dashboard.js"></script>
 {% endblock %}

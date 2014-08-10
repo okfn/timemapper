@@ -411,7 +411,10 @@ ul.view-summary-list {
   margin-bottom: 50px;
 }
 
-.view-summary-list ul li {
+ul.view-summary-list li {
+  border-bottom: solid 1px #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .view-summary-list h3:first-child {

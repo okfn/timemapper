@@ -26,7 +26,7 @@ describe('API', function() {
 
   it('Account GET', function(done) {
     request(app)
-      .get('/api/v1/account/' + 'tester')
+      .get('/api/account/' + 'tester')
       .end(function(err, res) {
         // console.log(res);
         assert.equal(res.body.email, undefined, 'Email should not be in Account object');
@@ -35,7 +35,7 @@ describe('API', function() {
   });
   it('DataView GET', function(done) {
     request(app)
-      .get('/api/v1/dataview/tester/napoleon')
+      .get('/api/dataview/tester/napoleon')
       .expect('Content-Type', /json/)
       .end(function(err, res) {
         // console.log(res);
@@ -46,7 +46,7 @@ describe('API', function() {
   });
   it('DataView Create Conflict if object with name already exists', function(done) {
     request(app)
-      .post('/api/v1/dataview/')
+      .post('/api/dataview/')
       .send({
         owner: 'tester',
         name: 'napoleon'
@@ -61,13 +61,14 @@ describe('API', function() {
       name: 'test-api-create'
     };
     request(app)
-      .post('/api/v1/dataview/')
+      .post('/api/dataview/')
       .send(data)
       .expect('Content-Type', /json/)
       .expect(401, done)
       ;
   });
-  var dataViewData = { owner: 'tester',
+  var dataViewData = {
+    owner: 'tester',
     name: 'test-api-create',
     title: 'My Test DataView',
     tmconfig: {
@@ -78,7 +79,7 @@ describe('API', function() {
   };
   it('DataView Create and Update OK', function(done) {
     request(app)
-      .post('/api/v1/dataview/')
+      .post('/api/dataview/')
       .send(dataViewData)
       .expect('Content-Type', /json/)
       .expect(200)
@@ -106,7 +107,7 @@ describe('API', function() {
     };
     var newobj = _.extend(obj.toJSON(), newData);
     request(app)
-      .post('/api/v1/dataview/tester/test-api-create')
+      .post('/api/dataview/tester/test-api-create')
       .send(newobj)
       .expect('Content-Type', /json/)
       .expect(200)
@@ -137,20 +138,50 @@ describe('API', function() {
   });
 //   it('Account Create': function(done) {
 //     test.expect(1);
-//     client.fetch('POST', '/api/v1/account', {id: 'new-test-user'}, function(res) {
+//     client.fetch('POST', '/api/account', {id: 'new-test-user'}, function(res) {
 //       test.equal(200, res.statusCode);
 //       test.done();
 //     });
 //   }
 //   , testAccountUpdate: function(test) {
 //     test.expect(2);
-//     client.fetch('PUT', '/api/v1/account/' + base.fixturesData.user.id, {id: 'tester', name: 'my-new-name'}, function(res) {
+//     client.fetch('PUT', '/api/account/' + base.fixturesData.user.id, {id: 'tester', name: 'my-new-name'}, function(res) {
 //       test.equal(401, res.statusCode);
 //       test.deepEqual(res.bodyAsObject, {"error":"Access not allowed","status":401});
 //       test.done();
 //     });
 //   }
 });
+
+describe('API Delete', function() {
+  before(function(done) {
+    base.resetDb();
+    done();
+  });
+
+  it('Deletes OK', function(done) {
+    request(app)
+      .del('/api/dataview/tester/napoleon')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end(function(err, res) {
+        var obj = dao.DataView.create({
+          owner: 'tester',
+          name: 'napoleon'
+        });
+        obj.fetch(function(err) {
+          assert(!err);
+          assert.equal(obj.get('state'), 'deleted');
+          done();
+        });
+      });
+  });
+
+  // TODO: ...
+  it('Delete not allowed', function() {
+  });
+});
+
 
 describe('Site', function() {
   before(function(done) {

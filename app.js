@@ -200,13 +200,11 @@ app.post('/:userId/:threadName/edit', routes.dataViewEditPost);
 // API
 // ======================================
 
-app.get('/api/v1/account/:id', api.getAccount);
+app.get('/api/account/:id', api.getAccount);
 
-app.get('/api/v1/dataview/:owner/:name', api.getDataView);
-
-// app.post('/api/v1/:objecttype', apiUpsert);
-app.post('/api/v1/dataview', api.createDataView);
-
-app.post('/api/v1/dataview/:userId/:name', api.updateDataView);
+app.get('/api/dataview/:owner/:name', api.getDataView);
+app.post('/api/dataview', api.createDataView);
+app.post('/api/dataview/:userId/:name', api.updateDataView);
+app.delete('/api/dataview/:owner/:name', api.deleteDataView);
 
 exports.app = app;

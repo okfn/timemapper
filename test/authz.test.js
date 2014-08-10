@@ -28,8 +28,13 @@ describe('Authz', function() {
   it('isAuthorized anon correctly', function() {
     assert(authz.isAuthorized(null, 'create', note), 'anon can create view');
     assert(authz.isAuthorized('anon', 'create', note), 'anon can create view');
+
+    assert(authz.isAuthorized('anon', 'read', note), 'anon can read');
+
     assert(!authz.isAuthorized(null, 'update', note), 'anon cannot update');
     assert(!authz.isAuthorized('anon', 'update', note), 'anon cannot update view');
-    assert(authz.isAuthorized('anon', 'read', note), 'anon can read');
+
+    assert(!authz.isAuthorized(null, 'delete', note), 'anon cannot delete view');
+    assert(!authz.isAuthorized('anon', 'delete', note), 'anon cannot delete view');
   });
 });

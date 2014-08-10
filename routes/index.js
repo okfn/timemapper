@@ -77,9 +77,12 @@ exports.dashboard = function(req, res) {
       res.send('Not found', 404);
       return;
     }
+    var views = account.views.filter(function(view) {
+      return !(view.state && view.state == 'deleted');
+    });
     res.render('dashboard.html', {
       account: account.toJSON(),
-      views: account.views
+      views: views
     });
   });
 };
@@ -95,9 +98,12 @@ exports.userShow = function(req, res) {
     var isOwner = (req.currentUser && req.currentUser.id == userId);
     var accountJson = account.toTemplateJSON();
     accountJson.createdNice = new Date(accountJson._created).toDateString();
+    var views = account.views.filter(function(view) {
+      return !(view.state && view.state == 'deleted');
+    });
     res.render('account/view.html', {
         account: accountJson
-      , views: account.views 
+      , views: views 
       , isOwner: isOwner
       , bodyclass: 'account'
     });

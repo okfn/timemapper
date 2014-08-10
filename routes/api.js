@@ -1,5 +1,6 @@
 var config = require('../lib/config.js')
   , dao = require('../lib/dao.js')
+  , logic = require('../lib/logic.js')
   , util = require('../lib/util.js')
   , authz = require('../lib/authz.js')
   ;
@@ -68,3 +69,16 @@ exports.updateDataView = function(req, res) {
   apiUpsert(obj, 'update', req, res);
 };
 
+exports.deleteDataView = function(req, res) {
+  var dataViewInfo = {
+    owner: req.params.owner,
+    name: req.params.name
+  };
+  logic.deleteDataView(dataViewInfo, req.user, function(err) {
+    if (err) {
+      res.json(err.message, err.code)
+    } else {
+      res.json({});
+    }
+  });
+};
