@@ -4,6 +4,7 @@ var fs = require('fs')
   , express = require('express')
   , assert = require('assert')
   , dao = require('../lib/dao.js')
+  , logic = require('../lib/logic.js')
   , config = require('../lib/config.js')
   , _ = require('underscore')
   , base = require('./base');

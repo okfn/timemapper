@@ -6,6 +6,30 @@ var assert = require('assert')
   , base = require('./base')
   ;
 
+describe('getDataView', function() {
+  before(function(done) {
+    base.resetDb();
+    done();
+  });
+
+  it('works ok', function(done) {
+    var data = {
+      owner: 'tester',
+      name: 'napoleon'
+    };
+    var user = {
+      id: 'jones'
+    };
+    logic.getDataView(data, user, function(err, out) {
+      assert(!err, err);
+      out = out.toJSON();
+      assert.equal(out.name, 'napoleon');
+      assert.equal(out.title, 'Battles in the Napoleonic Wars');
+      done();
+    });
+  });
+});
+
 describe('createDataView', function() {
   before(function(done) {
     base.resetDb();

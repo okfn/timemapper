@@ -6,36 +6,25 @@ var config = require('../lib/config.js')
 
 exports.getAccount = function(req, res) {
   var obj = dao.Account.create({id: req.params.id});
-  apiGet(obj, req, res);
+  logic.getObject(obj, req.user, function(err, domainObj) {
+    if(err) {
+      res.json(err.message, err.code);
+    } else {
+      res.json(domainObj.toJSON());
+    }
+  });
 };
 
 exports.getDataView = function(req, res) {
-  var obj = dao.DataView.create({owner: req.params.owner, name: req.params.name});
-  apiGet(obj, req, res);
-};
-
-var apiGet = function(domainObj, req, res) {
-  domainObj.fetch(function(err, domainObj) {
-    // TODO: handle err
-    if (domainObj===null) {
-      // next(new Error('Cannot find ' + req.params.objecttype + ' with id ' + req.params.id));
-      var msg = {
-        error: 'Cannot find ' + req.params.objecttype + ' with id ' + req.params.id
-        , status: 500
-      };
-      res.json(msg, 404);
-      return;
-    }
-    var userId = req.user ? req.user.id : null;
-    var isAuthz = authz.isAuthorized(userId, 'read', domainObj);
-    if (isAuthz) {
-      res.json(domainObj.toJSON());
+  var dataViewInfo = {
+    owner: req.params.owner,
+    name: req.params.name
+  };
+  logic.getDataView(dataViewInfo, req.user, function(err, dataViewObj) {
+    if(err) {
+      res.json(err.message, err.code);
     } else {
-      msg = {
-        error: 'Access not allowed'
-        , status: 401
-      };
-      res.json(msg, 401);
+      res.json(dataViewObj.toJSON());
     }
   });
 };
