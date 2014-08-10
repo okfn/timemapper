@@ -56,10 +56,13 @@
         <li>
           <a href="https://github.com/okfn/timemapper">{{ gettext('Report an Issue') }}</a>
         </li>
-        {% if currentUser %} 
         <li class="divider-vertical"></li>
+        {% if not currentUser %}
+        <li><a class="logout" href="/account/login" title="sign in"><i class="fa fa-sign-in"></i> Login</a></li>
+        {% endif %}
+        {% if currentUser %} 
         <li><a class="username" href="/{{currentUser.id}}"><i class="icon-user"></i> {{currentUser.id}}</a></li>
-        <li><a class="logout" href="/account/logout" title="sign out"><i class="icon-signout"></i></a></li>
+        <li><a class="logout" href="/account/logout" title="sign out"><i class="fa fa-sign-out"></i></a></li>
         {% endif %}
       </ul>
     </div>
