@@ -22,10 +22,10 @@ exports.create = function(req, res) {
 exports.createPost = function(req, res) {
   var data = req.body;
   logic.createDataView(data, req.user, function(err, out) {
-    var out = out.toJSON();
     if (err) {
       res.send(err.code, err.message);
     } else {
+      var out = out.toJSON();
       // req.flash('Data View Created');
       res.redirect(urlFor(out.owner, out.name));
     }
