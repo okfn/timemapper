@@ -7,7 +7,7 @@
       "express": "~3.2.6"
     ,  "nunjucks": "~0.1.8"
     ,  "i18n-abide": ""
-    , "nconf": ""
+    , "nconf": "0.7.1"
     , "passport": ""
     , "passport-twitter": ""
     , "knox": ""
