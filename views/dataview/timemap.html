@@ -41,14 +41,14 @@
         <li>
           <a class="js-embed" href="#"><i class="icon-code"></i> {{ gettext('Embed') }}</a>
         </li>
-        {% if isOwner %} 
+        {% if isOwner %}
         <li class="divider-vertical"></li>
         <li>
           <a href="/{{viz.owner}}/{{viz.name}}/edit/" title="Edit Settings"><i class="icon-edit"></i> {{ gettext('Edit') }}</a>
         </li>
         {% endif %}
         <li class="divider-vertical"></li>
-        {% if currentUser %} 
+        {% if currentUser %}
         <li><a class="username" href="/{{currentUser.id}}" title="My Dashboard"><i class="icon-user"></i></a></li>
         <li><a class="logout" href="/account/logout" title="sign out"><i class="icon-signout"></i></a></li>
         {% endif %}
@@ -117,7 +117,7 @@
   <script type="text/javascript" src="/vendor/recline/vendor/backbone/1.0.0/backbone.js"></script>
   <script type="text/javascript" src="/vendor/recline/vendor/moment/2.0.0/moment.js"></script>
   <script type="text/javascript" src="/vendor/recline/vendor/mustache/0.5.0-dev/mustache.js"></script>
-  <script type="text/javascript" src="/vendor/recline/vendor/bootstrap/2.0.2/bootstrap.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js" integrity="sha384-e0kRLAUzZF/GpUULwXoniNHgUSfqSx0Xg5mdnYeD4W3PGOPxsX8j6pPeCGxWp0Ul" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/vendor/recline/vendor/leaflet/0.7.3/leaflet.js"></script>
   <script type="text/javascript" src="/vendor/recline/vendor/leaflet.markercluster/leaflet.markercluster.js"></script>
   <script type="text/javascript" src="/vendor/recline/vendor/timeline/js/timeline.js"></script>
@@ -129,4 +129,3 @@
   <!-- non-library javascript specific to this demo -->
   <script type="text/javascript" src="/js/view.js"></script>
 {% endblock %}
-
