@@ -28,6 +28,11 @@
 
   <!-- Custom CSS for the TimeMapper Online App -->
   <link rel="stylesheet" href="/css/style.css">
+  
+  <!-- Consent manager -->
+  <script>var okiConsent = {analyticsTrackingID: 'UA-33874954-2'}</script>
+  <script src="https://a.okfn.org/html/oki/consent/assets/js/consent.js"></script>
+
 </head>
 <body class="{% block bodyclass %}{{bodyclass}}{% endblock %}">
 {% block navbar %}
@@ -85,6 +90,8 @@
   {{ gettext('TimeMapper is open-source') }}
   &ndash; 
   <a href="https://github.com/okfn/timeliner">{{ gettext('Source Code') }}</a>
+  &ndash; 
+  <a href="https://okfn.org/privacy-policy/">Privacy policy</a>
   &ndash;
   <a href="https://github.com/okfn/timeliner#copyright-and-license">{{ gettext('Copyright') }} &amp; {{ gettext('License') }}</a>.
 </div>
@@ -106,16 +113,5 @@
 
 {% block extrabody %}{% endblock %}
 
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-33874954-2']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
 </body>
 </html>
