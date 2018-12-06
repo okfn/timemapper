@@ -97,7 +97,7 @@
 {% endblock %}
 
 {% block footer %}
-  <a href="{{permalink}}">{{title}}</a> by <a href="{{authorLink}}">{{viz.owner}}</a> {{ gettext('using') }} <a href="http://timemapper.okfnlabs.org/">TimeMapper</a>
+  <a href="{{permalink}}">{{title}}</a> by <a href="{{authorLink}}">{{viz.owner}}</a> {{ gettext('using') }} <a href="https://timemapper.okfnlabs.org/">TimeMapper</a>
   {% if viz.licenses.length != 0 %}
   &ndash;
   <a href="{{viz.licenses[0].url}}" title="{{viz.licenses[0].name}}">{{ gettext('License') }}</a>
@@ -124,7 +124,7 @@
   <script type="text/javascript" src="/vendor/leaflet.label/leaflet.label.js"></script>
 
   <script type="text/javascript" src="/vendor/recline/dist/recline.js"></script>
-  <script type="text/javascript" src="http://okfnlabs.org/recline.backend.gdocs/backend.gdocs.js"></script>
+  <script type="text/javascript" src="https://okfnlabs.org/recline.backend.gdocs/backend.gdocs.js"></script>
 
   <!-- non-library javascript specific to this demo -->
   <script type="text/javascript" src="/js/view.js"></script>
