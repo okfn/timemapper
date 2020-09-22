@@ -1,3 +1,5 @@
+# TimeMapper
+
 Create beautiful timelines and timemaps from Google Spreadsheets.
 
 Built by members of [Open Knowledge Foundation Labs](http://okfnlabs.org/).
