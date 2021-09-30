@@ -111,6 +111,9 @@ if (typeof module !== 'undefined' && module != null && typeof require !== 'undef
   my.getGDocsApiUrls = function(url, worksheetIndex) {
     if (url.indexOf('/edit') > 0) {
 	url = url.split('/edit')[0] + '/pub?output=csv'
+    } else if (url.indexOf('key=')) {
+	let doc_id = url.split('key=')[1].split('&')[0]
+	url = `https://docs.google.com/spreadsheets/d/${doc_id}/pub?output=csv`
     }
     return {
       worksheetAPI: url,
