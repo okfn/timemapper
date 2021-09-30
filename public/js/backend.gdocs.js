@@ -109,52 +109,14 @@ if (typeof module !== 'undefined' && module != null && typeof require !== 'undef
   // 
   // @param url: url to gdoc to the GDoc API (or just the key/id for the Google Doc)
   my.getGDocsApiUrls = function(url, worksheetIndex) {
-    // https://docs.google.com/spreadsheet/ccc?key=XXXX#gid=YYY
-    var regex = /.*spreadsheet\/ccc\?.*key=([^#?&+]+)[^#]*(#gid=([\d]+).*)?/,
-      // new style is https://docs.google.com/a/okfn.org/spreadsheets/d/16DayFB.../edit#gid=910481729
-      regex2 = /.*spreadsheets\/d\/([^\/]+)\/edit(#gid=([\d]+).*)?/
-      matches = url.match(regex),
-      matches2 = url.match(regex2)
-      ;
-    
-    if (!!matches) {
-        key = matches[1];
-        // the gid in url is 0-based and feed url is 1-based
-        worksheet = parseInt(matches[3]) + 1;
-        if (isNaN(worksheet)) {
-          worksheet = 1;
-        }
+    if (url.indexOf('/edit') > 0) {
+	url = url.split('/edit')[0] + '/pub?output=csv'
     }
-    else if (!!matches2) {
-      key = matches2[1];
-      // force worksheet index always to be 1 since it appears API worksheet
-      // index does not follow gid (is always just index of worksheet)
-      // e.g. see this worksheet https://docs.google.com/a/okfn.org/spreadsheets/d/1S8NhNf6KsrAzdaY_epSlyc2pHXRLV-z6Ty2jL9hM5A4/edit#gid=406828788
-      // gid are large numbers but for actual access use worksheet index 1 and 2 ...
-      // https://spreadsheets.google.com/feeds/list/1S8NhNf6KsrAzdaY_epSlyc2pHXRLV-z6Ty2jL9hM5A4/2/public/values?alt=json
-      // answer here is that clients will always have to explicitly set worksheet index if they want anything other than first sheet
-      // worksheet = parseInt(matches2[3]);
-      worksheet = 1;
-      if (isNaN(worksheet)) {
-        worksheet = 1;
-      }
-    }
-    else if (url.indexOf('spreadsheets.google.com/feeds') != -1) {
-        // we assume that it's one of the feeds urls
-        key = url.split('/')[5];
-        // by default then, take first worksheet
-        worksheet = 1;
-    } else {
-      key = url;
-      worksheet = 1;
-    }
-    worksheet = (worksheetIndex || worksheetIndex ===0) ? worksheetIndex : worksheet;
-
     return {
       worksheetAPI: url,
       spreadsheetAPI: url,
-      spreadsheetKey: key,
-      worksheetIndex: worksheet
+      spreadsheetKey: '',
+      worksheetIndex: 0
     };
   };
 }(recline.Backend.GDocs));
