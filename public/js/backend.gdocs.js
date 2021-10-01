@@ -109,11 +109,14 @@ if (typeof module !== 'undefined' && module != null && typeof require !== 'undef
   // 
   // @param url: url to gdoc to the GDoc API (or just the key/id for the Google Doc)
   my.getGDocsApiUrls = function(url, worksheetIndex) {
+    let url_without_csv = /https:\/\/docs.google.com\/spreadsheets\/d\/(\w+)/g
     if (url.indexOf('/edit') > 0) {
 	url = url.split('/edit')[0] + '/pub?output=csv'
     } else if (url.indexOf('key=')) {
 	let doc_id = url.split('key=')[1].split('&')[0]
 	url = `https://docs.google.com/spreadsheets/d/${doc_id}/pub?output=csv`
+    } else if (url_without_csv.test(url)) {
+	url = url + '/pub?output=csv'
     }
     return {
       worksheetAPI: url,
