@@ -111,6 +111,9 @@ if (typeof module !== 'undefined' && module != null && typeof require !== 'undef
   my.getGDocsApiUrls = function(url, worksheetIndex) {
     console.log('THE URL', url)
     let url_without_csv = /https:\/\/docs.google.com\/spreadsheets\/d\/(\w+)$/g
+    if (url.indexOf('/pubhtml') > 0) {
+        url = url.replace('pubhtml', 'pub?output=csv')
+    }
     if (url.indexOf('/edit') > 0) {
         url = url.split('/edit')[0] + '/pub?output=csv'
     } else if (url.indexOf('key=') > 0) {
