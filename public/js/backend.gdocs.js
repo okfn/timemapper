@@ -110,7 +110,7 @@ if (typeof module !== 'undefined' && module != null && typeof require !== 'undef
   // @param url: url to gdoc to the GDoc API (or just the key/id for the Google Doc)
   my.getGDocsApiUrls = function(url, worksheetIndex) {
     console.log('THE URL', url)
-    let url_without_csv = /https:\/\/docs.google.com\/spreadsheets\/d\/(\w+)/g
+    let url_without_csv = /https:\/\/docs.google.com\/spreadsheets\/d\/(\w+)$/g
     if (url.indexOf('/edit') > 0) {
         url = url.split('/edit')[0] + '/pub?output=csv'
     } else if (url.indexOf('key=') > 0) {
