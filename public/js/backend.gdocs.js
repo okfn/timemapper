@@ -23,30 +23,30 @@ if (typeof module !== 'undefined' && module != null && typeof require !== 'undef
     var data = []
 
     $.ajax({
-	  type: "GET",  
-	  url: urls.worksheetAPI,
-	  dataType: "text",       
-	  success: function(response)  
-	  {
-		data = $.csv.toArrays(response);
-	        var result = my.parseData(data);
-	        var fields = _.map(result.fields, function(fieldId) {
-	          return {id: fieldId};
-        	});
-	        var metadata = _.extend(urls, {
-	              title: response.spreadsheetTitle +" - "+ result.worksheetTitle,
-	              spreadsheetTitle: response.spreadsheetTitle,
-	              worksheetTitle  : result.worksheetTitle
-		})
-	        dfd.resolve({
-	          metadata: metadata,
-	          records       : result.records,
-	          fields        : fields,
-	          useMemoryStore: true
-	        });
+          type: "GET",  
+          url: urls.worksheetAPI,
+          dataType: "text",       
+          success: function(response)  
+          {
+                data = $.csv.toArrays(response);
+                var result = my.parseData(data);
+                var fields = _.map(result.fields, function(fieldId) {
+                  return {id: fieldId};
+                });
+                var metadata = _.extend(urls, {
+                      title: response.spreadsheetTitle +" - "+ result.worksheetTitle,
+                      spreadsheetTitle: response.spreadsheetTitle,
+                      worksheetTitle  : result.worksheetTitle
+                })
+                dfd.resolve({
+                  metadata: metadata,
+                  records       : result.records,
+                  fields        : fields,
+                  useMemoryStore: true
+                });
 
-	  }   
-	});
+          }   
+        });
 
 
                 return dfd.promise();
@@ -109,19 +109,24 @@ if (typeof module !== 'undefined' && module != null && typeof require !== 'undef
   // 
   // @param url: url to gdoc to the GDoc API (or just the key/id for the Google Doc)
   my.getGDocsApiUrls = function(url, worksheetIndex) {
+    console.log('THE URL', url)
     let url_without_csv = /https:\/\/docs.google.com\/spreadsheets\/d\/(\w+)/g
     if (url.indexOf('/edit') > 0) {
-	url = url.split('/edit')[0] + '/pub?output=csv'
+        url = url.split('/edit')[0] + '/pub?output=csv'
     } else if (url.indexOf('key=') > 0) {
-	let doc_id = url.split('key=')[1].split('&')[0]
-	url = `https://docs.google.com/spreadsheets/d/${doc_id}/pub?output=csv`
+        let doc_id = url.split('key=')[1].split('&')[0]
+        if (doc_id.indexOf('#')) {
+            doc_id = doc_id.split('#')[0]
+        }
+        url = `https://docs.google.com/spreadsheets/d/${doc_id}/pub?output=csv`
     } else if (url_without_csv.test(url)) {
-	let back_slash = '/'
-	if (url[url.length - 1] == '/') {
-            back_slash = ''		
-	}
-	url = url + back_slash + 'pub?output=csv'
+        let back_slash = '/'
+        if (url[url.length - 1] == '/') {
+            back_slash = ''             
+        }
+        url = url + back_slash + 'pub?output=csv'
     }
+    console.log('NEW URL', url)
     return {
       worksheetAPI: url,
       spreadsheetAPI: url,
