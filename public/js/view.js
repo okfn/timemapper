@@ -115,10 +115,11 @@ var TimeMapperView = Backbone.View.extend({
     var self = this;
     this.model.records.each(function(record) {
       // normalize date field names
-      if (record.get('startdate') && !record.get('start')) {
+      console.log(record)
+      if (record.get('startdate') || record.get('start date') && !record.get('start')) {
         record.set({
-          start: record.get('startdate'),
-          end: record.get('enddate')
+          start: record.get('startdate') || record.get('start date'),
+          end: record.get('enddate') || record.get('end date')
         }, {silent: true}
         );
       }
@@ -128,10 +129,10 @@ var TimeMapperView = Backbone.View.extend({
         startParsed: startDate,
         title: record.get('title') || record.get('headline'),
         description: record.get('description') || record.get('text') || '',
-        url: record.get('url') || record.get('webpage'),
+        url: record.get('url') || record.get('web page'),
         media: record.get('image') || record.get('media'),
-        mediacaption: record.get('caption') || record.get('mediacaption') || record.get('imagecaption'),
-        mediacredit: record.get('imagecredit') || record.get('mediacredit'),
+        mediacaption: record.get('caption') || record.get('media caption') || record.get('image caption'),
+        mediacredit: record.get('image credit') || record.get('media credit'),
       };
       if (record.get('size') || record.get('size') === 0) {
         data.size = parseFloat(record.get('size'));
@@ -240,10 +241,10 @@ var TimeMapperView = Backbone.View.extend({
           ;
       }
       out.text = record.get('description');
-      if (record.get('source') || record.get('sourceurl')) {
-        var s = record.get('source') || record.get('sourceurl');
-        if (record.get('sourceurl')) {
-          s = '<a href="' + record.get('sourceurl') + '">' + s + '</a>';
+      if (record.get('source') || record.get('sourceurl') || record.get('source url')) {
+        var s = record.get('source') || record.get('sourceurl') || record.get('source url');
+        if (record.get('source url')) {
+          s = '<a href="' + record.get('source url') + '">' + s + '</a>';
         }
         out.text += '<p class="source">Source: ' + s + '</p>';
       }
